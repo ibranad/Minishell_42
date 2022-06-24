@@ -4,6 +4,3 @@ https://www.osc.edu/resources/getting_started/howto/howto_use_address_sanitizer
 https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
 https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
 https://www.youtube.com/watch?v=7B6o2YyvIKw&ab_channel=Edu_events_mow
-https://cdn.intra.42.fr/pdf/pdf/47172/en.subject.pdf
-
-ls -la > wc-l
