@@ -46,6 +46,5 @@ char    *get_new_string(char *str)
 }
 
 int main(void) {
-
-  printf("%s\n", get_new_string(">lol|cmd|cmd2<out"));
+  printf("%s\n", get_new_string("l|o|l"));
 }
