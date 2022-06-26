@@ -4,6 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 RDL = -lreadline
 
+LIB = Lib/libft.a\
+
 SRCS = minishell.c\
 
 CC = cc

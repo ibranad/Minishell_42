@@ -1,50 +1,70 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "minshell.h"
 
-int alloc(char *str)
+int expand_alloc(char *str)
 {
-    int i = 0;
-    int j = 0;
+    int i;
+    int j;
 
-    while (str[i])
-    {
-        if((str[i] == '|') || (str[i] == '>') || (str[i] == '<'))
-            j++;
-        i++;
-    }
-    return ((i + (j * 2) + 1));
-}
-
-char    *get_new_string(char *str)
-{
-    int i = 0;
-    int j = 0;
-    char    *line;
-
-    line = malloc(sizeof(char) * alloc(str));
+    i = 0;
+    j = 0;
     while(str[i])
     {
-        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<'))
+        if (str[i] == '$')
         {
-            line[j++] = str[i];
-            line[j++] = ' ';
+            i++;
+            while(str[i])
+            {
+                j++;
+                i++;
+            }
+            break;
         }
-        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<'))
+    i++;
+    }
+    return (j);
+}
+
+char *post_dollar(char *str)
+{
+    int     i;
+    int     j;
+    char    *line;
+
+    i = 0;
+    j = 0;
+    while(str[i])
+    {
+        if (str[i] == '$')
         {
-            line[j++] = str[i];
-            line[j++] = ' ';
-        }
-        else
-        {
-            line[j] = str[i];
-            j++;
+            i++;
+            if (ft_isalnum(str[i]) != 0)
+            {
+                line = malloc(sizeof(char) * (expand_alloc(str) + 1));
+                while(str[i])
+                {
+                    line[j] = str[i];
+                    i++;
+                    j++;
+                }
+                line[j] = '\0';
+                break;
+            }
         }
         i++;
     }
-    line[j] = 0;
-    return (line);
+    return(line);
 }
 
-int main(void) {
+char *expand_it(char *str, char **env)
+{
+    (void)ac;
+    (void)av;
+
+}
+
+int main(int ac, char **av, char **env) {
+
   printf("%s\n", get_new_string(">cmd1|cmd2<"));
 }

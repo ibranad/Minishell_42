@@ -8,5 +8,6 @@
 #include <sys/types.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include "Lib/libft.h"
 
 #endif

@@ -1,8 +1,7 @@
 #include "minshell.h"
 
-char    *get_new_string(char *str)
+int s_alloc(char *str)
 {
-    char    *line;
     int i = 0;
     int j = 0;
 
@@ -12,32 +11,51 @@ char    *get_new_string(char *str)
             j++;
         i++;
     }
-    line = malloc(sizeof(char) * (i + j));
-    i = 0;
-    j = 0;
+    return ((i + (j * 2) + 1));
+}
+
+char    *get_new_string(char *str)
+{
+    int i = 0;
+    int j = 0;
+    char    *line;
+
+    line = malloc(sizeof(char) * s_alloc(str));
     while(str[i])
     {
-        j = i;
-        if((str[j++] == '|') || (str[j++] == '>') || (str[j++] == '<'))
+        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<'))
         {
-            line[i++] = ' ';
-            line[i] = str[i];
+            line[j++] = str[i];
+            line[j++] = ' ';
+        }
+        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<'))
+        {
+            line[j++] = str[i];
+            line[j++] = ' ';
         }
         else
-            line[i] = str[i];
+        {
+            line[j] = str[i];
+            j++;
+        }
         i++;
     }
-    line[i] = 0;
-    printf("line is %s", line);
+    line[j] = 0;
     return (line);
 }
+
+
+
 int main(void)
 {
     char *str;
     char *line;
 
-    str = readline("minishell$> ");
-    printf("str is %s\n", str);
-    line = get_new_string(str);
-    //printf("%s/n", line);
+    while(1)
+    {
+        str = readline("minishell$> ");
+        add_history(str);
+        printf("str is %s\n", str);
+        line = get_new_string(str);
+    }
 }
