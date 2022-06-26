@@ -10,4 +10,11 @@
 #include <readline/history.h>
 #include "Lib/libft.h"
 
+typedef struct dollar_sign
+{
+    int len;
+    char *str;
+}   t_dol;
+
+
 #endif
