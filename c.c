@@ -26,34 +26,44 @@ int expand_alloc(char *str)
     return (j);
 }
 
-t_dol   post_dollar(char *str)
+int env_allow_char(char *str)
 {
-    int     i;
-    t_dol   line;
+    int i;
 
     i = 0;
-    line.len = 0;
+    while(str[i])
+    {
+        
+    }
+}
+
+void   post_dollar(t_dol *var, char *str)
+{
+    int     i;
+
+    i = 0;
+    var->len = 0;
     while(str[i])
     {
         if (str[i] == '$')
         {
             i++;
-            if (ft_isalnum(str[i]) != 0)
+            if (ft_isalnum(str[i]) != 0 || str[i] == '_')
             {
-                line.str = malloc(sizeof(char) * (expand_alloc(str) + 1));
+                var->str = malloc(sizeof(char) * (expand_alloc(str) + 1));
                 while(str[i])
                 {
-                    line.str[line.len] = str[i];
+                    var->str[var->len] = str[i];
                     i++;
-                    line.len++;
+                    var->len++;
                 }
-                line.str[line.len] = '\0';
+                var->str[var->len++] = '=';
+                var->str[var->len] = '\0';
                 break;
             }
         }
         i++;
     }
-    return(line);
 }
 
 char *expand_it(char *str, char **env)
@@ -61,7 +71,8 @@ char *expand_it(char *str, char **env)
     int     i;
     t_dol   var;
 
-    var = post_dollar(str);
+    if (!(post_dollar(&var, str)));
+        return (NULL);
     i = 0;
     while(env[i])
     {
@@ -77,5 +88,5 @@ int main(int ac, char **av, char **env) {
     (void)av;
     (void)env;
 
-    printf("%s\n", expand_it(av[ac - 1], env));
+    printf("%s\n", expand_it("lol$_CF", env));
 }
