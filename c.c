@@ -161,6 +161,27 @@ char    *expand_it(char *str,char **env)
     return (line);
 }
 
+int dollar_number()
+{
+
+}
+void expand_extra(char *str, char **env)
+{
+    int i;
+    char *s;
+    char *t;
+    char *r;
+
+    i = 0;
+    while (str[i])
+    {
+        if(str[i] == '$')
+        {
+
+        }
+    }
+}
+
 int main(int ac, char **av, char **env)
 {
     (void)ac;

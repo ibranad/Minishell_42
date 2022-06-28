@@ -53,7 +53,7 @@ int main(void)
 
     while(1)
     {
-        str = readline("minishell$> ");
+        str = readline("Minishell$> ");
         add_history(str);
         printf("str is %s\n", str);
         line = get_new_string(str);
