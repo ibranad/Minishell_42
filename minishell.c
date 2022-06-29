@@ -23,12 +23,16 @@ char    *get_new_string(char *str)
     line = malloc(sizeof(char) * s_alloc(str));
     while(str[i])
     {
-        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<'))
+        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<') || (str[i] == '$'))
         {
             line[j++] = str[i];
-            line[j++] = ' ';
+            if (str[i] == '$')
+                //i++;
+                line[j] = str[i];
+            else
+                line[j++] = ' ';
         }
-        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<'))
+        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<') || (str[i + 1]) == '$')
         {
             line[j++] = str[i];
             line[j++] = ' ';
@@ -46,16 +50,16 @@ char    *get_new_string(char *str)
 
 
 
-int main(void)
-{
-    char *str;
-    char *line;
+// int main(void)
+// {
+//     char *str;
+//     char *line;
 
-    while(1)
-    {
-        str = readline("Minishell$> ");
-        add_history(str);
-        printf("str is %s\n", str);
-        line = get_new_string(str);
-    }
-}
+//     while(1)
+//     {
+//         str = readline(CYAN "Minishell $> " WHITE);
+//         add_history(str);
+//         printf("str is %s\n", str);
+//         line = get_new_string(str);
+//     }
+// }

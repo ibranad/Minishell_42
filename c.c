@@ -161,25 +161,95 @@ char    *expand_it(char *str,char **env)
     return (line);
 }
 
-int dollar_number()
-{
-
-}
-void expand_extra(char *str, char **env)
+int dollar_number(char *str)
 {
     int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while(str[i])
+    {
+        if (str[i] == '$')
+            j++;
+        i++;
+    }
+    return (j);
+}
+
+// NEED SOME WORK
+/*void expand_extra(char *str, char **env)
+{
+    int i;
+    int j;
+    int dc;
+    int start;
     char *s;
     char *t;
     char *r;
+    char **vars;
 
     i = 0;
-    while (str[i])
+    j = 0;
+    dc = dollar_number(str);
+    vars = malloc(sizeof(char *) * dc + 1);
+    if (dc > 1)
     {
-        if(str[i] == '$')
-        {
 
+        while (str[i])
+        {
+            if(str[i] == '$')
+            {
+                start = i;
+                while(str[i])
+                {
+                    if (ft_isalnum(str[i]) == 0 || str[i] != '$')
+                        break;
+                    i++;
+                }
+                vars[j] = ft_substr(str, start, (i - start));
+                j++;
+            }
         }
     }
+}*/
+
+void expand_extra(char *str)
+{
+    char **arr;
+    char *ar;
+    int i;
+
+    ar = get_new_string(str);
+    arr = ft_split(ar, ' ');
+
+    i = 0;
+    while (arr[i])
+    {
+        printf("%s\n", arr[i]);
+        i++;
+    }
+}
+
+char *str_rep(char *str)
+{
+    int     i;
+    int     j;
+    char    *line;
+
+    i = 0;
+    line = malloc(sizeof(char) * ft_strlen(str) + 1);
+    while(str[i])
+    {
+        if(str[i] == ' ')
+            line[j] = 8;
+        else
+            line[j] = str[i];
+        i++;
+        j++;
+    }
+    line[j] = 0;
+    return (line);
 }
 
 int main(int ac, char **av, char **env)
@@ -187,5 +257,6 @@ int main(int ac, char **av, char **env)
     (void)ac;
     (void)av;
     (void)env;
-    printf("%s\n", expand_it("lol $PWD", env));
+    //expand_extra("lol $USER dfzgzdf$HOME");
+    printf("%s\n", str_rep("lol $USER dfzgzdf$HOME"));
 }
