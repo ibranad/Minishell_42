@@ -261,6 +261,8 @@ char *space_add(char *str)
     return (line);
 }
 
+//char *remove_char(char *str)
+
 void expand_extra(char *str)
 {
     char **arr;
@@ -269,18 +271,112 @@ void expand_extra(char *str)
 
     ar = str_rep(str);
     char *a = space_add(ar);
-    arr = ft_split(a, ' ');
 
+    //arr = ft_split(a, ' ');
+    printf("%s\n", ar);
     i = 0;
-    while (arr[i])
+    // while (arr[i])
+    // {
+    //     printf("%s\n", arr[i]);
+    //     i++;
+    // }
+}
+
+
+/*=================================================
+int find_char(char *str, char c)
+{
+  int i;
+  int j;
+  
+  i = 0;
+  j = 0;
+  while(str[i])
+  {
+    if (str[i] == c)
+      j++;
+  i++;
+  }
+  return(j);
+}
+
+char *char_remove(char *str, char c)
+{
+  int i;
+  char *line;
+
+  i = 0;
+  line = malloc(sizeof(char) * (strlen(str) - find_char(str, '$'))+1);
+  int j = 0;
+  
+  while(str[i])
+  {
+    if (str[i] == c)
     {
-        printf("%s\n", arr[i]);
-        i++;
+      i++;
+      line[j] = str[i];
     }
+    else
+      line[j] = str[i];
+    i++;
+    j++;
+  }
+  line[j] = 0;
+  return(line);
 }
 
 
 
+=================================================*/
+
+int find_char(char *str, char c)
+{
+  int i;
+  int j;
+  
+  i = 0;
+  j = 0;
+  while(str[i])
+  {
+    if (str[i] == c)
+      j++;
+  i++;
+  }
+  return(j);
+}
+
+char *char_remove(char *str, char c)
+{
+  int i;
+  char *line;
+
+  i = 0;
+  line = malloc(sizeof(char) * (strlen(str) - find_char(str, '$'))+1);
+  int j = 0;
+  
+  while(str[i])
+  {
+    if (str[i] == c)
+    {
+      i++;
+      if(str[i + 1] == c)
+        while(str[i] == c)
+          i++;
+      line[j] = str[i];
+    }
+    else
+      line[j] = str[i];
+    i++;
+    j++;
+  }
+  line[j] = 0;
+  return(line);
+}
+
+int main() {
+
+  printf("%s", char_remove("lol$$$$ifj$cmd", '$'));
+}
 
 int main(int ac, char **av, char **env)
 {
