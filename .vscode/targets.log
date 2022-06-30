@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Jun 30 11:59:54 2022
+# Make data base, printed on Thu Jun 30 20:50:41 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -42,11 +41,11 @@ MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jvh0004fw/T/vscode-ipc-435ff8da-5534-47ca-834b-4e133cbe29f6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jvh0004fw/T/vscode-ipc-7889f4a8-7944-47d2-bced-d4b49b248a6b.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.V3auDvrpaq/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.v7MVRltORB/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
 # environment
@@ -62,7 +61,7 @@ LIB = Lib/libft.a
 # makefile (from `Makefile', line 5)
 RDL = -lreadline
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MoSs3H3BaR/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.vtmNHWT5Pg/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -130,13 +129,15 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.3976
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x11DC:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -145,6 +146,8 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186aa
 # automatic
 ^F = $(notdir $^)
 # default
@@ -156,10 +159,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 25950
+VSCODE_PID = 1671
 # variable set hash-table stats:
- 
-# Load=72/1024=7%, Rehash=0, Collisions=1/105=1%
+# Load=74/1024=7%, Rehash=0, Collisions=1/107=1%
 
 # Pattern-specific Variable Values
 
@@ -167,9 +169,9 @@ VSCODE_PID = 25950
 
 # Directories
 
-# . (device 16777227, inode 7496104): 19 files, no impossibilities.
+# . (device 16777227, inode 7496104): 18 files, no impossibilities.
 
-# 19 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -246,7 +248,7 @@ clean:
 # Not a target:
 minishell.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 19:34:49
+#  Last modified 2022-06-30 14:27:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -265,6 +267,6 @@ minishell.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jun 30 11:59:54 2022
+# Finished Make data base on Thu Jun 30 20:50:41 2022
 
  
