@@ -23,7 +23,7 @@ char    *get_new_string(char *str)
     line = malloc(sizeof(char) * s_alloc(str));
     while(str[i])
     {
-        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<') || (str[i] == '$'))
+        if ((str[i] == '|') || (str[i] == '>') || (str[i] == '<'))
         {
             line[j++] = str[i];
             if (str[i] == '$')
@@ -32,7 +32,7 @@ char    *get_new_string(char *str)
             else
                 line[j++] = ' ';
         }
-        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<') || (str[i + 1]) == '$')
+        else if((str[i + 1] == '|') || (str[i + 1] == '>') || (str[i + 1] == '<'))
         {
             line[j++] = str[i];
             line[j++] = ' ';
