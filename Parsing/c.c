@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "minishell.h"
 
+char **char_rep(char **str, char old, char new);
+
 int pd_alloc(char *str)
 {
     int i;
@@ -278,6 +280,8 @@ void expand_extra(char *str)
     ar = str_rep(str);
     a = space_add(ar);
     arr = ft_split(a, ' ');
+    char_rep(arr, 8, ' ');
+
     i = 0;
     while (arr[i])
     {
@@ -335,6 +339,27 @@ char *char_remove(char *str, char c)
 //   printf("%s", char_remove("lol$$$$ifj$cmd", '$'));
 // }
 
+char **char_rep(char **str, char old, char new)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(str[i])
+    {
+
+        j = 0;
+        while(str[i][j])
+        {
+            if (str[i][j] == old)
+                str[i][j] = new;
+            j++;
+        }
+        i++;
+    }
+    return (str);
+}
+
 int main(int ac, char **av, char **env)
 {
     // (void)ac;
@@ -342,6 +367,6 @@ int main(int ac, char **av, char **env)
     // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
     //printf("%s\n", 
-    //expand_extra("lol $USER dfzgzdf $HOME");
-    printf("%s\n", expand_it("$LESS", env));
+    expand_extra("lol $USER dfzgzdf $HOME");
+    //printf("%s\n", expand_it("$LESS", env));
 }
