@@ -19,6 +19,16 @@ typedef struct dollar_sign
     char *str;
 }   t_dol;
 
+
+// typedef struct returned_data
+// {
+//     char *cmd_path = "/bin/ls";
+//     char **args = {"ls", "-la", NULL};
+//     int input_fd = 3;
+//     int output_fd = 4;
+//     struct returned_data *next = NULL;
+// }
+
 char    *get_new_string(char *str);
 
 #endif

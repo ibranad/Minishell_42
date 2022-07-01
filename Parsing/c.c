@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "minshell.h"
+#include "minishell.h"
 
 int pd_alloc(char *str)
 {
@@ -168,7 +168,7 @@ int dollar_number(char *str, char c)
 
     i = 0;
     j = 0;
-    while(str[i])
+    while (str[i])
     {
         if (str[i] == c)
             j++;
@@ -247,10 +247,15 @@ char *space_add(char *str)
     line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, 8) + 1));   
     while (str[i])
     {
-        if (str[i] == 8 || str[i] == '$')
+        if (str[i] == 8)
         {
             line[j++] = str[i];
             line[j] = ' ';
+        }
+        else if (str[i] == '$')
+        {
+            line[j++] = ' ';
+            line[j] = str[i];
         }
         else
             line[j] = str[i];
@@ -267,67 +272,19 @@ void expand_extra(char *str)
 {
     char **arr;
     char *ar;
+    char *a;
     int i;
 
     ar = str_rep(str);
-    char *a = space_add(ar);
-
-    //arr = ft_split(a, ' ');
-    printf("%s\n", ar);
+    a = space_add(ar);
+    arr = ft_split(a, ' ');
     i = 0;
-    // while (arr[i])
-    // {
-    //     printf("%s\n", arr[i]);
-    //     i++;
-    // }
-}
-
-
-/*=================================================
-int find_char(char *str, char c)
-{
-  int i;
-  int j;
-  
-  i = 0;
-  j = 0;
-  while(str[i])
-  {
-    if (str[i] == c)
-      j++;
-  i++;
-  }
-  return(j);
-}
-
-char *char_remove(char *str, char c)
-{
-  int i;
-  char *line;
-
-  i = 0;
-  line = malloc(sizeof(char) * (strlen(str) - find_char(str, '$'))+1);
-  int j = 0;
-  
-  while(str[i])
-  {
-    if (str[i] == c)
+    while (arr[i])
     {
-      i++;
-      line[j] = str[i];
+        printf("%s\n", arr[i]);
+        i++;
     }
-    else
-      line[j] = str[i];
-    i++;
-    j++;
-  }
-  line[j] = 0;
-  return(line);
 }
-
-
-
-=================================================*/
 
 int find_char(char *str, char c)
 {
@@ -351,16 +308,16 @@ char *char_remove(char *str, char c)
   char *line;
 
   i = 0;
-  line = malloc(sizeof(char) * (strlen(str) - find_char(str, '$'))+1);
+  line = malloc(sizeof(char) * (strlen(str) - find_char(str, c)) + 1);
   int j = 0;
   
-  while(str[i])
+  while (str[i])
   {
     if (str[i] == c)
     {
       i++;
-      if(str[i + 1] == c)
-        while(str[i] == c)
+      if (str[i + 1] == c)
+        while (str[i] == c)
           i++;
       line[j] = str[i];
     }
@@ -373,17 +330,18 @@ char *char_remove(char *str, char c)
   return(line);
 }
 
-int main() {
+// int main() {
 
-  printf("%s", char_remove("lol$$$$ifj$cmd", '$'));
-}
+//   printf("%s", char_remove("lol$$$$ifj$cmd", '$'));
+// }
 
 int main(int ac, char **av, char **env)
 {
-    (void)ac;
-    (void)av;
-    (void)env;
+    // (void)ac;
+    // (void)av;
+    // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
     //printf("%s\n", 
-    expand_extra("lol $USER dfzgzdf$HOME");
+    //expand_extra("lol $USER dfzgzdf $HOME");
+    printf("%s\n", expand_it("$LESS", env));
 }

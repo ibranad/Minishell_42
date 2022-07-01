@@ -1,4 +1,4 @@
-#include "minshell.h"
+#include "minishell.h"
 
 int s_alloc(char *str)
 {
