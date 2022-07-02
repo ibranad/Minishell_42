@@ -79,6 +79,7 @@ char *replace_it(char *str, char **env)
     int     i;
     t_dol   var;
 
+    printf("str is %s\n", str);
     post_dollar(&var, str);
     i = 0;
     while(env[i])
@@ -270,17 +271,42 @@ char *space_add(char *str)
 
 //char *remove_char(char *str)
 
-void expand_extra(char *str)
+char *expand_extra(char *str, char **env)
 {
     char **arr;
     char *ar;
     char *a;
+    char *b = NULL;
     int i;
+    int j;
 
     ar = str_rep(str);
     a = space_add(ar);
     arr = ft_split(a, ' ');
     char_rep(arr, 8, ' ');
+
+
+    i = 0;
+    j = 0;
+    while(arr[i])
+    {
+        if (arr[i][j] == '$')
+        {
+            if (is_in_env(&arr[i][1], env) == 1)
+                b = t_strjoin(b, replace_it(arr[i], env));
+            else
+                b = t_strjoin(b, NULL);
+        }
+        else
+            b = t_strjoin(b, arr[i]);
+        i++;
+    }
+    return (b);
+}
+
+void print_2d_arr(char **arr)
+{
+    int i;
 
     i = 0;
     while (arr[i])
@@ -289,7 +315,6 @@ void expand_extra(char *str)
         i++;
     }
 }
-
 int find_char(char *str, char c)
 {
   int i;
@@ -334,11 +359,6 @@ char *char_remove(char *str, char c)
   return(line);
 }
 
-// int main() {
-
-//   printf("%s", char_remove("lol$$$$ifj$cmd", '$'));
-// }
-
 char **char_rep(char **str, char old, char new)
 {
     int i;
@@ -367,6 +387,6 @@ int main(int ac, char **av, char **env)
     // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
     //printf("%s\n", 
-    expand_extra("lol $USER dfzgzdf $HOME");
+    printf("%s\n", expand_extra("lol $USER dfzgzdf $HOME", env));
     //printf("%s\n", expand_it("$LESS", env));
 }

@@ -30,5 +30,7 @@ typedef struct dollar_sign
 // }
 
 char    *get_new_string(char *str);
+char	*t_strjoin(char *s1, char *s2);
+int is_in_env(char *str, char **env);
 
 #endif
