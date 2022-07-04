@@ -303,6 +303,7 @@ char *expand_extra(char *str, char **env)
             }
             else if (is_in_env(&arr[i][1], env) == 1)
                 b = t_strjoin(b, replace_it(arr[i], env));
+            else if (arr[i])
             else
                 b = t_strjoin(b, NULL);
         }
@@ -431,6 +432,10 @@ int main(int ac, char **av, char **env)
     // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
     //printf("%s\n", 
-    printf("%s\n", expand_extra("lol$TERMdfzgzdf $HOME", env));
+    printf("%s\n", expand_extra("lol$TERM fzgzdf$ $HOME", env));
+    while(1);
     //printf("%s\n", expand_it("$LESS", env));
 }
+
+//lol $ TERMdfzgzdf /Users/ibnada
+//lol TERMdfzgzdf$ $HOME
