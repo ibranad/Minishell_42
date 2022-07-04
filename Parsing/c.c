@@ -269,8 +269,6 @@ char *space_add(char *str)
     return (line);
 }
 
-//char *remove_char(char *str)
-
 char *expand_extra(char *str, char **env)
 {
     char **arr;
@@ -379,6 +377,24 @@ char **char_rep(char **str, char old, char new)
     }
     return (str);
 }
+
+int if_last_is(char *str, char c)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(str[i])
+    {
+        j = i + 1;
+        if (str[j] == '\0' && str[i] == c)
+            return (1);
+      i++;
+    }
+    return (0);
+}
+
+
 
 int main(int ac, char **av, char **env)
 {
