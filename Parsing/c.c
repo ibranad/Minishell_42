@@ -290,7 +290,18 @@ char *expand_extra(char *str, char **env)
     {
         if (arr[i][j] == '$')
         {
-            if (is_in_env(&arr[i][1], env) == 1)
+            if (if_last_is(arr[i], ' ') == 1)
+            {
+                arr[i] = char_remove(arr[i], ' ');
+                if (is_in_env(&arr[i][1], env) == 1)
+                {
+                    b = t_strjoin(b, replace_it(arr[i], env));
+                    b = t_strjoin(b, " ");
+                }
+                else
+                    b = t_strjoin(b, " ");
+            }
+            else if (is_in_env(&arr[i][1], env) == 1)
                 b = t_strjoin(b, replace_it(arr[i], env));
             else
                 b = t_strjoin(b, NULL);
@@ -394,7 +405,24 @@ int if_last_is(char *str, char c)
     return (0);
 }
 
+// char *space_handle(char *str)
+// {
+//     int i;
+//     int j;
+//     int len;
+//     char *line;
 
+//     i = 0;
+//     len = ft_strlen(str);
+//     line = malloc(sizeof(char) * 2);
+//     while(str[i] && i < j)
+//     {
+//         j = i + 2;
+//         line[i] = str[i];
+//         i++;
+//     }
+//     len[j] = '='
+// }
 
 int main(int ac, char **av, char **env)
 {
@@ -403,6 +431,6 @@ int main(int ac, char **av, char **env)
     // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
     //printf("%s\n", 
-    printf("%s\n", expand_extra("lol $USER dfzgzdf $HOME", env));
+    printf("%s\n", expand_extra("lol$TERMdfzgzdf $HOME", env));
     //printf("%s\n", expand_it("$LESS", env));
 }
