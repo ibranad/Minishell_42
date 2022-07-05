@@ -79,7 +79,6 @@ char *replace_it(char *str, char **env)
     int     i;
     t_dol   var;
 
-    printf("str is %s\n", str);
     post_dollar(&var, str);
     i = 0;
     while(env[i])
@@ -286,11 +285,18 @@ char *expand_extra(char *str, char **env)
 
     i = 0;
     j = 0;
+
+    print_2d_arr(arr);
     while(arr[i])
     {
         if (arr[i][j] == '$')
         {
-            if (if_last_is(arr[i], ' ') == 1)
+            if ((arr[i][0] == '$') && (arr[i][1] == ' '))
+            {
+                printf("%%%s%%\n", arr[i]);
+                b = t_strjoin(b, "$ ");
+            }
+            else if (if_last_is(arr[i], ' ') == 1 && ft_strlen(arr[i]) > 2)
             {
                 arr[i] = char_remove(arr[i], ' ');
                 if (is_in_env(&arr[i][1], env) == 1)
@@ -303,7 +309,6 @@ char *expand_extra(char *str, char **env)
             }
             else if (is_in_env(&arr[i][1], env) == 1)
                 b = t_strjoin(b, replace_it(arr[i], env));
-            else if (arr[i])
             else
                 b = t_strjoin(b, NULL);
         }
@@ -321,10 +326,11 @@ void print_2d_arr(char **arr)
     i = 0;
     while (arr[i])
     {
-        printf("%s\n", arr[i]);
+        printf("arr[%d]==>>%s<<\n", i, arr[i]);
         i++;
     }
 }
+
 int find_char(char *str, char c)
 {
   int i;
@@ -431,11 +437,13 @@ int main(int ac, char **av, char **env)
     // (void)av;
     // (void)env;
     //expand_extra("lol $USER dfzgzdf$HOME");
-    //printf("%s\n", 
-    printf("%s\n", expand_extra("lol$TERM fzgzdf$ $HOME", env));
-    while(1);
+    //printf("\n====================\n"); 
+
+    printf("\n%s\n", expand_extra("lol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOMElol$TERMfzgzdf$$HOME", env));
     //printf("%s\n", expand_it("$LESS", env));
+    //while (1);
 }
 
+//lol$TERM fzgzdf$ $HOME
 //lol $ TERMdfzgzdf /Users/ibnada
 //lol TERMdfzgzdf$ $HOME

@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Mon Jul  4 13:56:17 2022
+# Make data base, printed on Tue Jul  5 11:51:06 2022
 
 # Variables
 
@@ -39,13 +36,15 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jvh0004fw/T/vscode-ipc-d2c5ee6b-9b8c-4605-bfda-6877cf857723.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jvh0004fw/T/vscode-ipc-0fb8c2c9-f39e-49cb-aaa9-1d3d5c84e824.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.Q5BknXyVTq/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.s93yYI4cas/Render
 # environment
-PATH = /usr/bin:/bin:/usr/sbin:/sbin
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -53,7 +52,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DfjLTk8Jgq/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.gbwZewL9w2/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -75,6 +74,8 @@ LOGNAME = ibnada
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
+ZSH = /Users/ibnada/.oh-my-zsh
+# environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
@@ -92,6 +93,8 @@ MAKE_VERSION := 3.81
 USER = ibnada
 # makefile
 .DEFAULT_GOAL := 
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -111,7 +114,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000005.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -125,9 +128,11 @@ MAKEFILES :=
 # automatic
 <F = $(notdir $<)
 # environment
+PAGER = less
+# environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a9
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -139,9 +144,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1397
+VSCODE_PID = 19545
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=1/84=1%
+# Load=67/1024=7%, Rehash=0, Collisions=1/88=1%
 
 # Pattern-specific Variable Values
 
@@ -149,9 +154,9 @@ VSCODE_PID = 1397
 
 # Directories
 
-# . (device 16777227, inode 7496104): 5 files, no impossibilities.
+# . (device 16777227, inode 7496104): 7 files, no impossibilities.
 
-# 5 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -223,6 +228,8 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Mon Jul  4 13:56:17 2022
+# Finished Make data base on Tue Jul  5 11:51:06 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+

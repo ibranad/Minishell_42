@@ -34,5 +34,6 @@ char	*t_strjoin(char *s1, char *s2);
 int is_in_env(char *str, char **env);
 char *char_remove(char *str, char c);
 int if_last_is(char *str, char c);
+void print_2d_arr(char **arr);
 
 #endif
