@@ -27,7 +27,6 @@ char    *get_new_string(char *str)
         {
             line[j++] = str[i];
             if (str[i] == '$')
-                //i++;
                 line[j] = str[i];
             else
                 line[j++] = ' ';
