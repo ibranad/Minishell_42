@@ -49,16 +49,16 @@ char    *get_new_string(char *str)
 
 
 
-// int main(void)
-// {
-//     char *str;
-//     char *line;
+int main(void)
+{
+    char *str;
+    char *line;
 
-//     while(1)
-//     {
-//         str = readline(CYAN "Minishell $> " WHITE);
-//         add_history(str);
-//         printf("str is %s\n", str);
-//         line = get_new_string(str);
-//     }
-// }
+    while(1)
+    {
+        str = readline(CYAN "Minishell $> " WHITE);
+        add_history(str);
+        line = get_new_string(str);
+        printf("line is %s\n", line);
+    }
+}

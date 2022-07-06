@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:59:52 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 17:19:39 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/06 11:22:39 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*expand_it(char *str,char **env);
 char	*replace_it(char *str, char **env);
 char	*expand_extra(char *str, char **env);
 char	**char_rep(char **str, char old, char new);
-void	post_dollar(t_dol *var, char *str);
 void	print_2d_arr(char **arr);
 
 #endif

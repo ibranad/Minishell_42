@@ -6,9 +6,11 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 15:49:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/05 18:30:17 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "exp.h"
 
 char *expand_extra(char *str, char **env)
 {
