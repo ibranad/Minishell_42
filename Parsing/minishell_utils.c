@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/06 14:50:28 by ibnada            #+#    #+#             */
+/*   Updated: 2022/07/06 18:02:56 by ibnada           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	saj_short(t_vt *v, char *src)
@@ -35,7 +47,6 @@ char	*slash_av_join(char *src, char c, char *dest)
 	v.arr[v.i] = '\0';
 	return (v.arr);
 }
-
 
 char	*get_path_line(char **env)
 {
@@ -77,14 +88,14 @@ char	*av_join_acess(char **env, char *av)
 	return (joining);
 }
 
-int main(int ac, char **av, char **env)
-{
-    char    **arr;
-    char    **c_arg;
-    char    *cmd;
+// int main(int ac, char **av, char **env)
+// {
+//     char    **arr;
+//     char    **c_arg;
+//     char    *cmd;
 
-    arr = get_path(env);
-	c_arg = ft_split("wc -l", ' ');
-	cmd = av_join_acess(arr, c_arg[0]);
-    printf("%s\n", cmd);
-}
+//     arr = get_path(env);
+// 	c_arg = ft_split("ls -l", ' ');
+// 	cmd = av_join_acess(arr, c_arg[0]);
+//     printf("%s\n", cmd);
+// }

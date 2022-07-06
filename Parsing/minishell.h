@@ -48,11 +48,19 @@ typedef struct vt
 //     struct returned_data *next = NULL;
 // }
 
+int     ft_lstsize(t_cont *lst);
+int     if_last_is(char *str, char c);
+int     is_in_env(char *str, char **env);
+char	**get_path(char **env);
+char	*get_path_line(char **env);
 char    *get_new_string(char *str);
-int is_in_env(char *str, char **env);
-char *char_remove(char *str, char c);
-int if_last_is(char *str, char c);
-void print_2d_arr(char **arr);
-void	post_dollar(t_dol *var, char *str);
+char    *char_remove(char *str, char c);
+char	*av_join_acess(char **env, char *av);
+char	*slash_av_join(char *src, char c, char *dest);
+void    print_2d_arr(char **arr);
+void	saj_short(t_vt *v, char *src);
+void    post_dollar(t_dol *var, char *str);
+void    ft_lstadd_front(t_cont **lst, t_cont *new);
+t_cont  *ft_lstnew(int content);
 
 #endif

@@ -47,18 +47,84 @@ char    *get_new_string(char *str)
     return (line);
 }
 
-
-
-int main(void)
+void    ft_ms_init(t_cont *ms)
 {
-    char *str;
-    char *line;
+    ms->args = NULL;
+    ms->cmd_path = NULL;
+    ms->in_fd = 0;
+    ms->out_fd = 1;
+    ms->is_exec = 1;
+}
 
+int arr_len(char **arr)
+{
+    int i;
+    i = 0;
+
+    while(arr[i])
+        i++;
+    return (i);
+}
+
+void    create_list(t_cont **ms, int len)
+{
+    int i;
+    t_cont *new;
+
+    i = 0;
+    while(i < len)
+    {
+        new = ft_lstnew(1);
+        ft_lstadd_front(ms, new);
+        i++;
+    }
+}
+
+void    struct_fill(t_cont *ms, char **arr, int len, char **env)
+{
+    if (len > 1)
+    {
+        
+    }
+    else
+    {
+        ms->args = ft_split(arr[0], ' ');
+        ms->cmd_path = av_join_acess(env, ms->args[0]);
+        ms->in_fd = 0;
+        ms->out_fd = 1;
+        ms->is_exec = 1;
+    }
+}
+
+int main(int ac, char **av, char **env)
+{
+    int i;
+    int len;
+    char    *str;
+    char    *line;
+    char    **arr;
+    t_cont  *ms;
+
+    i = 0;
     while(1)
     {
         str = readline(CYAN "Minishell $> " WHITE);
         add_history(str);
         line = get_new_string(str);
-        printf("line is %s\n", line);
+        arr = ft_split(line, '|');
+        len = arr_len(arr);
+        print_2d_arr(arr);
+        create_list(&ms, len);
+        printf("lol\n");
+        t_cont *p = ms;
+        while(p)
+        {
+            //printf(">>%d<<", p->is_exec);
+            p = p->next;
+        }
+        printf("lol\n");
+        //ft_ms_init(ms);
+        //struct_fill(ms, arr, len);
+        //printf("line is: %s\n", line);
     }
 }
