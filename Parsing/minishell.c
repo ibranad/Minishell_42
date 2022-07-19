@@ -49,11 +49,15 @@ char    *get_new_string(char *str)
 
 void    ft_ms_init(t_cont *ms)
 {
-    ms->args = NULL;
-    ms->cmd_path = NULL;
-    ms->in_fd = 0;
-    ms->out_fd = 1;
-    ms->is_exec = 1;
+    while(ms)
+    {
+        ms->args = NULL;
+        ms->cmd_path = NULL;
+        ms->in_fd = 0;
+        ms->out_fd = 1;
+        ms->is_exec = 1;
+        ms = ms->next;
+    }
 }
 
 int arr_len(char **arr)
@@ -77,6 +81,7 @@ void    create_list(t_cont **ms, int len)
         new = ft_lstnew(1);
         ft_lstadd_front(ms, new);
         i++;
+        printf("i value is %d\n", i);
     }
 }
 
@@ -103,7 +108,7 @@ int main(int ac, char **av, char **env)
     char    *str;
     char    *line;
     char    **arr;
-    t_cont  *ms;
+    t_cont  *ms = NULL;
 
     i = 0;
     while(1)
@@ -115,15 +120,14 @@ int main(int ac, char **av, char **env)
         len = arr_len(arr);
         print_2d_arr(arr);
         create_list(&ms, len);
-        printf("lol\n");
-        t_cont *p = ms;
-        while(p)
+        ft_ms_init(ms);
+        while(ms)
         {
-            //printf(">>%d<<", p->is_exec);
-            p = p->next;
+            printf(">>is_exec %d<<\n", ms->is_exec);
+            printf(">>input fd%d<<\n", ms->in_fd);
+
+            ms = ms->next;
         }
-        printf("lol\n");
-        //ft_ms_init(ms);
         //struct_fill(ms, arr, len);
         //printf("line is: %s\n", line);
     }

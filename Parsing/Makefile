@@ -20,5 +20,8 @@ all : $(NAME)
 $(NAME) : $(SRCS)
 	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)
 
+re :
+	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)
+
 clean :
 	$(RM) $(SRCS)

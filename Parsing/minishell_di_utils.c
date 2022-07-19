@@ -28,7 +28,6 @@ t_cont  *ft_lstnew(int content)
 	t_cont	*new;
 
 	new = malloc (sizeof(t_cont));
-	new->in_fd = content;
 	new->next = NULL;
 	return (new);
 }
