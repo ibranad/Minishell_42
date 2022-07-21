@@ -6,13 +6,11 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/21 18:44:21 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/21 21:09:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "heredoc.h"
 
 /*
 * Make a founction that checks for input , and fill the linked list in_fd var
@@ -65,12 +63,12 @@ int	ft_heredoc(char *lim)
 	return (pip[0]);
 }
 
-int	main(int ac, char **av)
-{
-	int		fd;
-	char	c;
+// int	main(int ac, char **av)
+// {
+// 	int		fd;
+// 	char	c;
 
-	fd = ft_heredoc(av[ac - 1]);
-	while (read(fd, &c, 1))
-		write(1, &c, 1);
-}
+// 	fd = ft_heredoc(av[ac - 1]);
+// 	while (read(fd, &c, 1))
+// 		write(1, &c, 1);
+// }

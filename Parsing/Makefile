@@ -7,9 +7,16 @@ RDL = -lreadline
 LIB = Libft/libft.a\
 
 SRCS = minishell.c\
-		exp_env_var/exp_di_utils.c\
 		minishell_utils.c\
 		minishell_di_utils.c\
+		exp_env_var/exp.c\
+		exp_env_var/exp_di_utils.c\
+		exp_env_var/exp_tri_utils.c\
+		exp_env_var/exp_old.c\
+		exp_env_var/exp_utils.c\
+		heredoc/heredoc.c\
+
+
 
 CC = cc
 
