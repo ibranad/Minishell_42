@@ -118,6 +118,7 @@ int main(int ac, char **av, char **env)
         line = get_new_string(str);
         arr = ft_split(line, '|');
         len = arr_len(arr);
+        printf("%s\n", expand_extra("$OLDPWD", env));
         print_2d_arr(arr);
         create_list(&ms, len);
         ft_ms_init(ms);

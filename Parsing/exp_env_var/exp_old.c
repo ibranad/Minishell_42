@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:44:16 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 18:29:38 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:12:37 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,18 +122,18 @@ char *env_var(char *str)
     return (env_var);
 }
 
-int main(int ac, char **av, char **env)
-{
-    // (void)ac;
-    // (void)av;
-    // (void)env;
-    //expand_extra("lol $USER dfzgzdf$HOME");
-    //printf("\n====================\n"); 
+// int main(int ac, char **av, char **env)
+// {
+//     // (void)ac;
+//     // (void)av;
+//     // (void)env;
+//     //expand_extra("lol $USER dfzgzdf$HOME");
+//     //printf("\n====================\n"); 
 
-    printf("\n%s\n", expand_extra("lol $USER", env));
-    //printf("%s\n", expand_it("$LESS", env));
-    //while (1);
-}
+//     printf("\n%s\n", expand_extra("lol $USER", env));
+//     //printf("%s\n", expand_it("$LESS", env));
+//     //while (1);
+// }
 
 //lol$TERM fzgzdf$ $HOME
 //lol $ TERMdfzgzdf /Users/ibnada

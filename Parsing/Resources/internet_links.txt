@@ -7,5 +7,6 @@ https://www.youtube.com/watch?v=7B6o2YyvIKw&ab_channel=Edu_events_mow
 https://cdn.intra.42.fr/pdf/pdf/47172/en.subject.pdf
 https://pubs.opengroup.org/onlinepubs/009696899/basedefs/xbd_chap08.html
 https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa
+https://www.gnu.org/software/bash/manual/bash.html#Here-Documents
 
 ls -la > wc-l
