@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:38:42 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/06 15:44:20 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/22 21:46:51 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,59 @@ int ft_lstsize(t_cont *lst)
 	}
 	return (i);
 }
+
+int find_heredoc(char **arr)
+{
+	int	i;
+	int	j;
+	int	fd;
+	
+	i = 0;
+	j = 0;
+	while (arr[i])
+	{
+		if (ft_strncmp(arr[i], "<", 1) == 0)
+		{
+			i++;
+			if (ft_strncmp(arr[i], "<", 1) == 0)
+			{
+				i++;
+				printf("lol\n");
+				fd = ft_heredoc(arr[i]);
+				break;
+			}
+		}
+		i++;
+	}
+	return (fd);
+}
+
+int	main(void)
+{
+	char *line = "< cat  < <";
+	char **arr;
+	int	fd;
+	int i = 0;;
+	
+	arr = ft_split(line, ' ');
+	// while(arr[i])
+	// {
+	// 	printf("%s\n", arr[i]);
+	// 	i++;
+	// }
+	fd = find_heredoc(arr);
+	if (fd == -1)
+	{
+		printf("There was an error\n");
+		return(0);
+	}
+	printf("%d\n", fd);
+	char	c;
+
+ 	while (read(fd, &c, 1))
+ 		write(1, &c, 1);
+}
+
+/*
+* c -lreadline minishell_di_utils.c heredoc/heredoc.c Libft/ft_split.c Libft/ft_strncmp.c Libft/ft_strlcpy.c Libft/ft_strlen.c
+*/
