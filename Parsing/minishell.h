@@ -48,10 +48,11 @@ typedef struct vt
 //     struct returned_data *next = NULL;
 // }
 
+int     ft_heredoc(char *lim);
+int     arr_len(char **arr);
 int     ft_lstsize(t_cont *lst);
 int     if_last_is(char *str, char c);
 int     is_in_env(char *str, char **env);
-int     ft_heredoc(char *lim);
 char	**get_path(char **env);
 char	*get_path_line(char **env);
 char    *get_new_string(char *str);
