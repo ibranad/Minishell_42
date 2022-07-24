@@ -8,6 +8,8 @@
 # include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+// #include <readline.h>
+// #include <history.h>
 # define CYAN "\033[0;36m"
 # define WHITE "\x1B[37m"
 # include "Libft/libft.h"

@@ -58,7 +58,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 %.o : %.c
-	$(CC) $(CFLAGS) -c $^
+	$(CC) -c $^
 clean :
 	$(RM) $(OBJS)
 

@@ -15,17 +15,22 @@ SRCS = minishell.c\
 		exp_env_var/exp_old.c\
 		exp_env_var/exp_utils.c\
 		heredoc/heredoc.c\
+		#Libft/ft_strlen.c\
+		Libft/ft_split.c\
+		Libft/ft_isalnum.c\
+		Libft/ft_strncmp.c\
+		Libft/ft_strlcpy.c\#
 
 
 
-CC = cc
+CC = gcc
 
 RM = rm -rf
 
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)
+	$(CC) $(SRCS) $(RDL) $(LIB) -o $(NAME)
 
 re :
 	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)

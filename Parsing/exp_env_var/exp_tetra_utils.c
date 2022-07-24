@@ -100,6 +100,5 @@ char *double_quote(char *str)
     line[a] = '\0';
     if (count < 2)
        return(NULL);
-    
     return(line);
 }

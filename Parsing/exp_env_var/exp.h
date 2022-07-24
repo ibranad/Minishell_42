@@ -24,6 +24,8 @@ int		is_in_env(char *str, char **env);
 char	*str_rep(char *str);
 char	*env_var(char *str);
 char	*space_add(char *str);
+char    *double_quote(char *str);
+char    *single_quote(char *str);
 char	*t_strjoin(char *s1, char *s2);
 char	*char_remove(char *str, char c);
 char	*add_char_end(char *str, char c);

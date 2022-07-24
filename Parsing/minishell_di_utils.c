@@ -76,7 +76,7 @@ int find_heredoc(char	**arr, int	len)
 
 int	main(void)
 {
-	char *line = "< cat  < < lim < < gh < < hj";
+	char *line = "< cat  < < lim < < gh < <";
 	char **arr;
 	int	fd;
 	int i = 0;;
