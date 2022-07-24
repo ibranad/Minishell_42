@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/21 13:30:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/24 19:55:57 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ char *expand_extra(char *str, char **env)
         if (arr[i][j] == '$')
         {
             if ((arr[i][0] == '$') && (arr[i][1] == ' '))
-            {
-                //printf("%%%s%%\n", arr[i]);
                 b = t_strjoin(b, "$ ");
-            }
             else if (if_last_is(arr[i], ' ') == 1 && ft_strlen(arr[i]) > 2)
             {
                 arr[i] = char_remove(arr[i], ' ');

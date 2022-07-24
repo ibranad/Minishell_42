@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 14:54:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/23 21:08:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/24 19:50:31 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char *single_quote(char *str)
     return(line);
 }
 
-char *double_quote(char *str)
+char *double_quote(char *str, char **env)
 {
     int     i;
     int     j;
@@ -100,6 +100,6 @@ char *double_quote(char *str)
     line[a] = '\0';
     if (count < 2)
        return(NULL);
-    
+    line = expand_it(line, env);
     return(line);
 }
