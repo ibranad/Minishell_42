@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/24 19:55:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/24 20:32:50 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char *expand_extra(char *str, char **env)
 
     ar = str_rep(str);
     a = space_add(ar);
+    printf("%s\n", a);
     arr = ft_split(a, ' ');
     char_rep(arr, 8, ' ');
 
@@ -52,6 +53,16 @@ char *expand_extra(char *str, char **env)
                 b = t_strjoin(b, replace_it(arr[i], env));
             else
                 b = t_strjoin(b, NULL);
+        }
+        else if (arr[i][j] == '\"')
+        {
+            i++;
+            b = t_strjoin(b, double_quote(arr[i], env));
+        }
+        else if(arr[i][j] == '\'')
+        {
+            i++;
+            b = t_strjoin(b, single_quote(arr[i]));
         }
         else
             b = t_strjoin(b, arr[i]);
@@ -98,7 +109,7 @@ char *space_add(char *str)
             line[j++] = str[i];
             line[j] = ' ';
         }
-        else if (str[i] == '$')
+        else if (str[i] == '$' || str[i] == '\'' || str[i] == '\"')
         {
             line[j++] = ' ';
             line[j] = str[i];

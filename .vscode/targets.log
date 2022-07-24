@@ -7,8 +7,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Sun Jul 24 19:49:10 2022
+
+# Make data base, printed on Sun Jul 24 20:36:18 2022
 
 # Variables
 
@@ -171,9 +173,6 @@ all:
 # Not a target:
 Makefile:
 #  A default, MAKEFILES, or -include/sinclude makefile.
- 
-make: *** No rule to make target `all'.  Stop.
-
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -220,6 +219,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sun Jul 24 19:49:10 2022
+# Finished Make data base on Sun Jul 24 20:36:18 2022
 
  

@@ -15,6 +15,7 @@ SRCS = minishell.c\
 		exp_env_var/exp_old.c\
 		exp_env_var/exp_utils.c\
 		heredoc/heredoc.c\
+		exp_env_var/exp_tetra_utils.c\
 
 
 
@@ -25,7 +26,7 @@ RM = rm -rf
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)
+	$(CC) -fsanitize=address -g $(LIB) $(RDL) $(SRCS) -o $(NAME)
 
 re :
 	$(CC) $(LIB) $(RDL) $(SRCS) -o $(NAME)

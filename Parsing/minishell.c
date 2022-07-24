@@ -101,36 +101,36 @@ void    struct_fill(t_cont *ms, char **arr, int len, char **env)
     }
 }
 
-// int main(int ac, char **av, char **env)
-// {
-//     int i;
-//     int len;
-//     char    *str;
-//     char    *line;
-//     char    **arr;
-//     t_cont  *ms = NULL;
+int main(int ac, char **av, char **env)
+{
+    int i;
+    int len;
+    char    *str;
+    char    *line;
+    char    **arr;
+    t_cont  *ms = NULL;
 
-//     i = 0;
-//     while(1)
-//     {
-//         str = readline(CYAN "Minishell $> " WHITE);
-//         add_history(str);
-//         line = get_new_string(str);
-//         line = expand_extra(line, env);
-//         printf("---->>%s<<----\n", line);
-//         // arr = ft_split(line, ' ');
-//         // len = arr_len(arr);
-//         // print_2d_arr(arr);
-//         // create_list(&ms, len);
-//         // ft_ms_init(ms);
-//         // while(ms)
-//         // {
-//         //     printf(">>is_exec %d<<\n", ms->is_exec);
-//         //     printf(">>input fd%d<<\n", ms->in_fd);
+    i = 0;
+    while(1)
+    {
+        str = readline(CYAN "Minishell $> " WHITE);
+        add_history(str);
+        line = get_new_string(str);
+        line = expand_extra(line, env);
+        printf("---->>%s<<----\n", line);
+        // arr = ft_split(line, ' ');
+        // len = arr_len(arr);
+        // print_2d_arr(arr);
+        // create_list(&ms, len);
+        // ft_ms_init(ms);
+        // while(ms)
+        // {
+        //     printf(">>is_exec %d<<\n", ms->is_exec);
+        //     printf(">>input fd%d<<\n", ms->in_fd);
 
-//         //     ms = ms->next;
-//         // }
-//         //struct_fill(ms, arr, len);
-//         //printf("line is: %s\n", line);
-//     }
-// }
+        //     ms = ms->next;
+        // }
+        //struct_fill(ms, arr, len);
+        //printf("line is: %s\n", line);
+    }
+}
