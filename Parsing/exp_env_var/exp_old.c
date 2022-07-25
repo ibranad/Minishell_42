@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:44:16 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/21 13:12:37 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/25 14:44:35 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int dollar_number(char *str, char c)
             j++;
         i++;
     }
-    return (j);
+    return (j * 2);
 }
 
 int pd_alloc(char *str)

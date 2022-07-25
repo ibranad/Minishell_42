@@ -6,12 +6,14 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/24 20:32:50 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/25 20:28:14 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exp.h"
 
+// hndle "'$USER'" 
+ 
 char *expand_extra(char *str, char **env)
 {
     char **arr;
@@ -20,19 +22,20 @@ char *expand_extra(char *str, char **env)
     char *b = NULL;
     int i;
     int j;
+    int c;
 
     ar = str_rep(str);
+    printf("str rep retuen is :%s\n", ar);
     a = space_add(ar);
-    printf("%s\n", a);
     arr = ft_split(a, ' ');
     char_rep(arr, 8, ' ');
 
 
     i = 0;
     j = 0;
-
+    c = arr_len(arr);
     print_2d_arr(arr);
-    while(arr[i])
+    while(arr[i] && i < c)
     {
         if (arr[i][j] == '$')
         {
@@ -57,12 +60,21 @@ char *expand_extra(char *str, char **env)
         else if (arr[i][j] == '\"')
         {
             i++;
+            printf("lol1\n");
             b = t_strjoin(b, double_quote(arr[i], env));
+            i++;
         }
         else if(arr[i][j] == '\'')
         {
+            if (arr[i][1] == ' ')
+            {
+                b = t_strjoin(b, " ");
+                i++;
+                continue;
+            }
+            //printf("arr[i][j] is %c, i is %d, j is %d\n", arr[i][1], i , j);
             i++;
-            b = t_strjoin(b, single_quote(arr[i]));
+            b = t_strjoin(b, arr[i]);
         }
         else
             b = t_strjoin(b, arr[i]);
@@ -101,7 +113,8 @@ char *space_add(char *str)
 
     i = 0;
     j = 0;
-    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, 8) + 1));   
+    printf("%s\n", str);
+    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, '/')) +(dollar_number(str, '.')) +(dollar_number(str, '\"')) + (dollar_number(str, 8) + 1));   
     while (str[i])
     {
         if (str[i] == 8)
@@ -109,7 +122,7 @@ char *space_add(char *str)
             line[j++] = str[i];
             line[j] = ' ';
         }
-        else if (str[i] == '$' || str[i] == '\'' || str[i] == '\"')
+        else if (str[i] == '$' || ft_isalnum(str[i]) == 0)
         {
             line[j++] = ' ';
             line[j] = str[i];
