@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_tri_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:30:56 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 18:31:12 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/25 20:31:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char    *expand_it(char *str,char **env)
     j = 0;
     old = env_var(str);
     new = replace_it(old, env);
-
     size = ((ft_strlen(str) - ft_strlen(old)) + ft_strlen(new));
     line = malloc(sizeof(char) * (size + 1));
     while (i < size)

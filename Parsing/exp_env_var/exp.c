@@ -6,13 +6,13 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/25 20:28:14 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/25 21:12:09 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exp.h"
 
-// hndle "'$USER'" 
+// hndle "'$USER'"  '"$USER"
  
 char *expand_extra(char *str, char **env)
 {
@@ -59,10 +59,14 @@ char *expand_extra(char *str, char **env)
         }
         else if (arr[i][j] == '\"')
         {
+            if (arr[i][1] == ' ')
+            {
+                b = t_strjoin(b, " ");
+                i++;
+                continue;
+            }
             i++;
-            printf("lol1\n");
-            b = t_strjoin(b, double_quote(arr[i], env));
-            i++;
+            b = t_strjoin(b, expand_it(arr[i], env));
         }
         else if(arr[i][j] == '\'')
         {
