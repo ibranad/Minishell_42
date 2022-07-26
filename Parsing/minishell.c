@@ -116,8 +116,9 @@ int main(int ac, char **av, char **env)
         str = readline(CYAN "Minishell $> " WHITE);
         add_history(str);
         line = get_new_string(str);
+        free(str);
         line = expand_extra(line, env);
-        printf("---->>%s<<----\n", line);
+        printf("-<]%s[>-\n", line);
         // arr = ft_split(line, ' ');
         // len = arr_len(arr);
         // print_2d_arr(arr);

@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/25 21:12:09 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/26 20:28:28 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ char *expand_extra(char *str, char **env)
     int i;
     int j;
     int c;
+    int k;
 
     ar = str_rep(str);
-    printf("str rep retuen is :%s\n", ar);
     a = space_add(ar);
     arr = ft_split(a, ' ');
     char_rep(arr, 8, ' ');
-
 
     i = 0;
     j = 0;
@@ -57,29 +56,31 @@ char *expand_extra(char *str, char **env)
             else
                 b = t_strjoin(b, NULL);
         }
-        else if (arr[i][j] == '\"')
-        {
-            if (arr[i][1] == ' ')
-            {
-                b = t_strjoin(b, " ");
-                i++;
-                continue;
-            }
-            i++;
-            b = t_strjoin(b, expand_it(arr[i], env));
-        }
-        else if(arr[i][j] == '\'')
-        {
-            if (arr[i][1] == ' ')
-            {
-                b = t_strjoin(b, " ");
-                i++;
-                continue;
-            }
-            //printf("arr[i][j] is %c, i is %d, j is %d\n", arr[i][1], i , j);
-            i++;
-            b = t_strjoin(b, arr[i]);
-        }
+        /*========================================================*/
+        // if (arr[i][j] == '\"')
+        // {
+        //     if (arr[i][1] == ' ')
+        //     {
+        //         b = t_strjoin(b, " ");
+        //         i++;
+        //         continue;
+        //     }
+        //     i++;
+        //     b = t_strjoin(b, expand_it(arr[i], env));
+        // }
+        /*========================================================*/
+        // if(arr[i][j] == '\'')
+        // {
+        //     if (arr[i][1] == ' ')
+        //     {
+        //         b = t_strjoin(b, " ");
+        //         i++;
+        //         continue;
+        //     }
+        //     i++;
+        //     b = t_strjoin(b, arr[i]);
+        // }
+        /*========================================================*/
         else
             b = t_strjoin(b, arr[i]);
         i++;
@@ -113,20 +114,36 @@ char *space_add(char *str)
 {
     int     i;
     int     j;
+    int     k;
     char    *line;
 
     i = 0;
     j = 0;
-    printf("%s\n", str);
-    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, '/')) +(dollar_number(str, '.')) +(dollar_number(str, '\"')) + (dollar_number(str, 8) + 1));   
-    while (str[i])
+    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, '$')) + (dollar_number(str, 8) + 1));
+    while (str[i] && i < strlen(str))
     {
         if (str[i] == 8)
         {
             line[j++] = str[i];
             line[j] = ' ';
         }
-        else if (str[i] == '$' || ft_isalnum(str[i]) == 0)
+        if (str[i] == '\'' || str[i] == '"')
+        {
+            while (str[i])
+            {
+                k = i + 1;
+                line[j++] = str[i++];
+                if ((str[k] == '\'') || (str[k] == '"'))
+                {
+                    line[j] = str[i];
+                    break;
+                }
+            }
+        }
+        else if (str[i] == '$' || str[i] == 33 || (str[i] >= 35 && str[i] <= 37) 
+        || (str[i] >= 43 && str[i] == 47) || (str[i] >= 58 && str[i] <= 59)
+        || (str[i] >= 61 && str[i] <= 64) || (str[i] >= 93 && str[i] == 94)
+        || (str[i] >= 125 && str[i] <= 126 ) || str[i] == 123 || str[i] == 91)
         {
             line[j++] = ' ';
             line[j] = str[i];
@@ -137,6 +154,7 @@ char *space_add(char *str)
         j++;
     }
     line[j] = 0;
+    printf("line j is :%s\n", line);
     return (line);
 }
 
@@ -160,3 +178,10 @@ char **char_rep(char **str, char old, char new)
     }
     return (str);
 }
+
+/*
+|| str[i] == 33 || (str[i] >= 35 && str[i] <= 37) 
+        || (str[i] >= 43 && str[i] == 47) || (str[i] >= 58 && str[i] <= 59)
+        || (str[i] >= 61 && str[i] <= 64) || (str[i] >= 93 && str[i] == 94)
+        || (str[i] >= 125 && str[i] <= 126 ) || str[i] == 123 || str[i] == 91)
+*/
