@@ -137,7 +137,8 @@ char *space_add(char *str)
                 line[j++] = str[i++];
                 if (str[k] == '\'')
                 {
-                    line[j] = str[i];
+                    line[j++] = str[i];
+                    line[j] = ' ';
                     break;
                 }
             }
@@ -151,7 +152,8 @@ char *space_add(char *str)
                 line[j++] = str[i++];
                 if (str[k] == '"')
                 {
-                    line[j] = str[i];
+                    line[j++] = str[i];
+                    line[j] = ' ';
                     break;
                 }
             }
