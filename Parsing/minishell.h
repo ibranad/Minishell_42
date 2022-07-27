@@ -25,6 +25,7 @@ typedef struct context
     char *cmd_path;
     char **args;
     int in_fd;
+    int index;
     int out_fd;
     int is_exec;
     struct context *next;

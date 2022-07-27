@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/26 20:28:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/27 14:08:18 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,27 @@ char *space_add(char *str)
             line[j++] = str[i];
             line[j] = ' ';
         }
-        if (str[i] == '\'' || str[i] == '"')
+
+        if (str[i] == '\'')
         {
             while (str[i])
             {
                 k = i + 1;
                 line[j++] = str[i++];
-                if ((str[k] == '\'') || (str[k] == '"'))
+                if (str[k] == '\'')
+                {
+                    line[j] = str[i];
+                    break;
+                }
+            }
+        }
+        if (str[i] == '"')
+        {
+          while (str[i])
+            {
+                k = i + 1;
+                line[j++] = str[i++];
+                if (str[k] == '"')
                 {
                     line[j] = str[i];
                     break;
@@ -141,8 +155,8 @@ char *space_add(char *str)
             }
         }
         else if (str[i] == '$' || str[i] == 33 || (str[i] >= 35 && str[i] <= 37) 
-        || (str[i] >= 43 && str[i] == 47) || (str[i] >= 58 && str[i] <= 59)
-        || (str[i] >= 61 && str[i] <= 64) || (str[i] >= 93 && str[i] == 94)
+        || (str[i] >= 43 && str[i] == 47) || str[i] == 8 || (str[i] >= 58 && str[i] <= 59)
+        || (str[i] >= 61 && str[i] <= 64) || (str[i] >= 93 && str[i] <= 94)
         || (str[i] >= 125 && str[i] <= 126 ) || str[i] == 123 || str[i] == 91)
         {
             line[j++] = ' ';
@@ -154,7 +168,6 @@ char *space_add(char *str)
         j++;
     }
     line[j] = 0;
-    printf("line j is :%s\n", line);
     return (line);
 }
 
