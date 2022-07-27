@@ -130,6 +130,7 @@ char *space_add(char *str)
 
         if (str[i] == '\'')
         {
+            line[j++] = ' ';
             while (str[i])
             {
                 k = i + 1;
@@ -143,6 +144,7 @@ char *space_add(char *str)
         }
         if (str[i] == '"')
         {
+          line[j++] = ' ';
           while (str[i])
             {
                 k = i + 1;

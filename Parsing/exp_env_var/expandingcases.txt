@@ -2,37 +2,44 @@ Minishell $> echo """"
 arr[0]==>>echo <<
 arr[1]==>> """"<<
 -<]echo  """"[>-
+
 Minishell $> echo """
 arr[0]==>>echo <<
 arr[1]==>> """<<
 -<]echo  """[>-
+
 Minishell $> echo $USER$USER"$USER"
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER"$USER"<<
 -<]echo  ibnada[>-
+
 Minishell $> echo $USER
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 -<]echo  ibnada[>-
+
 Minishell $> echo "$USER"
 arr[0]==>>echo <<
 arr[1]==>> "$USER"<<
 -<]echo  "$USER"[>-
+
 Minishell $> echo $USER$USER
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER<<
 -<]echo  ibnadaibnada[>-
+
 Minishell $> echo $USER$USER"$USER"
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER"$USER"<<
 -<]echo  ibnada[>-
+
 Minishell $> echo $USER$USER "$USER"
 arr[0]==>>echo <<
 arr[1]==>> <<
@@ -40,18 +47,21 @@ arr[2]==>>$USER<<
 arr[3]==>>$USER <<
 arr[4]==>> "$USER"<<
 -<]echo  ibnadaibnada  "$USER"[>-
+
 Minishell $> echo $USER$USER"$USER"
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER"$USER"<<
 -<]echo  ibnada[>-
+
 Minishell $> echo $USER$USER'$USER'
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER'$USER'<<
 -<]echo  ibnada[>-
+
 Minishell $> echo $USER$USER '$USER'
 arr[0]==>>echo <<
 arr[1]==>> <<
@@ -59,12 +69,14 @@ arr[2]==>>$USER<<
 arr[3]==>>$USER <<
 arr[4]==>> '$USER'<<
 -<]echo  ibnadaibnada  '$USER'[>-
+
 Minishell $> echo $USER$USER""
 arr[0]==>>echo <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER""<<
 -<]echo  ibnada[>-
+
 Minishell $> echo $USER$USER ""
 arr[0]==>>echo <<
 arr[1]==>> <<
@@ -72,22 +84,26 @@ arr[2]==>>$USER<<
 arr[3]==>>$USER <<
 arr[4]==>> ""<<
 -<]echo  ibnadaibnada  ""[>-
+
 Minishell $> echo "$USER$USER"
 arr[0]==>>echo <<
 arr[1]==>> "$USER$USER"<<
 -<]echo  "$USER$USER"[>-
+
 Minishell $> $USER $USER$USER
 arr[0]==>>$USER <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER<<
 -<]ibnada  ibnadaibnada[>-
+
 Minishell $> "$"USER $USER$USER
 arr[0]==>>"$"USER <<
 arr[1]==>> <<
 arr[2]==>>$USER<<
 arr[3]==>>$USER<<
 -<]"$"USER  ibnadaibnada[>-
+
 Minishell $> $?$USER $USER$USER
 arr[0]==>>$<<
 arr[1]==>>?<<
@@ -96,21 +112,26 @@ arr[3]==>> <<
 arr[4]==>>$USER<<
 arr[5]==>>$USER<<
 -<]?ibnada  ibnadaibnada[>-
+
 Minishell $> $USER|EC
 arr[0]==>>$USER <<
 arr[1]==>> | <<
 arr[2]==>> EC<<
 -<]ibnada  |  EC[>-
+
 Minishell $> $USER"|"EC
 arr[0]==>>$USER" | "EC<<
 -<](null)[>-
+
 Minishell $> $USER "|" EC
 arr[0]==>>$USER <<
 arr[1]==>> " | " <<
 arr[2]==>> EC<<
+
 -<]ibnada  " | "  EC[>-
 Minishell $> $USER"|" EC
 arr[0]==>>$USER" | " <<
 arr[1]==>> EC<<
 -<]  EC[>-
+
 Minishell $> $USER"|" EC

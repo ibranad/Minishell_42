@@ -27,10 +27,10 @@ RM = rm -rf
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-	$(CC) -g $(LIB) $(RDL) $(SRCS) -o $(NAME)
+	$(CC) -g $(SRCS) $(LIB) $(RDL) -o $(NAME)
 
 re :
-	$(CC) -g $(LIB) $(RDL) $(SRCS) -o $(NAME)
+	$(CC) -g $(RDL) $(SRCS) $(LIB) $(RDL) -o $(NAME)
 
 clean :
 	$(RM) $(SRCS)
