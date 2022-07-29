@@ -6,13 +6,11 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/27 14:08:18 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/28 15:44:01 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exp.h"
-
-// hndle "'$USER'"  '"$USER"
  
 char *expand_extra(char *str, char **env)
 {
@@ -33,8 +31,8 @@ char *expand_extra(char *str, char **env)
     i = 0;
     j = 0;
     c = arr_len(arr);
-    print_2d_arr(arr);
-    while(arr[i] && i < c)
+    //print_2d_arr(arr);
+    while (arr[i] && i < c)
     {
         if (arr[i][j] == '$')
         {
@@ -56,31 +54,10 @@ char *expand_extra(char *str, char **env)
             else
                 b = t_strjoin(b, NULL);
         }
-        /*========================================================*/
-        // if (arr[i][j] == '\"')
-        // {
-        //     if (arr[i][1] == ' ')
-        //     {
-        //         b = t_strjoin(b, " ");
-        //         i++;
-        //         continue;
-        //     }
-        //     i++;
-        //     b = t_strjoin(b, expand_it(arr[i], env));
-        // }
-        /*========================================================*/
-        // if(arr[i][j] == '\'')
-        // {
-        //     if (arr[i][1] == ' ')
-        //     {
-        //         b = t_strjoin(b, " ");
-        //         i++;
-        //         continue;
-        //     }
-        //     i++;
-        //     b = t_strjoin(b, arr[i]);
-        // }
-        /*========================================================*/
+        else if (arr[i][j] == '\"')
+            b = t_strjoin(b, double_quote(arr[i], env));
+        else if (arr[i][j] == '\'')
+            b = t_strjoin(b, single_quote(arr[i]));
         else
             b = t_strjoin(b, arr[i]);
         i++;
@@ -119,7 +96,7 @@ char *space_add(char *str)
 
     i = 0;
     j = 0;
-    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, '$')) + (dollar_number(str, 8) + 1));
+    line = malloc(sizeof(char) * strlen(str) + (dollar_number(str, '"')) + (dollar_number(str, '"')) + (dollar_number(str, '$')) + (dollar_number(str, 8) + 1));
     while (str[i] && i < strlen(str))
     {
         if (str[i] == 8)
@@ -137,7 +114,7 @@ char *space_add(char *str)
                 line[j++] = str[i++];
                 if (str[k] == '\'')
                 {
-                    line[j++] = str[i];
+                    line[j++] = str[i++];
                     line[j] = ' ';
                     break;
                 }

@@ -10,11 +10,13 @@
 # include <readline/history.h>
 // #include <readline.h>
 // #include <history.h>
-# define CYAN "\033[0;36m"
-# define WHITE "\x1B[37m"
 # include "Libft/libft.h"
 # include "exp_env_var/exp.h"
 # include "heredoc/heredoc.h"
+# define CYAN "\033[0;36m"
+# define WHITE "\x1B[37m"
+# define RED_IN '<'
+# define RED_OUT '>'
 
 typedef struct dollar_sign
 {
@@ -65,6 +67,8 @@ char	*slash_av_join(char *src, char c, char *dest);
 void    print_2d_arr(char **arr);
 void	saj_short(t_vt *v, char *src);
 void    post_dollar(t_dol *var, char *str);
+void    input_handler(t_cont **p, char **arr);
+void    output_handler(t_cont **p, char **arr);
 void    ft_lstadd_front(t_cont **lst, t_cont *new);
 t_cont  *ft_lstnew(int content);
 

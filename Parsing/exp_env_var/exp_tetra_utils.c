@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 14:54:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/24 19:50:31 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/28 14:18:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ char *single_quote(char *str)
     int     a;
     int     len;
     char    *line;
-    int count;
     
     i = 0;
     a = 0;
-    count = 0;
     len = strlen(str);
     line = malloc(sizeof(char) * (len - 1));
     while (str[i] && i < len)
@@ -36,13 +34,11 @@ char *single_quote(char *str)
         if (str[i] == '\'')
         {
             i++;
-            count++;
             while (str[i])
             {
                 j = i + 1;
                 if (str[j] == '\'')
                 {
-                    count++;
                   line[a] = str[i];
                   a++;
                   break ;
@@ -55,8 +51,6 @@ char *single_quote(char *str)
         i++;
     }
     line[a] = '\0';
-    if (count < 2)
-       return(NULL); 
     return(line);
 }
 
@@ -67,25 +61,22 @@ char *double_quote(char *str, char **env)
     int     a;
     int     len;
     char    *line;
-    int count;
     
     i = 0;
     a = 0;
-    count = 0;
     len = strlen(str);
     line = malloc(sizeof(char) * (len - 1));
+    printf("lol\n");
     while (str[i] && i < len)
     {
         if (str[i] == '\"')
         {
             i++;
-            count++;
             while (str[i])
             {
                 j = i + 1;
                 if (str[j] == '\"')
                 {
-                    count++;
                   line[a] = str[i];
                   a++;
                   break ;
@@ -98,8 +89,7 @@ char *double_quote(char *str, char **env)
         i++;
     }
     line[a] = '\0';
-    if (count < 2)
-       return(NULL);
+    //printf("lol2\n");
     line = expand_it(line, env);
     return(line);
 }

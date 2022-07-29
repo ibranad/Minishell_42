@@ -135,3 +135,18 @@ arr[1]==>> EC<<
 -<]  EC[>-
 
 Minishell $> $USER"|" EC
+
+
+|---Double Quote cases-----------------------|
+|* echo "$PWD/$USER"                         |
+|* echo "$USER/"/$USER"                      |
+|* echo "'$HOME'"                            |
+|* echo ""                                   |
+|* echo  "  bonjour                          |
+|* 
+|* 
+|* 
+|* 
+|* 
+|* 
+|____________________________________________|
