@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 15:54:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/31 17:14:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/31 21:49:01 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,80 +15,32 @@
 //9ad function smiha special char katchecki 3la bash special chars
 //add apend ">>" in out_function
  
-int parsing_errors(char *str)
+int arr_len(char **arr)
 {
-    int     i;
-    int     j;
-    char    **arr;
-
+    int i;
     i = 0;
-    j = 0;
-    if (!str)
-        return(-1);
-    if (ft_isascii(str[0]) == 1 && ft_strlen(str) == 1)
-        return(-2);
-    arr = ft_split(str, ' ');
-    print_2d_arr(arr);
-    while (arr[i])
-    {
-        if (arr[i][0] == '<')
-        {
-            if (arr[i][1] == '<')
-            {
-                i++;
-                if (arr[i])
-                {
-                    if (ft_isascii(str[0]) == 1)
-                        continue;       
-                }
-                else
-                    return (-3);
-            }
-            i++;
-            if (arr[i])
-            {
-                if (ft_isascii(str[0]) == 1)
-                    i++;
-            }
-            else
-                return (-4);
-        }
-        if (arr[i][0] == '>')
-        {
-            if (arr[i][1] == '>')
-            {
-                i++;
-                if (arr[i])
-                {
-                    if (ft_isascii(str[0]) == 1)
-                        continue;       
-                }
-                else
-                    return (-5);
-            }
-            i++;
-            if (arr[i])
-            {
-                if (ft_isascii(str[0]) == 1)
-                    i++;
-            }
-            else
-                return (-6);
-        }
+
+    while(arr[i])
         i++;
-    }    
-        i = 0;
-        while(arr[i])
-        {
-            if (arr[i][0] == '\\' || arr[i][0] == ';')
-                return (-7);
-            else
-                i++;
-        }
+    return (i);
+}
+
+int illegal_char(char *str)
+{
+    int i;
+    
+    i = 0;
+    while(str[i])
+    {
+        if (str[i] == '\\' || str[i] == ';')
+            return (-7);
+        else
+            i++;
+    }
     return (0);
 }
 
-int double_quote(char *str)
+int d_quote(char *str)
 {
     int i;
     int s_q;
@@ -118,13 +70,13 @@ int double_quote(char *str)
 int in_error(char *str)
 {
     int i;
-    int arr_len;
+    int len;
     char **arr;
 
     i = 0;
-    arr = ft_split(str, ' ')
-    arr_len = arr_len(arr);
-    while (arr[i] && i < arr_len)
+    arr = ft_split(str, ' ');
+    len = arr_len(arr);
+    while (arr[i] && i < len)
     {
         if (arr[i][0] == '<')
         {
@@ -156,13 +108,13 @@ int in_error(char *str)
 int out_errors(char *str)
 {
     int i;
-    int arr_len;
+    int len;
     char **arr;
 
     i = 0;
-    arr = ft_split(str, ' ')
-    arr_len = arr_len(arr);
-    while (arr[i] && i < arr_len)
+    arr = ft_split(str, ' ');
+    len = arr_len(arr);
+    while (arr[i] && i < len)
     {
         if (arr[i][0] == '>')
         {
@@ -191,7 +143,24 @@ int out_errors(char *str)
     return (0);
 }
 
+int parsing_errors(char *str)
+{
+    if (!str)
+        return(-1);
+    else if (ft_isascii(str[0]) == 1 && ft_strlen(str) == 1)
+        return(-2);
+    else if (d_quote(str) != 0)
+        return (-3);
+    else if (in_error(str) != 0)
+        return (-4);
+    else if (out_errors(str) != 0)
+        return (-5);
+    else if (illegal_char(str) != 0)
+        return (-6);
+    return (0);
+}
+
 int main(void)
 {
-    printf("%d\n", parsing_errors("echo "));
+    printf("%d\n", parsing_errors("echo <"));
 }
