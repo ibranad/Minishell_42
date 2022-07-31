@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/22 21:47:21 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:25:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_heredoc(char *lim)
 	int		pip[2];
 	int		e;
 //needs protection from NULL
-	printf("lim is %s\n", lim);
 	if (!lim)
 		return (-1);
 	pipe(pip);

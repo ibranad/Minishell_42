@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:59 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 18:29:29 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/07/31 14:26:05 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void print_2d_arr(char **arr)
     i = 0;
     while (arr[i])
     {
-        printf("arr[%d]==>>%s<<\n", i, arr[i]);
+        printf("arr[%d] is :[%s]\n", i, arr[i]);
         i++;
     }
 }

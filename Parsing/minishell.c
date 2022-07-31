@@ -81,7 +81,7 @@ void    create_list(t_cont **ms, int len)
         new = ft_lstnew(1);
         ft_lstadd_front(ms, new);
         i++;
-        printf("i value is %d\n", i);
+        //printf("i value is %d\n", i);
     }
 }
 
@@ -114,6 +114,7 @@ int main(int ac, char **av, char **env)
     while(1)
     {
         str = readline(CYAN "Minishell $> " WHITE);
+        printf("str lenght is: %lu\n", strlen(str));
         add_history(str);
         line = get_new_string(str);
         free(str);
