@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 15:54:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/31 21:49:01 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/08/01 17:37:22 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ int d_quote(char *str)
             d_q++;
         i++;
     }
-    if ((s_q % 2) == 0)
+    if ((s_q % 2) == 0 && (d_q % 2) == 0)
         return (0);
     else
+    {
+        printf("Unclosed Quotes\n");
+        // rl_on_new_line();
+        // rl_replace_line("", 0);
+        // rl_redisplay();
         return (-1);
-    if ((d_q % 2) == 0)
-        return (0);
-    else
-        return(-2);
+    }
 }
 
 int in_error(char *str)
@@ -162,5 +164,9 @@ int parsing_errors(char *str)
 
 int main(void)
 {
-    printf("%d\n", parsing_errors("echo <"));
+    while (1)
+    {
+        char *s = readline("");
+        printf("%d\n", parsing_errors(s));
+    }
 }
