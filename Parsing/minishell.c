@@ -47,7 +47,7 @@ char    *get_new_string(char *str)
     return (line);
 }
 
-void    ft_ms_init(t_cont *ms)
+void    ft_ms_init(t_cmdl *ms)
 {
     while(ms)
     {
@@ -70,10 +70,10 @@ int arr_len(char **arr)
     return (i);
 }
 
-void    create_list(t_cont **ms, int len)
+void    create_list(t_cmdl **ms, int len)
 {
     int i;
-    t_cont *new;
+    t_cmdl *new;
 
     i = 0;
     while(i < len)
@@ -85,7 +85,7 @@ void    create_list(t_cont **ms, int len)
     }
 }
 
-void    struct_fill(t_cont *ms, char **arr, int len, char **env)
+void    struct_fill(t_cmdl *ms, char **arr, int len, char **env)
 {
     if (len > 1)
     {
@@ -108,13 +108,13 @@ int main(int ac, char **av, char **env)
     char    *str;
     char    *line;
     char    **arr;
-    t_cont  *ms = NULL;
+    t_cmdl  *ms = NULL;
 
     i = 0;
     while(1)
     {
         str = readline(CYAN "Minishell $> " WHITE);
-        printf("str lenght is: %lu\n", strlen(str));
+        printf("str length is: %lu\n", strlen(str));
         add_history(str);
         line = get_new_string(str);
         free(str);

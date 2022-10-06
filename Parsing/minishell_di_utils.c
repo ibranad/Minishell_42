@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_di_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:38:42 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/24 20:20:41 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/06 17:58:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../all.h"
 
-void    ft_lstadd_front(t_cont **lst, t_cont *new)
+void    ft_lstadd_front(t_cmdl **lst, t_cmdl *new)
 {
 	if (!(*lst))
 		(*lst) = new;
@@ -23,16 +23,16 @@ void    ft_lstadd_front(t_cont **lst, t_cont *new)
 	}
 }
 
-t_cont  *ft_lstnew(int content)
+t_cmdl  *ft_lstnew(void)
 {
-	t_cont	*new;
+	t_cmdl	*new;
 
-	new = malloc (sizeof(t_cont));
+	new = malloc (sizeof(t_cmdl));
 	new->next = NULL;
 	return (new);
 }
 
-int ft_lstsize(t_cont *lst)
+int ft_lstsize(t_cmdl *lst)
 {
 	size_t	i;
 

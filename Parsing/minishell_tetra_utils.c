@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_tetra_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:39:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/29 19:24:41 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/06 17:55:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ cat
 //cat > $USER/out
 //don't forget to handle error return 
 
-void    input_handler(t_cont **p, char **arr)
+void    input_handler(t_cmdl **p, char **arr)
 {
     int i;
     int j;
     int k;
     char **cmd_arr;
-    t_cont *tmp;
+    t_cmdl *tmp;
     
     i = 0;
     j = 0;
@@ -65,13 +65,13 @@ void    input_handler(t_cont **p, char **arr)
     }
 }
 
-void    output_handler(t_cont **p, char **arr)
+void    output_handler(t_cmdl **p, char **arr)
 {
     int i;
     int j;
     int k;
     char **cmd_arr;
-    t_cont *tmp;
+    t_cmdl *tmp;
     
     i = 0;
     j = 0;
