@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minshell_penta_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 15:54:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/08/01 17:37:22 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:19:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 //9ad function smiha special char katchecki 3la bash special chars
 //add apend ">>" in out_function

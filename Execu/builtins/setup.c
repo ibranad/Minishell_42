@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mainex.c                                           :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 12:47:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/05 17:37:08 by obouizga         ###   ########.fr       */
+/*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/07 15:27:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// TODO builtins :
-// * pwd ✅
-// * env ✅
-// * cd ✅
-// * exit 
-// * echo  ✅
-// * export ✅
-// * unset ✅
-/*
-*/
-int main(int ac, char **av, char **env)
+t_envl	*set_env(char **env)
 {
-	(void)ac;
-	(void)av;
-	g_shell	shell;
-	shell.env = set_env(env);
-	_echo(ac - 1, av + 1);
-	return (0);	
+	int		i;
+	t_envl	*envl;
+
+	i = 0;
+	envl = lstnew(split(env[i], '='), i);
+	while (env[++i])
+		lstadd_back( &envl, lstnew(split(env[i], '='), i));
+	return (envl);
 }

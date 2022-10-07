@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:39:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/06 17:55:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:38:08 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 // <  <   lim   cat
 /*

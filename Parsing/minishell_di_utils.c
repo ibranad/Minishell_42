@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:38:42 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/06 17:58:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:35:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../all.h"
+#include "../minishell.h"
 
 void    ft_lstadd_front(t_cmdl **lst, t_cmdl *new)
 {

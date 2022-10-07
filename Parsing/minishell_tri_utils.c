@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_tri_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 13:52:24 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/23 13:59:41 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:19:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 int arr_len(char **arr)
 {

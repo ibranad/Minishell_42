@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 09:33:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:33:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 // TODO:
 // * VERIFYIING THE KEY
 //		** "-" not a valid identifier
@@ -28,18 +28,6 @@
 // 
 //		** I should check before if the new_var already exits in the env
 
-// int	valid_key(char *key)
-// {
-// 	int	i;
-// 	i = -1;
-// 	if (key[0] == '=')
-// 		return (0);
-// 	while (key[++i])
-// 		if (!is_digit(key[i]) && !is_alpha(key[i]) && key[i] != '_')
-// 			return (0);
-// 	return (1);
-// }
-
 void	disp_export(t_envl **envl)
 {
 	t_envl	*curr;
@@ -51,7 +39,8 @@ void	disp_export(t_envl **envl)
 		curr = curr->next;
 	}
 }
-int	env_leng(t_envl *envl)
+
+int	envl_len(t_envl *envl)
 {
 	t_envl	*curr;
 
@@ -67,7 +56,7 @@ void	_export(char **entries, t_envl **envl)
 	int	i;
 	int	l;
 	
-	l = env_leng(*envl);
+	l = envl_len(*envl);
 	i = 0;
 	if (!entries)
 		disp_export(envl);

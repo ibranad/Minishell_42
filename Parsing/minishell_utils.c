@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:50:28 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/06 18:02:56 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:38:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 void	saj_short(t_vt *v, char *src)
 {

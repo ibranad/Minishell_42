@@ -94,9 +94,9 @@ void	free_envl_n(t_envl *node);
 //* G_UTILS
 void	print_table(char **table);
 void	print_list(t_cmdl *list);
+int     vector_len(char **vec);
 //*PARSING //////////////////
 
-int     vector_len(char **vec);
 int     ft_lstsize(t_cmdl *lst);
 int     if_last_is(char *str, char c);
 //This need to be modified to recieve a linked list instead of a vector, till backtick
@@ -147,7 +147,7 @@ void	last_cmd(t_cmdl *cmdl, t_envl *env);
 void	mid_cmd(int *fildes, t_cmdl *cmdl, t_envl *env);
 void	run_sole_cmd(t_cmdl *cmd, t_envl *env);
 //* ENV
-int		env_length(char **env);
+int	envl_len(t_envl *envl)
 t_envl	*set_env(char **env);
 //* ENV LIST
 int		envl_size(t_cmdl *lst);
@@ -170,3 +170,4 @@ t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
 
 
 #endif
+
