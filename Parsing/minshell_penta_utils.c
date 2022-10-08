@@ -6,24 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 15:54:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/07 15:19:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:11:37 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
-
-//9ad function smiha special char katchecki 3la bash special chars
-//add apend ">>" in out_function
- 
-int arr_len(char **arr)
-{
-    int i;
-    i = 0;
-
-    while(arr[i])
-        i++;
-    return (i);
-}
+#include "../minishell.h"
 
 int illegal_char(char *str)
 {
@@ -77,7 +64,7 @@ int in_error(char *str)
 
     i = 0;
     arr = ft_split(str, ' ');
-    len = arr_len(arr);
+    len = v(arr);
     while (arr[i] && i < len)
     {
         if (arr[i][0] == '<')
@@ -115,7 +102,7 @@ int out_errors(char *str)
 
     i = 0;
     arr = ft_split(str, ' ');
-    len = arr_len(arr);
+    len = vector_len(arr);
     while (arr[i] && i < len)
     {
         if (arr[i][0] == '>')

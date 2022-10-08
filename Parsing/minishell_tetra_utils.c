@@ -6,23 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:39:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/07 15:38:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:09:04 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-// <  <   lim   cat
-/*
-<
-<
-lim
-cat
-*/
-// wc -l << lim
-// wc -l << lim
-//cat > $USER/out
-//don't forget to handle error return 
 
 void    input_handler(t_cmdl **p, char **arr)
 {

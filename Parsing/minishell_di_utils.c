@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:38:42 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/07 15:35:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:08:58 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,32 +73,3 @@ int find_heredoc(char	**arr, int	len)
 	}
 	return (fd);
 }
-
-// int	main(void)
-// {
-// 	char *line = "< cat  < < lim < < gh < < hj";
-// 	char **arr;
-// 	int	fd;
-// 	int i = 0;;
-	
-// 	arr = ft_split(line, ' ');
-// 	// while(arr[i])
-// 	// {
-// 	// 	printf("%s\n", arr[i]);
-// 	// 	i++;
-// 	// }
-// 	fd = find_heredoc(arr, arr_len(arr));
-// 	if (fd == -1)
-// 	{
-// 		printf("There was an error (heredoc fd = -1)\n");
-// 		return(0);
-// 	}
-// 	char	c;
-
-//  	while (read(fd, &c, 1))
-//  		write(1, &c, 1);
-// }
-
-/*
-* cc -lreadline minishell_di_utils.c heredoc/heredoc.c Libft/ft_split.c Libft/ft_strncmp.c Libft/ft_strlcpy.c Libft/ft_strlen.c
-*/

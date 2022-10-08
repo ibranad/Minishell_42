@@ -3,50 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exp_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:48:46 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 18:30:11 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/08 18:37:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exp.h"
 
-char *replace_it(char *str, char **env)
-{
-    int     i;
-    t_dol   var;
-
-    post_dollar(&var, str);
-    i = 0;
-    while(env[i])
-    {
-        if (ft_strncmp(var.str, env[i], var.len) == 0)
-            return(&env[i][var.len]);
-        i++;
-    }
-    return(NULL);
-}
-
-int is_in_env(char *str, char **env)
-{
-    int i;
-    int j;
-
-    i = 0;
-    str = add_char_end(str, '=');
-    while (env[i])
-    {
-        if (ft_strncmp(str, env[i], ft_strlen(str)) == 0)
-        {
-            free(str);
-            return (1);
-        }
-        i++;
-    }
-    free(str);
-    return (0);
-}
 
 char *char_remove(char *str, char c)
 {

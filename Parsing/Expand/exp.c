@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:42:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/28 15:44:01 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/08 16:11:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../minishell.h"
  
-char *expand_extra(char *str, char **env)
+char *expand_extra(char *str, t_envl *envl)
 {
     char **arr;
     char *ar;
@@ -30,7 +30,7 @@ char *expand_extra(char *str, char **env)
 
     i = 0;
     j = 0;
-    c = arr_len(arr);
+    c = vector_len(arr);
     //print_2d_arr(arr);
     while (arr[i] && i < c)
     {
@@ -41,21 +41,21 @@ char *expand_extra(char *str, char **env)
             else if (if_last_is(arr[i], ' ') == 1 && ft_strlen(arr[i]) > 2)
             {
                 arr[i] = char_remove(arr[i], ' ');
-                if (is_in_env(&arr[i][1], env) == 1)
+                if (is_in_env(&arr[i][1], envl) == 1)
                 {
-                    b = t_strjoin(b, replace_it(arr[i], env));
+                    b = t_strjoin(b, replace_it(arr[i], envl));
                     b = t_strjoin(b, " ");
                 }
                 else
                     b = t_strjoin(b, " ");
             }
-            else if (is_in_env(&arr[i][1], env) == 1)
-                b = t_strjoin(b, replace_it(arr[i], env));
+            else if (is_in_env(&arr[i][1], envl) == 1)
+                b = t_strjoin(b, replace_it(arr[i], envl));
             else
                 b = t_strjoin(b, NULL);
         }
         else if (arr[i][j] == '\"')
-            b = t_strjoin(b, double_quote(arr[i], env));
+            b = t_strjoin(b, double_quote(arr[i], envl));
         else if (arr[i][j] == '\'')
             b = t_strjoin(b, single_quote(arr[i]));
         else

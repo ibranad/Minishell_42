@@ -1,3 +1,4 @@
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -13,15 +14,12 @@
 # include <dirent.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-// #include <readline.h>
-// #include <history.h>
 # define WRITE_END 1
 # define READ_END 0
 # define CYAN "\033[0;36m"
 # define WHITE "\x1B[37m"
 # define RED_IN '<'
 # define RED_OUT '>'
-
 
 typedef struct s_cmdl
 {
@@ -30,7 +28,6 @@ typedef struct s_cmdl
 	char			**args;
 	int				in_fd;
 	int				out_fd;
-	int				exec;
 	int				builtin;
 	struct s_cmdl	*next;
 	
@@ -44,23 +41,6 @@ typedef struct s_envl
 	struct s_envl	*next;
 }				t_envl;
 
-typedef struct vt
-{
-	char	*arr;
-	int		s_len;
-	int		d_len;
-	int		i;
-	int		j;
-}			t_vt;
-
-typedef struct dollar_sign
-{
-    int len;
-    char *str;
-}   			t_dol;
-
-
-
 typedef struct s_shell
 {
 	t_envl	*env;
@@ -68,6 +48,12 @@ typedef struct s_shell
 }				g_shell;
 
 g_shell	shell;
+
+typedef struct s_lex
+{
+	char	*cmd;
+	char 	*option;
+}				t_lex;
 
 //* SYS_ERR
 void	close_fail(int fd);
@@ -95,18 +81,20 @@ void	free_envl_n(t_envl *node);
 void	print_table(char **table);
 void	print_list(t_cmdl *list);
 int     vector_len(char **vec);
+//*ENV UTILS
+char	**get_paths(t_envl *envl)
+char	*fetch_path(char *cmd, char **paths);
 //*PARSING //////////////////
 
 int     ft_lstsize(t_cmdl *lst);
 int     if_last_is(char *str, char c);
 //This need to be modified to recieve a linked list instead of a vector, till backtick
 int     is_in_env(char *str, char **env);
-char	**get_path(char **env);
-char	*get_path_line(char **env);
+char	**get_paths(t_envl *env);
 char	*av_join_acess(char **env, char *av);
 char	*expand_it(char *str,char **env);
 char	*replace_it(char *str, char **env);
-char	*expand_extra(char *str, char **env);
+char	*expand_extra(char *str, t_envl *env);
 char    *double_quote(char *str, char **env);	
 //```````````````````````````````````
 char    *get_new_string(char *str);
@@ -126,7 +114,8 @@ char	*str_rep(char *str);
 char	*env_var(char *str);
 char	*space_add(char *str);
 char    *single_quote(char *str);
-char	*t_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2);
+char	*strjoin_s(char *s1, char *s2);
 char	*add_char_end(char *str, char c);
 
 char	**char_rep(char **str, char old, char nw);
@@ -147,7 +136,7 @@ void	last_cmd(t_cmdl *cmdl, t_envl *env);
 void	mid_cmd(int *fildes, t_cmdl *cmdl, t_envl *env);
 void	run_sole_cmd(t_cmdl *cmd, t_envl *env);
 //* ENV
-int	envl_len(t_envl *envl)
+int	envl_len(t_envl *envl);
 t_envl	*set_env(char **env);
 //* ENV LIST
 int		envl_size(t_cmdl *lst);
