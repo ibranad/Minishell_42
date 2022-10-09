@@ -84,11 +84,12 @@ int     vector_len(char **vec);
 //*ENV UTILS
 char	**get_paths(t_envl *envl)
 char	*fetch_path(char *cmd, char **paths);
-//*PARSING //////////////////
 
+
+//*PARSING //////////////////
+t_lex	*lexer(char *cmd_line);
 int     ft_lstsize(t_cmdl *lst);
 int     if_last_is(char *str, char c);
-//This need to be modified to recieve a linked list instead of a vector, till backtick
 int     is_in_env(char *str, char **env);
 char	**get_paths(t_envl *env);
 char	*av_join_acess(char **env, char *av);

@@ -26,7 +26,6 @@ FUNCTIONS = Execu/Utils/free_utils.c \
 			Execu/setup.c \
 			Execu/_exec.c \
 
-			
 OBJECTS =  $(FUNCTIONS:.c=.o)
 
 all : $(NAME)

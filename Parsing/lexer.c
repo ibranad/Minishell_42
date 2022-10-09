@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 11:11:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/09 15:24:51 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/09 11:20:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_cmdl	*parse(int ac, char **av, t_envl *envl)
+t_lex	*lexer(char *cmd_line)
 {
-	char	*cmd_line;
+	int 	i;
 	t_lex	*lexed_cmd_line;
-	t_cmdl	*parsed_cmd_line;
 
-	parsed_cmd_line = NULL;
-	cmd_line = readline(CYAN "Minishell $> " WHITE);
-	add_history(cmd_line);
-	lexed_cmd_line = lexer(cmd_line);
-	return (parsed_cmd_line);
+	i = 0;
+	while (cmd_line[i])
+	{
+		
+	}
+	return (lexed_cmd_line);
 }

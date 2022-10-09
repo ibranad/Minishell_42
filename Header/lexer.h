@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 11:11:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/09 15:24:51 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/09 17:41:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#ifndef LEXER_H
+# define LEXER_H
 
-t_cmdl	*parse(int ac, char **av, t_envl *envl)
+typedef struct s_lex
 {
-	char	*cmd_line;
-	t_lex	*lexed_cmd_line;
-	t_cmdl	*parsed_cmd_line;
-
-	parsed_cmd_line = NULL;
-	cmd_line = readline(CYAN "Minishell $> " WHITE);
-	add_history(cmd_line);
-	lexed_cmd_line = lexer(cmd_line);
-	return (parsed_cmd_line);
-}
+	enum 
+}				t_lex;
+#endif
