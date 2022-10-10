@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_di_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:38:42 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/06 17:58:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:29:56 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,3 +102,10 @@ int find_heredoc(char	**arr, int	len)
 /*
 * cc -lreadline minishell_di_utils.c heredoc/heredoc.c Libft/ft_split.c Libft/ft_strncmp.c Libft/ft_strlcpy.c Libft/ft_strlen.c
 */
+
+
+
+//$ while(str[i] == char || == int ++ '_) >>>
+// h
+// echo $USER.yhfh
+
