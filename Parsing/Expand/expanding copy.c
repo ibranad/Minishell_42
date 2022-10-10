@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expanding2.c                                       :+:      :+:    :+:   */
+/*   expanding copy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/10 14:27:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/10 19:13:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	i = 0;
-	s_len = strlen(s);
+	s_len = ft_strlen(s);
 	if (start >= s_len)
 		return (strdup(""));
 	size_sub_str = s_len - start + 1;
@@ -168,9 +168,9 @@ char *d_quote_sp(char *in)
 
 char *expand_dq_sp(char *in)
 {
-    char *out = strdup("");
-    char *not_expa = strdup("");
-    char *expa = strdup("");
+    char *out = NULL;
+    char *not_expa = NULL;
+    char *expa = NULL;
     int i;
 
     i = 0;
@@ -204,14 +204,23 @@ char *expand_dq_sp(char *in)
     return (out);
 }
 
+typedef struct exp_s
+{
+    char *out;
+    char *not_out;
+    char *expa;
+    int g_i;
+}   t_exp;
+
 char *expand_var_in_str(char *in)
 {
     //expand env variable in any given string
     //for example input:echo $USER$USER -> output:ibnadaibnada
-    char *out = strdup("");
-    char *not_expa = strdup("");
-    char *expa = strdup("");
+    char *out = NULL;
+    char *not_expa = NULL;
+    char *expa = NULL;
     int i;
+    t_exp s;
 
     i = 0;
     while (in[i])
@@ -258,6 +267,11 @@ char *expand_var_in_str(char *in)
     return (out);
 }
 
+// t_exp dollar_expanding(t_exp *s, char in)
+// {
+    
+// }
+
 int main(int ac, char *av[], char *env[])
 {
     int i;
@@ -274,5 +288,4 @@ int main(int ac, char *av[], char *env[])
 // echo '"$USER"'
 // echo "'$USER'"
 // echo "'""$USER""'"
-// echo "'$USER'"
-// echo "'$USER'"
+
