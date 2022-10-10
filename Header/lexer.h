@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 18:19:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/05 15:19:00 by ibnada           ###   ########.fr       */
+/*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/09 17:41:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#ifndef LEXER_H
+# define LEXER_H
 
-int main()
+typedef struct s_lex
 {
-    int i = 0;
-    char *str = strdup("OK");
-    if (!str[i++])
-    {
-        printf("FUCK\n");
-    }
-    printf("i Is : %d\n", i);
-}
+	enum 
+}				t_lex;
+#endif

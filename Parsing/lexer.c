@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mainex.c                                           :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 12:47:27 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/05 17:37:08 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/09 11:20:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-// TODO builtins :
-// * pwd ✅
-// * env ✅
-// * cd ✅
-// * exit 
-// * echo  ✅
-// * export ✅
-// * unset ✅
-/*
-*/
-int main(int ac, char **av, char **env)
+t_lex	*lexer(char *cmd_line)
 {
-	(void)ac;
-	(void)av;
-	g_shell	shell;
-	shell.env = set_env(env);
-	_echo(ac - 1, av + 1);
-	return (0);	
+	int 	i;
+	t_lex	*lexed_cmd_line;
+
+	i = 0;
+	while (cmd_line[i])
+	{
+		
+	}
+	return (lexed_cmd_line);
 }

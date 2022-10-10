@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_tri_utils.c                              :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 13:52:24 by ibnada            #+#    #+#             */
-/*   Updated: 2022/07/23 13:59:41 by ibnada           ###   ########.fr       */
+/*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/07 15:27:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int arr_len(char **arr)
+t_envl	*set_env(char **env)
 {
-    int i;
+	int		i;
+	t_envl	*envl;
 
-    i = 0;
-    while (arr[i])
-        i++;
-    return (i);
+	i = 0;
+	envl = lstnew(split(env[i], '='), i);
+	while (env[++i])
+		lstadd_back( &envl, lstnew(split(env[i], '='), i));
+	return (envl);
 }

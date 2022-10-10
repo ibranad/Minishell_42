@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/06 18:32:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:14:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,3 @@ int	ft_heredoc(char *lim)
 	return (pip[0]);
 }
 
-// int	main(int ac, char **av)
-// {
-// 	int		fd;
-// 	char	c;
-
-// 	fd = ft_heredoc(av[ac - 1]);
-// 	while (read(fd, &c, 1))
-// 		write(1, &c, 1);
-// }
