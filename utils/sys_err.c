@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:30:35 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/25 08:58:37 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:26:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 void    close_fail(int fd)
 {

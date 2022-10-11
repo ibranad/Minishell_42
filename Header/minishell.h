@@ -21,6 +21,10 @@
 # define RED_IN '<'
 # define RED_OUT '>'
 
+
+
+// * INcludeing *.h
+# include "lexer.h"
 typedef struct s_cmdl
 {
 	int				idx;
