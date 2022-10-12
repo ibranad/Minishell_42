@@ -76,6 +76,12 @@ size_t	ft_strlen(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isdigit(int c);
+int		ft_isblank(int c);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isascii(int c)
+
+
 
 //* FREE UTILS
 void	free_db_c(char **strings);

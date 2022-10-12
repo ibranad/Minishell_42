@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/11 11:41:34 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:39:48 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,25 @@ typedef enum
 
 typedef struct s_tok
 {
-	e_nat	type;
+	e_nat	nature;
 	char	*lexeme;
 }				t_tok;
 
-t_lex	*init_lex(char *cmd_line);
-void	lex_forward(t_lex *lex);
-char	*lex_gather_word(t_lex *lex);
-t_tok	*form_token(int	nature, char *lexeme);
+typedef struct s_toklist
+{
+	e_nat				nature;
+	char				*lexeme;
+	struct s_toklist	*next;
+}					t_toklist;
+
+t_lex		*init_lex(char *cmd_line);
+void		lex_forward(t_lex *lex);
+char		*lex_gather_lexeme(t_lex *lex);
+t_toklist	*form_new_token(int	nature, char *lexeme);
+t_toklist	*get_tokens_list(t_lex *lex, char *cmd_line);
+void		lex_skip_blanks(t_lex *lex);
+size_t		get_lexeme_size(t_lex *lex);
+char		*lex_gather_string(t_lex *lex, char quote);
 
 
 #endif
