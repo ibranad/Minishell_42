@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:15:57 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/10 20:17:19 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/11 17:33:43 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
     if (s1)
 	    while (s1[i] != '\0')
-	    {
 	    	join[j++] = s1[i++];
-	    }
 	i = 0;
     if (s2)
 	    while (s2[i] != '\0')
-	    {
-	    	join[j++] = s2[i++];    
-	    }
+	    	join[j++] = s2[i++];
 	join[j] = '\0';
 	return (join);
 }
@@ -57,37 +53,37 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return (strdup(""));
+		return (ft_strdup(""));
 	size_sub_str = s_len - start + 1;
 	size_sub_str = min (size_sub_str, len + 1);
 	sub = malloc (sizeof(char) * size_sub_str);
 	if (!sub)
 		return (NULL);
-	strlcpy(sub, s + start, size_sub_str);
+	ft_strlcpy(sub, s + start, size_sub_str);
 	return (sub);
 }
 
-char *d_quote_sp(char *in)
-{
-    //double_quote_special_case
-    //this function handle this special case "'$HOME'"
-    int i;
-    int j;
-    int l;
-    char *out;
+// char *d_quote_sp(char *in)
+// {
+//     //double_quote_special_case
+//     //this function handle this special case "'$HOME'"
+//     int i;
+//     int j;
+//     int l;
+//     char *out;
 
-    i = 0;
-    j = 0;
-    l = strlen(in);
-    out = malloc(sizeof(char) * 3);
-    out[j++] = '\'';
-    while(in[i])
-    {
-        out[j] = in[i];
-        i++;
-        j++;
-    }
-    out[j++] = '\'';
-    out[j] = '\0';
-    return (out);
-}
+//     i = 0;
+//     j = 0;
+//     l = ft_strlen(in);
+//     out = malloc(sizeof(char) * 3);
+//     out[j++] = '\'';
+//     while(in[i])
+//     {
+//         out[j] = in[i];
+//         i++;
+//         j++;
+//     }
+//     out[j++] = '\'';
+//     out[j] = '\0';
+//     return (out);
+// }
