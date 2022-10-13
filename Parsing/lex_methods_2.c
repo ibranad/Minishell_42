@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lex_methods_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 11:14:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/13 08:34:30 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/13 18:45:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-
-void	lstadd_tok(t_toklist **lst, t_toklist *new_token)
+char	*lex_chardup(t_lex *lex)
 {
-	t_toklist	*current;
+	char	*copy;
 
-	if (new_token)
-	{
-		if (*lst)
-		{
-			current = *lst;
-			while (current->next)
-				current = current->next;
-			current->next = new_token;
-		}
-		else
-			*lst = new_token;
-	}
+	copy = malloc(sizeof(char) * 2);
+	if (!copy)
+		malloc_fail();
+	copy[0] = lex->c;
+	copy[1] = 0;
+	return (copy);
+}
+
+int	check_chev(char c)
+{
+	
 }
