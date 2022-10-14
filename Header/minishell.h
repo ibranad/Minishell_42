@@ -25,6 +25,7 @@
 
 // * INcludeing *.h
 # include "lexer.h"
+# include  "exp.h"
 typedef struct s_cmdl
 {
 	int				idx;
@@ -53,12 +54,6 @@ typedef struct s_shell
 
 g_shell	shell;
 
-typedef struct s_lex
-{
-	char	*cmd;
-	char 	*option;
-}				t_lex;
-
 //* SYS_ERR
 void	close_fail(int fd);
 void	dup2_fail(int fd);
@@ -79,7 +74,7 @@ int		ft_isdigit(int c);
 int		ft_isblank(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
-int		ft_isascii(int c)
+int		ft_isascii(int c);
 
 
 
@@ -92,12 +87,11 @@ void	print_table(char **table);
 void	print_list(t_cmdl *list);
 int     vector_len(char **vec);
 //*ENV UTILS
-char	**get_paths(t_envl *envl)
+char	**get_paths(t_envl *envl);
 char	*fetch_path(char *cmd, char **paths);
 
 
 //*PARSING //////////////////
-t_lex	*lexer(char *cmd_line);
 int     ft_lstsize(t_cmdl *lst);
 int     if_last_is(char *str, char c);
 int     is_in_env(char *str, char **env);
@@ -111,12 +105,9 @@ char    *double_quote(char *str, char **env);
 char    *get_new_string(char *str);
 char    *char_remove(char *str, char c);
 char	*slash_av_join(char *src, char c, char *dest);
-void	saj_short(t_vt *v, char *src);
-void    post_dollar(t_dol *var, char *str);
-void    input_handler(t_cmdl **p, char **arr);
-void    output_handler(t_cmdl **p, char **arr);
 void    ft_lstadd_front(t_cmdl **lst, t_cmdl *new_l);
-t_cmdl  *ft_lstnew(void);
+void	lstadd_back(t_envl **lst, t_envl *new);
+t_envl  *lstnew(char **entry, int idx);
 int		env_pass(char *str);
 int		pd_alloc(char *str);
 int		find_char(char *str, char c);
@@ -127,6 +118,7 @@ char	*space_add(char *str);
 char    *single_quote(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*strjoin_s(char *s1, char *s2);
+char	*charjoin(char *s1, char c);
 char	*add_char_end(char *str, char c);
 
 char	**char_rep(char **str, char old, char nw);

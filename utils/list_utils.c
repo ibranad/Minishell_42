@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:09:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/29 09:21:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:47:00 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 t_envl	*lstnew(char **entry, int idx)
 {

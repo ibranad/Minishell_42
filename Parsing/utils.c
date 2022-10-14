@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:14:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/13 08:34:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:51:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "../Header/lexer.h"
 
 
 void	lstadd_tok(t_toklist **lst, t_toklist *new_token)
@@ -29,4 +29,16 @@ void	lstadd_tok(t_toklist **lst, t_toklist *new_token)
 		else
 			*lst = new_token;
 	}
+}
+
+void	print_tokens(t_toklist *tokens)
+{
+	 t_toklist	*curr;
+
+	 curr = tokens;
+	 while (curr)
+	 {
+		printf("(nature: %d, lexeme: %s)\n", curr->nature, curr->lexeme);
+		curr = curr->next;
+	 }
 }

@@ -6,22 +6,42 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/08 15:34:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:02:29 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "./Header/minishell.h"
 
+/*
 int main(int ac, char **av, char **env)
 {
-	t_cmdl	*command_line;
-
+	t_cmdl		*command_line;
+	t_toklist	*tokens;
 	
 	shell.env = set_env(env);
 	while (1)
 	{
-		command_line = parse(ac, av, shell.env);
+		command_line = readline("minishell $");
 		execute(command_line, shell);
 	}
+	return (0);
+}
+*/
+
+
+int main(int ac, char **av, char **env)
+{
+	t_toklist	*tokens;
+	char		*cmd_line;
+
+
+	(void)ac;
+	(void)av;
+	(void)env;
+	// shell.env = set_env(env);
+	cmd_line = readline("minishell $");
+	printf("-------------\n");
+	tokens = lexer(cmd_line);
+	print_tokens(tokens->next);
 	return (0);
 }

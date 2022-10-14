@@ -5,26 +5,19 @@ RM = rm -rf
 FS = -fsanitize=address -g
 CC = gcc
 RDL = -lreadline
-FUNCTIONS = Execu/Utils/free_utils.c \
-			Execu/Utils/lstsize.c \
-			Execu/Utils/print_table.c \
-			Execu/Utils/split.c \
-			Execu/Utils/utils_2.c \
-			Execu/Utils/list_utils.c \
-			Execu/Utils/utils.c \
-			Execu/Utils/sys_err.c \
-			Execu/pipex/io.c \
-			Execu/pipex/manip_cmds.c  \
-			Execu/pipex/pipex.c \
-			Execu/proc/bparse.c  \
-			Execu/builtins/cd.c \
-			Execu/builtins/pwd.c \
-			Execu/builtins/env.c \
-			Execu/builtins/export.c \
-			Execu/builtins/unset.c \
-			Execu/builtins/echo.c \
-			Execu/setup.c \
-			Execu/_exec.c \
+FUNCTIONS =	Execu/builtins/setup.c \
+			Parsing/lex_methods.c \
+			Parsing/lex_methods_2.c \
+			Parsing/tokenize.c \
+			Parsing/utils.c \
+			Parsing/lexer.c \
+			Utils/ascii2.c \
+			Utils/ascii.c \
+			Utils/utils.c \
+			Utils/list_utils.c \
+			Utils/sys_err.c \
+			Utils/split.c \
+			main.c
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
 

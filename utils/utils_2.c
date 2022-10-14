@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/05 14:14:02 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:07:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../Header/minishell.h"
 pid_t	ft_fork(void)
 {
 	pid_t	id;

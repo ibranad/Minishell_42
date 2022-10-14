@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:28:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/08 17:33:06 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 18:55:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 int	vector_len(char **vec)
 {
@@ -64,5 +64,27 @@ char	*strjoin_s(char *s1, char *s2)
 		while (s2[i])
 			nw_str[j++] = s2[i++];
 	nw_str[j] = 0;
+	return (nw_str);
+}
+
+
+char	*charjoin(char *s1, char c)
+{
+	char	*nw_str;
+	size_t	total_l;
+	int		i;
+	int		j;
+
+	total_l = ft_strlen(s1) + 1;
+	nw_str = malloc(sizeof(char) * (total_l + 1));
+	if (!nw_str)
+		return (NULL);
+	i = -1;
+	if (s1)
+		while (s1[++i])
+			nw_str[i] = s1[i];
+	j = ft_strlen(s1);
+	nw_str[j++] = c;
+	nw_str[j] = '\0';
 	return (nw_str);
 }

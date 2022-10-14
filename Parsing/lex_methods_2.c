@@ -6,25 +6,41 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/13 18:45:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:50:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "../Header/lexer.h"
 
-char	*lex_chardup(t_lex *lex)
+char	*lex_strdup(t_lex *lex, int n)
 {
 	char	*copy;
-
-	copy = malloc(sizeof(char) * 2);
+	int		i;
+	
+	copy = malloc(sizeof(char) * n);
 	if (!copy)
 		malloc_fail();
-	copy[0] = lex->c;
-	copy[1] = 0;
+	i = 0;
+	while (i < n)
+	{
+		copy[i] = lex->c;
+		lex_forward(lex);
+		i++;
+	}
+	copy[i] = 0;
+	lex_forward(lex);
 	return (copy);
 }
 
-int	check_chev(char c)
+t_toklist	*new_io_token(t_lex *lex)
 {
-	
+	if (lex->c == '<' && lex->string[lex->i + 1] == '<')
+		return (new_token(_dchev, lex_strdup(lex, 2)));
+	else if (lex->c == '<' && lex->string[lex->i + 1] != '<')
+		return (new_token(_chev, lex_strdup(lex, 1)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] == '>')
+		return (new_token(_dichev, lex_strdup(lex, 2)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] != '>')
+		return (new_token(_ichev, lex_strdup(lex, 1)));
+	return (NULL);
 }

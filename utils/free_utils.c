@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:52:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/01 10:53:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:41:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 void	free_db_c(char **strings)
 {

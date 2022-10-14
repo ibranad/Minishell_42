@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/07 15:27:25 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:44:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../Header/minishell.h"
 
 t_envl	*set_env(char **env)
 {

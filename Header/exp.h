@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:29:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/12 18:35:08 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:10:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ char    *d_quote_sp(char *in);
 void    struct_init(t_exp *s);
 char    *expand_dq_sp(char *in);
 int     unclosed_quote(char *in);
-int     ft_strlen(char const *str);
-char	*ft_strdup(const char *s1);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_dollar(char *in);
 void    struct_fill_sp(t_exp_sp *p);
@@ -61,10 +59,8 @@ void    dollar_expanding(t_exp *s, char *in);
 void    dollar_only_case(t_exp *s, char *in);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
-char	*ft_strjoin(char const *s1, char const *s2);
 void    dollar_expanding_if_short(t_exp *s, char *in);
 void    dollar_expanding_else_short(t_exp *s, char *in);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+char	*expand(char *cmd_line);
 #endif
