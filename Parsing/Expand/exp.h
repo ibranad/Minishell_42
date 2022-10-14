@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:29:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/12 18:35:08 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/14 18:02:47 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,26 @@ char    *expand_dq_sp(char *in);
 int     unclosed_quote(char *in);
 int     ft_strlen(char const *str);
 char	*ft_strdup(const char *s1);
+void    dq_short(t_exp *s,char *in);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_dollar(char *in);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_s_quote(char *in);
 char    *get_until_d_quote(char *in);
 void    exp_else(t_exp *s, char *in);
+void    exp_else_sp(t_exp *s, char *in);
 void    sq_expanding(t_exp *s, char *in);
 void    dq_expanding(t_exp *s, char *in);
 void    dollar_expanding(t_exp *s, char *in);
 void    dollar_only_case(t_exp *s, char *in);
+char    *get_until_char(char *in, char c, char d);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
 char	*ft_strjoin(char const *s1, char const *s2);
 void    dollar_expanding_if_short(t_exp *s, char *in);
 void    dollar_expanding_else_short(t_exp *s, char *in);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void    in_here_doc_handle(t_exp *s, char *in);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
