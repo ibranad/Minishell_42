@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 int	lstsize(t_cmdl *lst)
 {

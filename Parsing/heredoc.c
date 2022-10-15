@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/08 16:14:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:41:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 
 /*
 * Make a founction that checks for input , and fill the linked list in_fd var

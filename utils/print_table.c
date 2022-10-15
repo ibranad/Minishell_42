@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../Header/minishell.h"
 
 void	print_table(char **table)
 {

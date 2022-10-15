@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/12 17:41:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/15 18:40:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../Header/minishell.h"
 
 void dollar_expanding(t_exp *s, char *in)
 {
@@ -54,4 +54,37 @@ void dollar_expanding_else_short(t_exp *s, char *in)
     free(ptr);
     s->g_i += ft_strlen(s->expa) + 1;
     free(s->expa);
+}
+
+void dq_expanding(t_exp *s, char *in)
+{
+    //This sub_function is used for norm purpose
+    char *ptr;
+    char *ptr2;
+
+    ptr = NULL;
+    s->g_i++;
+    ptr = s->out;
+    s->expa = get_until_d_quote(&in[s->g_i]);
+    ptr2 = expand_dq_sp(s->expa);
+    s->out = ft_strjoin(s->out, ptr2);
+    free(ptr);
+    free(ptr2);
+    s->g_i += ft_strlen(s->expa) + 1;
+    free(s->expa);
+}
+
+void sq_expanding(t_exp *s, char *in)
+{
+    //This sub_function is used for norm purpose
+    char *ptr;
+    
+    ptr = NULL;
+    s->g_i++;
+    ptr = s->out;
+    s->not_out = get_until_s_quote(&in[s->g_i]);
+    s->out = ft_strjoin(s->out, s->not_out);
+    free(ptr);
+    s->g_i += ft_strlen(s->not_out) + 1;
+    free(s->not_out);
 }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 07:45:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/12 11:04:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:27:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ int	ft_isascii(int c)
 	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*ss;
+
+	s = (unsigned char *)s1;
+	ss = (unsigned char *)s2;
+	i = 0;
+	while (s[i] && (s[i] == ss[i]))
+		i++;
+	return (s[i] - ss[i]);
 }

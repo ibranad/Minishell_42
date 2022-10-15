@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_8.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:02:43 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/14 18:13:26 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/15 18:40:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../Header/minishell.h"
 
 void in_here_doc_handle(t_exp *s, char *in)
 {
@@ -79,4 +79,15 @@ void exp_else_sp(t_exp *s, char *in)
     free(ptr);
     s->g_i += ft_strlen(s->not_out);
     free(s->not_out);
+}
+
+void    dollar_only_case(t_exp *s, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+    ptr = s->out;
+    s->out = ft_strjoin(s->out, "$");
+    s->g_i += 1;
+    free(ptr);
 }

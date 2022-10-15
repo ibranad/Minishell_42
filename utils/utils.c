@@ -6,11 +6,23 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 08:59:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:23:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	if (!str)
+		return (0);
+	while (str[len])
+		len++;
+	return (len);
+}
 
 char	*ft_strdup(const char *s1)
 {
@@ -32,19 +44,6 @@ char	*ft_strdup(const char *s1)
 	return (copy);
 }
 
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	len;
-
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;
-	return (len);
-}
-
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
@@ -63,53 +62,46 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (s[i] - ss[i]);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
+	char	*sub;
 	size_t	i;
+	size_t	s_len;
+	int		size_sub_str;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	if (len == 0)
-		substr = (char *) malloc(sizeof(char) * 1);
-	else
-	{
-		if (!s || !len)
-			return (NULL);
-		if (start >= ft_strlen(s))
-			len = 0;
-		else if (len > ft_strlen(s))
-			len = ft_strlen(s) - start;
-		substr = malloc((len + 1) * sizeof(char));
-		if (!substr)
-			return (NULL);
-		while (s[start] && i < len)
-			substr[i++] = s[start++];
-	}
-	substr[i] = 0;
-	return (substr);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	size_sub_str = s_len - start + 1;
+	size_sub_str = min (size_sub_str, len + 1);
+	sub = malloc (sizeof(char) * size_sub_str);
+	if (!sub)
+		return (NULL);
+	ft_strlcpy(sub, s + start, size_sub_str);
+	return (sub);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*nw_str;
-	size_t	total_l;
+	char	*join;
 	int		i;
 	int		j;
 
-	total_l = ft_strlen(s1) + ft_strlen(s2);
-	nw_str = malloc(sizeof(char) * (total_l + 1));
-	if (!nw_str)
+	join = malloc ((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!join)
 		return (NULL);
-	i = -1;
-	if (s1)
-		while (s1[++i])
-			nw_str[i] = s1[i];
-	j = ft_strlen(s1);
 	i = 0;
-	if (s2)
-		while (s2[i])
-			nw_str[j++] = s2[i++];
-	nw_str[j] = '\0';
-	free(s1);
-	return (nw_str);
+	j = 0;
+    if (s1)
+	    while (s1[i] != '\0')
+	    	join[j++] = s1[i++];
+	i = 0;
+    if (s2)
+	    while (s2[i] != '\0')
+	    	join[j++] = s2[i++];
+	join[j] = 0;
+	return (join);
 }

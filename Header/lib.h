@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:16:55 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/15 16:16:04 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/15 16:30:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef LIB_H
+# define LIB_H
 
-# include "lib.h"
-# include "ascii.h"
-# include "utils.h"
-# include  "exp.h"
-# include "lexer.h"
-# include "parse.h"
-# include "exec.h"
-
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <errno.h>
+# include <dirent.h>
 #endif
-
