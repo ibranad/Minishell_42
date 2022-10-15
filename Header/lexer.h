@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 11:33:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:50:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_toklist
 
 t_lex		*init_lex(char *cmd_line);
 void		lex_forward(t_lex *lex);
+void		lex_backward(t_lex *lex);
 char		*lex_gather_lexeme(t_lex *lex);
 t_toklist	*new_token(int	nature, char *lexeme);
 t_toklist	*new_io_token(t_lex *lex);
