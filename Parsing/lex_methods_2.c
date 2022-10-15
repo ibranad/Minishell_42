@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 15:50:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 09:27:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*lex_strdup(t_lex *lex, int n)
 {
 	char	*copy;
 	int		i;
-	
-	copy = malloc(sizeof(char) * n);
+
+	copy = malloc(sizeof(char) * n + 1);
 	if (!copy)
 		malloc_fail();
 	i = 0;
@@ -28,7 +28,6 @@ char	*lex_strdup(t_lex *lex, int n)
 		i++;
 	}
 	copy[i] = 0;
-	lex_forward(lex);
 	return (copy);
 }
 

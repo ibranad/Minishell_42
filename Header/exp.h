@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 17:29:34 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/14 16:10:36 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/15 08:57:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef EXP_H
 #define EXP_H
@@ -47,20 +48,26 @@ char    *d_quote_sp(char *in);
 void    struct_init(t_exp *s);
 char    *expand_dq_sp(char *in);
 int     unclosed_quote(char *in);
+char	*ft_strdup(const char *s1);
+void    dq_short(t_exp *s,char *in);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_dollar(char *in);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_s_quote(char *in);
 char    *get_until_d_quote(char *in);
 void    exp_else(t_exp *s, char *in);
+void    exp_else_sp(t_exp *s, char *in);
 void    sq_expanding(t_exp *s, char *in);
 void    dq_expanding(t_exp *s, char *in);
 void    dollar_expanding(t_exp *s, char *in);
 void    dollar_only_case(t_exp *s, char *in);
+char    *get_until_char(char *in, char c, char d);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
 void    dollar_expanding_sp(t_exp_sp *p, char *in);
 void    dollar_expanding_if_short(t_exp *s, char *in);
 void    dollar_expanding_else_short(t_exp *s, char *in);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*expand(char *cmd_line);
+void    in_here_doc_handle(t_exp *s, char *in);
+
 #endif

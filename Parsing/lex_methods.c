@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 18:55:52 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 10:47:12 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,39 +41,12 @@ void	lex_skip_blanks(t_lex *lex)
 		lex_forward(lex);
 }
  
-// char	*lex_gather_lexeme(t_lex *lex)
-// {
-// 	char	*lexeme;
-// 	int		start;
-// 	int		len;
-// 	int		i;
-
-// 	len = 0;
-// 	start = lex->i;
-// 	printf("len : %d\n", len);
-// 	while (lex->c && !ft_isblank(lex->c))
-// 	{
-// 		printf("lex->c : %c", lex->c);
-// 		lex_forward(lex);
-// 		len++;
-// 	}
-// 	lexeme = malloc(sizeof(char) * len);
-// 	if (!lexeme)
-// 		malloc_fail();
-// 	i = 0;
-// 	while (i < len)
-// 		lexeme[i++] = lex->string[start++];
-// 	lexeme[i] = 0;
-// 	return (lexeme);
-// }
-
-
 char	*lex_gather_lexeme(t_lex *lex)
 {
 	char	*lexeme;
 
 	lexeme = NULL;
-	while (!ft_isblank(lex->c))
+	while (!ft_isblank(lex->c) && lex->c)
 	{
 		lexeme = charjoin(lexeme, lex->c);
 		lex_forward(lex);
@@ -87,9 +60,10 @@ char	*lex_gather_str(t_lex *lex, char quote)
 	char	*string;
 
 	string = NULL;
+	lex_forward(lex);
 	while (lex->c && lex->c != quote)
 	{
-		string = ft_strjoin(string, &lex->c);
+		string = charjoin(string, lex->c);
 		lex_forward(lex);
 	}
 	if (!lex->c)

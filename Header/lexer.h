@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 16:01:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 11:33:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,9 @@ typedef enum
 	_squote,
 	_dquote,
 	_char,
-	_digit,
 	_str,
 	_head,
 }	e_nat;
-
-typedef struct s_tok
-{
-	e_nat	nature;
-	char	*lexeme;
-}				t_tok;
 
 typedef struct s_toklist
 {

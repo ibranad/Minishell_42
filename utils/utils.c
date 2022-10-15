@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 16:09:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 08:59:31 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ char	*ft_strdup(const char *s1)
 }
 
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
 	len = 0;
-	while (s[len])
+	if (!str)
+		return (0);
+	while (str[len])
 		len++;
 	return (len);
 }

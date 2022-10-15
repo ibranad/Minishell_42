@@ -14,6 +14,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/ascii2.c \
 			Utils/ascii.c \
 			Utils/utils.c \
+			Utils/utils_3.c \
 			Utils/list_utils.c \
 			Utils/sys_err.c \
 			Utils/split.c \
@@ -24,7 +25,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) $(RDL) $(FS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(RDL) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

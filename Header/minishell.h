@@ -67,7 +67,7 @@ void	identifier_err(char *s);
 //* STR MANIP
 char	**split(char const *s, char c);
 char	*ft_strdup(const char *s1);
-size_t	ft_strlen(char *s);
+size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isdigit(int c);

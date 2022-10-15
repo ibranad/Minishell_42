@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:07:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 18:09:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 11:36:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_toklist	*get_tokens_list(t_lex *lex)
 	{
 		if (ft_isblank(lex->c))
 			lex_skip_blanks(lex);
-		else if (lex->c == '\"' || lex->c == '\'')
+		if (lex->c == '\"' || lex->c == '\'')
 			lstadd_tok(&head, new_token(_str, lex_gather_str(lex, lex->c)));
 		else if (lex->c == '<' || lex->c == '>')
 			lstadd_tok(&head, new_io_token(lex));
@@ -46,8 +46,3 @@ t_toklist	*get_tokens_list(t_lex *lex)
 	}
 	return (head);
 }
-
-
-
-
-
