@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 11:35:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:24:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	(void)env;
 	// shell.env = set_env(env);
-	cmd_line = readline("minishell $");
-	printf("-------------\n");
-	tokens = lexer(cmd_line);
-	print_tokens(tokens->next);
+	while(1)
+	{
+		cmd_line = readline("Minishell $> ");
+		printf("-------------\n");
+		tokens = lexer(cmd_line);
+		print_tokens(tokens->next);
+	}
 	return (0);
 }

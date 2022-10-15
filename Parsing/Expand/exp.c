@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/14 18:05:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/15 15:51:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int main(int ac, char *av[], char *env[])
     
     while(1)
     {
-        str = readline("Prompt-> ");
+        str = readline("Minisell $> ");
         char *ptr = expand_var_in_str(str);
         printf("->%s\n", ptr);
         free(ptr);
