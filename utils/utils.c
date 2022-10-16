@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:23:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:42:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= s_len)
 		return (ft_strdup(""));
 	size_sub_str = s_len - start + 1;
-	size_sub_str = min (size_sub_str, len + 1);
+	size_sub_str = _min(size_sub_str, len + 1);
 	sub = malloc (sizeof(char) * size_sub_str);
 	if (!sub)
 		return (NULL);

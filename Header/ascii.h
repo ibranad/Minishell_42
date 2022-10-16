@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:14:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 17:17:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:03:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int		ft_isblank(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
+int		_min(int a, int b);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*charjoin(char *s1, char c);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

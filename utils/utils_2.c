@@ -6,11 +6,19 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:42:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:45:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
+
+
+int _min(int a, int b)
+{
+	if (a <= b)
+		return (a);
+	return (b); 
+}
 
 pid_t	ft_fork(void)
 {

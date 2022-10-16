@@ -14,6 +14,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/ascii2.c \
 			Utils/ascii.c \
 			Utils/utils.c \
+			Utils/utils_2.c \
 			Utils/utils_3.c \
 			Utils/list_utils.c \
 			Utils/sys_err.c \

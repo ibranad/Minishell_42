@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 16:20:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:47:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ typedef struct exp_sp
     int i_g;
 }   t_exp_sp;
 
-int     ft_isalnum(int c);
-int	    min(int a, int b);
-int     ft_isdigit(int c);
+
 char    *d_quote_sp(char *in);
 void    struct_init(t_exp *s);
 char    *expand_dq_sp(char *in);
@@ -63,5 +61,4 @@ void    dollar_expanding_else_short(t_exp *s, char *in);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*expand(char *cmd_line);
 void    in_here_doc_handle(t_exp *s, char *in);
-
 #endif
