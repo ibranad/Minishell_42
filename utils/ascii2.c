@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:50:44 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/12 11:00:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:07:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,23 @@ int	ft_isblank(int c)
 	if (c == 32 || c == 10 || c == 9)
 		return (1);
 	return (0);
+}
+
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
+}
+
+void	str_tolower(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
 }

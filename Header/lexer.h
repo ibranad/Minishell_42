@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 15:50:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:56:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ typedef enum
 	_dchev,
 	_dichev,
 	_pipe,
-	_squote,
-	_dquote,
-	_char,
-	_str,
+	_word,
+	_opt,
 	_head,
 }	e_nat;
 
@@ -56,6 +54,7 @@ t_toklist	*get_tokens_list(t_lex *lex);
 void		lex_skip_blanks(t_lex *lex);
 size_t		get_lexeme_size(t_lex *lex);
 char		*lex_gather_str(t_lex *lex, char quote);
+char		*lex_gather_option(t_lex *lex);
 char		*lex_strdup(t_lex *lex, int n);
 void		lstadd_tok(t_toklist **lst, t_toklist *new_token);
 t_toklist	*lexer(char *cmd_line);

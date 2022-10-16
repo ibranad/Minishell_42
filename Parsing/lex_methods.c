@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:41:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:32:48 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,6 @@ void	lex_backward(t_lex *lex)
 		lex->c = *(lex->string + lex->i);
 	}
 }
-
-void	lex_skip_blanks(t_lex *lex)
-{
-	while (ft_isblank(lex->c))
-		lex_forward(lex);
-}
- 
-char	*lex_gather_lexeme(t_lex *lex)
-{
-	char	*lexeme;
-
-	lexeme = NULL;
-	while (!ft_isblank(lex->c) && lex->c)
-	{
-		lexeme = charjoin(lexeme, lex->c);
-		lex_forward(lex);
-	}
-	return (lexeme);
-}
-
 
 char	*lex_gather_str(t_lex *lex, char quote)
 {

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 11:35:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:10:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	(void)env;
 	// shell.env = set_env(env);
-	cmd_line = readline("minishell $");
-	printf("-------------\n");
-	tokens = lexer(cmd_line);
-	print_tokens(tokens->next);
+	while (1)
+	{
+		cmd_line = readline("minishell $");
+		printf("\n");
+		str_tolower(cmd_line);
+		tokens = lexer(cmd_line);
+		print_tokens(tokens->next);
+		printf("\n");
+	}
 	return (0);
 }
