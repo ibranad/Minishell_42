@@ -6,7 +6,15 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/16 15:26:34 by obouizga         ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2022/10/15 15:51:10 by ibnada           ###   ########.fr       */
+=======
+/*   Updated: 2022/10/15 18:40:53 by obouizga         ###   ########.fr       */
+>>>>>>> aa49bfff8d19d096ecb0e69914af59e3d12bf1bd
+>>>>>>> b43a22488e6035868522dcf611497b065a73bae1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +58,7 @@ int main(int ac, char *av[], char *env[])
     
     while(1)
     {
-        str = readline("Prompt-> ");
+        str = readline("Minisell $> ");
         char *ptr = expand_var_in_str(str);
         printf("->%s\n", ptr);
         free(ptr);

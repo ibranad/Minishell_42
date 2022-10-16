@@ -3,12 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/10/15 20:01:26 by ibnada           ###   ########.fr       */
+=======
 /*   Updated: 2022/10/16 10:02:49 by obouizga         ###   ########.fr       */
+>>>>>>> 06e2bbcaf2c07345883507e71e43330b366a8736
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #ifndef UTILS_H
 # define UTILS_H
