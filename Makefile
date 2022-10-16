@@ -11,7 +11,13 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/tokenize.c \
 			Parsing/utils.c \
 			Parsing/lexer.c \
+			Parsing/Expand/exp.c \
+			Parsing/Expand/exp_util.c \
+			Parsing/Expand/exp_util_2.c \
+			Parsing/Expand/exp_util_3.c \
+			Parsing/Expand/exp_util_4.c \
 			Utils/ascii2.c \
+			Utils/env_utils.c \
 			Utils/ascii.c \
 			Utils/utils.c \
 			Utils/utils_2.c \

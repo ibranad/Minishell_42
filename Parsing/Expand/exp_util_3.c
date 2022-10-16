@@ -3,88 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/15 18:40:06 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
+/*   Updated: 2022/10/16 18:03:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void dollar_expanding(t_exp *s, char *in)
+void struct_fill_sp(t_exp_sp *p)
 {
-    char *ptr;
-
-    ptr = NULL;
-    if (ft_isdigit(in[s->g_i + 1]))
-        dollar_expanding_if_short(s, in);
-    else
-        dollar_expanding_else_short(s, in);
+    p->out = NULL;
+    p->not_expa = NULL;
+    p->expa = NULL;
+    p->i_g = 0;
 }
 
-void dollar_expanding_if_short(t_exp *s, char *in)
+char *expand_dq_sp(t_envl *envl, char *in)
 {
-    char *ptr;
-
-    ptr = NULL;
-    s->g_i++;
-    ptr = s->out;
-    if (in[s->g_i] == '0')
-    {
-        s->out = ft_strjoin(s->out, "Minishell");
-        free(ptr);
-        ptr = s->out;
-    }
-    s->expa = get_until_dollar(&in[s->g_i + 1]);
-    s->out = ft_strjoin(s->out, s->expa);
-    free(ptr);
-    s->g_i += ft_strlen(s->expa) + 1;
-    free(s->expa);
-}
-
-void dollar_expanding_else_short(t_exp *s, char *in)
-{
-    char *ptr;
-
-    ptr = NULL;
-    ptr = s->out;
-    s->expa = get_until_dollar(&in[s->g_i + 1]);
-    s->out = ft_strjoin(s->out, getenv(s->expa));
-    free(ptr);
-    s->g_i += ft_strlen(s->expa) + 1;
-    free(s->expa);
-}
-
-void dq_expanding(t_exp *s, char *in)
-{
-    //This sub_function is used for norm purpose
-    char *ptr;
-    char *ptr2;
-
-    ptr = NULL;
-    s->g_i++;
-    ptr = s->out;
-    s->expa = get_until_d_quote(&in[s->g_i]);
-    ptr2 = expand_dq_sp(s->expa);
-    s->out = ft_strjoin(s->out, ptr2);
-    free(ptr);
-    free(ptr2);
-    s->g_i += ft_strlen(s->expa) + 1;
-    free(s->expa);
-}
-
-void sq_expanding(t_exp *s, char *in)
-{
-    //This sub_function is used for norm purpose
+    t_exp_sp p;
     char *ptr;
     
     ptr = NULL;
-    s->g_i++;
-    ptr = s->out;
-    s->not_out = get_until_s_quote(&in[s->g_i]);
-    s->out = ft_strjoin(s->out, s->not_out);
+    struct_fill_sp(&p);
+    while (in[p.i_g])
+    {
+        if (in[p.i_g] == '$')
+            dollar_expanding_sp(envl, &p, in);
+        else
+        {
+            ptr = p.out;
+            p.not_expa = get_until_dollar(&in[p.i_g]);
+            p.out = ft_strjoin(p.out, p.not_expa);
+            free(ptr);
+            p.i_g += ft_strlen(p.not_expa);
+            free(p.not_expa);
+        }
+    }
+    return (p.out);
+}
+
+
+void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+    if (ft_isdigit(in[p->i_g + 1]))
+    {
+        p->i_g++;
+        if (in[p->i_g] == '0')
+        {
+            ptr = p->out;
+            p->out = ft_strjoin(p->out, "Minishell");
+            free(ptr);
+        }
+        ptr = p->out;
+        p->expa = get_until_dollar(&in[p->i_g + 1]);
+        p->out = ft_strjoin(p->out, p->expa);
+        free(ptr);
+        p->i_g += ft_strlen(p->expa);
+        free(p->expa);
+    }
+    else
+    {
+        ptr = p->out;
+        p->expa = get_until_dollar(&in[p->i_g + 1]);
+        p->out = ft_strjoin(p->out, get_env_var(envl, p->expa));
+        free(ptr);
+        p->i_g += ft_strlen(p->expa) + 1;
+        free(p->expa);
+    }
+}
+
+int unclosed_quote(char *in)
+{
+    //This fonction checks for unclosed quotes (sucess(l9at unclosed quote) return 1, failure(mal9athach) return 0)
+    //in case of empty string this fonction returns -1
+    int i;
+    int s;//single quote
+    int d;//double quote
+
+    if (!in)
+        return (-1);
+    i = 0;
+    s = 0;
+    d = 0;
+    while (in[i])
+    {
+        if (in[i] == '\"')
+            d++;
+        else if (in[i] == '\'')
+            s++;
+        i++;
+    }
+    if ((d % 2) == 0 && (s % 2) == 0)
+        return (0);
+    else
+        return (1);
+}
+
+void exp_else(t_exp *s, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+        ptr = s->out;
+    s->not_out = get_until_dollar(&in[s->g_i]);
+    s->out = ft_strjoin(ptr, s->not_out);
     free(ptr);
-    s->g_i += ft_strlen(s->not_out) + 1;
+    s->g_i += ft_strlen(s->not_out);
     free(s->not_out);
 }

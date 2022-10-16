@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exp.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 10:47:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:39:12 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef EXP_H
 #define EXP_H
-
 
 #define SQ '\'' // Single Quote
 #define DQ '\"' // Double Quote
@@ -38,7 +37,7 @@ typedef struct exp_sp
 
 char    *d_quote_sp(char *in);
 void    struct_init(t_exp *s);
-char    *expand_dq_sp(char *in);
+char    *expand_dq_sp(t_envl *envl, char *in);
 int     unclosed_quote(char *in);
 char	*ft_strdup(const char *s1);
 void    dq_short(t_exp *s,char *in);
@@ -50,15 +49,18 @@ char    *get_until_d_quote(char *in);
 void    exp_else(t_exp *s, char *in);
 void    exp_else_sp(t_exp *s, char *in);
 void    sq_expanding(t_exp *s, char *in);
-void    dq_expanding(t_exp *s, char *in);
-void    dollar_expanding(t_exp *s, char *in);
+void    dq_expanding(t_envl *envl, t_exp *s, char *in);
+void    dollar_expanding(t_envl *envl, t_exp *s, char *in);
 void    dollar_only_case(t_exp *s, char *in);
+int     check_unrequired_by_subject(char *in);
 char    *get_until_char(char *in, char c, char d);
-void    dollar_expanding_sp(t_exp_sp *p, char *in);
-void    dollar_expanding_sp(t_exp_sp *p, char *in);
+void    dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in);
+char    *expand_var_in_str(t_envl *envl, char *in);
 void    dollar_expanding_if_short(t_exp *s, char *in);
-void    dollar_expanding_else_short(t_exp *s, char *in);
+void    dollar_expanding_else_short(t_envl *envl, t_exp *s, char *in);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*expand(char *cmd_line);
 void    in_here_doc_handle(t_exp *s, char *in);
+char	*get_env_var(t_envl *envl, char *key);
+
 #endif

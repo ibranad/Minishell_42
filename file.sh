@@ -7,9 +7,10 @@ function test()
     if [ ["$bash_put"] == ["$mine_put"] ]
     then 
     {
-        echo "Your Good"
+        echo "You're Good"
     }
     fi
+        echo "You're Screwed"
 }
 
 test "ls"

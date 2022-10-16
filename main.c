@@ -6,11 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/10/16 16:10:47 by obouizga         ###   ########.fr       */
-=======
-/*   Updated: 2022/10/15 15:24:46 by ibnada           ###   ########.fr       */
->>>>>>> b43a22488e6035868522dcf611497b065a73bae1
+/*   Updated: 2022/10/16 19:49:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +38,23 @@ int main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	(void)env;
-	// shell.env = set_env(env);
+	shell.env = set_env(env);
 	while (1)
 	{
-		cmd_line = readline("minibash $> ");
-		printf("\n");
-		str_tolower(cmd_line);
-		tokens = lexer(cmd_line);
-		print_tokens(tokens->next);
-		printf("\n");
+        cmd_line = readline(CYAN "Minishell $> " WHITE);
+		if (cmd_line)
+		{
+            add_history(cmd_line);
+			if (check_unrequired_by_subject(cmd_line) == -1)
+				printf("Syntax error: Unclosed quote\n");
+			else
+			{
+				cmd_line = expand_var_in_str(shell.env, cmd_line);
+				str_tolower(cmd_line);
+				tokens = lexer(cmd_line);
+				print_tokens(tokens->next);
+			}
+		}
 	}
 	return (0);
 }
