@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:26:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/11 11:53:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/15 18:40:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../Header/minishell.h"
 
 char *get_until_dollar(char *in)
 {

@@ -6,11 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 09:27:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:41:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/lexer.h"
+#include "../Header/minishell.h"
+
+
 
 char	*lex_strdup(t_lex *lex, int n)
 {
@@ -27,6 +29,7 @@ char	*lex_strdup(t_lex *lex, int n)
 		lex_forward(lex);
 		i++;
 	}
+	lex_backward(lex);
 	copy[i] = 0;
 	return (copy);
 }

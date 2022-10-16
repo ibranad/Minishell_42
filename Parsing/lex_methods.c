@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 10:47:12 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:41:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/lexer.h"
+#include "../Header/minishell.h"
 
 t_lex	*init_lex(char *cmd_line)
 {
@@ -31,6 +31,15 @@ void	lex_forward(t_lex *lex)
 	if (lex->c)
 	{
 		lex->i++;
+		lex->c = *(lex->string + lex->i);
+	}
+}
+
+void	lex_backward(t_lex *lex)
+{
+	if (lex->i)
+	{
+		lex->i--;
 		lex->c = *(lex->string + lex->i);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/11 16:06:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:42:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	*fetch_path(char *cmd, char **paths)
 		free(path);
 		i++;
 	}
-		return (NULL);
-	}
+	return (NULL);
+}
 
 char	*get_env_var(t_envl *envl, char *key)
 {

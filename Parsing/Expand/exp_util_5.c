@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_5.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/11 18:34:46 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/15 18:40:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../Header/minishell.h"
 
 void struct_fill_sp(t_exp_sp *p)
 {
@@ -43,6 +43,7 @@ char *expand_dq_sp(char *in)
     }
     return (p.out);
 }
+
 
 void dollar_expanding_sp(t_exp_sp *p, char *in)
 {
@@ -101,4 +102,17 @@ int unclosed_quote(char *in)
         return (0);
     else
         return (1);
+}
+
+void exp_else(t_exp *s, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+        ptr = s->out;
+    s->not_out = get_until_dollar(&in[s->g_i]);
+    s->out = ft_strjoin(ptr, s->not_out);
+    free(ptr);
+    s->g_i += ft_strlen(s->not_out);
+    free(s->not_out);
 }

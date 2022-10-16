@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/15 15:51:10 by ibnada           ###   ########.fr       */
+=======
+/*   Updated: 2022/10/15 18:40:53 by obouizga         ###   ########.fr       */
+>>>>>>> aa49bfff8d19d096ecb0e69914af59e3d12bf1bd
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exp.h"
+#include "../../Header/minishell.h"
 
     //expand env variable in any given string
     //for example input:echo $USER$USER -> output:ibnadaibnada

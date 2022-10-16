@@ -6,11 +6,12 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 16:07:11 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:42:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
+
 pid_t	ft_fork(void)
 {
 	pid_t	id;
@@ -32,22 +33,6 @@ void	wait_all(int *status)
 		continue ;
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t			i;
-	unsigned char	*s;
-	unsigned char	*ss;
-
-	s = (unsigned char *)s1;
-	ss = (unsigned char *)s2;
-	i = 0;
-	while (s[i] && (s[i] == ss[i]))
-		i++;
-	return (s[i] - ss[i]);
-}
-
-
-
 int	look_for(char *s, char c)
 {
 	int	i;
@@ -56,11 +41,4 @@ int	look_for(char *s, char c)
 	while (s[i] && s[i] != c)
 		i++;
 	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
 }

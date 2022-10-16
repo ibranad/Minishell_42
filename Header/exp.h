@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 08:57:06 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:20:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #ifndef EXP_H
 #define EXP_H
 
-#include <stdio.h>
-//#include <string.h>
-#include <stdlib.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-//#include <ctype.h>
 
 #define SQ '\'' // Single Quote
 #define DQ '\"' // Double Quote

@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:07:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 11:36:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:41:45 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/lexer.h"
+#include "../Header/minishell.h"
 
 t_toklist	*new_token(int nature, char *lexeme)
 {

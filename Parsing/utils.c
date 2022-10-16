@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:14:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 15:51:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:41:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/lexer.h"
-
+#include "../Header/minishell.h"
 
 void	lstadd_tok(t_toklist **lst, t_toklist *new_token)
 {
