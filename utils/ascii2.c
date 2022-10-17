@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:50:44 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 16:07:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:04:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	str_tolower(char *str)
 	int	i;
 
 	i = 0;
+	if (str[0] == '$')
+		return ;
 	while (str[i])
 	{
 		str[i] = ft_tolower(str[i]);

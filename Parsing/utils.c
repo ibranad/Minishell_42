@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:14:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:41:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:51:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,19 @@ void	print_tokens(t_toklist *tokens)
 		printf("(nature: %d, lexeme: %s)\n", curr->nature, curr->lexeme);
 		curr = curr->next;
 	 }
+}
+
+int	toklist_size(t_toklist *tokens)
+{
+	t_toklist	*curr;
+	int			i;
+
+	i = 0;
+	curr = tokens;
+	while (curr)
+	{
+		i++;
+		curr = curr->next;
+	}
+	return (i - 1);
 }
