@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 19:56:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/17 17:27:21 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "utils.h"
 # include  "exp.h"
 # include "lexer.h"
+#include "prs_lst.h"
 
 #endif
 

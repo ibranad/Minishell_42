@@ -6,13 +6,13 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/16 18:07:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/17 17:39:47 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void dollar_expanding(t_envl *envl, t_exp *s, char *in)
+void    dollar_expanding(t_envl *envl, t_exp *s, char *in)
 {
     char *ptr;
 

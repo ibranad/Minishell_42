@@ -11,11 +11,14 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/tokenize.c \
 			Parsing/utils.c \
 			Parsing/lexer.c \
+			Parsing/heredoc.c \
 			Parsing/Expand/exp.c \
 			Parsing/Expand/exp_util.c \
 			Parsing/Expand/exp_util_2.c \
 			Parsing/Expand/exp_util_3.c \
 			Parsing/Expand/exp_util_4.c \
+			Parsing/Parsing_list/parse_list.c \
+			Parsing/Parsing_list/parse_list_utils.c \
 			Utils/ascii2.c \
 			Utils/env_utils.c \
 			Utils/ascii.c \
@@ -32,7 +35,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) $(RDL) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(FS) $(RDL) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

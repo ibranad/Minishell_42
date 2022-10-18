@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/15 18:41:03 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:56:35 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/minishell.h"
+#include "../Header/minishell.h"
 
 /*
 * Make a founction that checks for input , and fill the linked list in_fd var

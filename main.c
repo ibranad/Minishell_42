@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 19:49:46 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/18 13:16:34 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int main(int ac, char **av, char **env)
 			else
 			{
 				cmd_line = expand_var_in_str(shell.env, cmd_line);
-				str_tolower(cmd_line);
 				tokens = lexer(cmd_line);
 				print_tokens(tokens->next);
+				parse_list(tokens->next, shell.env);
 			}
 		}
 	}
