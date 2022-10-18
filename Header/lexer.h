@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/17 16:01:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:49:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef enum
 	_dichev,
 	_pipe,
 	_word,
-	_opt,
 }	e_nat;
 
 typedef struct s_toklist

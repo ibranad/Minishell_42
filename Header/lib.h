@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:16:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 16:30:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/18 11:31:43 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@
 # include <sys/stat.h>
 # include <errno.h>
 # include <dirent.h>
+# include <signal.h>
+
 #endif

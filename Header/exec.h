@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:09:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/18 11:31:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	pipex(t_cmdl *cmdl, g_shell shell);
 void	wait_all(int *status);
 t_cmdl	*get_pipline(void);
 t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
+//*SIGNALS
 
 #endif

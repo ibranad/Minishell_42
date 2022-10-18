@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:07:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 18:21:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/18 17:49:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ t_toklist	*get_tokens_list(t_lex *lex)
 	{
 		if (ft_isblank(lex->c))
 			lex_skip_blanks(lex);
-		if (lex->c == '-')
-			lstadd_tok(&head, new_token(_opt, lex_gather_lexeme(lex)));
-		else if (lex->c == '<' || lex->c == '>')
+		if (lex->c == '<' || lex->c == '>')
 			lstadd_tok(&head, new_io_token(lex));
 		else if (lex->c == '|')
 			lstadd_tok(&head, new_token(_pipe, lex_strdup(lex, 1)));
