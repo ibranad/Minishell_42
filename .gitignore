@@ -8,3 +8,4 @@ zsandbox/
 test
 *.dSYM
 .DS_Store
+minishell

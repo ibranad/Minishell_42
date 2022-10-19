@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/18 20:25:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/19 08:41:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void print_parsing_lst(t_cmdl *in)
         printf("input fd is %d\n", in->in_fd);
         printf("Out fd is %d\n", in->out_fd);
         printf("Is builtin %d\n", in->builtin);
-        printf("Cmd path is %d\n", in->path);
+        printf("Cmd path is %s\n", in->path);
         while(in->args[i])
         {
             printf("Cmd arguments are %s\n", in->args[i]);
