@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/19 20:07:44 by ibnada           ###   ########.fr       */
+=======
+/*   Updated: 2022/10/19 08:44:16 by obouizga         ###   ########.fr       */
+>>>>>>> ec5cca735b50c203d3c4e99424277083a1467da8
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +58,12 @@ int main(int ac, char **av, char **env)
 				cmd_line = expand_var_in_str(shell.env, cmd_line);
 				tokens = lexer(cmd_line);
 				print_tokens(tokens->next);
+<<<<<<< HEAD
 				ptr = parse_list(tokens->next, shell.env);
 				print_parsing_lst(ptr);
+=======
+				// parse_list(tokens->next, shell.env);
+>>>>>>> ec5cca735b50c203d3c4e99424277083a1467da8
 			}
 		}
 	}
