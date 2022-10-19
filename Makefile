@@ -1,8 +1,8 @@
 NAME = minishell
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
-FS = -fsanitize=address -g
+FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
 FUNCTIONS =	Execu/builtins/setup.c \

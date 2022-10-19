@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:46:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/17 17:20:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/19 19:59:43 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ int cmd_count(t_toklist *tmp)
 
     i = 0;
     p = tmp;
-    while (tmp)
+    while (p != 0)
     {
         if (is_symbol(p->lexeme[0]))
             break;
-        i++;        
+        i++;
+        p = p->next;
     }
+    // if (i == 0)
+    //     return(1);
     return(i);
 }
