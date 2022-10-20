@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/18 11:31:25 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 08:00:04 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 # define EXEC_H
 # define WRITE_END 1
 # define READ_END 0
-
-
-typedef struct s_envl
-{
-	char	*key;
-	char	*value;
-	int		idx;
-	struct s_envl	*next;
-}				t_envl;
-
-typedef struct s_shell
-{
-	t_envl	*env;
-	int		status;
-}				g_shell;
-
-g_shell	shell;
 
 //* I/O
 void	read_from(int fd);

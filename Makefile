@@ -1,8 +1,8 @@
 NAME = minishell
-MAIN = Tests/lextest.c
-CFLAGS = -Wall -Werror -Wextra
+MAIN = main.c
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
-FS = -fsanitize=address -g
+FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
 FUNCTIONS =	Execu/builtins/setup.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/19 08:41:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/19 21:13:53 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,27 @@ void print_parsing_lst(t_cmdl *in)
         printf("Out fd is %d\n", in->out_fd);
         printf("Is builtin %d\n", in->builtin);
         printf("Cmd path is %s\n", in->path);
-        while(in->args[i])
+        if (in->args)
         {
-            printf("Cmd arguments are %s\n", in->args[i]);
-            i++;
+            while (in->args[i])
+            {
+                printf("Cmd arguments are %s\n", in->args[i]);
+                if (in->args[i + 1])
+                    i++;
+                else
+                    break;
+            }
         }
+        printf("------------------------------------------\n");
         in = in->next;
     }
 }
 
-void parse_list(t_toklist *tok_lst, t_envl *envl)
+t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
 {
     int         i = 0;
     int         red_in_flag;
-    int         size;
+    int         size = 0;
     int         red_out_flag;
     int         here_doc_flag;
     int         cmd_c;
@@ -101,6 +108,7 @@ void parse_list(t_toklist *tok_lst, t_envl *envl)
     t_cmdl      *lst;
     t_cmdl      *tmp_2;
     t_toklist   *tmp;
+    int first_word = 0;
 
     red_out_flag = 0;
     here_doc_flag = 0;
@@ -108,6 +116,7 @@ void parse_list(t_toklist *tok_lst, t_envl *envl)
     cmd_c = 0;
     paths = get_paths(envl);
     size = toklist_size_2alloc(tok_lst);
+    printf("size is %d\n", size);
     lst = create_parse_lst(size);
     lst_init(&lst);
     tmp = tok_lst;
@@ -182,35 +191,53 @@ void parse_list(t_toklist *tok_lst, t_envl *envl)
         }
         if (tmp->nature == _word)
         {
-            tmp_2->path = fetch_path(tmp->lexeme, paths);
-            tmp_2->builtin = is_builtin(tmp->lexeme);
-            if (tmp->next)
-                tmp = tmp->next;
-            else
-                break;
-            cmd_c = cmd_count(tmp);
-            tmp_2->args = malloc(sizeof(char *) * cmd_c + 1);
-            while(i < cmd_c)
+            if (first_word == 0)
             {
-                tmp_2->args[i] = tmp->lexeme;
-                i++;
-                tmp = tmp->next;
+                tmp_2->path = fetch_path(tmp->lexeme, paths);
+                tmp_2->builtin = is_builtin(tmp->lexeme);
+                first_word = 1;
+                if (tmp->next)
+                    tmp = tmp->next;
+                else
+                    break;
             }
-            tmp_2->args[i] = 0;
-        }
-        if (tmp->nature == _pipe)
-        {
-            // if (red_out_flag == 0)
-            if (tmp->next)
+            if (first_word != 0)
             {
-                tmp_2->out_fd = -42;
-                red_out_flag = 0;
-                tmp_2 = tmp_2->next;
+                printf("word is %s\n", tmp->lexeme);
+                cmd_c = cmd_count(tmp);
+                printf("option count is %d\n", cmd_c);
+                tmp_2->args = malloc(sizeof(char *) * (cmd_c) + 1);
+                // printf("next_lexeme is %s\n", tmp->lexeme);
+                // printf("args[i] add is %p\n", tmp_2->args[i]);
+                while (i < cmd_c)
+                {
+                    tmp_2->args[i] = tmp->lexeme;
+                    i++;
+                    if (tmp->next)
+                        tmp = tmp->next;
+                    else
+                        break;
+                }
+                tmp_2->args[i] = 0;
                 if (tmp->next)
                     tmp = tmp->next;
                 else
                     break;
             }
         }
+        if (tmp->nature == _pipe)
+        {
+            tmp_2->out_fd = -42;
+            red_out_flag = 0;
+            first_word = 0;
+            if (tmp->next)
+            {
+                tmp = tmp->next;
+                tmp_2 = tmp_2->next;
+            }
+            else
+                break;
+        }
     }
+    return (lst);
 }
