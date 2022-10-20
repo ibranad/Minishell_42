@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 10:56:30 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/20 17:38:41 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ typedef struct s_shell
 }				g_shell;
 
 g_shell	shell;
-
 # include "ascii.h"
 # include "utils.h"
 # include  "exp.h"
 # include "lexer.h"
-//# include "parse.h"
-# include "prs_lst.h"
+# include "parser.h"
 # include "exec.h"
-
+t_cmdl	*parser(t_envl *envl);
+void	execute(t_cmdl *cmd, g_shell shell);
+void	handle_signals(void);
 #endif
 

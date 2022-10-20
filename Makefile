@@ -19,6 +19,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Expand/exp_util_4.c \
 			Parsing/Parsing_list/parse_list.c \
 			Parsing/Parsing_list/parse_list_utils.c \
+			Parsing/parser.c \
 			Utils/ascii2.c \
 			Utils/env_utils.c \
 			Utils/ascii.c \
@@ -28,6 +29,11 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/list_utils.c \
 			Utils/sys_err.c \
 			Utils/split.c \
+			Execu/exec/execute.c \
+			Execu/pipex/manip_cmds.c \
+			Execu/pipex/pipex.c \
+			Execu/pipex/io.c \
+			Execu/signals/signals.c \
 			$(MAIN)
 
 OBJECTS =  $(FUNCTIONS:.c=.o)

@@ -9,3 +9,6 @@ Tests/
 *.dSYM
 .DS_Store
 minishell
+signal
+signal.c
+outf
