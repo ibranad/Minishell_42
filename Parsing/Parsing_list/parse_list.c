@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/19 21:13:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/20 15:48:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,34 +66,6 @@ int toklist_size_2alloc(t_toklist *tok_list)
         tmp = tmp->next;
     }
     return(i + 1);
-}
-
-void print_parsing_lst(t_cmdl *in)
-{
-    int i;
-
-    i = 0;
-    while(in)
-    {
-        printf("Index is %d\n", in->idx);
-        printf("input fd is %d\n", in->in_fd);
-        printf("Out fd is %d\n", in->out_fd);
-        printf("Is builtin %d\n", in->builtin);
-        printf("Cmd path is %s\n", in->path);
-        if (in->args)
-        {
-            while (in->args[i])
-            {
-                printf("Cmd arguments are %s\n", in->args[i]);
-                if (in->args[i + 1])
-                    i++;
-                else
-                    break;
-            }
-        }
-        printf("------------------------------------------\n");
-        in = in->next;
-    }
 }
 
 t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)

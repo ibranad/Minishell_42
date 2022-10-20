@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:09:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:42:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 09:43:02 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,21 @@ void	free_env(t_envl *envl)
 		// free(curr);
 		curr = keep;
 	}
+}
+
+int	cmdline_size(t_cmdl *lst)
+{
+	t_cmdl	*current;
+	int		i;
+
+	if (!lst)
+		return (0);
+	current = lst;
+	i = 1;
+	while (current->next)
+	{
+		i++;
+		current = current->next;
+	}
+	return (i);
 }

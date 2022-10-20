@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:03:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/09/20 14:35:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 09:50:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 
 void	read_from(int fd)
 {
