@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 16:00:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:03:56 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_cmdl	*parser(t_envl *envl)
 
 	red_line = readline(CYAN "Minishell $> " WHITE);
 	printf("\033[0m");
-	if (*red_line)
+	if (red_line[0])
 	{
 		add_history(red_line);
 		if (check_unrequired_by_subject(red_line) == -1)

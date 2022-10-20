@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/20 17:39:47 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/20 18:39:22 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int is_builtin(char *str)
     if (ft_strcmp(str, "echo") == 0)
         return(1);
     else if (ft_strcmp(str, "cd") == 0)
-        return(2);
+        return(1);
     else if (ft_strcmp(str, "pwd") == 0)
-        return(3);
+        return(1);
     else if (ft_strcmp(str, "export") == 0)
-        return(4);
+        return(1);
     else if (ft_strcmp(str, "unset") == 0)
-        return(5);
+        return(1);
     else if (ft_strcmp(str, "env") == 0)
-        return(6);
+        return(1);
     else if (ft_strcmp(str, "exit") == 0)
-        return(7);
+        return(1);
     return(0);
 }
 
@@ -66,35 +66,6 @@ int toklist_size_2alloc(t_toklist *tok_list)
         tmp = tmp->next;
     }
     return(i + 1);
-}
-
-void print_parsing_lst(t_cmdl *in)
-{
-    int i;
-
-    i = 0;
-    while(in)
-    {
-        printf("------------------------------------------\n");
-        printf("Index is %d\n", in->idx);
-        printf("input fd is %d\n", in->in_fd);
-        printf("Out fd is %d\n", in->out_fd);
-        printf("Is builtin %d\n", in->builtin);
-        printf("Cmd path is %s\n", in->path);
-        if (in->args)
-        {
-            while (in->args[i])
-            {
-                printf("Cmd arguments are %s\n", in->args[i]);
-                if (in->args[i + 1])
-                    i++;
-                else
-                    break;
-            }
-        }
-        printf("------------------------------------------\n");
-        in = in->next;
-    }
 }
 
 t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
@@ -117,7 +88,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
     cmd_c = 0;
     paths = get_paths(envl);
     size = toklist_size_2alloc(tok_lst);
-    printf("size is %d\n", size);
+    //printf("size is %d\n", size);
     lst = create_parse_lst(size);
     lst_init(&lst);
     tmp = tok_lst;
@@ -192,22 +163,18 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         }
         if (tmp->nature == _word)
         {
-            printf("first word is %d\n", first_word);
             if (first_word == 0)
             {
-                printf("look\n");
                 tmp_2->path = fetch_path(tmp->lexeme, paths);
                 tmp_2->builtin = is_builtin(tmp->lexeme);
                 cmd_c = cmd_count(tmp);
                 tmp_2->args = malloc(sizeof(char *) * (cmd_c + 1));
                 tmp_2->args[i] = tmp->lexeme;
-                printf("I is %d word is %s cmd_c is %d\n", i, tmp->lexeme, cmd_c);
                 first_word = 1;
                 i++;
             }
             else if (first_word != 0)
             {
-                printf("hehe\n");
                 tmp_2->args[i] = tmp->lexeme;
                 i++;
             }
@@ -221,7 +188,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         }
         if (tmp->nature == _pipe)
         {
-            printf("pipe\n");
             tmp_2->out_fd = -42;
             red_out_flag = 0;
             first_word = 0;
