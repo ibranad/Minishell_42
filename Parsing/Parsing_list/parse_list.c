@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/19 21:13:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/20 17:29:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int is_builtin(char *str)
     if (ft_strcmp(str, "echo") == 0)
         return(1);
     else if (ft_strcmp(str, "cd") == 0)
-        return(1);
+        return(2);
     else if (ft_strcmp(str, "pwd") == 0)
-        return(1);
+        return(3);
     else if (ft_strcmp(str, "export") == 0)
-        return(1);
+        return(4);
     else if (ft_strcmp(str, "unset") == 0)
-        return(1);
+        return(5);
     else if (ft_strcmp(str, "env") == 0)
-        return(1);
+        return(6);
     else if (ft_strcmp(str, "exit") == 0)
-        return(1);
+        return(7);
     return(0);
 }
 
@@ -75,6 +75,7 @@ void print_parsing_lst(t_cmdl *in)
     i = 0;
     while(in)
     {
+        printf("------------------------------------------\n");
         printf("Index is %d\n", in->idx);
         printf("input fd is %d\n", in->in_fd);
         printf("Out fd is %d\n", in->out_fd);
@@ -191,45 +192,41 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         }
         if (tmp->nature == _word)
         {
+            printf("first word is %d\n", first_word);
             if (first_word == 0)
             {
+                printf("look\n");
                 tmp_2->path = fetch_path(tmp->lexeme, paths);
                 tmp_2->builtin = is_builtin(tmp->lexeme);
-                first_word = 1;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-            if (first_word != 0)
-            {
-                printf("word is %s\n", tmp->lexeme);
                 cmd_c = cmd_count(tmp);
-                printf("option count is %d\n", cmd_c);
-                tmp_2->args = malloc(sizeof(char *) * (cmd_c) + 1);
-                // printf("next_lexeme is %s\n", tmp->lexeme);
-                // printf("args[i] add is %p\n", tmp_2->args[i]);
-                while (i < cmd_c)
-                {
-                    tmp_2->args[i] = tmp->lexeme;
-                    i++;
-                    if (tmp->next)
-                        tmp = tmp->next;
-                    else
-                        break;
-                }
+                tmp_2->args = malloc(sizeof(char *) * (cmd_c + 1));
+                tmp_2->args[i] = tmp->lexeme;
+                printf("I is %d word is %s cmd_c is %d\n", i, tmp->lexeme, cmd_c);
+                first_word = 1;
+                i++;
+            }
+            else if (first_word != 0)
+            {
+                printf("hehe\n");
+                tmp_2->args[i] = tmp->lexeme;
+                i++;
+            }
+            if (tmp->next)
+                tmp = tmp->next;
+            else
+            {
                 tmp_2->args[i] = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
+                break;
             }
         }
         if (tmp->nature == _pipe)
         {
+            printf("pipe\n");
             tmp_2->out_fd = -42;
             red_out_flag = 0;
             first_word = 0;
+            tmp_2->args[i] = 0;
+            i = 0;
             if (tmp->next)
             {
                 tmp = tmp->next;

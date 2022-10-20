@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 07:58:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:52:23 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	(void)env;
-	int i = 0;
 	shell.env = set_env(env);
 	while (1)
 	{
         cmd_line = readline(CYAN "Minishell $> " WHITE);
-		if (cmd_line[i])
+		printf("\033[0m");
+		if (cmd_line[0])
 		{
             add_history(cmd_line);
 			if (check_unrequired_by_subject(cmd_line) == -1)

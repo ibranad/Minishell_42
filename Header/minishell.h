@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 08:00:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:56:30 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ g_shell	shell;
 # include "utils.h"
 # include  "exp.h"
 # include "lexer.h"
-# include "parse.h"
+//# include "parse.h"
 # include "prs_lst.h"
 # include "exec.h"
 
