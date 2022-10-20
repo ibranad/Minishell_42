@@ -5,7 +5,7 @@ a.out
 .vscode/
 zsandbox/
 *.txt
-test
+Tests/
 *.dSYM
 .DS_Store
 minishell

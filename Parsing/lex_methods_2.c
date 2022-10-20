@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 15:53:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 07:22:00 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,18 @@ char	*lex_gather_lexeme(t_lex *lex)
 	return (lexeme);
 }
 
-char	*lex_gather_option(t_lex *lex)
-{
-	char	*option;
-
-	option = NULL;
-	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
-	{
-		option = charjoin(option, lex->c);
-		lex_forward(lex);
-	}
-	lex_backward(lex);
-	return (option);
-}
+// char	*lex_gather_option(t_lex *lex)
+// {
+// 	char	*option;
+// 	option = NULL;
+// 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
+// 	{
+// 		option = charjoin(option, lex->c);
+// 		lex_forward(lex);
+// 	}
+// 	lex_backward(lex);
+// 	return (option);
+// }
 
 char	*lex_strdup(t_lex *lex, int n)
 {

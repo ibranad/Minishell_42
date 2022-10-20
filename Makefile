@@ -1,5 +1,5 @@
 NAME = minishell
-
+MAIN = Tests/lextest.c
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 FS = -fsanitize=address -g
@@ -28,7 +28,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/list_utils.c \
 			Utils/sys_err.c \
 			Utils/split.c \
-			main.c
+			$(MAIN)
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
 
