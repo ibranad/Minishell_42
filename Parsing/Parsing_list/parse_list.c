@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/20 18:39:22 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/21 16:02:49 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 tmp_2->in_fd = ft_heredoc(tmp->next->lexeme);
                 if (tmp->next->next)
                     tmp = tmp->next->next;
+                else if (tmp->next)
+                    tmp = tmp->next;
                 else
                     break;
             }
@@ -111,7 +113,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        if (tmp->nature == _chev)
+        else if (tmp->nature == _chev)
         {
             if (tmp->next)
             {
@@ -128,7 +130,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        if (tmp->nature == _ichev)
+        else if (tmp->nature == _ichev)
         {
             if(tmp->next)
             {
@@ -136,6 +138,8 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 tmp_2->out_fd = open(tmp->next->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
                 if (tmp->next->next)
                     tmp = tmp->next->next;
+                else if (tmp->next)
+                    tmp = tmp->next;
                 else
                     break;
             }
@@ -145,7 +149,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        if (tmp->nature == _dichev)
+        else if (tmp->nature == _dichev)
         {
             if(tmp == tmp->next)
             {
@@ -161,10 +165,12 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        if (tmp->nature == _word)
+        else if (tmp->nature == _word)
         {
             if (first_word == 0)
             {
+                if (tmp_2->idx != 0)
+                   tmp_2->in_fd = -42; 
                 tmp_2->path = fetch_path(tmp->lexeme, paths);
                 tmp_2->builtin = is_builtin(tmp->lexeme);
                 cmd_c = cmd_count(tmp);
@@ -186,7 +192,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        if (tmp->nature == _pipe)
+        else if (tmp->nature == _pipe)
         {
             tmp_2->out_fd = -42;
             red_out_flag = 0;
