@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/20 15:48:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:39:22 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
     cmd_c = 0;
     paths = get_paths(envl);
     size = toklist_size_2alloc(tok_lst);
-    printf("size is %d\n", size);
+    //printf("size is %d\n", size);
     lst = create_parse_lst(size);
     lst_init(&lst);
     tmp = tok_lst;
@@ -167,34 +167,23 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 tmp_2->path = fetch_path(tmp->lexeme, paths);
                 tmp_2->builtin = is_builtin(tmp->lexeme);
-                first_word = 1;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-            if (first_word != 0)
-            {
-                printf("word is %s\n", tmp->lexeme);
                 cmd_c = cmd_count(tmp);
-                printf("option count is %d\n", cmd_c);
-                tmp_2->args = malloc(sizeof(char *) * (cmd_c) + 1);
-                // printf("next_lexeme is %s\n", tmp->lexeme);
-                // printf("args[i] add is %p\n", tmp_2->args[i]);
-                while (i < cmd_c)
-                {
-                    tmp_2->args[i] = tmp->lexeme;
-                    i++;
-                    if (tmp->next)
-                        tmp = tmp->next;
-                    else
-                        break;
-                }
+                tmp_2->args = malloc(sizeof(char *) * (cmd_c + 1));
+                tmp_2->args[i] = tmp->lexeme;
+                first_word = 1;
+                i++;
+            }
+            else if (first_word != 0)
+            {
+                tmp_2->args[i] = tmp->lexeme;
+                i++;
+            }
+            if (tmp->next)
+                tmp = tmp->next;
+            else
+            {
                 tmp_2->args[i] = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
+                break;
             }
         }
         if (tmp->nature == _pipe)
@@ -202,6 +191,8 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             tmp_2->out_fd = -42;
             red_out_flag = 0;
             first_word = 0;
+            tmp_2->args[i] = 0;
+            i = 0;
             if (tmp->next)
             {
                 tmp = tmp->next;
