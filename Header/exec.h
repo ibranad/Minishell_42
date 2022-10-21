@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 09:45:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:22:14 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_heredoc(char *delim);
 void	first_cmd(int *fds, t_cmdl *cmdl, t_envl *env);
 void	last_cmd(t_cmdl *cmdl, t_envl *env);
 void	mid_cmd(int *fildes, t_cmdl *cmdl, t_envl *env);
-void	run_sole_cmd(t_cmdl *cmd, t_envl *env);
+void	run_sole_cmd(t_cmdl *cmd, g_shell shell);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);

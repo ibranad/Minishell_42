@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 09:48:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:25:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,14 @@ void	last_cmd(t_cmdl *cmd, t_envl *envl)
 		execve_fail();
 }
 
-void	run_sole_cmd(t_cmdl *cmd, t_envl *envl)
+void	run_sole_cmd(t_cmdl *cmd, g_shell shell)
 {
-	(void)envl;
-	read_from(cmd->in_fd);
-	write_to(cmd->out_fd);
-	if (execve(cmd->path, cmd->args, NULL) == -1)
-		execve_fail();
+	if (!ft_fork())
+	{
+		read_from(cmd->in_fd);
+		write_to(cmd->out_fd);
+		if (execve(cmd->path, cmd->args, NULL) == -1)
+			execve_fail();
+	}
+	wait_all(&shell.status);
 }
