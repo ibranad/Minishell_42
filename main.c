@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/21 16:18:34 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:39:26 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		cmd_line = parser(shell.env);
+		// add_history(cmd_line);
 		print_parsing_lst(cmd_line);
 		//execute(cmd_line, shell);
 		// handle_signals();

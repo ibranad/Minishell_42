@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/21 16:19:12 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/22 11:36:52 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ t_cmdl	*parser(t_envl *envl)
 	t_cmdl		*cmd_line;
 	
 	red_line = NULL;
-	red_line = readline(CYAN "Minishell $> " WHITE);
-	printf("\033[0m");
+	red_line = readline("Minishell pre-α $> ");
 	if (red_line[0])
 	{
 		add_history(red_line);
@@ -62,7 +61,8 @@ t_cmdl	*parser(t_envl *envl)
 		else
 		{
 			red_line = expander(envl, red_line);
-			tokens = lexer(d_line);
+			tokens = lexer(red_line);
+			print_tokens(tokens->next);
 			cmd_line = parse_list(tokens->next, shell.env);
 			return (cmd_line);
 		}

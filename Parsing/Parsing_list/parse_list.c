@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/21 16:02:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/22 17:57:52 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int is_builtin(char *str)
     if (ft_strcmp(str, "echo") == 0)
         return(1);
     else if (ft_strcmp(str, "cd") == 0)
-        return(1);
+        return(2);
     else if (ft_strcmp(str, "pwd") == 0)
-        return(1);
+        return(3);
     else if (ft_strcmp(str, "export") == 0)
-        return(1);
+        return(4);
     else if (ft_strcmp(str, "unset") == 0)
-        return(1);
+        return(5);
     else if (ft_strcmp(str, "env") == 0)
-        return(1);
+        return(6);
     else if (ft_strcmp(str, "exit") == 0)
-        return(1);
+        return(7);
     return(0);
 }
 
@@ -95,25 +95,96 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
     tmp_2 = lst;
     while(tmp)
     {
-        if (tmp->nature == _dchev)
+        printf("Tmp lexeme is :%s\n", tmp->lexeme);
+        if ((tmp->nature == _word) && (here_doc_flag == 0))
         {
-            if (tmp->next)
+            if (first_word == 0)
             {
-                tmp_2->in_fd = ft_heredoc(tmp->next->lexeme);
-                if (tmp->next->next)
-                    tmp = tmp->next->next;
-                else if (tmp->next)
+                // printf("Hello\n");
+                // exit(0);
+                if (tmp_2->idx != 0)
+                   tmp_2->in_fd = -42; 
+                tmp_2->path = fetch_path(tmp->lexeme, paths);
+                tmp_2->builtin = is_builtin(tmp->lexeme);
+                cmd_c = cmd_count(tmp);
+                tmp_2->args = malloc(sizeof(char *) * (cmd_c + 2));
+                tmp_2->args[i] = tmp->lexeme;
+                first_word = 1;
+                i++;
+                if (tmp->next)
+                {
+                    if (tmp->next->nature != _word)
+                    {
+                        tmp_2->args[i] = 0;
+                        tmp = tmp->next;
+                    }
+                    else
+                        tmp = tmp->next;   
+                }
+                else
+                {
+                    tmp_2->args[i] = 0;
+                    break;
+                }
+            }
+            else if (first_word != 0)
+            {
+                tmp_2->args[i] = tmp->lexeme;
+                i++;
+                if (tmp->next)
+                {
+                    if (tmp->next->nature != _word)
+                    {
+                        tmp_2->args[i] = 0;
+                        tmp = tmp->next;
+                    }
+                    else
+                        tmp = tmp->next;   
+                }
+                else
+                {
+                    tmp_2->args[i] = 0;
+                    break;
+                }
+            }
+            // if (tmp->next)
+            //     tmp = tmp->next;
+            // else
+            // {
+            //     tmp_2->args[i] = 0;
+            //     break;
+            // }
+        }
+        if (tmp->nature == _dchev || tmp->nature == _word)
+        {
+            if ((tmp->nature == _dchev) && (here_doc_flag == 0))
+            {
+                printf("hello\n");
+                here_doc_flag = 1;
+                if (tmp->next)
+                {
+                    if (tmp->next->nature == _word)
+                        tmp = tmp->next;
+                        
+                }
+                else
+                {
+                    printf("Syntax error: unexpected token near `\\n`\n");
+                    break;
+                }   
+            }
+            if ((tmp->nature == _word) && (here_doc_flag == 1))
+            {
+                printf("heredoc flag set to 1 word is %s\n", tmp->lexeme);
+                tmp_2->in_fd = ft_heredoc(tmp->lexeme);
+                here_doc_flag = 0;
+                if (tmp->next)
                     tmp = tmp->next;
                 else
                     break;
             }
-            else
-            {
-                printf("Syntax error: unexpected token near `\\n`\n");
-                break;
-            }
         }
-        else if (tmp->nature == _chev)
+        if (tmp->nature == _chev)
         {
             if (tmp->next)
             {
@@ -130,7 +201,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        else if (tmp->nature == _ichev)
+        if (tmp->nature == _ichev)
         {
             if(tmp->next)
             {
@@ -149,7 +220,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        else if (tmp->nature == _dichev)
+        if (tmp->nature == _dichev)
         {
             if(tmp == tmp->next)
             {
@@ -165,37 +236,11 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 break;
             }
         }
-        else if (tmp->nature == _word)
-        {
-            if (first_word == 0)
-            {
-                if (tmp_2->idx != 0)
-                   tmp_2->in_fd = -42; 
-                tmp_2->path = fetch_path(tmp->lexeme, paths);
-                tmp_2->builtin = is_builtin(tmp->lexeme);
-                cmd_c = cmd_count(tmp);
-                tmp_2->args = malloc(sizeof(char *) * (cmd_c + 1));
-                tmp_2->args[i] = tmp->lexeme;
-                first_word = 1;
-                i++;
-            }
-            else if (first_word != 0)
-            {
-                tmp_2->args[i] = tmp->lexeme;
-                i++;
-            }
-            if (tmp->next)
-                tmp = tmp->next;
-            else
-            {
-                tmp_2->args[i] = 0;
-                break;
-            }
-        }
-        else if (tmp->nature == _pipe)
+        if (tmp->nature == _pipe)
         {
             tmp_2->out_fd = -42;
             red_out_flag = 0;
+            here_doc_flag = 0;
             first_word = 0;
             tmp_2->args[i] = 0;
             i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 15:38:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/22 11:05:45 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "lib.h"
 
 # define CYAN "\033[0;36m"
-# define WHITE "\x1B[37m"
+# define WHITE "\033[0;37m"
 
 typedef struct s_cmdl
 {
