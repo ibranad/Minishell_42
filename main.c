@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/21 15:57:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/22 10:47:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main(int ac, char **av, char **env)
 	shell.env = set_env(env);
 	while (1)
 	{
+		handle_signals();
 		cmd_line = parser(shell.env);
 		print_parsing_lst(cmd_line);
 		execute(cmd_line, shell);
-		// handle_signals();
 	}
 	return (0);
 }

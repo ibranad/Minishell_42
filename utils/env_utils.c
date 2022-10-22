@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/18 16:03:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/22 11:19:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ char	*fetch_path(char *cmd, char **paths)
 {
 	int		i;
 	char	*path;
+	
+	if (!paths)
+		path_unset(cmd);
 	i = 0;
 	str_tolower(cmd);
 	while (paths[i])

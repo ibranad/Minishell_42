@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/22 12:05:07 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/22 12:05:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/minishell.h"
+#include "../Header/minishell.h"
 
-void	handler(int signum)
+void	path_unset(char *cmd)
 {
-	if (signum == SIGQUIT)
-		printf("SIGQUIT OCCURED\n");
-	else if (signum == SIGINT)
-		printf("SIGINT OCCURED\n");
-}
-
-void	interrupt_handle()
-{
-	printf("WE should give the prompt back\n");
-}
-
-void	handle_signals()
-{
-	signal(SIGINT, interrupt_handle);
-	signal(SIGQUIT, SIG_IGN);
+	printf("%s : No such file or directory\n", cmd);
+	exit(EXIT_FAILURE);
 }

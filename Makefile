@@ -27,13 +27,14 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/utils_2.c \
 			Utils/utils_3.c \
 			Utils/list_utils.c \
-			Utils/sys_err.c \
 			Utils/split.c \
 			Execu/exec/execute.c \
 			Execu/pipex/manip_cmds.c \
 			Execu/pipex/pipex.c \
 			Execu/pipex/io.c \
 			Execu/signals/signals.c \
+			Errors/sys_err.c \
+			Errors/errors.c \
 			$(MAIN)
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
