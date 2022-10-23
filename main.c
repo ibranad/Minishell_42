@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:51:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:30:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(int ac, char **av, char **env)
 {
-	(void)ac;
+	(void)ac; 
 	(void)av;
 	t_cmdl	*cmd_line;
 	int fd;
@@ -36,23 +36,3 @@ int main(int ac, char **av, char **env)
 
 
 
-// int main(int ac, char **av, char **env)
-// {
-// 	(void)ac;
-// 	(void)av;
-// 	// t_cmdl	*cmd_line;
-// 	int fd;
-
-// 	fd = dup(0);
-// 	shell.env = set_env(env);
-// 	shell.builtin_func = set_builtin_arr();
-	
-// 	// while (1)
-// 	// {
-// 	// 	handle_signals();
-// 	// 	cmd_line = parser(shell.env);
-// 	// 	execute(cmd_line, shell);
-// 	// 	dup2(fd, STDIN_FILENO);
-// 	// }
-// 	return (0);
-// }
