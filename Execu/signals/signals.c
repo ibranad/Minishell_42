@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/22 12:05:07 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 09:30:00 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	handler(int signum)
 
 void	interrupt_handle()
 {
-	printf("WE should give the prompt back\n");
+	// printf("WE should give the prompt back\n");
+	// rl_replace_line();
+	exit(0);
 }
 
 void	handle_signals()
