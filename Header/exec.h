@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/21 15:22:14 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:07:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 # define WRITE_END 1
 # define READ_END 0
 
+typedef enum
+{
+	_echo_,
+	_cd_,
+	_pwd_,
+	_export_,
+	_unset_,
+	_env_,
+	_exit_,
+}	e_builtin;
+
 //* I/O
 void	read_from(int fd);
 void	write_to(int fd);
@@ -22,13 +33,14 @@ void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
-void	first_cmd(int *fds, t_cmdl *cmdl, t_envl *env);
-void	last_cmd(t_cmdl *cmdl, t_envl *env);
-void	mid_cmd(int *fildes, t_cmdl *cmdl, t_envl *env);
+void	first_cmd(int *fds, t_cmdl *cmdl, g_shell shell);
+void	last_cmd(t_cmdl *cmdl, g_shell shell);
+void	mid_cmd(int *fildes, t_cmdl *cmdl, g_shell shell);
 void	run_sole_cmd(t_cmdl *cmd, g_shell shell);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);
+void 	**set_builtin_arr(void);
 char	**get_paths(t_envl *envl);
 char	*fetch_path(char *cmd, char **paths);
 char	*strjoin_s(char *s1, char *s2);

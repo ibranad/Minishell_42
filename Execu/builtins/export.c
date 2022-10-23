@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/07 15:33:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:12:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../Header/minishell.h"
 // TODO:
 // * VERIFYIING THE KEY
 //		** "-" not a valid identifier

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 10:45:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:22:48 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ pid_t	ft_fork(void)
 		fork_fail();
 	return (id);
 }
+
 void	display_arr(pid_t *pids, int n)
 {
 	for (int i = 0; i < n; i++)

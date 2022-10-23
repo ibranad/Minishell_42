@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 11:38:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/04 08:43:01 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:11:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 // * The parser should take the command echo and then make 
 // * sure its lowercase otherwise he makes it so;
 /*

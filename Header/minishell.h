@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/10/22 11:05:45 by ibnada           ###   ########.fr       */
-=======
-/*   Updated: 2022/10/22 10:47:58 by obouizga         ###   ########.fr       */
->>>>>>> 78fd5b63ed9287fce0b816b79eb022d2f939bbc5
+/*   Updated: 2022/10/23 15:15:39 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +41,7 @@ typedef struct s_envl
 typedef struct s_shell
 {
 	t_envl	*env;
+	void	**builtin_func;
 	int		status;
 }				g_shell;
 

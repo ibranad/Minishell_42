@@ -11,4 +11,6 @@ Tests/
 minishell
 signal
 signal.c
+test.c
+nature
 outf

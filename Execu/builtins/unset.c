@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:52:43 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/01 11:19:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:30:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 
 // *The will-be-unset variables should be stored inside a 2d array
 void	del_one(t_envl *prev, t_envl *node, t_envl *next)
@@ -72,5 +72,5 @@ void	_unset(char **to_unset, t_envl **envl)
 		}
 		i++;
 	}
-	free_db_c(to_unset);
+	// free_db_c(to_unset);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/22 17:57:52 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/23 15:34:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,6 @@ void    lst_init(t_cmdl **lst)
         i++;
         tmp = tmp->next;
     }
-}
-
-int is_builtin(char *str)
-{
-    if (ft_strcmp(str, "echo") == 0)
-        return(1);
-    else if (ft_strcmp(str, "cd") == 0)
-        return(2);
-    else if (ft_strcmp(str, "pwd") == 0)
-        return(3);
-    else if (ft_strcmp(str, "export") == 0)
-        return(4);
-    else if (ft_strcmp(str, "unset") == 0)
-        return(5);
-    else if (ft_strcmp(str, "env") == 0)
-        return(6);
-    else if (ft_strcmp(str, "exit") == 0)
-        return(7);
-    return(0);
 }
 
 int toklist_size_2alloc(t_toklist *tok_list)
@@ -95,7 +76,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
     tmp_2 = lst;
     while(tmp)
     {
-        printf("Tmp lexeme is :%s\n", tmp->lexeme);
         if ((tmp->nature == _word) && (here_doc_flag == 0))
         {
             if (first_word == 0)

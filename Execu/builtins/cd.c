@@ -6,11 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/06 18:29:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:36:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../Header/minishell.h"
 //* The OPENDIR function opens and returns a directory 
 //* stream for reading the directory whose file name is dirname. 
 //* The stream has type DIR *.
@@ -46,5 +46,6 @@ void	change_dir(char *path)
 	dir = opendir(path);
 	if (!dir)
 		printf("%s\n", strerror(errno));
-	
+	else
+		chdir(path);
 }

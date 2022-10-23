@@ -5,6 +5,10 @@ RM = rm -rf
 FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
+# LDFLAGS="/.brew/opt/readline/lib"
+# CPPFLAGS="/.brew/opt/readline/include"
+LDFLAGS="-L${HOME}/.brew/opt/readline/lib"
+CPPFLAGS="-I${HOME}/.brew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
@@ -35,6 +39,14 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/signals/signals.c \
 			Errors/sys_err.c \
 			Errors/errors.c \
+			Execu/builtins/cd.c \
+			Execu/builtins/echo.c \
+			Execu/builtins/env.c \
+			Execu/builtins/exit.c \
+			Execu/builtins/export.c \
+			Execu/builtins/pwd.c \
+			Execu/builtins/unset.c \
+			Utils/free_utils.c \
 			$(MAIN)
 
 OBJECTS =  $(FUNCTIONS:.c=.o)
@@ -42,7 +54,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) $(FS) $(RDL) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(RDL) $(FS) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

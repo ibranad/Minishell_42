@@ -1,6 +1,6 @@
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 
-void	pwd(void)
+void	_pwd(void)
 {
 	char	*s;
 

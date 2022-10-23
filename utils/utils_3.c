@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:28:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/14 18:55:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:07:21 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (len);
 }
-
 
 char	*strjoin_s(char *s1, char *s2)
 {
@@ -87,4 +86,23 @@ char	*charjoin(char *s1, char c)
 	nw_str[j++] = c;
 	nw_str[j] = '\0';
 	return (nw_str);
+}
+
+int is_builtin(char *str)
+{
+    if (ft_strcmp(str, "echo") == 0)
+        return(_echo_);
+    else if (ft_strcmp(str, "cd") == 0)
+        return(_cd_);
+    else if (ft_strcmp(str, "pwd") == 0)
+        return(_pwd_);
+    else if (ft_strcmp(str, "export") == 0)
+        return(_export_);
+    else if (ft_strcmp(str, "unset") == 0)
+        return(_unset_);
+    else if (ft_strcmp(str, "env") == 0)
+        return(_env_);
+    else if (ft_strcmp(str, "exit") == 0)
+        return(_exit_);
+    return(-1);
 }

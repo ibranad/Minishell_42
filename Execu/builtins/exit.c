@@ -6,14 +6,14 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/05 14:27:35 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:13:35 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../Header/minishell.h"
 
 void	__exit(g_shell shell)
 {
-	shell.status = set_status();
+	(void)shell;
 	exit(EXIT_SUCCESS);
 }
