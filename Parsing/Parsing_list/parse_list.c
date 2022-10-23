@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/23 15:34:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:50:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         {
             if (first_word == 0)
             {
-                // printf("Hello\n");
-                // exit(0);
                 if (tmp_2->idx != 0)
                    tmp_2->in_fd = -42; 
                 tmp_2->path = fetch_path(tmp->lexeme, paths);
@@ -127,26 +125,14 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                     break;
                 }
             }
-            // if (tmp->next)
-            //     tmp = tmp->next;
-            // else
-            // {
-            //     tmp_2->args[i] = 0;
-            //     break;
-            // }
         }
         if (tmp->nature == _dchev || tmp->nature == _word)
         {
             if ((tmp->nature == _dchev) && (here_doc_flag == 0))
             {
-                printf("hello\n");
                 here_doc_flag = 1;
                 if (tmp->next)
-                {
-                    if (tmp->next->nature == _word)
-                        tmp = tmp->next;
-                        
-                }
+                    tmp = tmp->next;
                 else
                 {
                     printf("Syntax error: unexpected token near `\\n`\n");
@@ -155,7 +141,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             }
             if ((tmp->nature == _word) && (here_doc_flag == 1))
             {
-                printf("heredoc flag set to 1 word is %s\n", tmp->lexeme);
                 tmp_2->in_fd = ft_heredoc(tmp->lexeme);
                 here_doc_flag = 0;
                 if (tmp->next)
