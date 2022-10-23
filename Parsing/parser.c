@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/22 11:36:52 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/23 11:32:40 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ t_cmdl	*parser(t_envl *envl)
 	if (red_line[0])
 	{
 		add_history(red_line);
-		if (check_unrequired_by_subject(red_line) == -1)
-			printf("Syntax error: Unclosed quote\n");
+		if (check_unrequired_by_subject(red_line) != 0)
+			free(red_line);
 		else
 		{
 			red_line = expander(envl, red_line);
 			tokens = lexer(red_line);
 			print_tokens(tokens->next);
 			cmd_line = parse_list(tokens->next, shell.env);
+			free(red_line);
 			return (cmd_line);
 		}
 	}
-	free(red_line);
 	return (NULL);
 }

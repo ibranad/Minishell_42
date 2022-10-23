@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/20 14:53:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:34:47 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,31 @@ char *expander(t_envl *envl, char *in)
     return (s.out);
 }
 
+int unreq_meta_char(char *in)
+{
+    int i;
+
+    i = 0;
+    while(in[i])
+    {
+        if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*' || in[i] == '(' || in[i] == ')' 
+        || in[i] == '\\' || in[i] == '[' || in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] ==';'
+        || in[i] == '?' || in[i] == '!')
+        {
+            printf("Syntax error : Illegal character `%c`\n", in[i]);
+            return(-2);
+        }
+        i++;
+    }
+    return(0);
+}
+
 int check_unrequired_by_subject(char *in)
 {
     if (unclosed_quote(in) == 1)
         return(-1);
+    if (unreq_meta_char(in) == -2)
+        return(-2);
     return (0);
 }
 
