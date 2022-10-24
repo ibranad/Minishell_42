@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:12:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:04:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	_export(char **entries, t_envl **envl)
 			lstadd_back(envl, lstnew(split(entries[i], '='), ++l));
 			free(entries[i++]);
 		}
-		free(entries);
+		// free(entries);
 	}
 }

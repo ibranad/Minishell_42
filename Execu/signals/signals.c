@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 18:26:25 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 14:48:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	handler(int signum)
 
 void	interrupt_handle()
 {
-	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line();
+	write(1, "\n", 1);
+	rl_on_new_line(); // Tell the update functions that we moved onto a new line, usually after outputting a newline.
+	rl_replace_line("", 0); // this replaces the content of the rl_line_buffer with the passed value
 	rl_redisplay();
 }
 

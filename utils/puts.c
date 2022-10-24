@@ -1,53 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   puts.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 13:11:18 by obouizga         ###   ########.fr       */
+/*   Created: 2022/10/24 10:35:53 by obouizga          #+#    #+#             */
+/*   Updated: 2022/10/24 10:37:04 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
 
-int _min(int a, int b)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (a <= b)
-		return (a);
-	return (b); 
+	write(fd, &c, 1);
 }
 
-pid_t	ft_fork(void)
+void	putstr_fd(char *s, int fd)
 {
-	pid_t	id;
-
-	id = fork();
-	if (id == -1)
-		fork_fail();
-	return (id);
-}
-
-void	display_arr(pid_t *pids, int n)
-{
-	for (int i = 0; i < n; i++)
-		printf("[%d]\n", pids[i]);
-}
-
-void	wait_all(int *status)
-{
-	while (wait(status) != -1)
-		continue ;	// signal(S)
-}
-
-int	look_for(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
+	if (s)
+		while (*s)
+			ft_putchar_fd(*(s++), fd);
 }

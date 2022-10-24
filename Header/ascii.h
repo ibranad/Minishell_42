@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:14:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/16 16:08:26 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:36:57 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_isblank(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
+void	putstr_fd(char *s, int fd);
 int		_min(int a, int b);
 void	str_tolower(char *str);
 int		ft_tolower(int c);

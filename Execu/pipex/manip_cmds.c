@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:09:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:24:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,18 @@ void	run(t_cmdl *cmd,g_shell shell)
 	else if (cmd->builtin == _env_)
 		_env(shell.env);
 	else if (cmd->builtin == _exit_)
-		_exit(shell.status);
+		__exit(shell);
 	else if (cmd->path)
 	{
 		if (execve(cmd->path, cmd->args, NULL) == -1)
 			execve_fail();
 	}
-	// add syntax error checking	
+	else
+	{
+		
+		putstr_fd(cmd->args[0], 2);
+		putstr_fd(": command not found\n", 2);
+	}
 }
 
 void	first_cmd(int *fildes, t_cmdl *cmd, g_shell shell)

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:07:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 08:40:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	_pwd(void);
 void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	_unset(char **to_unset,t_envl **envl);
+void	__exit(g_shell shell);
 void	change_dir(char *s);
 void	disp_export(t_envl **envl);
 //* PROC
