@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/22 12:04:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:42:22 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ void	free_envl_n(t_envl *node);
 void	print_table(char **table);
 void	print_list(t_cmdl *list);
 int     vector_len(char **vec);
+void	putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
 
 #endif

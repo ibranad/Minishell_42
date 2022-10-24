@@ -7,8 +7,8 @@ CC = gcc
 RDL = -lreadline
 # LDFLAGS="/.brew/opt/readline/lib"
 # CPPFLAGS="/.brew/opt/readline/include"
-LDFLAGS="-L${HOME}/.brew/opt/readline/lib"
-CPPFLAGS="-I${HOME}/.brew/opt/readline/include"
+LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
+CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
@@ -32,6 +32,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/utils_3.c \
 			Utils/list_utils.c \
 			Utils/split.c \
+			Utils/puts.c \
 			Execu/exec/execute.c \
 			Execu/pipex/manip_cmds.c \
 			Execu/pipex/pipex.c \

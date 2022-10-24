@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/24 15:09:07 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 18:50:28 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	ft_heredoc(char *lim)
 	if (ft_strncmp(line, lim, ft_strlen(lim)) == 0)
 	{
 		free (line);
+		close(pip[1]);
 		return (pip[0]);
 	}
 	write(pip[1], line, ft_strlen(line));
@@ -62,6 +63,7 @@ int	ft_heredoc(char *lim)
 		free (line);
 	}
 	free (line);
+	close(pip[1]);
 	return (pip[0]);
 }
 

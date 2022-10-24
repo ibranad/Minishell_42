@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/23 15:50:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/24 21:38:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,59 @@ int toklist_size_2alloc(t_toklist *tok_list)
     return(i + 1);
 }
 
-t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
+typedef struct prs_lst_st
 {
-    int         i = 0;
+    int         i;
+    int         size;
+    int         apnd_flag;
     int         red_in_flag;
-    int         size = 0;
     int         red_out_flag;
     int         here_doc_flag;
+    int         first_word;
     int         cmd_c;
     char        **paths;
     t_cmdl      *lst;
     t_cmdl      *tmp_2;
     t_toklist   *tmp;
-    int first_word = 0;
+    
+}       t_prs_lst;
 
+
+
+t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
+{
+    int         i;
+    int         size;
+    int         apnd_flag;
+    int         red_in_flag;
+    int         red_out_flag;
+    int         here_doc_flag;
+    int         first_word;
+    int         cmd_c;
+    char        **paths;
+    t_cmdl      *lst;
+    t_cmdl      *tmp_2;
+    t_toklist   *tmp;
+
+    i = 0;
+    size = 0;
+    first_word = 0;
     red_out_flag = 0;
     here_doc_flag = 0;
     red_in_flag = 0;
+    apnd_flag = 0;
+    
     cmd_c = 0;
     paths = get_paths(envl);
     size = toklist_size_2alloc(tok_lst);
-    //printf("size is %d\n", size);
     lst = create_parse_lst(size);
     lst_init(&lst);
     tmp = tok_lst;
     tmp_2 = lst;
     while(tmp)
     {
-        if ((tmp->nature == _word) && (here_doc_flag == 0))
+        if ((tmp->nature == _word) && (here_doc_flag == 0) 
+        && (red_in_flag == 0) && (red_out_flag == 0) && (apnd_flag == 0))
         {
             if (first_word == 0)
             {
@@ -149,68 +174,91 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                     break;
             }
         }
-        if (tmp->nature == _chev)
+        if (tmp->nature == _chev || tmp->nature == _word)
         {
-            if (tmp->next)
+            if ((tmp->nature == _chev) && (red_in_flag == 0))
             {
                 red_in_flag = 1;
-                tmp_2->in_fd = open(tmp->next->lexeme, O_RDONLY);
-                if (tmp->next->next)
-                    tmp = tmp->next->next;
+                if (tmp->next)
+                    tmp = tmp->next;
                 else
+                {
+                    printf("Syntax error: unexpected token near `\\n`\n");
                     break;
+                }   
             }
-            else
+            if ((tmp->nature == _word) && (red_in_flag == 1))
             {
-                printf("Syntax error: unexpected token near `\\n`\n");
-                break;
-            }
-        }
-        if (tmp->nature == _ichev)
-        {
-            if(tmp->next)
-            {
-                red_out_flag = 1;
-                tmp_2->out_fd = open(tmp->next->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
-                if (tmp->next->next)
-                    tmp = tmp->next->next;
-                else if (tmp->next)
+                tmp_2->in_fd = open(tmp->lexeme, O_RDONLY);
+                red_in_flag = 0;
+                if (tmp->next)
                     tmp = tmp->next;
                 else
                     break;
             }
-            else
-            {
-                printf("Syntax error: unexpected token near `\\n`\n");
-                break;
-            }
         }
-        if (tmp->nature == _dichev)
+        if ((tmp->nature == _ichev) || (tmp->nature == _word))
         {
-            if(tmp == tmp->next)
+            printf("hello\n");
+            if ((tmp->nature == _ichev) && (red_out_flag == 0))
             {
-                tmp_2->out_fd = open(tmp->next->lexeme, O_CREAT | O_WRONLY | O_APPEND, 0777);
-                if (tmp->next->next)
-                    tmp = tmp->next->next;
+                red_out_flag = 1;
+                if (tmp->next)
+                    tmp = tmp->next;
+                else
+                {
+                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                    break;
+                }   
+            }
+            if ((tmp->nature == _word) && (red_out_flag == 1))
+            {
+                tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+                if (tmp_2->in_fd < 0)
+                    putstr_fd(strerror(tmp_2->in_fd), 1);
+                red_out_flag = 0;
+                if (tmp->next)
+                    tmp = tmp->next;
                 else
                     break;
             }
-            else
+        }
+        if (tmp->nature == _dichev || tmp->nature == _word)
+        {
+            if ((tmp->nature == _dichev) && (apnd_flag == 0))
             {
-                printf("Syntax error: unexpected token near `\\n`\n");
-                break;
+                apnd_flag = 1;
+                if (tmp->next)
+                    tmp = tmp->next;
+                else
+                {
+                    printf("Syntax error: unexpected token near `\\n`\n");
+                    break;
+                }   
+            }
+            if ((tmp->nature == _word) && (apnd_flag == 1))
+            {
+                tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_APPEND, 0777);
+                if (tmp_2->in_fd < 0)
+                    putstr_fd(strerror(tmp_2->in_fd), 1);
+                red_in_flag = 0;
+                if (tmp->next)
+                    tmp = tmp->next;
+                else
+                    break;
             }
         }
         if (tmp->nature == _pipe)
         {
-            tmp_2->out_fd = -42;
-            red_out_flag = 0;
-            here_doc_flag = 0;
-            first_word = 0;
+            if (!(red_out_flag == 0) && !(apnd_flag == 0))
+                tmp_2->out_fd = -42;
             tmp_2->args[i] = 0;
             i = 0;
             if (tmp->next)
             {
+                red_out_flag = 0;
+                here_doc_flag = 0;
+                first_word = 0;
                 tmp = tmp->next;
                 tmp_2 = tmp_2->next;
             }
