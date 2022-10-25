@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/23 11:47:36 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 16:17:40 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
         p->expa = get_until_dollar(&in[p->i_g + 1]);
         p->out = ft_strjoin(p->out, p->expa);
         free(ptr);
-        p->i_g += ft_strlen(p->expa);
+        p->i_g += ft_strlen(p->expa) + 1;
         free(p->expa);
     }
     else
