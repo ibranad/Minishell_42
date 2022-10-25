@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 17:42:22 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 19:44:36 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ void	print_list(t_cmdl *list);
 int     vector_len(char **vec);
 void	putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
+int     nbrlen(int nbr);
+char	*ft_itoa(int n);
+
 
 #endif

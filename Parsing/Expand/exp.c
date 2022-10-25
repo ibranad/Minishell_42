@@ -6,12 +6,37 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/23 11:34:47 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 19:56:44 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
+void    dollar_white_space(t_exp *s, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+        ptr = s->out;
+    s->out = ft_strjoin(s->out, "$");
+    s->not_out = get_until_dollar(&in[s->g_i]);
+    s->out = ft_strjoin(ptr, s->not_out);
+    free(ptr);
+    s->g_i += ft_strlen(s->not_out);
+    free(s->not_out);
+}
+
+void    dollar_ques_mark(t_exp *s, char *in)
+{
+    (void)in;
+    char *ptr;
+    
+    ptr = NULL;
+    ptr = ft_itoa(shell.status);
+    s->g_i++;
+    s->out = ft_strjoin(s->out, ptr);
+    s->g_i++;
+}
 
 char *expander(t_envl *envl, char *in)
 {
@@ -24,6 +49,10 @@ char *expander(t_envl *envl, char *in)
             in_here_doc_handle(&s, in);
         if (in[s.g_i] == '$' && !in[s.g_i + 1])
             dollar_only_case(&s, in);
+        if (in[s.g_i] == '$' && (in[s.g_i + 1] == ' ' || in[s.g_i + 1] == '\t'))
+            dollar_white_space(&s, in);
+        if (in[s.g_i] == '$' && in[s.g_i + 1] && !in[s.g_i + 2])
+            dollar_ques_mark(&s, in);
         else if (in[s.g_i] == '$')
             dollar_expanding(envl, &s, in);
         else if (in[s.g_i] == '\"')
@@ -43,9 +72,10 @@ int unreq_meta_char(char *in)
     i = 0;
     while(in[i])
     {
-        if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*' || in[i] == '(' || in[i] == ')' 
-        || in[i] == '\\' || in[i] == '[' || in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] ==';'
-        || in[i] == '?' || in[i] == '!')
+        if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*' 
+        || in[i] == '(' || in[i] == ')' || in[i] == '\\' || in[i] == '[' 
+        || in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] ==';'
+        || in[i] == '!')
         {
             printf("Syntax error : Illegal character `%c`\n", in[i]);
             return(-2);
