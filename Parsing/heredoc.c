@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/24 18:50:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 14:34:49 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	ft_hd_short(char *line, char *lim, int pip)
 
 	c = '\n';
 	if (ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	{
+		write(pip, &c, 1);
 		return (-1);
+	}
 	else
 	{
 		write(pip, &c, 1);

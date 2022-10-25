@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+Makefile
+=======
 ./Makefile
+>>>>>>> 4c0925a79e8a2bc48e767a81bb55d2e685539023
 log
 a.out
 *.o
@@ -15,4 +19,8 @@ signal.c
 test.c
 nature
 outf
+<<<<<<< HEAD
+out
+=======
 
+>>>>>>> 4c0925a79e8a2bc48e767a81bb55d2e685539023
