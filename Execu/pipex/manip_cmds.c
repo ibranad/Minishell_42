@@ -6,13 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 12:24:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:27:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	run(t_cmdl *cmd,g_shell shell)
+void	run(t_cmdl *cmd, g_shell shell, char **env)
 {
 	if (cmd->builtin == _echo_)
 		_echo(vector_len(cmd->args + 1), cmd->args + 1);
@@ -30,7 +30,7 @@ void	run(t_cmdl *cmd,g_shell shell)
 		__exit(shell);
 	else if (cmd->path)
 	{
-		if (execve(cmd->path, cmd->args, NULL) == -1)
+		if (execve(cmd->path, cmd->args, env) == -1)
 			execve_fail();
 	}
 	else
@@ -41,32 +41,32 @@ void	run(t_cmdl *cmd,g_shell shell)
 	}
 }
 
-void	first_cmd(int *fildes, t_cmdl *cmd, g_shell shell)
+void	first_cmd(int *fildes, t_cmdl *cmd, g_shell shell, char **env)
 {
 	read_from(cmd->in_fd);
 	write_to_pipe(fildes);
-	run(cmd, shell);
+	run(cmd, shell, env);
 }
 
-void	mid_cmd(int *fildes, t_cmdl *cmd, g_shell shell)
+void	mid_cmd(int *fildes, t_cmdl *cmd, g_shell shell, char **env)
 {
 	write_to_pipe(fildes);
-	run(cmd, shell);
+	run(cmd, shell, env);
 }
 
-void	last_cmd(t_cmdl *cmd, g_shell shell)
+void	last_cmd(t_cmdl *cmd, g_shell shell, char **env)
 {
 	write_to(cmd->out_fd);
-	run(cmd, shell);
+	run(cmd, shell, env);
 }
 
-void	run_sole_cmd(t_cmdl *cmd, g_shell shell)
+void	run_sole_cmd(t_cmdl *cmd, g_shell shell, char **env)
 {
 	if (!ft_fork())
 	{
 		read_from(cmd->in_fd);
 		write_to(cmd->out_fd);
-		run(cmd, shell);
+		run(cmd, shell, env);
 	}
 	wait_all(&shell.status);
 }

@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
 		handle_signals();
 		cmd_line = parser(shell.env);
 		print_parsing_lst(cmd_line);
-		execute(cmd_line, shell);
+		execute(cmd_line, shell, env);
 		dup2(fd, STDIN_FILENO);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/22 11:19:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:29:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*fetch_path(char *cmd, char **paths)
 		path_unset(cmd);
 	i = 0;
 	str_tolower(cmd);
+	if (!access(cmd, F_OK))
+		return (cmd);
 	while (paths[i])
 	{
 		path = strjoin_s(paths[i], cmd);

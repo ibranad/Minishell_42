@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 08:40:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:27:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
-void	first_cmd(int *fds, t_cmdl *cmdl, g_shell shell);
-void	last_cmd(t_cmdl *cmdl, g_shell shell);
-void	mid_cmd(int *fildes, t_cmdl *cmdl, g_shell shell);
-void	run_sole_cmd(t_cmdl *cmd, g_shell shell);
+void	first_cmd(int *fds, t_cmdl *cmdl, g_shell shell, char **env);
+void	last_cmd(t_cmdl *cmdl, g_shell shell, char **env);
+void	mid_cmd(int *fildes, t_cmdl *cmdl, g_shell shell, char **env);
+void	run_sole_cmd(t_cmdl *cmd, g_shell shell, char **env);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);
@@ -61,8 +61,7 @@ void	change_dir(char *s);
 void	disp_export(t_envl **envl);
 //* PROC
 int		cmdline_size(t_cmdl *lst);
-void	execute(t_cmdl *cmd, g_shell shell);
-void	pipex(t_cmdl *cmdl, g_shell shell);
+void	pipex(t_cmdl *cmdl, g_shell shell, char **env);
 void	wait_all(int *status);
 t_cmdl	*get_pipline(void);
 t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
