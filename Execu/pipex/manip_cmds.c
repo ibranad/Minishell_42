@@ -6,11 +6,17 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 09:27:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:04:35 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
+void	ft_execve(t_cmdl *cmd, char **env)
+{
+	if (execve(cmd->path, cmd->args, env) == -1)
+			execve_fail();
+}
 
 void	run(t_cmdl *cmd, g_shell shell, char **env)
 {
@@ -29,16 +35,9 @@ void	run(t_cmdl *cmd, g_shell shell, char **env)
 	else if (cmd->builtin == _exit_)
 		__exit(shell);
 	else if (cmd->path)
-	{
-		if (execve(cmd->path, cmd->args, env) == -1)
-			execve_fail();
-	}
+		ft_execve(cmd, env);
 	else
-	{
-		
-		putstr_fd(cmd->args[0], 2);
-		putstr_fd(": command not found\n", 2);
-	}
+		_err_cmd_not_found(cmd->args[0]);
 }
 
 void	first_cmd(int *fildes, t_cmdl *cmd, g_shell shell, char **env)
