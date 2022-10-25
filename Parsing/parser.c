@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 16:24:52 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:26:12 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void print_parsing_lst(t_cmdl *cmd)
     }
 }
 
-t_cmdl	*parser(t_envl *envl, g_shell shell)
+t_cmdl	*parser(g_shell shell)
 {
 	char		*red_line;
 	t_toklist	*tokens;
@@ -60,7 +60,7 @@ t_cmdl	*parser(t_envl *envl, g_shell shell)
 			free(red_line);
 		else
 		{
-			red_line = expander(envl, red_line);
+			red_line = expander(shell.env, red_line);
 			//printf("After expanding %s\n", red_line);
 			tokens = lexer(red_line);
 			print_tokens(tokens->next);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 15:55:06 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 17:25:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		handle_signals();
-		cmd_line = parser(shell.env);
+		cmd_line = parser(shell);
 		print_parsing_lst(cmd_line);
 		// exit(0);
 		execute(cmd_line, shell, env);

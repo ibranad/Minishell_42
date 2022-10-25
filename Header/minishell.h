@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 16:22:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:25:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ g_shell	shell;
 # include "lexer.h"
 # include "parser.h"
 # include "exec.h"
-t_cmdl	*parser(t_envl *envl, g_shell shell);
+t_cmdl	*parser(g_shell shell);
 void	execute(t_cmdl *cmd, g_shell shell, char **env);
 void	handle_signals(void);
 #endif
