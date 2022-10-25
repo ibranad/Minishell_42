@@ -6,13 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:10:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:24:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	pipex(t_cmdl *cmdl, g_shell shell)
+void	pipex(t_cmdl *cmdl, g_shell shell, char **env)
 {
 	int		fildes[2];
 	t_cmdl	*curr;
@@ -26,15 +26,15 @@ void	pipex(t_cmdl *cmdl, g_shell shell)
 		if (!ft_fork())
 		{
 			if (!curr->idx)
-				first_cmd(fildes, curr, shell);
+				first_cmd(fildes, curr, shell, env);
 			else
-				mid_cmd(fildes, curr, shell);
+				mid_cmd(fildes, curr, shell, env);
 		}
 		else
 			read_from_pipe(fildes);
 		curr = curr->next;
 	}
 	if (!ft_fork())
-		last_cmd(curr, shell);
+		last_cmd(curr, shell, env);
 	wait_all(&shell.status);
 }

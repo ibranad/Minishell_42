@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/24 21:38:33 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 09:30:39 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         }
         if ((tmp->nature == _ichev) || (tmp->nature == _word))
         {
-            printf("hello\n");
             if ((tmp->nature == _ichev) && (red_out_flag == 0))
             {
                 red_out_flag = 1;

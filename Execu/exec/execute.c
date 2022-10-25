@@ -6,13 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:02:05 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 09:28:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:23:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	execute(t_cmdl *cmd, g_shell shell)
+void	execute(t_cmdl *cmd, g_shell shell, char **env)
 {
 	int	size;
 
@@ -20,7 +20,7 @@ void	execute(t_cmdl *cmd, g_shell shell)
 		return ;
 	size = cmdline_size(cmd);
 	if (size == 1)
-		run_sole_cmd(cmd, shell);
+		run_sole_cmd(cmd, shell, env);
 	else
-		pipex(cmd, shell);
+		pipex(cmd, shell, env);
 }
