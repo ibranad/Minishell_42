@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 07:22:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:10:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ int	is_symbol(char c)
 		return (1);
 	return (0);
 }
+
+int	is_quote(char c)
+{
+	if (c == '\'' || c == '\"')
+		return (1);
+	return (0);
+}
+
 char	*lex_gather_lexeme(t_lex *lex)
 {
 	char	*lexeme;
@@ -32,7 +40,8 @@ char	*lex_gather_lexeme(t_lex *lex)
 	lexeme = NULL;
 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
 	{
-		lexeme = charjoin(lexeme, lex->c);
+		if (!is_quote(lex->c))
+			lexeme = charjoin(lexeme, lex->c);
 		lex_forward(lex);
 	}
 	lex_backward(lex);

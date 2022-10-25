@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 10:55:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:58:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ t_cmdl	*parser(t_envl *envl)
 		{
 			red_line = expander(envl, red_line);
 			tokens = lexer(red_line);
-			// print_tokens(tokens->next);
+			print_tokens(tokens->next);
+			// exit(0);/
 			cmd_line = parse_list(tokens->next, shell.env);
 			free(red_line);
 			return (cmd_line);

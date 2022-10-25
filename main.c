@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 15:05:29 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:01:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +27,8 @@ int main(int ac, char **av, char **env)
 	{
 		handle_signals();
 		cmd_line = parser(shell.env);
-		print_parsing_lst(cmd_line);
+		// print_parsing_lst(cmd_line);
+		// exit(0);
 		execute(cmd_line, shell, env);
 		dup2(fd, STDIN_FILENO);
 	}
