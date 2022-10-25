@@ -14,3 +14,4 @@ signal.c
 test.c
 nature
 outf
+Makefile

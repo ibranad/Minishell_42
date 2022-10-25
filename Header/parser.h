@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/20 15:00:07 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 10:08:54 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int         cmd_count(t_toklist *tmp);
 int         is_builtin(char *str);
 int         toklist_size_2alloc(t_toklist *tok_list);
+char        *char_at_start_end(char *in , char c);
 void        lst_init(t_cmdl **lst);
 void        ft_lstadd_back(t_cmdl **alst, t_cmdl *new);
 void        print_parsing_lst(t_cmdl *in);

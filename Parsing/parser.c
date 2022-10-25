@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 17:12:12 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 09:32:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_cmdl	*parser(t_envl *envl)
 	t_cmdl		*cmd_line;
 	
 	red_line = NULL;
-	red_line = readline("Minishell pre-α $> ");
+	red_line = readline("Minishell $> ");
 	if (red_line && red_line[0])
 	{
 		add_history(red_line);

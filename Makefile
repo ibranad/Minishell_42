@@ -23,6 +23,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Expand/exp_util_4.c \
 			Parsing/Parsing_list/parse_list.c \
 			Parsing/Parsing_list/parse_list_utils.c \
+			Parsing/Parsing_list/parse_list_utils_2.c \
 			Parsing/parser.c \
 			Utils/ascii2.c \
 			Utils/env_utils.c \
