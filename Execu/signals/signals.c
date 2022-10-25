@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 14:48:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:13:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,21 @@ void	interrupt_handle()
 	rl_redisplay();
 }
 
+
+void	foo(void)
+{
+	
+}
+
 void	handle_signals()
 {
 	signal(SIGINT, interrupt_handle);
 	signal(SIGQUIT, SIG_IGN);
 }
+
+
+//For Control-D signal
+// if the rl_line_buffer is empty this signal causes the terminal to exit
+// if the rl_line_buffer contains something this signal get ignored
+// if we're in here_doc or the command is reading input from stdin the reading
+// stops

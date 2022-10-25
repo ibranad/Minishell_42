@@ -5,8 +5,8 @@ RM = rm -rf
 FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
-LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
-CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
+LDFLAGS="-L/${HOME}/.brew/opt/readline/lib"
+CPPFLAGS="-I/${HOME}/.brew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
