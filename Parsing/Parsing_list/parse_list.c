@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 11:33:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 12:02:39 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,11 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 here_doc_flag = 1;
                 if (tmp->next)
+                {
+                    if (is_symbol(tmp->next->lexeme[0]))
+                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     tmp = tmp->next;
+                }
                 else
                 {
                     putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
@@ -180,7 +184,11 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 red_in_flag = 1;
                 if (tmp->next)
+                {
+                    if (is_symbol(tmp->next->lexeme[0]))
+                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     tmp = tmp->next;
+                }
                 else
                 {
                     putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
@@ -202,8 +210,12 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             if ((tmp->nature == _ichev) && (red_out_flag == 0))
             {
                 red_out_flag = 1;
-                if (tmp->next)
+                 if (tmp->next)
+                {
+                    if (is_symbol(tmp->next->lexeme[0]))
+                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     tmp = tmp->next;
+                }
                 else
                 {
                     putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
@@ -228,7 +240,11 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 apnd_flag = 1;
                 if (tmp->next)
+                {
+                    if (is_symbol(tmp->next->lexeme[0]))
+                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     tmp = tmp->next;
+                }
                 else
                 {
                     printf("Syntax error: unexpected token near `\\n`\n");
