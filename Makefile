@@ -7,6 +7,7 @@ CC = gcc
 RDL = -lreadline
 LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
 CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
+
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \

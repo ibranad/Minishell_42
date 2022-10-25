@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 09:30:39 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:33:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                     tmp = tmp->next;
                 else
                 {
-                    printf("Syntax error: unexpected token near `\\n`\n");
+                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     break;
                 }   
             }
@@ -183,7 +183,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                     tmp = tmp->next;
                 else
                 {
-                    printf("Syntax error: unexpected token near `\\n`\n");
+                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
                     break;
                 }   
             }
@@ -214,7 +214,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
                 if (tmp_2->in_fd < 0)
-                    putstr_fd(strerror(tmp_2->in_fd), 1);
+                    putstr_fd(strerror(errno), 2);
                 red_out_flag = 0;
                 if (tmp->next)
                     tmp = tmp->next;
@@ -239,7 +239,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_APPEND, 0777);
                 if (tmp_2->in_fd < 0)
-                    putstr_fd(strerror(tmp_2->in_fd), 1);
+                    putstr_fd(strerror(errno), 2);
                 red_in_flag = 0;
                 if (tmp->next)
                     tmp = tmp->next;
