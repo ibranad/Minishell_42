@@ -6,46 +6,46 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:30:35 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/11 16:26:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:04:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-void    close_fail(int fd)
+void    close_fail()
 {
-        dprintf(2, "Error: Close failed : %d\n", fd);
+		putstr_fd("Error: close fail\n", 2);
         exit(EXIT_FAILURE);
 }
 
-void    dup2_fail(int fd)
+void    dup2_fail()
 {
-        dprintf(2, "Error: dup2 failed: %d\n errno : %d\n", fd, errno);
+		putstr_fd("Error: dup2 Failed\n", 2);
         exit(EXIT_FAILURE);
 }
 
 void    execve_fail(void)
 {
-        dprintf(2, "Error: Execve failed\n");
+		putstr_fd("Error: execve failed\n" , 2);
         exit(EXIT_FAILURE);
 }
 
 void    fork_fail(void)
 {
-        dprintf(2, "Error : fork failed \n");
+		putstr_fd("Error : fork failed\n", 2);
         exit(EXIT_FAILURE);
 }
 
 
 void    malloc_fail(void)
 {
-        dprintf(2, "Malloc failed\n");
+		putstr_fd("Error : Malloc failed\n", 2);
         exit(EXIT_FAILURE);
 }
 
 void    pipe_fail(void)
 {
-        dprintf(2, "Error: pipe fail\n");
+		putstr_fd("Error: Pipe fail\n", 2);
         exit(EXIT_FAILURE);
 }
 

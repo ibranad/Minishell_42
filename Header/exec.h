@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 09:27:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/25 19:38:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	first_cmd(int *fds, t_cmdl *cmdl, g_shell shell, char **env);
 void	last_cmd(t_cmdl *cmdl, g_shell shell, char **env);
 void	mid_cmd(int *fildes, t_cmdl *cmdl, g_shell shell, char **env);
 void	run_sole_cmd(t_cmdl *cmd, g_shell shell, char **env);
+void	run(t_cmdl *cmd, g_shell shell, char **env);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);

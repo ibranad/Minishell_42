@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 21:29:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/25 21:46:53 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 	{
 		handle_signals();
 		cmd_line = parser(shell);
-		//print_parsing_lst(cmd_line);
+		// print_parsing_lst(cmd_line);
 		// exit(0);
 		execute(cmd_line, shell, env);
 		dup2(fd, STDIN_FILENO);
