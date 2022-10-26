@@ -5,12 +5,12 @@ a.out
 .vscode/
 zsandbox/
 *.txt
-Tests/
+# Tests/
 *.dSYM
 .DS_Store
 minishell
 signal
 signal.c
-test.c
+test*
 nature
-outf
+o*

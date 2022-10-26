@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 14:34:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 10:26:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_hd_short(char *line, char *lim, int pip)
 	char	c;
 
 	c = '\n';
-	if (ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	if (!line || ft_strncmp(line, lim, ft_strlen(lim)) == 0)
 	{
 		write(pip, &c, 1);
 		return (-1);
