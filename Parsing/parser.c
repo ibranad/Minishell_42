@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/26 16:17:15 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:58:45 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ t_cmdl	*parser(g_shell shell)
 		else
 		{
 			red_line = expander(shell.env, red_line);
-			printf("red_line is %s\n", red_line);
-			// printf("Expanded : %s\n", red_line);
 			tokens = lexer(red_line);
-			print_tokens(tokens->next);
+			//print_tokens(tokens->next);
 			cmd_line = parse_list(tokens->next, shell.env);
 			free(red_line);
 			return (cmd_line);

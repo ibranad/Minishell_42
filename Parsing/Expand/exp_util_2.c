@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 17:18:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:39:18 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    dollar_expanding(t_envl *envl, t_exp *s, char *in)
     char *ptr;
 
     ptr = NULL;
+    printf("hello\n");
     if (ft_isdigit(in[s->g_i + 1]))
         dollar_expanding_if_short(s, in);
     else

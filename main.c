@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:26:45 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 	{
 		handle_signals();
 		cmd_line = parser(shell);
-		print_parsing_lst(cmd_line);
+		//print_parsing_lst(cmd_line);
 		execute(cmd_line, shell, env);
 		dup2(fd, STDIN_FILENO);
 	}

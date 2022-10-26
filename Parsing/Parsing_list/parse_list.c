@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 15:27:42 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:51:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    lst_init(t_cmdl **lst)
     while (tmp)
     {
         tmp->args = 0;
-        tmp->builtin = 0;
+        tmp->builtin = -1;
         tmp->idx = i;
         tmp->in_fd = 0;
         tmp->out_fd = 1;

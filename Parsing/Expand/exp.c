@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 17:38:09 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:42:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char *expander(t_envl *envl, char *in)
             dollar_only_case(&s, in);
         if (in[s.g_i] == '$' && (in[s.g_i + 1] == ' ' || in[s.g_i + 1] == '\t'))
             dollar_white_space(&s, in);
-        if (in[s.g_i] == '$' && in[s.g_i + 1])
+        if (in[s.g_i] == '$' && in[s.g_i + 1] == '?')
             dollar_ques_mark(&s, in);
         else if (in[s.g_i] == '$')
             dollar_expanding(envl, &s, in);
@@ -72,7 +72,16 @@ int unreq_meta_char(char *in)
     i = 0;
     while(in[i])
     {
-        //meta charcters are allowed in double/single quote
+        if(in[i] == '\"' || in[i] == '\'')
+        {
+            i++;
+            while(in[i])
+            {
+                if (in[i] == '\"' || in[i] == '\'')
+                    break;
+                i++;
+            }
+        }
         if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*' 
         || in[i] == '(' || in[i] == ')' || in[i] == '\\' || in[i] == '[' 
         || in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] ==';'
@@ -83,7 +92,7 @@ int unreq_meta_char(char *in)
         }
         i++;
     }
-    return(0);
+    return (0);
 }
 
 int check_meta_char(char *in)
