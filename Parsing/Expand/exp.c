@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 19:56:44 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 15:25:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int unreq_meta_char(char *in)
     i = 0;
     while(in[i])
     {
+        //meta charcters are allowed in double/single quote
         if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*' 
         || in[i] == '(' || in[i] == ')' || in[i] == '\\' || in[i] == '[' 
         || in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] ==';'
@@ -85,12 +86,34 @@ int unreq_meta_char(char *in)
     return(0);
 }
 
+int check_meta_char(char *in)
+{
+    int i;
+
+    i = 0;
+    while (in[i])
+    {
+        if ((in[i] == '>') || (in[i] == '<') || (in[i] == '|'))
+        {
+            putstr_fd("Syntax Error near unexpected token\n", 2);
+            return (-3);
+        }
+        else if (in[i] == ' ' || in[i] == '\t')
+            i++;
+        else
+            break;
+    }
+    return (0);
+}
+
 int check_unrequired_by_subject(char *in)
 {
     if (unclosed_quote(in) == 1)
         return(-1);
     if (unreq_meta_char(in) == -2)
         return(-2);
+    if (check_meta_char(in) == -3)
+        return(-3);
     return (0);
 }
 
