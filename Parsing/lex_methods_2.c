@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/26 11:24:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:22:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*lex_gather_lexeme(t_lex *lex)
 	{
 		if (!is_quote(lex->c))
 			lexeme = charjoin(lexeme, lex->c);
+		else
+			lexeme = ft_strjoin(lexeme, lex_gather_str(lex, lex->c));
 		lex_forward(lex);
 	}
 	lex_backward(lex);
