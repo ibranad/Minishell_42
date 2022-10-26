@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 16:02:52 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/26 17:18:49 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ void sq_expanding(t_exp *s, char *in)
 {
     //This sub_function is used for norm purpose
     char *ptr;
+    char *ptr2;
     
     ptr = NULL;
+    ptr2 = NULL;
     s->g_i++;
     ptr = s->out;
     s->not_out = get_until_s_quote(&in[s->g_i]);
-    //s->not_out = char_at_start_end(s->not_out , '\'');
-    s->out = ft_strjoin(s->out, s->not_out);
+    ptr2 = char_at_start_end(s->not_out , '\'');
+    s->out = ft_strjoin(s->out, ptr2);
     free(ptr);
+    free(ptr2);
     s->g_i += ft_strlen(s->not_out) + 1;
     free(s->not_out);
 }
