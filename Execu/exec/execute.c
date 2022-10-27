@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:02:05 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 13:20:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:00:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	execute(t_cmdl *cmd, g_shell shell, char **env)
 	size = cmdline_size(cmd);
 	if (size == 1)
 	{
+		if (!cmd->path && cmd->builtin == -1)
+			return ;
 		if (cmd->builtin == -1)
 			run_sole_cmd(cmd, shell, env);
 		else

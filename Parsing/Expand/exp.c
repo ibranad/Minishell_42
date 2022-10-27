@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 19:42:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/27 15:01:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ int check_unrequired_by_subject(char *in)
         return(-1);
     if (unreq_meta_char(in) == -2)
         return(-2);
-    if (check_meta_char(in) == -3)
-        return(-3);
+    // if (check_meta_char(in) == -3)
+    //     return(-3);
     return (0);
 }
 
