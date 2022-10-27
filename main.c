@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 14:49:58 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:17:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int ac, char **av, char **env)
 
 	fd = dup(0);
 	fd1 = dup(1);
-	printf("fd: %d\n", fd);
 	shell.env = set_env(env);
 	while (1)
 	{
@@ -35,3 +34,5 @@ int main(int ac, char **av, char **env)
 	}
 	return (0);
 }
+
+// We have a bunch of file descriptor that are raving there
