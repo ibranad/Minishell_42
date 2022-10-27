@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/26 15:38:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 07:56:45 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	lex_backward(t_lex *lex)
 	if (lex->i)
 	{
 		lex->i--;
-		lex->c = *(lex->string + lex->i);
+ 		lex->c = *(lex->string + lex->i);
 	}
 }
 

@@ -6,7 +6,11 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/27 11:16:15 by ibnada           ###   ########.fr       */
+=======
+/*   Updated: 2022/10/27 14:50:31 by obouizga         ###   ########.fr       */
+>>>>>>> fe519c13d4f442eecbc9d711bfed0a7a27bbcd2e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +67,10 @@ t_cmdl	*parser(g_shell shell)
 			red_line = expander(shell.env, red_line);
 			printf("Expander :%s\n", red_line);
 			tokens = lexer(red_line);
+<<<<<<< HEAD
+=======
+			printf("lsjflsdjflsj\n");
+>>>>>>> fe519c13d4f442eecbc9d711bfed0a7a27bbcd2e
 			print_tokens(tokens->next);
 			cmd_line = parse_list(tokens->next, shell.env);
 			free(red_line);
