@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 19:51:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/27 19:24:53 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
         {
             if (!(red_out_flag == 0) && !(apnd_flag == 0))
                 tmp_2->out_fd = -42;
-            tmp_2->args[i] = 0;
+            //tmp_2->args[i] = 0;
             i = 0;
             if (tmp->next)
             {

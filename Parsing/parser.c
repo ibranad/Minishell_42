@@ -6,11 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/10/27 11:16:15 by ibnada           ###   ########.fr       */
-=======
-/*   Updated: 2022/10/27 14:50:31 by obouizga         ###   ########.fr       */
->>>>>>> fe519c13d4f442eecbc9d711bfed0a7a27bbcd2e
+/*   Updated: 2022/10/27 19:43:04 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +45,28 @@ void print_parsing_lst(t_cmdl *cmd)
     }
 }
 
+int sym_only(t_toklist *tk)
+{
+	int i;
+	t_toklist *tmp;
+
+	i = 0;
+	tmp = tk;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (i == 1 && ((tk->nature == _pipe) 
+	|| (tk->nature == _chev) || (tk->nature == _ichev)))
+	{
+		putstr_fd("Syntax Error near unexpected token ",2);
+		putstr_fd("`newline'\n",2);
+		return (-1);
+	}
+	return(0);
+}
+
 t_cmdl	*parser(g_shell shell)
 {
 	char		*red_line;
@@ -65,13 +83,11 @@ t_cmdl	*parser(g_shell shell)
 		else
 		{
 			red_line = expander(shell.env, red_line);
-			printf("Expander :%s\n", red_line);
+			printf("Expander %s\n", red_line);
 			tokens = lexer(red_line);
-<<<<<<< HEAD
-=======
-			printf("lsjflsdjflsj\n");
->>>>>>> fe519c13d4f442eecbc9d711bfed0a7a27bbcd2e
-			print_tokens(tokens->next);
+			if (sym_only(tokens->next) == -1)
+				return (NULL);
+			//print_tokens(tokens->next);
 			cmd_line = parse_list(tokens->next, shell.env);
 			free(red_line);
 			return (cmd_line);

@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:51:03 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 09:56:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/27 19:46:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char *char_at_start_end(char *in , char c)
     int j;
     char *out;
 
+    if (!in)
+        return (NULL);
     i = 0;
     j = 1;
     out = malloc(sizeof(char) * ft_strlen(in) + 3);

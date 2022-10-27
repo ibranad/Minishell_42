@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 15:19:58 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/27 15:40:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int ac, char **av, char **env)
 
 	fd = dup(0);
 	fd1 = dup(1);
-	printf("fd: %d\n", fd);
 	shell.env = set_env(env);
 	while (1)
 	{
