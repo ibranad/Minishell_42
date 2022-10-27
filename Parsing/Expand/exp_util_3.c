@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 16:17:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/27 11:33:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     char *ptr;
 
     ptr = NULL;
+    
     if (ft_isdigit(in[p->i_g + 1]))
     {
         p->i_g++;
