@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 15:04:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 07:36:08 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	disp_export(t_envl **envl)
 	curr = *envl;
 	while (curr)
 	{
-		printf("[%i] declare -x %s=%s\n", curr->idx, curr->key, curr->value);
+		printf("declare -x %s=%s\n", curr->key, curr->value);
 		curr = curr->next;
 	}
 }
@@ -58,8 +58,12 @@ void	_export(char **entries, t_envl **envl)
 	
 	l = envl_len(*envl);
 	i = 0;
-	if (!entries)
+	// printf("entries[i] : %s\n", entries[i]);
+	if (!*entries)
+	{
+		printf("Ye entries's null\n");
 		disp_export(envl);
+	}
 	else
 	{
 		while (entries[i])
