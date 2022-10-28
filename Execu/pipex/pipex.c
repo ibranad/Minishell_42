@@ -6,11 +6,12 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 09:24:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:02:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
 
 void	pipex(t_cmdl *cmdl, g_shell shell, char **env)
 {

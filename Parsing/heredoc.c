@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 10:26:22 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:08:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,38 @@ int	ft_hd_short(char *line, char *lim, int pip)
 	return (0);
 }
 
+// int	ft_heredoc(char *lim)
+// {
+// 	char	*line;
+// 	int		pip[2];
+// 	int		e;
+// //needs protection from NULL
+// 	if (!lim)
+// 		return (-1);
+// 	pipe(pip);
+// 	line = readline("> ");
+// 	if (!line || ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+// 	{
+// 		free (line);
+// 		close(pip[1]);
+// 		return (pip[0]);
+// 	}
+// 	write(pip[1], line, ft_strlen(line));
+// 	free(line);
+// 	while (1)
+// 	{
+// 		line = readline("> ");
+// 		e = ft_hd_short(line, lim, pip[1]);
+// 		if (e == -1)
+// 			break ;
+// 		free (line);
+// 	}
+// 	free (line);
+// 	close(pip[1]);
+// 	return (pip[0]);
+// }
+
+
 int	ft_heredoc(char *lim)
 {
 	char	*line;
@@ -49,10 +81,11 @@ int	ft_heredoc(char *lim)
 		return (-1);
 	pipe(pip);
 	line = readline("> ");
-	if (ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	if (!line || ft_strncmp(line, lim, ft_strlen(lim)) == 0)
 	{
 		free (line);
 		close(pip[1]);
+		printf("Nothing\n");
 		return (pip[0]);
 	}
 	write(pip[1], line, ft_strlen(line));
