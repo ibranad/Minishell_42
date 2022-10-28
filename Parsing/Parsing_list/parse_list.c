@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 14:34:16 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 22:05:48 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,239 +50,79 @@ int toklist_size_2alloc(t_toklist *tok_list)
     return(i + 1);
 }
 
-typedef struct prs_lst_st
+void    t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
 {
-    int         i;
-    int         size;
-    int         apnd_flag;
-    int         red_in_flag;
-    int         red_out_flag;
-    int         here_doc_flag;
-    int         first_word;
-    int         cmd_c;
-    char        **paths;
-    t_cmdl      *lst;
-    t_cmdl      *tmp_2;
-    t_toklist   *tmp;
-    
-}       t_prs_lst;
+    p->i = 0;
+    p->size = toklist_size_2alloc(tok_lst);
+    p->apnd_flag = 0;
+    p->red_in_flag = 0;
+    p->red_out_flag = 0;
+    p->here_doc_flag = 0;
+    p->first_word = 0;
+    p->cmd_c = 0;
+    p->paths = get_paths(envl);
+    p->lst = create_parse_lst(p->size);
+    lst_init(&p->lst);
+    p->tmp_2 = p->lst;
+    p->tmp = tok_lst;
+}
 
-
+int    cmd_case(t_prs_lst *p)
+{
+    if (p->tmp_2->idx != 0)
+        p->tmp_2->in_fd = -42; 
+    p->tmp_2->builtin = is_builtin(p->tmp->lexeme);
+    if (p->tmp_2->builtin == -1)
+        p->tmp_2->path = fetch_path(p->tmp->lexeme, p->paths);
+    p->cmd_c = cmd_count(p->tmp);
+    p->tmp_2->args = malloc(sizeof(char *) * (p->cmd_c + 2));
+    p->tmp_2->args[p->i] = p->tmp->lexeme;
+    p->first_word = 1;
+    p->i++;
+    if (p->tmp->next)
+    {
+        if (p->tmp->next->nature != _word)
+        {
+            p->tmp_2->args[p->i] = 0;
+            p->tmp = p->tmp->next;
+        }
+        else
+            p->tmp = p->tmp->next;   
+    }
+    else
+    {
+        p->tmp_2->args[p->i] = 0;
+        return (-1);
+    }
+    return (0);
+}
 
 t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
 {
-    int         i;
-    int         size;
-    int         apnd_flag;
-    int         red_in_flag;
-    int         red_out_flag;
-    int         here_doc_flag;
-    int         first_word;
-    int         cmd_c;
-    char        **paths;
-    t_cmdl      *lst;
-    t_cmdl      *tmp_2;
-    t_toklist   *tmp;
-
-    i = 0;
-    size = 0;
-    first_word = 0;
-    red_out_flag = 0;
-    here_doc_flag = 0;
-    red_in_flag = 0;
-    apnd_flag = 0;
+    t_prs_lst p;
     
-    cmd_c = 0;
-    paths = get_paths(envl);
-    size = toklist_size_2alloc(tok_lst);
-    lst = create_parse_lst(size);
-    lst_init(&lst);
-    tmp = tok_lst;
-    tmp_2 = lst;
-    while(tmp)
+    t_prs_lst_init(&p, tok_lst, envl);
+    while(p.tmp)
     {
-        if ((tmp->nature == _word) && (here_doc_flag == 0) 
-        && (red_in_flag == 0) && (red_out_flag == 0) && (apnd_flag == 0))
-        {
-            if (first_word == 0)
-            {
-                if (tmp_2->idx != 0)
-                   tmp_2->in_fd = -42; 
-                tmp_2->builtin = is_builtin(tmp->lexeme);
-				if (tmp_2->builtin == -1)
-                	tmp_2->path = fetch_path(tmp->lexeme, paths);
-                cmd_c = cmd_count(tmp);
-                tmp_2->args = malloc(sizeof(char *) * (cmd_c + 2));
-                tmp_2->args[i] = tmp->lexeme;
-                first_word = 1;
-                i++;
-                if (tmp->next)
-                {
-                    if (tmp->next->nature != _word)
-                    {
-                        tmp_2->args[i] = 0;
-                        tmp = tmp->next;
-                    }
-                    else
-                        tmp = tmp->next;   
-                }
-                else
-                {
-                    tmp_2->args[i] = 0;
-                    break;
-                }
-            }
-            else if (first_word != 0)
-            {
-                tmp_2->args[i] = tmp->lexeme;
-                i++;
-                if (tmp->next)
-                {
-                    if (tmp->next->nature != _word)
-                    {
-                        tmp_2->args[i] = 0;
-                        tmp = tmp->next;
-                    }
-                    else
-                        tmp = tmp->next;   
-                }
-                else
-                {
-                    tmp_2->args[i] = 0;
-                    break;
-                }
-            }
-        }
-        if (tmp->nature == _dchev || tmp->nature == _word)
-        {
-            if ((tmp->nature == _dchev) && (here_doc_flag == 0))
-            {
-                here_doc_flag = 1;
-                if (tmp->next)
-                {
-                    if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    tmp = tmp->next;
-                }
-                else
-                {
-                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-					tmp_2->is_exec = NO;
-                    break ;
-                }   
-            }
-            if ((tmp->nature == _word) && (here_doc_flag == 1))
-            {
-                tmp_2->in_fd = ft_heredoc(tmp->lexeme);
-                here_doc_flag = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-        }
-        if (tmp->nature == _chev || tmp->nature == _word)
-        {
-            if ((tmp->nature == _chev) && (red_in_flag == 0))
-            {
-                red_in_flag = 1;
-                if (tmp->next)
-                {
-                    if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    tmp = tmp->next;
-                }
-                else
-                {
-                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    break;
-                }   
-            }
-            if ((tmp->nature == _word) && (red_in_flag == 1))
-            {
-                tmp_2->in_fd = open(tmp->lexeme, O_RDONLY);
-                red_in_flag = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-        }
-        if ((tmp->nature == _ichev) || (tmp->nature == _word))
-        {
-            if ((tmp->nature == _ichev) && (red_out_flag == 0))
-            {
-                red_out_flag = 1;
-                 if (tmp->next)
-                {
-                    if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    tmp = tmp->next;
-                }
-                else
-                {
-                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    break;
-                }   
-            }
-            if ((tmp->nature == _word) && (red_out_flag == 1))
-            {
-                tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
-                if (tmp_2->in_fd < 0)
-                    putstr_fd(strerror(errno), 2);
-                red_out_flag = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-        }
-        if (tmp->nature == _dichev || tmp->nature == _word)
-        {
-            if ((tmp->nature == _dichev) && (apnd_flag == 0))
-            {
-                apnd_flag = 1;
-                if (tmp->next)
-                {
-                    if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-                    tmp = tmp->next;
-                }
-                else
-                {
-                    printf("syntax error near unexpected token `newline'\n");
-                    break;
-                }   
-            }
-            if ((tmp->nature == _word) && (apnd_flag == 1))
-            {
-                tmp_2->out_fd = open(tmp->lexeme, O_CREAT | O_WRONLY | O_APPEND, 0777);
-                if (tmp_2->in_fd < 0)
-                    putstr_fd(strerror(errno), 2);
-                red_in_flag = 0;
-                if (tmp->next)
-                    tmp = tmp->next;
-                else
-                    break;
-            }
-        }
-        if (tmp->nature == _pipe)
-        {
-            if (!(red_out_flag == 0) && !(apnd_flag == 0))
-                tmp_2->out_fd = -42;
-            //tmp_2->args[i] = 0;
-            i = 0;
-            if (tmp->next)
-            {
-                red_out_flag = 0;
-                here_doc_flag = 0;
-                first_word = 0;
-                tmp = tmp->next;
-                tmp_2 = tmp_2->next;
-            }
-            else
+        if ((p.tmp->nature == _word) && (p.here_doc_flag == 0) 
+        && (p.red_in_flag == 0) && (p.red_out_flag == 0) && (p.apnd_flag == 0))
+            if(command_arg_case(&p) == -1)
                 break;
-        }
+        if (p.tmp->nature == _dchev || p.tmp->nature == _word)
+            if (heredoc_case(&p) == -1)
+                break;
+        if (p.tmp->nature == _chev || p.tmp->nature == _word)
+            if (red_in_case(&p) == -1)
+                break;
+        if ((p.tmp->nature == _ichev) || (p.tmp->nature == _word))
+            if (red_out_case(&p) == -1)    
+                break;
+        if (p.tmp->nature == _dichev || p.tmp->nature == _word)
+            if (apnd_case(&p) == -1)
+                break;
+        if (p.tmp->nature == _pipe)
+            if (pipe_case(&p) == -1)
+                break;
     }
-    return (lst);
+    return (p.lst);
 }
