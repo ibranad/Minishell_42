@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 10:55:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:07:12 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*path_unset(char *cmd)
 {
-	printf("%s : No such file or directory\n", cmd);
+	printf("minishell %s: No such file or directory\n", cmd);
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:28:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:07:21 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:05:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char	*charjoin(char *s1, char c)
 
 int is_builtin(char *str)
 {
+	str_tolower(str);
     if (ft_strcmp(str, "echo") == 0)
         return(_echo_);
     else if (ft_strcmp(str, "cd") == 0)
