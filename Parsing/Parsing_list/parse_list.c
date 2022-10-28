@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/26 19:51:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 07:51:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,13 +159,14 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 if (tmp->next)
                 {
                     if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     tmp = tmp->next;
                 }
                 else
                 {
-                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
-                    break;
+                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
+					tmp_2->is_exec = 0;
+                    break ;
                 }   
             }
             if ((tmp->nature == _word) && (here_doc_flag == 1))
@@ -186,12 +187,12 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 if (tmp->next)
                 {
                     if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     tmp = tmp->next;
                 }
                 else
                 {
-                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     break;
                 }   
             }
@@ -213,12 +214,12 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                  if (tmp->next)
                 {
                     if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     tmp = tmp->next;
                 }
                 else
                 {
-                    putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                    putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     break;
                 }   
             }
@@ -242,12 +243,12 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 if (tmp->next)
                 {
                     if (is_symbol(tmp->next->lexeme[0]))
-                        putstr_fd("Syntax error: unexpected token near `\\n`\n", 2);
+                        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
                     tmp = tmp->next;
                 }
                 else
                 {
-                    printf("Syntax error: unexpected token near `\\n`\n");
+                    printf("syntax error near unexpected token `newline'\n");
                     break;
                 }   
             }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 17:19:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 07:45:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_execve(t_cmdl *cmd, char **env)
 
 void	run(t_cmdl *cmd, g_shell shell, char **env)
 {
+	if (!cmd->is_exec)
+		exit(EXIT_FAILURE);
 	if (cmd->builtin != -1)
 		write_to(cmd->out_fd);
 	if (cmd->builtin == _echo_)
