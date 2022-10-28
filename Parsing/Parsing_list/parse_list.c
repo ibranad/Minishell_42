@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 07:51:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:48:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void    lst_init(t_cmdl **lst)
         tmp->in_fd = 0;
         tmp->out_fd = 1;
         tmp->path = 0;
+		tmp->is_exec = YES;
         i++;
         tmp = tmp->next;
     }
@@ -107,8 +108,9 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             {
                 if (tmp_2->idx != 0)
                    tmp_2->in_fd = -42; 
-                tmp_2->path = fetch_path(tmp->lexeme, paths);
                 tmp_2->builtin = is_builtin(tmp->lexeme);
+				if (tmp_2->builtin == -1)
+                	tmp_2->path = fetch_path(tmp->lexeme, paths);
                 cmd_c = cmd_count(tmp);
                 tmp_2->args = malloc(sizeof(char *) * (cmd_c + 2));
                 tmp_2->args[i] = tmp->lexeme;
@@ -165,7 +167,7 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 else
                 {
                     putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-					tmp_2->is_exec = 0;
+					tmp_2->is_exec = NO;
                     break ;
                 }   
             }

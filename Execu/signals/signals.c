@@ -6,19 +6,18 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 16:13:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 10:50:39 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	handler(int signum)
-{
-	if (signum == SIGQUIT)
-		printf("SIGQUIT OCCURED\n");
-	else if (signum == SIGINT)
-		printf("SIGINT OCCURED\n");
-}
+// void	foo(void)
+// {
+// 	//there's a handler before the readline
+// 	// the readline
+// 	// a handler after the readline 
+// }
 
 void	interrupt_handle()
 {
