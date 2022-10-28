@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex_methods_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/26 18:22:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:47:43 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	lex_skip_blanks(t_lex *lex)
  
 int	is_symbol(char c)
 {
+	if (!c)
+		return (0);
 	if (c == '|' || c == '<' || c == '>')
 		return (1);
 	return (0);
