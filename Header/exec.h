@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 08:07:14 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:35:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	_unset(char **to_unset,t_envl **envl);
 void	__exit(g_shell shell);
-void	change_dir(char *s);
+void	change_dir(char *s, t_envl *envl);
 void	disp_export(t_envl **envl);
 //* PROC
 int		cmdline_size(t_cmdl *lst);

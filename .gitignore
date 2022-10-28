@@ -3,7 +3,7 @@ a.out
 *.o
 *.pdf
 .vscode/
-zsandbox/
+zbox/
 *.txt
 # Tests/
 *.dSYM

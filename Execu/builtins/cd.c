@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/23 15:36:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:34:19 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ void change_dir(char *s)
 
 */
 // *l9walb: cd .. segfaults when you delete 
-void	change_dir(char *path)
+void	change_dir(char *path, t_envl *envl)
 {
 	DIR	*dir;
 
 	dir = opendir(path);
-	if (!dir)
+	if (!path)
+		chdir(get_env_var(envl, "HOME"));
+	else if (!dir)
 		printf("%s\n", strerror(errno));
 	else
 		chdir(path);
