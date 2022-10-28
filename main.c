@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 14:22:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 15:06:07 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main(int ac, char **av, char **env)
 		handle_signals();
 		cmd_line = parser(shell);
 		// print_parsing_lst(cmd_line);
+		// exit(EXIT_SUCCESS);
 		// continue;	 
 		execute(cmd_line, shell, env);
 		dup2(fd, STDIN_FILENO);
@@ -36,3 +37,5 @@ int main(int ac, char **av, char **env)
 }
 
 // We have a bunch of file descriptor that are raving there
+
+

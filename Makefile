@@ -57,7 +57,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) -g $(RDL) $(FS) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) -g $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

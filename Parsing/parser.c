@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 14:19:51 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 15:28:28 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void print_parsing_lst(t_cmdl *cmd)
         printf("in fd : %d\n", cmd->in_fd);
         printf("out fd : %d\n", cmd->out_fd);
         printf("isbuiltin : %d\n", cmd->builtin);
+        printf("is_exec : %d\n", cmd->is_exec);
         printf("-------------------------------\n");
         cmd = cmd->next;
     }
@@ -52,6 +53,12 @@ int sym_only(t_toklist *tk)
 
 	i = 0;
 	tmp = tk;
+	// if (tmp->nature == _pipe && tmp->index == 1)
+	// {
+	// 	putstr_fd("Syntax Error near unexpected token ",2);
+	// 	putstr_fd("`newline'\n",2);
+	// 	return (-1);
+	// }
 	while (tmp)
 	{
 		i++;
@@ -74,7 +81,8 @@ t_cmdl	*parser(g_shell shell)
 	t_cmdl		*cmd_line;
 	
 	red_line = NULL;
-	red_line = readline("Minishell $> ");
+	red_line = readline(CYAN "Minishell $> " WHITE);
+	printf("\033[0m");
 	if (red_line && red_line[0])
 	{
 		add_history(red_line);
@@ -84,7 +92,8 @@ t_cmdl	*parser(g_shell shell)
 		{
 			red_line = expander(shell.env, red_line);
 			tokens = lexer(red_line);
-			// print_tokens(tokens->next);
+			if (sym_only(tokens->next) == -1)
+				return(NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
 			free(red_line);
 			return (cmd_line);

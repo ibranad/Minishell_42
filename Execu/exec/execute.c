@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:02:05 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 16:07:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:28:10 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,4 @@ void	execute(t_cmdl *cmd, g_shell shell, char **env)
 	}
 	else
 		pipex(cmd, shell, env);
-	// close(cmd->in_fd);
-	// close(cmd->out_fd);
 }

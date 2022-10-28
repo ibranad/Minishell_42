@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 19:38:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 08:07:14 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define EXEC_H
 # define WRITE_END 1
 # define READ_END 0
+# define YES 1
+# define NO 0
 
 typedef enum
 {

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 15:45:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:25:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	*fetch_path(char *cmd, char **paths)
 	int		i;
 	char	*path;
 	
-	if (!paths)
-		path_unset(cmd);
-	i = 0;
 	str_tolower(cmd);
+	if (!paths)
+		return (path_unset(cmd));
+	i = 0;
 	if (!access(cmd, F_OK))
 		return (cmd);
 	while (paths[i])

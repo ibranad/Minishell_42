@@ -6,20 +6,21 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 15:46:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 10:55:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-void	path_unset(char *cmd)
+char	*path_unset(char *cmd)
 {
 	printf("%s : No such file or directory\n", cmd);
-	exit(EXIT_FAILURE);
+	return (NULL);
 }
 
 void	_err_cmd_not_found(char *command)
 {
 	putstr_fd(command, 2);
 	putstr_fd(": command not found\n", 2);
+	exit(EXIT_FAILURE);
 }

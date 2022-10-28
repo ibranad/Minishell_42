@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 21:47:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 10:57:48 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pipe_fail(void);
 void	_errno(void);
 pid_t	ft_fork();
 void	identifier_err(char *s);
-void	path_unset(char *cmd);
+char	*path_unset(char *cmd);
 void	_err_cmd_not_found(char *command);
 //* FREE UTILS
 void	free_db_c(char **strings);

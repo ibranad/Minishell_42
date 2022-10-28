@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/27 18:08:06 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/28 07:20:19 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	ft_heredoc(char *lim)
 	{
 		free (line);
 		close(pip[1]);
-		printf("Nothing\n");
 		return (pip[0]);
 	}
 	write(pip[1], line, ft_strlen(line));
