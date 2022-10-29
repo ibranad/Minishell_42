@@ -1,4 +1,5 @@
-log
+status.c
+wlog
 a.out
 *.o
 *.pdf

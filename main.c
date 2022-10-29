@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/29 09:10:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:10:08 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,25 @@ int main(int ac, char **av, char **env)
 	while (1) 
 	{
 		handle_signals();
-		cmd_line = parser(shell);
+		cmd_line = parser();
 		// print_parsing_lst(cmd_line);
-		// exit(EXIT_SUCCESS);
 		// continue;	 
-		execute(cmd_line, shell, env);
+		execute(cmd_line, env);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);
 	}
 	return (0);
 }
 
-// We have a bunch of file descriptor that are raving there
+// * LET'S set the exit status
+// * 1 -  ? What is an exit status
+
+
+/*
+	when runnign the sole command i check in the parent
+	process that it wasn't about standard streams before 
+	closing those fildes
+*/
+
 
 

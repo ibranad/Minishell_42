@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 13:11:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:09:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	display_arr(pid_t *pids, int n)
 		printf("[%d]\n", pids[i]);
 }
 
-void	wait_all(int *status)
+void	wait_all(void)
 {
-	while (wait(status) != -1)
-		continue ;	// signal(S)
+	while (wait(&shell.status) != -1)
+		continue ;	
 }
 
 int	look_for(char *s, char c)

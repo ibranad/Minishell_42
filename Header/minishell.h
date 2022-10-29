@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 15:19:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 15:55:02 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ g_shell	shell;
 # include "lexer.h"
 # include "parser.h"
 # include "exec.h"
-t_cmdl	*parser(g_shell shell);
-void	execute(t_cmdl *cmd, g_shell shell, char **env);
+t_cmdl	*parser();
+void	execute(t_cmdl *cmd, char **env);
 void	handle_signals(void);
 #endif
 

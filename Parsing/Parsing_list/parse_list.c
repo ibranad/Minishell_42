@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 17:20:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 11:48:19 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
                 tmp_2->builtin = is_builtin(tmp->lexeme);
 				if (tmp_2->builtin == -1)
                 	tmp_2->path = fetch_path(tmp->lexeme, paths);
+				if (!tmp_2->path)
+					tmp_2->is_exec = NO;
                 cmd_c = cmd_count(tmp);
                 tmp_2->args = malloc(sizeof(char *) * (cmd_c + 2));
                 tmp_2->args[i] = tmp->lexeme;

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 11:25:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 11:44:19 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	*fetch_path(char *cmd, char **paths)
 	
 	str_tolower(cmd);
 	if (!paths)
+	{
+		
 		return (path_unset(cmd));
+	}
 	i = 0;
 	if (!access(cmd, F_OK))
 		return (cmd);
