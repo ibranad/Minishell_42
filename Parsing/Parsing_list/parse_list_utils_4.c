@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 22:03:37 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 15:45:15 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int apnd_flag_case(t_prs_lst *p)
     if (p->tmp->next)
     {
         if (is_symbol(p->tmp->next->lexeme[0]))
-            putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
+            putstr_fd("Syntax error near unexpected token newline\n", 2);
         p->tmp = p->tmp->next;
         return (0);
     }
     else
     {
-        printf("syntax error near unexpected token `newline'\n");
+        putstr_fd("Syntax error near unexpected token newline\n", 2);
         return (-1);
     } 
 }
@@ -75,17 +75,15 @@ int apnd_word_case(t_prs_lst *p)
 
 int pipe_case(t_prs_lst *p)
 {
-    if (!(p->red_out_flag == 0) && !(p->apnd_flag == 0))
+    printf("red_out_f is %d, apnd_f is %d\n", p->red_in_flag, p->apnd_flag);
+    if ((p->red_out_flag == 0) && (p->apnd_flag == 0))
         p->tmp_2->out_fd = -42;
     //p->tmp_2->args[p->i] = 0;
     p->i = 0;
     if (p->tmp->next)
     {
         if (p->tmp->next->nature == _pipe)
-        {
-            putstr_fd("Syntax error near unexpected token `newline'\n", 2);
-            return (-1);
-        }
+            return (-2);
         p->i = 0;
         p->red_in_flag = 0;
         p->red_out_flag = 0;

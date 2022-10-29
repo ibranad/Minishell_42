@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 11:20:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:57:00 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void dollar_expanding_else_short(t_envl *envl, t_exp *s, char *in)
 
 void dq_expanding(t_envl *envl, t_exp *s, char *in)
 {
-    //This sub_function is used for norm purpose
     char *ptr;
     char *ptr2;
 
@@ -77,7 +76,6 @@ void dq_expanding(t_envl *envl, t_exp *s, char *in)
 
 void sq_expanding(t_exp *s, char *in)
 {
-    //This sub_function is used for norm purpose
     char *ptr;
     char *ptr2;
     

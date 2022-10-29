@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 21:58:43 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 21:59:26 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 14:38:31 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int command_arg_case(t_prs_lst *p)
             return(-1);
     }
     else if (p->first_word != 0)
-    if (args_case(p))
+    {
+        if (args_case(p) == -1)
             return(-1);
+    }
     return (0);
 }
 

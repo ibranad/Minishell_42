@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/27 18:45:22 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 19:42:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    dollar_ques_mark(t_exp *s, char *in)
     s->g_i++;
     s->out = ft_strjoin(s->out, ptr);
     s->g_i++;
+    free(ptr);
 }
 
 char *expander(t_envl *envl, char *in)
@@ -113,6 +114,28 @@ int check_meta_char(char *in)
             break;
     }
     return (0);
+}
+
+// int thre_in_out(char *in)
+// {
+//     int i;
+
+//     i = 0;
+//     while(in[i])
+//     {
+//         if (in[i] )
+//     }
+// }
+
+int ft_ispecial_char(char c)
+{
+    if (c == '`' || c == '#' || c == '&' || c == '*' 
+    || c == '\\' || c == '['|| c == ']' || c == '{' || c == '}'
+    || c == ';' || c == '<' || c == '>' || c == '/' || c == '?'
+    || c == '!')
+        return(1);
+    else
+        return(0);
 }
 
 int check_unrequired_by_subject(char *in)

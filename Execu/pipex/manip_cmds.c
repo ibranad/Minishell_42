@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manip_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 18:35:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 14:05:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_execve(t_cmdl *cmd, char **env)
 
 void	run(t_cmdl *cmd, g_shell shell, char **env)
 {
-	if (!cmd->is_exec)
-		exit(EXIT_FAILURE);
+	// if (!cmd->is_exec)
+		// exit(EXIT_FAILURE);
 	if (cmd->builtin != -1)
 		write_to(cmd->out_fd);
 	if (cmd->builtin == _echo_)

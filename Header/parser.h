@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/29 10:10:09 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 19:04:48 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int     cmd_count(t_toklist *tmp);
 int     toklist_size_2alloc(t_toklist *tok_list);
 int     cmd_case(t_prs_lst *p);
 int     args_case(t_prs_lst *p);
+int     ft_ispecial_char(char c);
 int     here_doc_flag(t_prs_lst *p);
 int     here_doc_word(t_prs_lst *p);
 int     input_flag_case(t_prs_lst *p);

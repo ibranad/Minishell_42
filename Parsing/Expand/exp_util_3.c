@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/27 20:05:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/29 19:58:37 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ char *expand_dq_sp(t_envl *envl, char *in)
         if (in[p.i_g] == '$' && in[p.i_g + 1] == '?')
             dollar_ques_mark_sp(&p, in);
         if (in[p.i_g] == '$')
+        {
+            printf("hello*256*\n");
             dollar_expanding_sp(envl, &p, in);
+        }
+        
         else
         {
             ptr = p.out;
@@ -111,13 +115,26 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
         p->i_g += ft_strlen(p->expa) + 1;
         free(p->expa);
     }
+    printf("%c\n", in[p->i_g]);
+    if (ft_ispecial_char(in[p->i_g + 1]))
+    {
+        printf("dish\n");
+        p->i_g++;
+        ptr = p->out;
+        p->expa = get_until_dollar(&in[p->i_g]);
+        p->out = ft_strjoin(p->out, p->expa);
+        free(ptr);
+        p->i_g += ft_strlen(p->expa);
+        free(p->expa);
+    }
     else
     {
+        printf("jguyguyguy\n");
         ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g + 1]);
+        p->expa = get_until_dollar(&in[p->i_g] + 1);//+1
         p->out = ft_strjoin(p->out, get_env_var(envl, p->expa));
         free(ptr);
-        p->i_g += ft_strlen(p->expa) + 1;
+        p->i_g += ft_strlen(p->expa) + 1;//+1
         free(p->expa);
     }
 }
