@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 18:08:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/29 09:10:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av, char **env)
 	fd = dup(0);
 	fd1 = dup(1);
 	shell.env = set_env(env);
-	while (1)
+	while (1) 
 	{
 		handle_signals();
 		cmd_line = parser(shell);
