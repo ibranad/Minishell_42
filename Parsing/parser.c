@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 15:28:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 15:49:44 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ t_cmdl	*parser(g_shell shell)
 	t_cmdl		*cmd_line;
 	
 	red_line = NULL;
-	red_line = readline(CYAN "Minishell $> " WHITE);
-	printf("\033[0m");
+	red_line = readline(CYAN"Minishell $> "RESET_COLOR);
 	if (red_line && red_line[0])
 	{
 		add_history(red_line);

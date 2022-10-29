@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 15:19:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/28 15:46:21 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
+#define RESET_COLOR "\e[m"
 
 typedef struct s_cmdl
 {
