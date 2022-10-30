@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 07:29:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 11:06:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,8 @@ int main(int ac, char **av, char **env)
 	return (0);
 }
 
-// * LET'S set the exit status
-// * 1 -  ? What is an exit status
-
-
 /*
 	when runnign the sole command i check in the parent
 	process that it wasn't about standard streams before 
 	closing those fildes
 */
-
-
-
