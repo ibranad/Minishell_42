@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 10:57:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 08:57:43 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define UTILS_H
 
 //* SYS_ERR
-void	close_fail();
-void	dup2_fail();
+void	close_fail(void);
+void	dup2_fail(void);
 void	execve_fail(void);
 void	fork_fail(void);
 void	malloc_fail(void);

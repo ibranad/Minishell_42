@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 18:35:25 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 07:59:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
-void	first_cmd(int *fds, t_cmdl *cmdl, g_shell shell, char **env);
-void	last_cmd(t_cmdl *cmdl, g_shell shell, char **env);
-void	mid_cmd(int *fildes, t_cmdl *cmdl, g_shell shell, char **env);
-void	run_sole_cmd(t_cmdl *cmd, g_shell shell, char **env);
-void	run(t_cmdl *cmd, g_shell shell, char **env);
+void	first_cmd(int *fds, t_cmdl *cmdl, char **env);
+void	last_cmd(t_cmdl *cmdl, char **env);
+void	mid_cmd(int *fildes, t_cmdl *cmdl, char **env);
+void	run_sole_cmd(t_cmdl *cmd, char **env);
+void	run(t_cmdl *cmd, char **env);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);
@@ -59,15 +59,16 @@ void	_pwd(void);
 void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	_unset(char **to_unset,t_envl **envl);
-void	__exit(g_shell shell);
+void	__exit(void);
 void	change_dir(char *s, t_envl *envl);
 void	disp_export(t_envl **envl);
 //* PROC
 int		cmdline_size(t_cmdl *lst);
-void	pipex(t_cmdl *cmdl, g_shell shell, char **env);
-void	wait_all(int *status);
+void	pipex(t_cmdl *cmdl, char **env);
+void	wait_all(void);
 t_cmdl	*get_pipline(void);
 t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
+void		ft_execve(t_cmdl *cmd, char **env);
 //*SIGNALS
 
 #endif

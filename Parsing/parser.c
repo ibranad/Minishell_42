@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/29 13:21:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 12:40:00 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int sym_only(t_toklist *tk)
 	return(0);
 }
 
-t_cmdl	*parser(g_shell shell)
+t_cmdl	*parser(void)
 {
 	char		*red_line;
 	t_toklist	*tokens;
@@ -99,7 +99,7 @@ t_cmdl	*parser(g_shell shell)
 			return (cmd_line);
 		}
 	}
-	else
-		__exit (shell);
+	else if (!red_line)
+		__exit();
 	return (NULL);
 }

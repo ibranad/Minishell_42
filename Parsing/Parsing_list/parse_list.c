@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 11:57:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 12:40:09 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    lst_init(t_cmdl **lst)
         tmp->in_fd = 0;
         tmp->out_fd = 1;
         tmp->path = 0;
-		tmp->is_exec = YES;
+		    tmp->is_exec = YES;
         i++;
         tmp = tmp->next;
     }

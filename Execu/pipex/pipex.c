@@ -6,36 +6,41 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 17:02:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 11:14:48 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
 
-void	pipex(t_cmdl *cmdl, g_shell shell, char **env)
+void	pipex(t_cmdl *cmdl, char **env)
 {
 	int		fildes[2];
 	t_cmdl	*curr;
-
 	if (!cmdl)
 		return ;
 	curr = cmdl;
 	while (curr->next)
 	{
+		int flag = 0;
 		pipe(fildes);
-		if (!ft_fork())
+		if (curr->builtin == -1 && !curr->path)
+		{
+			flag = 1;
+			_err_cmd_not_found(curr->args[0]);
+		}
+		if (flag == 0 && !ft_fork())
 		{
 			if (!curr->idx)
-				first_cmd(fildes, curr, shell, env);
+				first_cmd(fildes, curr,  env);
 			else
-				mid_cmd(fildes, curr, shell, env);
+				mid_cmd(fildes, curr, env);
 		}
 		else
 			read_from_pipe(fildes);
 		curr = curr->next;
 	}
 	if (!ft_fork())
-		last_cmd(curr, shell, env);
-	wait_all(&shell.status);
+		last_cmd(curr, env);
+	wait_all();
 }
