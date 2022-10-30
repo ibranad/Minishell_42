@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 12:49:50 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 14:54:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av, char **env)
 	{
 		handle_signals();
 		cmd_line = parser();
-		print_parsing_lst(cmd_line);
+		// print_parsing_lst(cmd_line);
 		// continue;	 
 		execute(cmd_line, env);
 		dup2(fd, STDIN_FILENO);
@@ -34,7 +34,6 @@ int main(int ac, char **av, char **env)
 	}
 	return (0);
 }
-
 /*
 	when runnign the sole command i check in the parent
 	process that it wasn't about standard streams before 

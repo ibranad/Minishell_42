@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manip_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 12:40:37 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 14:52:43 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,19 @@ void	run(t_cmdl *cmd, char **env)
 void	first_cmd(int *fildes, t_cmdl *cmd, char **env)
 {
 	read_from(cmd->in_fd);
-	write_to_pipe(fildes);
+	if (cmd->out_fd == -42)
+		write_to_pipe(fildes);
+	else
+		write_to(cmd->out_fd);
 	run(cmd, env);
 }
 
 void	mid_cmd(int *fildes, t_cmdl *cmd, char **env)
 {
-	write_to_pipe(fildes);
+	if (cmd->out_fd == -42)
+		write_to_pipe(fildes);
+	else
+		write_to(cmd->out_fd);
 	run(cmd, env);
 }
 
