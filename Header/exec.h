@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 07:59:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:06:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
-void	first_cmd(int *fds, t_cmdl *cmdl, char **env);
-void	last_cmd(t_cmdl *cmdl, char **env);
-void	mid_cmd(int *fildes, t_cmdl *cmdl, char **env);
-void	run_sole_cmd(t_cmdl *cmd, char **env);
-void	run(t_cmdl *cmd, char **env);
+void	first_cmd(int *fds, t_cmdl *cmdl, char **env, int pf);
+void	last_cmd(t_cmdl *cmdl, char **env, int pf);
+void	mid_cmd(int *fildes, t_cmdl *cmdl, char **env, int pf);
+void	run_sole_cmd(t_cmdl *cmd, char **env, int pf);
+void	run(t_cmdl *cmd, int pf, char **env);
 //* ENV
 int		envl_len(t_envl *envl);
 t_envl	*set_env(char **env);

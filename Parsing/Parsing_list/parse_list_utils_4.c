@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_4.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 12:00:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 15:56:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int output_word_case(t_prs_lst *p)
 {
     p->out_flag = 1;
     p->tmp_2->out_fd = open(p->tmp->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
-    if (p->tmp_2->in_fd < 0)
+    if (p->tmp_2->out_fd < 0)
         putstr_fd(strerror(errno), 2);
     p->red_out_flag = 0;
     if (p->tmp->next)
@@ -94,7 +94,7 @@ int pipe_case(t_prs_lst *p)
         p->here_doc_flag = 0;
         p->tmp = p->tmp->next;
         p->tmp_2 = p->tmp_2->next;
-    }
+     }
     else
         return (-1);
     return (0);
