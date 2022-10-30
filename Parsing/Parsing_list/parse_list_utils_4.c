@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -77,7 +79,7 @@ int apnd_word_case(t_prs_lst *p)
 
 int pipe_case(t_prs_lst *p)
 {
-    if (p->out_flag == 0)
+    if (p->out_flag == 0 && (p->size -1 != p->tmp_2->idx))
         p->tmp_2->out_fd = -42;
     //p->tmp_2->args[p->i] = 0;
     p->i = 0;

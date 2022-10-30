@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 22:06:00 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:05:17 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ int input_flag_case(t_prs_lst *p)
 int input_word_case(t_prs_lst *p)
 {
     p->tmp_2->in_fd = open(p->tmp->lexeme, O_RDONLY);
+    if(p->tmp_2->in_fd < 0)
+    {
+        putstr_fd(strerror(errno), 2);
+        p->tmp_2->is_exec = NO;
+        return (-1);
+    }
     p->red_in_flag = 0;
     if (p->tmp->next)
     {

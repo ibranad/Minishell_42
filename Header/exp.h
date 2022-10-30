@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/20 14:53:29 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:41:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    dq_short(t_exp *s,char *in);
 void    struct_fill_sp(t_exp_sp *p);
 char    *get_until_dollar(char *in);
 void    struct_fill_sp(t_exp_sp *p);
-char    *get_until_s_quote(char *in);
+int get_until_s_quote(char *in);
 char    *get_until_d_quote(char *in);
 void    exp_else(t_exp *s, char *in);
 void    exp_else_sp(t_exp *s, char *in);
