@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/29 19:58:37 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 11:54:35 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,25 @@ char *expand_dq_sp(t_envl *envl, char *in)
     return (p.out);
 }
 
+char *add_char_first(char *in, char c)
+{
+    int i;
+    int j;
+    char *out;
+    
+    i = 0;
+    j = 0;
+    out = malloc(sizeof(char) * strlen(in) + 2);
+    out[j++] = c;
+    while (in[i])
+    {
+        out[j] = in[i];
+        i++;
+        j++;
+    }
+    out[j] = '\0';
+    return(out);
+}
 
 void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
 {
@@ -119,19 +138,30 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     if (ft_ispecial_char(in[p->i_g + 1]))
     {
         printf("dish\n");
-        p->i_g++;
+        //p->i_g++;
         ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g]);
+        p->expa = get_until_dollar(&in[p->i_g + 1]);
         p->out = ft_strjoin(p->out, p->expa);
         free(ptr);
-        p->i_g += ft_strlen(p->expa);
+        p->i_g += ft_strlen(p->expa) + 1;
+        free(p->expa);
+    }
+    if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
+    {
+        printf("hello1048\n");
+        ptr = p->out;
+        p->expa = get_until_dollar(&in[p->i_g + 1]);
+        char *str = add_char_first(p->expa, '$');
+        p->out = ft_strjoin(p->out, str);
+        free(ptr);
+        p->i_g += ft_strlen(p->expa) + 1;
         free(p->expa);
     }
     else
     {
         printf("jguyguyguy\n");
         ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g] + 1);//+1
+        p->expa = get_until_dollar(&in[p->i_g + 1]);//+1
         p->out = ft_strjoin(p->out, get_env_var(envl, p->expa));
         free(ptr);
         p->i_g += ft_strlen(p->expa) + 1;//+1

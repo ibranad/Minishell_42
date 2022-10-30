@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/29 15:01:05 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 11:57:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void    t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
     p->size = toklist_size_2alloc(tok_lst);
     p->apnd_flag = 0;
     p->red_in_flag = 0;
+    p->out_flag = 0;
     p->red_out_flag = 0;
     p->here_doc_flag = 0;
     p->first_word = 0;

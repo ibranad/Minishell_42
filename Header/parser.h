@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/29 19:04:48 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 11:56:02 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct prs_lst_st
 {
     int         i;
     int         size;
+    int         out_flag;
     int         apnd_flag;
     int         red_in_flag;
     int         red_out_flag;
