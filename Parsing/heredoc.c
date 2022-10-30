@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/28 07:20:19 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 21:11:25 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_heredoc(char *lim)
 	char	*line;
 	int		pip[2];
 	int		e;
-//needs protection from NULL
+
 	if (!lim)
 		return (-1);
 	pipe(pip);
