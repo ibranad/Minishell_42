@@ -24,6 +24,9 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Parsing_list/parse_list.c \
 			Parsing/Parsing_list/parse_list_utils.c \
 			Parsing/Parsing_list/parse_list_utils_2.c \
+			Parsing/Parsing_list/parse_list_utils_3.c \
+			Parsing/Parsing_list/parse_list_utils_4.c \
+			Parsing/Parsing_list/parse_list_utils_5.c \
 			Parsing/parser.c \
 			Utils/ascii2.c \
 			Utils/env_utils.c \

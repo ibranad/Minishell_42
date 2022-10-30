@@ -6,23 +6,14 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/29 16:09:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 07:29:26 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	ft_execve(t_cmdl *cmd, char **env)
-{
-	if (execve(cmd->path, cmd->args, env) == -1)
-			execve_fail();
-}
-
 void	run(t_cmdl *cmd, char **env)
 {
-	// if (!cmd->is_exec)
-	// 	return ;
-		// exit(EXIT_FAILURE);
 	if (cmd->builtin != -1)
 		write_to(cmd->out_fd);
 	if (cmd->builtin == _echo_)
@@ -42,10 +33,7 @@ void	run(t_cmdl *cmd, char **env)
 	else if (cmd->path)
 		ft_execve(cmd, env);
 	else
-	{
-		printf("foo foo\n");	
 		_err_cmd_not_found(cmd->args[0]);
-	}
 }
 
 void	first_cmd(int *fildes, t_cmdl *cmd, char **env)

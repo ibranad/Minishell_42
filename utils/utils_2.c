@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/29 16:09:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 07:18:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ int	look_for(char *s, char c)
 	while (s[i] && s[i] != c)
 		i++;
 	return (i);
+}
+
+void	ft_execve(t_cmdl *cmd, char **env)
+{
+	if (execve(cmd->path, cmd->args, env) == -1)
+			execve_fail();
 }
