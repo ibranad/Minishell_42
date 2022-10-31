@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/31 11:29:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/31 13:06:01 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int unclosed_quote(char *in)
         return (0);
     else
     {
-        printf("Syntax error : Unclosed quote\n");
+        putstr_fd("Syntax error : Unclosed quote\n", 2);
         return (1);
     }
 }
