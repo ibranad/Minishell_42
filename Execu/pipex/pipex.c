@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 12:47:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:00:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	pipex(t_cmdl *cmdl, char **env)
 		if (flag == 0 && !ft_fork())
 		{
 			if (!curr->idx)
-				first_cmd(fildes, curr,  env);
+				first_cmd(fildes, curr,  env, 1);
 			else
-				mid_cmd(fildes, curr, env);
+				mid_cmd(fildes, curr, env, 1);
 		}
 		else
 			read_from_pipe(fildes);
 		curr = curr->next;
 	}
 	if (!ft_fork())
-		last_cmd(curr, env);
+		last_cmd(curr, env, 1);
 	wait_all();
 }

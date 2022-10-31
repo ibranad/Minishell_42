@@ -51,6 +51,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/builtins/export.c \
 			Execu/builtins/pwd.c \
 			Execu/builtins/unset.c \
+			Execu/builtins/utils.c \
 			Utils/free_utils.c \
 			Utils/puts.c \
 			$(MAIN)
