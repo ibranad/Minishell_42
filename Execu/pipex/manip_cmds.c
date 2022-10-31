@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 18:22:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 08:14:37 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	run(t_cmdl *cmd, int pipeline_flag, char **env)
 {
-	if (cmd->builtin != -1 && !pipeline_flag)
+	if (isbuiltin(cmd) && !pipeline_flag)
 		write_to(cmd->out_fd);
 	if (cmd->builtin == _echo_)
 		_echo(vector_len(cmd->args + 1), cmd->args + 1);
@@ -34,7 +34,7 @@ void	run(t_cmdl *cmd, int pipeline_flag, char **env)
 		ft_execve(cmd, env);
 	else
 		_err_cmd_not_found(cmd->args[0]);
-	if (cmd->builtin != -1 && pipeline_flag)
+	if (isbuiltin(cmd) && pipeline_flag)
 		__exit();
 }
 

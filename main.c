@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 18:44:18 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 08:24:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int main(int ac, char **av, char **env)
 	(void)ac; 
 	(void)av;
 	t_cmdl	*cmd_line;
-	int fd,fd1;
+	int 	fd;
+	int		fd1;
 
 	fd = dup(0);
 	fd1 = dup(1);
