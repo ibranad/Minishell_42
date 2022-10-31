@@ -6,3 +6,8 @@ Parsing:echo bonjour > > out
 echo bonjour >>> test
 echo bonjour | |
 echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+
+exit status
+double prompt
+unset PATH then ls : 
+child processes 

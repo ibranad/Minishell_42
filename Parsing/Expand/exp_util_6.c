@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/31 13:06:01 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/31 20:47:43 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,39 +49,27 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     ptr = NULL;
     
     if (ft_isdigit(in[p->i_g + 1]))
-    {
-        p->i_g++;
-        if (in[p->i_g] == '0')
-        {
-            ptr = p->out;
-            p->out = ft_strjoin(p->out, "Minishell");
-            free(ptr);
-        }
-        ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g + 1]);
-        p->out = ft_strjoin(p->out, p->expa);
-        free(ptr);
-        p->i_g += ft_strlen(p->expa) + 1;
-        free(p->expa);
-    }
+        dol_exp_sp_dig(p, in);
     if (ft_ispecial_char(in[p->i_g + 1]))
     {
-        ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g + 1]);
-        p->out = ft_strjoin(p->out, p->expa);
-        free(ptr);
-        p->i_g += ft_strlen(p->expa) + 1;
-        free(p->expa);
+        dol_exp_sp_ispecial(p, in);
+        // ptr = p->out;
+        // p->expa = get_until_dollar(&in[p->i_g + 1]);
+        // p->out = ft_strjoin(p->out, p->expa);
+        // free(ptr);
+        // p->i_g += ft_strlen(p->expa) + 1;
+        // free(p->expa);
     }
-    if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
+    else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
     {
-        ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g + 1]);
-        char *str = add_char_first(p->expa, '$');
-        p->out = ft_strjoin(p->out, str);
-        free(ptr);
-        p->i_g += ft_strlen(p->expa) + 1;
-        free(p->expa);
+        dol_exp_sp_ispecalnum(p, in);
+            //ptr = p->out;
+            // p->expa = get_until_dollar(&in[p->i_g + 1]);
+            // char *str = add_char_first(p->expa, '$');
+            // p->out = ft_strjoin(p->out, str);
+            // free(ptr);
+            // p->i_g += ft_strlen(p->expa) + 1;
+            // free(p->expa);
     }
     else
     {
@@ -92,4 +80,51 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
         p->i_g += ft_strlen(p->expa) + 1;//+1
         free(p->expa);
     }
+}
+
+void dol_exp_sp_dig(t_exp_sp *p, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+    p->i_g++;
+    if (in[p->i_g] == '0')
+    {
+        ptr = p->out;
+        p->out = ft_strjoin(p->out, "Minishell");
+        free(ptr);
+    }
+    ptr = p->out;
+    p->expa = get_until_dollar(&in[p->i_g + 1]);
+    p->out = ft_strjoin(p->out, p->expa);
+    free(ptr);
+    p->i_g += ft_strlen(p->expa) + 1;
+    free(p->expa);
+}
+
+void dol_exp_sp_ispecial(t_exp_sp *p, char *in)
+{
+    char *ptr;
+
+    ptr = NULL;
+    ptr = p->out;
+    p->expa = get_until_dollar(&in[p->i_g + 1]);
+    p->out = ft_strjoin(p->out, p->expa);
+    free(ptr);
+    p->i_g += ft_strlen(p->expa) + 1;
+    free(p->expa);
+}
+
+void dol_exp_sp_ispecalnum(t_exp_sp *p, char *in)
+{
+    char *ptr;
+    
+    ptr = NULL;
+    ptr = p->out;
+    p->expa = get_until_dollar(&in[p->i_g + 1]);
+    char *str = add_char_first(p->expa, '$');
+    p->out = ft_strjoin(p->out, str);
+    free(ptr);
+    p->i_g += ft_strlen(p->expa) + 1;
+    free(p->expa);
 }

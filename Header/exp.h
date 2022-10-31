@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 08:56:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:56:26 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*expand(char *cmd_line);
 void    in_here_doc_handle(t_exp *s, char *in);
 char	*get_env_var(t_envl *envl, char *key);
+void dol_exp_sp_dig(t_exp_sp *p, char *in);
+void dol_exp_sp_ispecial(t_exp_sp *p, char *in);
+void dol_exp_sp_ispecalnum(t_exp_sp *p, char *in);
 
 #endif
