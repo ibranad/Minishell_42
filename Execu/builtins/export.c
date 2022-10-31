@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 10:14:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:02:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,43 @@ int	envl_len(t_envl *envl)
 	return (curr->idx);
 }
 
+void	reset_variable(char *key, char *value, t_envl *envl)
+{
+	t_envl	*curr;
+
+	curr = envl;
+	while (curr)
+	{
+		if (!ft_strcmp(curr->key, key))
+		{
+			free(curr->value);
+			curr->value = ft_strdup(value);		
+		}
+		curr = curr->next;
+	}
+}
+
+int	is_set(char *key, t_envl *envl)
+{
+	t_envl	*curr;
+	
+	curr = envl;
+	while (curr)
+	{
+		if (!ft_strcmp(key, curr->key))
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
+}
+
 // *In case the key_val is NULL so there's no argument we just display the content of ENV
 void	_export(char **entries, t_envl **envl)
 {
-	int	i;
-	int	l;
-	
+	int		i;
+	int		l;
+	char	**entry;
+
 	l = envl_len(*envl);
 	i = 0;
 	if (!*entries)
@@ -64,9 +95,13 @@ void	_export(char **entries, t_envl **envl)
 	{
 		while (entries[i])
 		{
-			lstadd_back(envl, lstnew(split(entries[i], '='), ++l));
+			entry = split(entries[i], '=');
+			if (is_set(entry[0], *envl))
+				reset_variable(entry[0], entry[1], *envl);
+			else
+				lstadd_back(envl, lstnew(entry, ++l));
 			free(entries[i++]);
 		}
-		// free(entries);
 	}
 }
+		// free(entries);

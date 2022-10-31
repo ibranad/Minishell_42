@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 18:34:19 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 09:55:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,21 @@
 //* NULL upon reaching the end of the directory or on error.
 //chdir
 //closedir
-/*
-char	*purify(char *s)
-{
-	return (s);
-}
-
-void change_dir(char *s)
-{
-	char	*path;
-
-	path = purify(s);
-	if (!ft_fork())
-	{
-		pwd();
-		chdir(path);
-		pwd();
-	}
-}
-
-*/
 // *l9walb: cd .. segfaults when you delete 
 void	change_dir(char *path, t_envl *envl)
 {
 	DIR	*dir;
 
 	dir = opendir(path);
-	if (!path)
+	if (path && !*path)
+		return ;
+	else if (!path)
 		chdir(get_env_var(envl, "HOME"));
 	else if (!dir)
 		printf("%s\n", strerror(errno));
 	else
+	{
+		
 		chdir(path);
+	}
 }

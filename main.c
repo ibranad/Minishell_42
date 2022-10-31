@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 08:24:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 09:10:10 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,3 @@ int main(int ac, char **av, char **env)
 	}
 	return (0);
 }
-/*
-	when runnign the sole command i check in the parent
-	process that it wasn't about standard streams before 
-	closing those fildes
-*/

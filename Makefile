@@ -5,10 +5,10 @@ RM = rm -rf
 FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
-#LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
-#CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
-LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
-CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
+LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
+CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
+# LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
+# CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
@@ -21,6 +21,8 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Expand/exp_util_2.c \
 			Parsing/Expand/exp_util_3.c \
 			Parsing/Expand/exp_util_4.c \
+			Parsing/Expand/exp_util_5.c \
+			Parsing/Expand/exp_util_6.c \
 			Parsing/Parsing_list/parse_list.c \
 			Parsing/Parsing_list/parse_list_utils.c \
 			Parsing/Parsing_list/parse_list_utils_2.c \
