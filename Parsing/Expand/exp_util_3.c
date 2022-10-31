@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 21:54:09 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/31 10:43:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,7 @@ char *expand_dq_sp(t_envl *envl, char *in)
         if (in[p.i_g] == '$' && in[p.i_g + 1] == '?')
             dollar_ques_mark_sp(&p, in);
         if (in[p.i_g] == '$')
-        {
-            printf("hello*256*\n");
             dollar_expanding_sp(envl, &p, in);
-        }
         
         else
         {
