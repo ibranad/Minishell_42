@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 07:56:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:45:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,7 @@ void	lex_backward(t_lex *lex)
  		lex->c = *(lex->string + lex->i);
 	}
 }
-
-// char	*lex_gather_str(t_lex *lex, char quote)
-// {
-// 	char	*string;
-
-// 	string = NULL;
-// 	lex_forward(lex);
-// 	while (lex->c && lex->c != quote)
-// 	{
-// 		string = charjoin(string, lex->c);
-// 		lex_forward(lex);
-// 	}
-// 	if (!lex->c)
-// 		return (NULL);
-// 	else if (lex->c == quote)
-// 	{
-// 		lex_forward(lex);
-// 		return (string);
-// 	}
-// 	return (NULL);
-// }	
+	
 int	end_reached(t_lex *lex, char quote, int *flag)
 {
 	if (*flag == 1 && ft_isblank(lex->c))
@@ -87,6 +67,8 @@ char *lex_gather_str(t_lex *lex, char quote)
 
 	flag = 0;
 	string = NULL;
+	if (empty_string(lex, quote))
+		return ft_strdup("");
 	lex_forward(lex);
 	while (lex->c && !end_reached(lex, quote, &flag))
 	{

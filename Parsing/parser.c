@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 08:56:43 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:52:01 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,4 @@ t_cmdl	*parser(void)
 	else if (!red_line)
 		__exit();
 	return (NULL);
-}
+}	
