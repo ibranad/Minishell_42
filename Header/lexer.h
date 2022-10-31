@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/18 17:49:03 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:50:32 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_toklist	*get_tokens_list(t_lex *lex);
 void		lex_skip_blanks(t_lex *lex);
 size_t		get_lexeme_size(t_lex *lex);
 char		*lex_gather_str(t_lex *lex, char quote);
+int			empty_string(t_lex *lex, char quote);
 char		*lex_gather_option(t_lex *lex);
 char		*lex_strdup(t_lex *lex, int n);
 void		lstadd_tok(t_toklist **lst, t_toklist *new_token);
