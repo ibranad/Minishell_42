@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 09:55:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:58:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@
 //chdir
 //closedir
 // *l9walb: cd .. segfaults when you delete 
-void	change_dir(char *path, t_envl *envl)
+void	change_dir(char *path, t_envl **envl)
 {
 	DIR	*dir;
 
+	// entry = split("OLD_PWD ")
 	dir = opendir(path);
 	if (path && !*path)
 		return ;
-	else if (!path)
-		chdir(get_env_var(envl, "HOME"));
+	else if (!path || *path == '~')
+		chdir(get_env_var(*envl, "HOME"));
 	else if (!dir)
 		printf("%s\n", strerror(errno));
 	else
 	{
-		
+		set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl, -42);
 		chdir(path);
 	}
 }

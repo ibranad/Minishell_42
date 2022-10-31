@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 08:14:37 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:05:54 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	run(t_cmdl *cmd, int pipeline_flag, char **env)
 	if (cmd->builtin == _echo_)
 		_echo(vector_len(cmd->args + 1), cmd->args + 1);
 	else if (cmd->builtin == _cd_)
-		change_dir(*(cmd->args + 1), shell.env);
+		change_dir(*(cmd->args + 1), &shell.env);
 	else if (cmd->builtin == _pwd_)
 		_pwd();
 	else if (cmd->builtin == _export_)

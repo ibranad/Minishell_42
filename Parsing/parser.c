@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 10:52:01 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:47:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_cmdl	*parser(void)
 			// printf("Expanding %s\n", red_line);
 			tokens = lexer(red_line);
 			// print_tokens(tokens->next);
+			// exit(EXIT_SUCCESS);
 			if (sym_only(tokens->next) == -1)
 				return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 10:02:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:54:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,21 @@ int	is_set(char *key, t_envl *envl)
 	return (0);
 }
 
+void	set_variable(char *key, char *value, t_envl **envl, int len)
+{
+	if (is_set(key, *envl))
+		reset_variable(key, value, *envl);
+	else
+		lstadd_back(envl, lstnew(key, value, ++len));
+}
 // *In case the key_val is NULL so there's no argument we just display the content of ENV
 void	_export(char **entries, t_envl **envl)
 {
 	int		i;
-	int		l;
+	int		len;
 	char	**entry;
 
-	l = envl_len(*envl);
+	len = envl_len(*envl);
 	i = 0;
 	if (!*entries)
 		disp_export(envl);
@@ -96,12 +103,8 @@ void	_export(char **entries, t_envl **envl)
 		while (entries[i])
 		{
 			entry = split(entries[i], '=');
-			if (is_set(entry[0], *envl))
-				reset_variable(entry[0], entry[1], *envl);
-			else
-				lstadd_back(envl, lstnew(entry, ++l));
+			set_variable(entry[0], entry[1], envl, ++len);
 			free(entries[i++]);
 		}
 	}
 }
-		// free(entries);
