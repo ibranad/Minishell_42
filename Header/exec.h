@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 08:06:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:57:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ char	**get_paths(t_envl *envl);
 char	*fetch_path(char *cmd, char **paths);
 char	*strjoin_s(char *s1, char *s2);
 //* ENV LIST
-t_envl  *lstnew(char **entry, int idx);
+t_envl	*lstnew(char *key, char *value, int idx);
 int		envl_size(t_cmdl *lst);
 void	lstadd_back(t_envl **lst, t_envl *new);
 t_envl	*envl_new(char **key_val, int idx);
 void	envl_addback(t_envl **lst, t_envl *new_l);
+void	set_variable(char *key, char *value, t_envl **envl, int len);
 //* BUILTIN
 void	_env(t_envl *envl);
 void	_pwd(void);
@@ -60,9 +61,10 @@ void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	_unset(char **to_unset,t_envl **envl);
 void	__exit(void);
-void	change_dir(char *s, t_envl *envl);
+void	change_dir(char *s, t_envl **envl);
 void	disp_export(t_envl **envl);
 int		isbuiltin(t_cmdl *cmd);
+
 //* PROC
 int		cmdline_size(t_cmdl *lst);
 void	pipex(t_cmdl *cmdl, char **env);
