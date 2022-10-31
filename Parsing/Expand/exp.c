@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 11:05:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:47:54 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,28 +126,6 @@ int check_meta_char(char *in)
 //         if (in[i] )
 //     }
 // }
-
-int ft_ispecial_char(char c)
-{
-    if (c == '`' || c == '#' || c == '&' || c == '*' 
-    || c == '\\' || c == '['|| c == ']' || c == '{' || c == '}'
-    || c == ';' || c == '<' || c == '>' || c == '/' || c == '?'
-    || c == '!' || c == '(' || c == ')')
-        return(1);
-    else
-        return(0);
-}
-
-int check_unrequired_by_subject(char *in)
-{
-    if (unclosed_quote(in) == 1)
-        return(-1);
-    if (unreq_meta_char(in) == -2)
-        return(-2);
-    // if (check_meta_char(in) == -3)
-    //     return(-3);
-    return (0);
-}
 
 // int main(int ac, char *av[], char *env[])
 // {

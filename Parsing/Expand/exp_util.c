@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:26:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/15 18:40:42 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:38:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char *get_until_dollar(char *in)
     return (out);
 }
 
-char *get_until_s_quote(char *in)
+int get_until_s_quote(char *in)
 {
     int i;
     char *out;
@@ -45,7 +45,7 @@ char *get_until_s_quote(char *in)
         i++;
     }
     out = ft_substr(in, 0, i);
-    return (out);
+    return (i );
 }
 
 char *get_until_d_quote(char *in)

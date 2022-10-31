@@ -92,6 +92,7 @@ t_cmdl	*parser(void)
 			red_line = expander(shell.env, red_line);
 			// printf("Expanding %s\n", red_line);
 			tokens = lexer(red_line);
+			print_tokens(tokens->next);
 			if (sym_only(tokens->next) == -1)
 				return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);

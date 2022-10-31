@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/29 15:57:00 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/30 21:20:37 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,22 @@ void dq_expanding(t_envl *envl, t_exp *s, char *in)
 
 void sq_expanding(t_exp *s, char *in)
 {
+    int size;
     char *ptr;
     char *ptr2;
-    
+
+    s->g_i++;
     ptr = NULL;
     ptr2 = NULL;
-    s->g_i++;
     ptr = s->out;
-    s->not_out = get_until_s_quote(&in[s->g_i]);
-    ptr2 = char_at_start_end(s->not_out , '\'');
+    size = get_until_s_quote(&in[s->g_i]);
+    if (size > 0)
+    {
+        s->not_out = ft_substr(&in[s->g_i], 0, size);
+        ptr2 = char_at_start_end(s->not_out , '\'');
+    }
     s->out = ft_strjoin(s->out, ptr2);
     free(ptr);
     free(ptr2);
     s->g_i += ft_strlen(s->not_out) + 1;
-    free(s->not_out);
 }
