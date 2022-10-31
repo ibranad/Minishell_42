@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 12:58:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:38:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 //chdir
 //closedir
 // *l9walb: cd .. segfaults when you delete 
+char *pwd_util(void)
+{
+	char	*current_directory;
+	char	*tmp;
+
+	tmp = malloc(sizeof(char) * 250);
+	current_directory = ft_strdup(getcwd(tmp, 250));
+	free(tmp);
+	return (current_directory);
+}
+
 void	change_dir(char *path, t_envl **envl)
 {
 	DIR	*dir;
@@ -35,5 +46,6 @@ void	change_dir(char *path, t_envl **envl)
 	{
 		set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl, -42);
 		chdir(path);
+		set_variable("PWD", pwd_util(), envl, -42);
 	}
 }
