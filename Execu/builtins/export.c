@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 15:41:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:59:37 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	reset_variable(char *key, char *value, t_envl *envl)
 	{
 		if (!ft_strcmp(curr->key, key))
 		{
-			// free(curr->value);
 			curr->value = value;
 			return ;
 		}
