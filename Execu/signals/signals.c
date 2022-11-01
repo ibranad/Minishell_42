@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/28 10:50:39 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 21:46:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	interrupt_handle()
 {
 	write(1, "\n", 1);
 	rl_on_new_line(); // Tell the update functions that we moved onto a new line, usually after outputting a newline.
-	rl_replace_line("", 0); // this replaces the content of the rl_line_buffer with the passed value
+	// rl_replace_line("", 0); // this replaces the content of the rl_line_buffer with the passed value
 	rl_redisplay();
 }
 
