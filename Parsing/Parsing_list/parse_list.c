@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/31 13:34:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 14:37:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int    cmd_case(t_prs_lst *p)
     p->tmp_2->is_exec = YES;
     if (p->tmp_2->idx != 0 && p->size > 1)
         p->tmp_2->in_fd = -42; 
-    p->tmp_2->builtin = is_builtin(p->tmp->lexeme);
-    if (p->tmp_2->builtin == -1)
+    p->tmp_2->builtin = get_builtin(p->tmp->lexeme);
+    if (notbuiltin(p->tmp_2))
         p->tmp_2->path = fetch_path(p->tmp->lexeme, p->paths);
     p->cmd_c = cmd_count(p->tmp);
     p->tmp_2->args = malloc(sizeof(char *) * (p->cmd_c + 2));

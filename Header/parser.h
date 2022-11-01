@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 12:39:35 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 13:17:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct prs_lst_st
     
 }       t_prs_lst;
 
-int     is_builtin(char *str);
+int     get_builtin(char *str);
 int     cmd_count(t_toklist *tmp);
 int     toklist_size_2alloc(t_toklist *tok_list);
 int     cmd_case(t_prs_lst *p);
