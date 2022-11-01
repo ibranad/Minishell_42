@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/01 15:46:31 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 16:18:57 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void    lst_init(t_cmdl **lst)
         tmp->in_fd = 0;
         tmp->out_fd = 1;
         tmp->path = 0;
-		tmp->is_exec = NO;
         i++;
         tmp = tmp->next;
     }
@@ -70,7 +69,6 @@ void    t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
 
 int    cmd_case(t_prs_lst *p)
 {
-    p->tmp_2->is_exec = YES;
     if (p->tmp_2->idx != 0 && p->size > 1)
         p->tmp_2->in_fd = -42; 
     p->tmp_2->builtin = get_builtin(p->tmp->lexeme);

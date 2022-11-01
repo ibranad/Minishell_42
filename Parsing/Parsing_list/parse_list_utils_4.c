@@ -87,7 +87,6 @@ int pipe_case(t_prs_lst *p)
         if (p->tmp->next->nature == _pipe)
         {
             putstr_fd("Syntax error near unexpected token `newline'\n", 2);
-            p->tmp_2->is_exec = NO;
             return (-1);
         }
         p->i = 0;

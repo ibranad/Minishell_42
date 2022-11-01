@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/01 14:34:24 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 17:01:47 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,41 @@ int unclosed_quote(char *in)
     int i;
     int s;//single quote
     int d;//double quote
+    int d_flag;
+    int s_flag;
 
     if (!in)
         return (-1);
     i = 0;
     s = 0;
     d = 0;
+    d_flag = 0;
+    s_flag = 0;
     while (in[i])
     {
-        if (in[i] == '\"')
+        if (in[i] == '\"' && s_flag == 0)
+        {
             d++;
-        else if (in[i] == '\'')
-            s++;
+            if(d_flag == 0)
+              d_flag = 1;
+            else
+              d_flag = 0;
+        }
+        if (in[i] == '\'' && d_flag == 0)
+        {
+            s++; 
+            if (s_flag == 0)
+                s_flag = 1;
+            else
+                s_flag = 0;
+        }
         i++;
     }
     if ((d % 2) == 0 && (s % 2) == 0)
         return (0);
     else
     {
-        putstr_fd("Syntax error : Unclosed quote\n", 2);
+        printf("Syntax error : Unclosed quote\n");
         return (1);
     }
 }

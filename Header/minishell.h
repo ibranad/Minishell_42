@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 11:09:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:18:13 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_cmdl
 	int				in_fd;
 	int				out_fd;
 	int				builtin;
-	int				is_exec;
 	struct s_cmdl	*next;
 	
 }				t_cmdl;

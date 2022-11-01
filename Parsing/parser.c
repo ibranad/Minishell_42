@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 22:09:19 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 16:18:29 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void print_parsing_lst(t_cmdl *cmd)
         printf("in fd : %d\n", cmd->in_fd);
         printf("out fd : %d\n", cmd->out_fd);
         printf("isbuiltin : %d\n", cmd->builtin);
-        printf("is_exec : %d\n", cmd->is_exec);
         printf("-------------------------------\n");
         cmd = cmd->next;
     }
