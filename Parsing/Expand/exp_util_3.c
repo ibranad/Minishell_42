@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/31 10:43:42 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/31 22:44:04 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    dollar_only_case_sp(t_exp_sp *s, char *in)
 {
     (void)in;
     char *ptr;
-
+    printf("hello\n");
     ptr = NULL;
     ptr = s->out;
     s->out = ft_strjoin(s->out, "$");

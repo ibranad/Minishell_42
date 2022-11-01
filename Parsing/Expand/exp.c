@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 21:47:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/10/31 22:43:05 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char *expander(t_envl *envl, char *in)
             dollar_white_space(&s, in);
         if (in[s.g_i] == '$' && in[s.g_i + 1] == '?')
             dollar_ques_mark(&s, in);
-        else if (in[s.g_i] == '$')
+        else if (in[s.g_i] == '$' && in[s.g_i + 1] != '\"')
             dollar_expanding(envl, &s, in);
         else if (in[s.g_i] == '\"')
             dq_expanding(envl, &s, in);

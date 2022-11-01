@@ -6,13 +6,13 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/31 20:47:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 14:34:24 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-int unclosed_quote(char *in)
+int unclosed_quote(char *in) 
 {
     //This fonction checks for unclosed quotes (sucess(l9at unclosed quote) return 1, failure(mal9athach) return 0)
     //in case of empty string this fonction returns -1
@@ -51,26 +51,9 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     if (ft_isdigit(in[p->i_g + 1]))
         dol_exp_sp_dig(p, in);
     if (ft_ispecial_char(in[p->i_g + 1]))
-    {
         dol_exp_sp_ispecial(p, in);
-        // ptr = p->out;
-        // p->expa = get_until_dollar(&in[p->i_g + 1]);
-        // p->out = ft_strjoin(p->out, p->expa);
-        // free(ptr);
-        // p->i_g += ft_strlen(p->expa) + 1;
-        // free(p->expa);
-    }
     else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
-    {
         dol_exp_sp_ispecalnum(p, in);
-            //ptr = p->out;
-            // p->expa = get_until_dollar(&in[p->i_g + 1]);
-            // char *str = add_char_first(p->expa, '$');
-            // p->out = ft_strjoin(p->out, str);
-            // free(ptr);
-            // p->i_g += ft_strlen(p->expa) + 1;
-            // free(p->expa);
-    }
     else
     {
         ptr = p->out;
@@ -85,7 +68,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
 void dol_exp_sp_dig(t_exp_sp *p, char *in)
 {
     char *ptr;
-
+    printf("hello1\n");
     ptr = NULL;
     p->i_g++;
     if (in[p->i_g] == '0')
@@ -105,7 +88,7 @@ void dol_exp_sp_dig(t_exp_sp *p, char *in)
 void dol_exp_sp_ispecial(t_exp_sp *p, char *in)
 {
     char *ptr;
-
+    printf("hello2\n");
     ptr = NULL;
     ptr = p->out;
     p->expa = get_until_dollar(&in[p->i_g + 1]);
@@ -118,7 +101,7 @@ void dol_exp_sp_ispecial(t_exp_sp *p, char *in)
 void dol_exp_sp_ispecalnum(t_exp_sp *p, char *in)
 {
     char *ptr;
-    
+    printf("hello3\n");
     ptr = NULL;
     ptr = p->out;
     p->expa = get_until_dollar(&in[p->i_g + 1]);
