@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 10:45:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:37:10 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ char *lex_gather_str(t_lex *lex, char quote)
 	lex_forward(lex);
 	while (lex->c && !end_reached(lex, quote, &flag))
 	{
-		string = charjoin(string, lex->c);
+		if (lex->c != '\'' && lex->c != '\"')
+			string = charjoin(string, lex->c);
 		lex_forward(lex);
 	}
 	return (string);
