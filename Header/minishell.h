@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 16:18:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 18:00:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ g_shell	shell;
 # include "exec.h"
 t_cmdl	*parser();
 void	execute(t_cmdl *cmd, char **env);
-void	handle_signals(void);
+void	handle_signals(void (*func));
+void	after_readline_handle();
+void	before_readline_handle();
+
 #endif
 

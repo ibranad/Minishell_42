@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 16:22:29 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:31:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int main(int ac, char **av, char **env)
 	shell.env = set_env(env);
 	while (1) 
 	{
-		handle_signals();
+		handle_signals(before_readline_handle);
 		cmd_line = parser();
+		handle_signals(after_readline_handle);
 		// print_parsing_lst(cmd_line);
 		// exit(EXIT_SUCCESS);
 		// continue;	 
