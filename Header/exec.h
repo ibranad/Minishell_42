@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 12:57:50 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/10/31 20:04:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	__exit(void);
 void	change_dir(char *s, t_envl **envl);
 void	disp_export(t_envl **envl);
 int		isbuiltin(t_cmdl *cmd);
+int		notbuiltin(t_cmdl *cmd);
 
 //* PROC
 int		cmdline_size(t_cmdl *lst);
