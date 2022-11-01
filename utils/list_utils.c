@@ -6,20 +6,19 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:09:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 16:28:21 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:20:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-t_envl	*lstnew(char *key, char *value, int idx)
+t_envl	*lstnew(char *key, char *value)
 {
 	t_envl	*lst;
 
 	lst = malloc(sizeof(t_envl));
 	if (!lst)
 		malloc_fail();
-	lst->idx = idx;
 	lst->key = key;
 	if (!value)
 		lst->value = ft_strdup("");
