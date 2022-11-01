@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 16:12:06 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 16:13:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,8 @@ void	set_variable(char *key, char *value, t_envl **envl)
 void	_export(char **entries, t_envl **envl)
 {
 	int		i;
-	int		len;
 	char	**entry;
 
-	len = envl_len(*envl);
 	i = 0;
 	if (!*entries)
 		disp_export(envl);
@@ -103,7 +101,7 @@ void	_export(char **entries, t_envl **envl)
 		while (entries[i])
 		{
 			entry = split(entries[i], '=');
-			set_variable(entry[0], entry[1], envl, ++len);
+			set_variable(entry[0], entry[1], envl);
 			free(entries[i++]);
 		}
 	}

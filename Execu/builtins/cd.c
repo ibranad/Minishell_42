@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 15:15:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:01:01 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,15 @@ char *pwd_util(void)
 
 void	directory_changing(t_envl **envl, char *path)
 {
-	set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl, -42);
+	set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl);
 	chdir(path);
-	set_variable("PWD", pwd_util(), envl, -42);
+	set_variable("PWD", pwd_util(), envl);
 }
 
 void	change_dir(char *path, t_envl **envl)
 {
 	DIR	*dir;
 
-	// entry = split("OLD_PWD ")
 	dir = opendir(path);
 	if (path && !*path)
 		return ;
