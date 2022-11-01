@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 21:49:50 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/01 16:10:18 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int ft_ispecial_char(char c)
 
 int check_unrequired_by_subject(char *in)
 {
-    if (unclosed_quote(in) == 1)
-        return(-1);
+    // if (unclosed_quote(in) == 1)
+    //     return(-1);
     if (unreq_meta_char(in) == -2)
         return(-2);
     // if (check_meta_char(in) == -3)
