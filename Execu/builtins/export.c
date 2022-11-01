@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 15:59:37 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:00:38 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,19 @@ int	is_set(char *key, t_envl *envl)
 	return (0);
 }
 
-void	set_variable(char *key, char *value, t_envl **envl, int len)
+void	set_variable(char *key, char *value, t_envl **envl)
 {
 	if (is_set(key, *envl))
 		reset_variable(key, value, *envl);
 	else
-		lstadd_back(envl, lstnew(key, value, ++len));
+		lstadd_back(envl, lstnew(key, value));
 }
 // *In case the key_val is NULL so there's no argument we just display the content of ENV
 void	_export(char **entries, t_envl **envl)
 {
 	int		i;
-	int		len;
 	char	**entry;
 
-	len = envl_len(*envl);
 	i = 0;
 	if (!*entries)
 		disp_export(envl);
@@ -103,7 +101,7 @@ void	_export(char **entries, t_envl **envl)
 		while (entries[i])
 		{
 			entry = split(entries[i], '=');
-			set_variable(entry[0], entry[1], envl, ++len);
+			set_variable(entry[0], entry[1], envl);
 			free(entries[i++]);
 		}
 	}

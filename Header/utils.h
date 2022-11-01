@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 12:53:19 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:07:15 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	pipe_fail(void);
 void	_errno(void);
 pid_t	ft_fork();
 void	identifier_err(char *s);
-void	stderr_path_unset(char *cmd);
-void	stderr_cmd_not_found(char *command);
+int		stderr_path_unset(char *cmd);
+int		stderr_cmd_not_found(char *command);
 //* FREE UTILS
 void	free_db_c(char **strings);
 void	free_env(t_envl *envl);
@@ -39,6 +39,5 @@ void	putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 int     nbrlen(int nbr);
 char	*ft_itoa(int n);
-
 
 #endif
