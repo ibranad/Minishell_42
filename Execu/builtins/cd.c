@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 15:38:17 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:15:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ char *pwd_util(void)
 	return (current_directory);
 }
 
+void	directory_changing(t_envl **envl, char *path)
+{
+	set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl, -42);
+	chdir(path);
+	set_variable("PWD", pwd_util(), envl, -42);
+}
+
 void	change_dir(char *path, t_envl **envl)
 {
 	DIR	*dir;
@@ -39,13 +46,9 @@ void	change_dir(char *path, t_envl **envl)
 	if (path && !*path)
 		return ;
 	else if (!path || *path == '~')
-		chdir(get_env_var(*envl, "HOME"));
+		directory_changing(envl, get_env_var(*envl, "HOME"));
 	else if (!dir)
 		printf("%s\n", strerror(errno));
 	else
-	{
-		set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl, -42);
-		chdir(path);
-		set_variable("PWD", pwd_util(), envl, -42);
-	}
+		directory_changing(envl, path);
 }

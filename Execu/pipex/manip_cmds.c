@@ -6,76 +6,52 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 13:05:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:57:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void	run(t_cmdl *cmd, int pipeline_flag, char **env)
+void	run(t_cmdl *cmd, int cmdline_type, char **env)
 {
-	if (isbuiltin(cmd) && !pipeline_flag)
-		write_to(cmd->out_fd);
-	if (cmd->builtin == _echo_)
-		_echo(vector_len(cmd->args + 1), cmd->args + 1);
-	else if (cmd->builtin == _cd_)
-		change_dir(*(cmd->args + 1), &shell.env);
-	else if (cmd->builtin == _pwd_)
-		_pwd();
-	else if (cmd->builtin == _export_)
-		_export(cmd->args + 1, &shell.env);
-	else if (cmd->builtin == _unset_)
-		_unset(cmd->args + 1, &shell.env);
-	else if (cmd->builtin == _env_)
-		_env(shell.env);
-	else if (cmd->builtin == _exit_)
-		__exit();
-	else if (cmd->path)
-		ft_execve(cmd, env);
+	if (isbuiltin(cmd))
+		run_builtin(cmd, cmdline_type);
 	else
-		_err_cmd_not_found(cmd->args[0]);
-	if (isbuiltin(cmd) && pipeline_flag)
-		__exit();
+		ft_execve(cmd, env);
 }
 
-void	first_cmd(int *fildes, t_cmdl *cmd, char **env, int pf)
+void	first_cmd(int *fildes, t_cmdl *cmd, char **env)
 {
 	read_from(cmd->in_fd);
-	if (cmd->out_fd == -42)
-		write_to_pipe(fildes);
-	else
-		write_to(cmd->out_fd);
-	run(cmd, pf, env);
+	write_to_pipe(fildes);
+	run(cmd, PIPELINE, env);
 }
 
-void	mid_cmd(int *fildes, t_cmdl *cmd, char **env, int pf)
+void	mid_cmd(int *fildes, t_cmdl *cmd, char **env)
 {
-	if (cmd->out_fd == -42)
-		write_to_pipe(fildes);
-	else
-		write_to(cmd->out_fd);
-	run(cmd, pf, env);
+	write_to_pipe(fildes);
+	run(cmd, PIPELINE, env);
 }
 
-void	last_cmd(t_cmdl *cmd, char **env, int pf)
+void	last_cmd(t_cmdl *cmd, char **env)
 {
 	write_to(cmd->out_fd);
-	run(cmd, pf, env);
+	run(cmd, PIPELINE, env);
 }
-
-void	run_sole_cmd(t_cmdl *cmd, char **env, int pf)
+	
+void	run_sole_cmd(t_cmdl *cmd, char **env, int validity)
 {
-	if (cmd->builtin == -1 && !ft_fork())
+	// printf("validity: %d\n", validity);
+	if (validity == _builtin_)
+		run_builtin(cmd, SOLE);
+	else if (validity == _unset_path_ ||\
+			 validity == _command_not_found_)
+		return ;
+	else if (!ft_fork())
 	{
 		read_from(cmd->in_fd);
 		write_to(cmd->out_fd);
-		run(cmd, pf, env);
+		run(cmd, SOLE, env);
 	}
-	else if (cmd->builtin != -1)
-		run(cmd, pf, env);
- 	if (cmd->in_fd)
-		close(cmd->in_fd);
-	if (cmd->out_fd != 1)
-		close(cmd->out_fd);
 	wait_all();
 }
