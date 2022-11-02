@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_6.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/01 17:01:47 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/02 08:08:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
 void dol_exp_sp_dig(t_exp_sp *p, char *in)
 {
     char *ptr;
-    printf("hello1\n");
+    // printf("hello1\n");
     ptr = NULL;
     p->i_g++;
     if (in[p->i_g] == '0')
