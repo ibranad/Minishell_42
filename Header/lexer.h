@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/31 10:50:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/02 11:31:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_toklist
 	struct s_toklist	*next;
 }					t_toklist;
 
+char		get_opposite_quote(char quote);
 t_lex		*init_lex(char *cmd_line);
 void		lex_forward(t_lex *lex);
 void		lex_backward(t_lex *lex);
