@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 20:53:39 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/03 11:45:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void    dollar_ques_mark_sp(t_exp_sp *s, char *in)
     (void)in;
     char *ptr;
     ptr = NULL;
-	if (!WIFEXITED(shell.status))
-		shell.status += 128;
     ptr = ft_itoa(shell.status);
     s->i_g++;
     s->out = ft_strjoin(s->out, ptr);

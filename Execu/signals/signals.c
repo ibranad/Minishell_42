@@ -6,18 +6,12 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 17:41:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:18:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-// void	foo(void)
-// {
-// 	//there's a handler before the readline
-// 	// the readline
-// 	// a handler after the readline 
-// }
 void	before_readline_handle()
 {
 	write(1, "\n", 1);

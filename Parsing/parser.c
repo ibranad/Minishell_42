@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 18:40:14 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/03 11:45:27 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_cmdl	*parser(void)
 		else
 		{
 			red_line = expander(shell.env, red_line);
-			printf("Expanding [%s]\n", red_line);
+			// printf("Expanding %s\n", red_line);
 			tokens = lexer(red_line);
 			print_tokens(tokens->next);
 			// exit(EXIT_SUCCESS);
@@ -101,6 +101,6 @@ t_cmdl	*parser(void)
 		}
 	}
 	else if (!red_line)
-		__exit();
+		exit(0);
 	return (NULL);
 }	

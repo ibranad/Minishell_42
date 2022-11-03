@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 14:55:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 09:40:38 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,12 @@ char	*get_env_var(t_envl *envl, char *key)
 		curr = curr->next;
 	}
 	return (NULL);
+}
+
+void	set_exit_status(void)
+{
+	if (!WIFEXITED(shell.status))
+		shell.status += 128;
+	else
+		shell.status = WEXITSTATUS(shell.status);
 }
