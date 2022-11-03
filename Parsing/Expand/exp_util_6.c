@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_6.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 08:08:44 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/02 20:47:44 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     
     if (ft_isdigit(in[p->i_g + 1]))
         dol_exp_sp_dig(p, in);
-    if (ft_ispecial_char(in[p->i_g + 1]))
+    else if (ft_ispecial_char(in[p->i_g + 1]))
         dol_exp_sp_ispecial(p, in);
     else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
         dol_exp_sp_ispecalnum(p, in);
