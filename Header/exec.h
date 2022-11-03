@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 18:07:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 08:10:54 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,11 @@ void	run_builtin(t_cmdl *cmd, int cmdline_type);
 int		cmdline_size(t_cmdl *lst);
 void	pipex(t_cmdl *cmdl, char **env);
 void	wait_all(void);
-t_cmdl	*get_pipline(void);
+void	set_exit_status(void);
 t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
 void	ft_execve(t_cmdl *cmd, char **env);
 //*VALIDITY
 int		command_validity(t_cmdl *command);
 void	check_path(t_envl *envl);
-
 
 #endif
