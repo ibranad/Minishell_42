@@ -6,11 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 08:05:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 10:07:14 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:48:37 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
+
 
 int	ft_atoi(const char *str)
 {
@@ -70,7 +72,7 @@ void	run_builtin(t_cmdl *cmd, int cmdline_type)
 	else if (cmd->builtin == _unset_)
 		_unset(cmd->args + 1, &shell.env);
 	else if (cmd->builtin == _env_)
-		_env(shell.env);
+		_env(cmd->args, shell.env);
 	else if (cmd->builtin == _exit_)
 		__exit(cmd->args);
 	if (cmdline_type == PIPELINE)

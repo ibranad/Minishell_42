@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 10:03:36 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:37:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_envl	*envl_new(char **key_val, int idx);
 void	envl_addback(t_envl **lst, t_envl *new_l);
 void	set_variable(char *key, char *value, t_envl **envl);
 //* BUILTIN
-void	_env(t_envl *envl);
+void	_env(char **args, t_envl *envl);
 void	_pwd(void);
 void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
