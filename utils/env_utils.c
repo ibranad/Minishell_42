@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 14:55:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 08:54:38 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,32 @@ char	*get_env_var(t_envl *envl, char *key)
 		curr = curr->next;
 	}
 	return (NULL);
+}
+
+// void	set_exit_status(void)
+// {
+// 	if (!WIFEXITED(shell.status) && WEXITSTATUS(shell.status) != 127)
+// 	{
+// 		printf("Program exited abnormally and it's NOT about a C.N.F\n");
+// 		shell.status += 128;
+// 		printf("And so the shell.status = %d\n", shell.status);
+// 	}
+// 	else if (WIFEXITED(shell.status))
+// 	{
+// 		printf("Program exited Normally\n");
+// 		printf("Hence shell.status = %d\n", shell.status);
+// 		shell.status = WEXITSTATUS(shell.status);
+// 		printf("and WEXITSTATUS(shell.status) = %d\n",shell.status);
+// 	}
+// }
+/*
+	WIFEXITED will return true if the child process exited normally 
+*/
+
+void	set_exit_status(void)
+{
+	if (!WIFEXITED(shell.status))
+		shell.status += 128;
+	else
+		shell.status = WEXITSTATUS(shell.status);
 }
