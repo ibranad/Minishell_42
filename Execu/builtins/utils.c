@@ -6,11 +6,40 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 08:05:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 15:57:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:07:14 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
+int	ft_atoi(const char *str)
+{
+	int					i;
+	unsigned long long	num;
+	int					sign;
+
+	i = 0;
+	num = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{	
+		num = num * 10 + str[i] - '0';
+		if (num > 9223372036854775807 && sign == -1)
+			return (0);
+		else if (num > 9223372036854775807 && sign == 1)
+			return (-1);
+		i++;
+	}
+	return (num * sign);
+}
 
 int	isbuiltin(t_cmdl *cmd)
 {
@@ -43,7 +72,7 @@ void	run_builtin(t_cmdl *cmd, int cmdline_type)
 	else if (cmd->builtin == _env_)
 		_env(shell.env);
 	else if (cmd->builtin == _exit_)
-		__exit();
+		__exit(cmd->args);
 	if (cmdline_type == PIPELINE)
-		__exit();
+		exit(0);
 }

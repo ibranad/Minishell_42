@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:14:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 10:36:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:05:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		ft_tolower(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*charjoin(char *s1, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_atoi(const char *str);
 
 #endif

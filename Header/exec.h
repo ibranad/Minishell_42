@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 08:10:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:03:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	_pwd(void);
 void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	_unset(char **to_unset,t_envl **envl);
-void	__exit(void);
+void	__exit(char **args);
 void	change_dir(char *s, t_envl **envl);
 void	disp_export(t_envl **envl);
 int		isbuiltin(t_cmdl *cmd);
