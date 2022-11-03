@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 08:08:39 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:44:26 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void dq_expanding(t_envl *envl, t_exp *s, char *in)
     s->g_i++;
     ptr = s->out;
     s->expa = get_until_d_quote(&in[s->g_i]);
-    //if (ft_strlen(s->expa) > 0)
+    if (ft_strlen(s->expa) > 0)
         ptr2 = expand_dq_sp(envl, s->expa);
-    //else
-        //ptr2 = ft_strdup("");
+    else
+        ptr2 = ft_strdup("");
     ptr2 = char_at_start_end(ptr2 , '\"');
     s->out = ft_strjoin(s->out, ptr2);
     free(ptr);
