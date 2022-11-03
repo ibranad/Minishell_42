@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:26:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 22:02:10 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/03 17:48:22 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *get_until_dollar(char *in)
     i = 0;
     while(in[i])
     {
-        if ((!ft_isalnum(in[i])) && !(in[i] != '_'))
+        if ((ft_isalnum(in[i]) == 0) && (in[i] != '_'))
         {
             if (!i)// if i = 0, like when the input is: $USER.$HOME
                 i++;//ila mat incrementach substr radi ta5od (in, 0, 0) o rat returni empty string

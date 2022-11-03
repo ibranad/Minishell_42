@@ -6,11 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/11/02 21:53:06 by ibnada           ###   ########.fr       */
-=======
-/*   Updated: 2022/11/03 10:20:28 by obouizga         ###   ########.fr       */
->>>>>>> 64a6320438c5481074e9067c6815ad9ef3a8607b
+/*   Updated: 2022/11/03 13:24:21 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +28,7 @@ int main(int ac, char **av, char **env)
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
-		// print_parsing_lst(cmd_line);
+		print_parsing_lst(cmd_line);
 		// exit(EXIT_SUCCESS);
 		// continue; 
 		execute(cmd_line, env);
