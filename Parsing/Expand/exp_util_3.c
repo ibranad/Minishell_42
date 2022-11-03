@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 19:53:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 11:45:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    dollar_only_case_sp(t_exp_sp *s, char *in)
 {
     (void)in;
     char *ptr;
-    printf("hello\n");
+    printf("hello1\n");
     ptr = NULL;
     ptr = s->out;
     s->out = ft_strjoin(s->out, "$");
@@ -68,11 +68,11 @@ char *expand_dq_sp(t_envl *envl, char *in)
     {
         if (in[p.i_g] == '$' && !in[p.i_g + 1])
             dollar_only_case_sp(&p, in);
-        if (in[p.i_g] == '$' && (in[p.i_g + 1] == ' ' || in[p.i_g + 1] == '\t'))
-            dollar_white_space_sp(&p, in);
-        if (in[p.i_g] == '$' && in[p.i_g + 1] == '?')
+        else if (in[p.i_g] == '$' && in[p.i_g + 1] == '?')
             dollar_ques_mark_sp(&p, in);
-        if (in[p.i_g] == '$')
+        else if (in[p.i_g] == '$' && (in[p.i_g + 1] == ' ' || in[p.i_g + 1] == '\t'))
+            dollar_white_space_sp(&p, in);
+        else if (in[p.i_g] == '$')
             dollar_expanding_sp(envl, &p, in);
         
         else
