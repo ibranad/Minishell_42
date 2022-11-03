@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 16:13:42 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/03 18:52:08 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ int	is_set(char *key, t_envl *envl)
 	return (0);
 }
 
+void	message_err(void)
+{
+	putstr_fd("Minishell: export: `=': not a valid identifier\n", 2);
+}
+
 void	set_variable(char *key, char *value, t_envl **envl)
 {
 	if (is_set(key, *envl))
@@ -101,6 +106,8 @@ void	_export(char **entries, t_envl **envl)
 		while (entries[i])
 		{
 			entry = split(entries[i], '=');
+			if (!*entry)
+				return (message_err());
 			set_variable(entry[0], entry[1], envl);
 			free(entries[i++]);
 		}
