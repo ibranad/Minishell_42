@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 12:53:33 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:56:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void 	too_many_arguments(void)
 {
 	putstr_fd("Minishell: exit: too many arguments\n", STDERR_FILENO);
-	exit(1);
+	// exit(1);
 }
 
 static int	err_message(char *str)
