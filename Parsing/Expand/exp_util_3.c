@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/04 17:02:08 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 21:28:11 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    dollar_white_space_sp(t_exp_sp *s, char *in)
     char *ptr;
 
     ptr = NULL;
-        ptr = s->out;
+    ptr = s->out;
     s->out = ft_strjoin(s->out, "$");
     s->not_expa = get_until_dollar(&in[s->i_g]);
     s->out = ft_strjoin(ptr, s->not_expa);

@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:26:35 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/03 17:48:22 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 20:33:15 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char *get_until_dollar(char *in)
 int get_until_s_quote(char *in)
 {
     int i;
-    char *out;
 
     i = 0;
     while (in[i])
@@ -44,7 +43,6 @@ int get_until_s_quote(char *in)
             break;
         i++;
     }
-    out = ft_substr(in, 0, i);
     return (i );
 }
 

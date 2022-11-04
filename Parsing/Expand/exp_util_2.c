@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/04 18:42:26 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 20:53:01 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void sq_expanding(t_exp *s, char *in)
     char *ptr;
     char *ptr2;
 
-    s->g_i++;
     ptr = NULL;
     ptr2 = NULL;
+    s->g_i++;
     size = get_until_s_quote(&in[s->g_i]);
     if (size > 0)
     {
