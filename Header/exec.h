@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 12:37:56 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 11:16:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	_unset(char **to_unset,t_envl **envl);
 void	__exit(char **args);
 void	change_dir(char *s, t_envl **envl);
 void	disp_export(t_envl **envl);
+int 	check_entry(char *entry, int *i);
 int		isbuiltin(t_cmdl *cmd);
 int		notbuiltin(t_cmdl *cmd);
 void	run_builtin(t_cmdl *cmd, int cmdline_type);
@@ -87,5 +88,7 @@ void	ft_execve(t_cmdl *cmd, char **env);
 //*VALIDITY
 int		command_validity(t_cmdl *command);
 void	check_path(t_envl *envl);
+//*	ERROR MESSAGES
+int		export_notvalid_stderr(char *argument);
 
 #endif
