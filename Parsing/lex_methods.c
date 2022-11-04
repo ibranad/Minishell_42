@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 12:36:17 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:07:36 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,35 @@ int	end_reached(t_lex *lex, char quote, int *flag)
 	return (0);
 }
 
-char *lex_gather_str(t_lex *lex, char quote)
+char	*lex_gather_substring(t_lex *lex, char qte)
+{
+	char *substring;
+
+	substring = NULL;
+	lex_forward(lex);
+	while (lex->c && lex->c != qte && !ft_isblank(lex->c))
+	{
+		substring = charjoin(substring, lex->c);
+		lex_forward(lex);
+	}
+	return (substring);
+}
+
+char	*lex_gather_str(t_lex *lex, char quote)
 {
 	char	*string;
-	int		flag;
+	char	qte;
 
-	flag = 0;
 	string = NULL;
+	qte = quote;
 	if (empty_string(lex, quote))
-		return ft_strdup("");
-	lex_forward(lex);
-	while (lex->c && !end_reached(lex, quote, &flag))
+		return (ft_strdup(""));
+	while (!ft_isblank(lex->c) && lex->c)
 	{
-		if (lex->c != quote)
-			string = charjoin(string, lex->c);
+		string = ft_strjoin(string, lex_gather_substring(lex, qte));
 		lex_forward(lex);
+		if (lex->c == get_opposite_quote(qte))
+			qte = lex->c;
 	}
 	return (string);
 }

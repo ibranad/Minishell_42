@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:07:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 12:36:30 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 08:55:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,5 @@ t_toklist	*get_tokens_list(t_lex *lex)
 	}
 	return (head);
 }
+
+
