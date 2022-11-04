@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:47:34 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 11:28:35 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:06:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	empty_string(t_lex *lex, char quote)
 	lex_forward(lex);
 	if (lex->c == quote)
 		return (1);
-	else
-		lex_backward(lex);
 	return (0);	
 }
 

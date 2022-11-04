@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex_methods_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/27 19:47:43 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 14:14:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*lex_gather_lexeme(t_lex *lex)
 {
 	char	*lexeme;
 
+	printf("LEX_GATHER_LEXEME\n");
 	lexeme = NULL;
 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
 	{
