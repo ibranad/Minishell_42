@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/02 20:47:44 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 17:55:30 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
         dol_exp_sp_dig(p, in);
     else if (ft_ispecial_char(in[p->i_g + 1]))
         dol_exp_sp_ispecial(p, in);
-    else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]))
+    else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]) && in[p->i_g + 1] != '_')
         dol_exp_sp_ispecalnum(p, in);
     else
     {
@@ -117,13 +117,16 @@ void dol_exp_sp_ispecial(t_exp_sp *p, char *in)
 void dol_exp_sp_ispecalnum(t_exp_sp *p, char *in)
 {
     char *ptr;
-    printf("hello3\n");
+    char *str;
+
+    printf("hello716\n");
     ptr = NULL;
     ptr = p->out;
     p->expa = get_until_dollar(&in[p->i_g + 1]);
-    char *str = add_char_first(p->expa, '$');
+    str = add_char_first(p->expa, '$');
     p->out = ft_strjoin(p->out, str);
     free(ptr);
+    free(str);
     p->i_g += ft_strlen(p->expa) + 1;
     free(p->expa);
 }

@@ -39,6 +39,8 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Utils/utils_3.c \
 			Utils/utils_4.c \
 			Utils/list_utils.c \
+			Execu/builtins/export_utils.c \
+			Errors/err_message.c \
 			Utils/split.c \
 			Execu/exec/execute.c \
 			Execu/pipex/manip_cmds.c \
