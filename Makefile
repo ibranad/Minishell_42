@@ -5,10 +5,10 @@ RM = rm -rf
 FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
-#LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
-#CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
-LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
-CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
+LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
+CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
+# LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
+# CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
@@ -47,11 +47,13 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/signals/signals.c \
 			Errors/sys_err.c \
 			Errors/errors.c \
+			Errors/err_message.c \
 			Execu/builtins/cd.c \
 			Execu/builtins/echo.c \
 			Execu/builtins/env.c \
 			Execu/builtins/exit.c \
 			Execu/builtins/export.c \
+			Execu/builtins/export_utils.c \
 			Execu/builtins/pwd.c \
 			Execu/builtins/unset.c \
 			Execu/builtins/utils.c \

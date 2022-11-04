@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 18:07:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:24:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	pipex(t_cmdl *cmdl, char **env)
 		}
 		else
 			read_from_pipe(fildes);
-		close(fildes[READ_END]);
+		
 		curr = curr->next;
 	}
 	if (!ft_fork())
