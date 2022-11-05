@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:02:49 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/25 19:41:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 19:55:07 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,19 @@ char	*ft_itoa(int n)
 	if (sign == 1)
 		str[0] = '-';
 	return (str);
+}
+
+int	not_integer(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s[i] != '-' && s[i] != '+' && !ft_isdigit(s[i]))
+		return (1);
+	else if (s[i] == '-' && !s[i + 1])
+		return (1);
+	while (s[++i])
+		if (!ft_isdigit(s[i]))
+			return (1);
+	return (0);
 }

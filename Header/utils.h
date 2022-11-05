@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 14:04:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:15:15 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	ft_putchar_fd(char c, int fd);
 int     nbrlen(int nbr);
 char	*ft_itoa(int n);
 int		is_ther_char(char *s, char c);
-
+int		not_integer(char *s);
 #endif
