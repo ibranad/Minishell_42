@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 18:24:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:34:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	mid_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 	run(cmd, PIPELINE, env);
 }
 
-void	last_cmd(t_cmdl *cmd, int validity, char **env)
+void	last_cmd(t_cmdl *cmd,  int validity, char **env)
 {
 	write_to(cmd->out_fd);
 	if (validity == _builtin_)
