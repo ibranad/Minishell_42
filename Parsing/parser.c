@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 12:34:29 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:26:58 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ t_cmdl	*parser(void)
 {
 	char		*red_line;
 	char		*out;
-	//t_toklist	*tokens;
-	//t_cmdl		*cmd_line;
+	t_toklist	*tokens;
+	t_cmdl		*cmd_line;
 	
 	red_line = NULL;
 	red_line = readline(CYAN"Minishell $> "RESET_COLOR);
@@ -91,15 +91,14 @@ t_cmdl	*parser(void)
 		{
 			out = red_line;
 			red_line = expander(shell.env, out);
-			printf("[%s]\n", red_line);
-			//tokens = lexer(red_line);
+			//printf("[%s]\n", red_line);
+			tokens = lexer(red_line);
 			free(out);
 			free(red_line);
-			//exit(EXIT_SUCCESS);
-			//if (sym_only(tokens->next) == -1)
-			//  return (NULL);
-			//cmd_line = parse_list(tokens->next, shell.env);
-			//return (cmd_line);
+			if (sym_only(tokens->next) == -1)
+			 return (NULL);
+			cmd_line = parse_list(tokens->next, shell.env);
+			return (cmd_line);
 		}
 	}
 	else if (!red_line)

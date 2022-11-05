@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 14:48:24 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:36:58 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,15 @@ int main(int ac, char **av, char **env)
 	shell.env = set_env(env);
 	while (1) 
 	{
-		//handle_signals(before_readline_handle);
+		handle_signals(before_readline_handle);
 		cmd_line = parser();
-		//handle_signals(after_readline_handle);
-		//print_parsing_lst(cmd_line);
-		free_cmdl_lst(&cmd_line);
-		// exit(EXIT_SUCCESS);
-		// continue; 
-		//execute(cmd_line, env);
-		//set_exit_status();
-		//dup2(fd, STDIN_FILENO);
-		//dup2(fd1, STDOUT_FILENO);
+		handle_signals(after_readline_handle);
+		print_parsing_lst(cmd_line);
+		//free_cmdl_lst(&cmd_line);
+		execute(cmd_line, env);
+		set_exit_status();
+		dup2(fd, STDIN_FILENO);
+		dup2(fd1, STDOUT_FILENO);
 	}  
 	return (0);
 }
