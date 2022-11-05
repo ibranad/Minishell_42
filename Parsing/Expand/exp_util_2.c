@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:23:01 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/03 17:51:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 20:53:01 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void dq_expanding(t_envl *envl, t_exp *s, char *in)
 {
     char *ptr;
     char *ptr2;
+    char *ptr3;
 
     ptr = NULL;
     s->g_i++;
@@ -69,10 +70,11 @@ void dq_expanding(t_envl *envl, t_exp *s, char *in)
         ptr2 = expand_dq_sp(envl, s->expa);
     else
         ptr2 = ft_strdup("");
-    ptr2 = char_at_start_end(ptr2 , '\"');
-    s->out = ft_strjoin(s->out, ptr2);
+    ptr3 = char_at_start_end(ptr2 , '\"');
+    s->out = ft_strjoin(s->out, ptr3);
     free(ptr);
     free(ptr2);
+    free(ptr3);
     s->g_i += ft_strlen(s->expa) + 1;
     free(s->expa);
 }
@@ -83,10 +85,9 @@ void sq_expanding(t_exp *s, char *in)
     char *ptr;
     char *ptr2;
 
-    s->g_i++;
     ptr = NULL;
     ptr2 = NULL;
-    ptr = s->out;
+    s->g_i++;
     size = get_until_s_quote(&in[s->g_i]);
     if (size > 0)
     {
@@ -98,8 +99,10 @@ void sq_expanding(t_exp *s, char *in)
         s->not_out = ft_strdup("");
         ptr2 = char_at_start_end(s->not_out , '\'');
     }
-    s->out = ft_strjoin(s->out, ptr2);
+    ptr = s->out;
+    s->out = ft_strjoin(ptr, ptr2);
     free(ptr);
     free(ptr2);
     s->g_i += ft_strlen(s->not_out) + 1;
+    free(s->not_out);
 }

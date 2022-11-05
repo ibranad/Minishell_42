@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 16:01:01 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 17:06:58 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	change_dir(char *path, t_envl **envl)
 	else if (!path || *path == '~')
 		directory_changing(envl, get_env_var(*envl, "HOME"));
 	else if (!dir)
-		printf("%s\n", strerror(errno));
+		printf("---%s\n", strerror(errno));
 	else
 		directory_changing(envl, path);
 }

@@ -54,6 +54,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/builtins/exit.c \
 			Execu/builtins/export.c \
 			Execu/builtins/export_utils.c \
+			Execu/builtins/export_err.c \
 			Execu/builtins/pwd.c \
 			Execu/builtins/unset.c \
 			Execu/builtins/utils.c \
@@ -66,7 +67,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) -g  $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(FS) -g  $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

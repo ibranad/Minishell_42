@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 18:45:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 12:52:14 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int sym_only(t_toklist *tk)
 t_cmdl	*parser(void)
 {
 	char		*red_line;
+	char		*out;
 	t_toklist	*tokens;
 	t_cmdl		*cmd_line;
 	
@@ -88,19 +89,20 @@ t_cmdl	*parser(void)
 			free(red_line);
 		else
 		{
-			red_line = expander(shell.env, red_line);
-			// printf("Expanding [%s]\n", red_line);
+			out = red_line;
+			red_line = expander(shell.env, out);
 			tokens = lexer(red_line);
-			// print_tokens(tokens->next);
+			free(out);
+			free(red_line);
 			// exit(EXIT_SUCCESS);
 			if (sym_only(tokens->next) == -1)
 				return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
-			free(red_line);
 			return (cmd_line);
 		}
 	}
 	else if (!red_line)
 		exit(0);
 	return (NULL);
-}	
+}
+
