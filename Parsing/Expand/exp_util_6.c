@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/04 17:55:30 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 14:53:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     char *ptr;
 
     ptr = NULL;
-    
     if (ft_isdigit(in[p->i_g + 1]))
         dol_exp_sp_dig(p, in);
     else if (ft_ispecial_char(in[p->i_g + 1]))
         dol_exp_sp_ispecial(p, in);
-    else if (!ft_ispecial_char(in[p->i_g + 1]) && !ft_isalnum(in[p->i_g + 1]) && in[p->i_g + 1] != '_')
+    else if (!ft_ispecial_char(in[p->i_g + 1]) 
+    && !ft_isalnum(in[p->i_g + 1]) && in[p->i_g + 1] != '_')
         dol_exp_sp_ispecalnum(p, in);
     else
     {
@@ -84,7 +84,7 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
 void dol_exp_sp_dig(t_exp_sp *p, char *in)
 {
     char *ptr;
-    // printf("hello1\n");
+
     ptr = NULL;
     p->i_g++;
     if (in[p->i_g] == '0')
@@ -104,7 +104,7 @@ void dol_exp_sp_dig(t_exp_sp *p, char *in)
 void dol_exp_sp_ispecial(t_exp_sp *p, char *in)
 {
     char *ptr;
-    printf("hello2\n");
+
     ptr = NULL;
     ptr = p->out;
     p->expa = get_until_dollar(&in[p->i_g + 1]);
@@ -119,7 +119,6 @@ void dol_exp_sp_ispecalnum(t_exp_sp *p, char *in)
     char *ptr;
     char *str;
 
-    printf("hello716\n");
     ptr = NULL;
     ptr = p->out;
     p->expa = get_until_dollar(&in[p->i_g + 1]);
