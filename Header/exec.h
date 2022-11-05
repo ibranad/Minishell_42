@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 11:34:08 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 14:24:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int		command_validity(t_cmdl *command);
 void	check_path(t_envl *envl);
 //*	ERROR MESSAGES
 int		export_notvalid_stderr(char *argument);
+int		export_invalid_key(char *s);
 
 #endif

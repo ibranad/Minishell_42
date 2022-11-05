@@ -46,14 +46,15 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/pipex/io.c \
 			Execu/signals/signals.c \
 			Errors/sys_err.c \
-			Errors/errors.c \
 			Errors/err_message.c \
+			Errors/errors.c \
 			Execu/builtins/cd.c \
 			Execu/builtins/echo.c \
 			Execu/builtins/env.c \
 			Execu/builtins/exit.c \
 			Execu/builtins/export.c \
 			Execu/builtins/export_utils.c \
+			Execu/builtins/export_err.c \
 			Execu/builtins/pwd.c \
 			Execu/builtins/unset.c \
 			Execu/builtins/utils.c \
@@ -66,7 +67,11 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
+<<<<<<< HEAD
 		$(CC) $(CFLAGS) -g $(FS) $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+=======
+		$(CC) $(CFLAGS) $(FS) -g  $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+>>>>>>> bdeb3a03a5498e3b86216a74f0f91114c121e567
 		@echo "minishell CREATED"
 
 clean :

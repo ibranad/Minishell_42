@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 11:16:35 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:08:58 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
-
 
 int	export_notvalid_stderr(char *argument)
 {

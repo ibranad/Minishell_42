@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 14:22:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 14:04:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 int     nbrlen(int nbr);
 char	*ft_itoa(int n);
+int		is_ther_char(char *s, char c);
 
 #endif
