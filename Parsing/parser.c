@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 15:41:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 16:25:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ int sym_only(t_toklist *tk)
 t_cmdl	*parser(void)
 {
 	char		*red_line;
-	t_toklist	*tokens;
-	t_cmdl		*cmd_line;
+	char		*out;
+	//t_toklist	*tokens;
+	//t_cmdl		*cmd_line;
 	
 	red_line = NULL;
 	red_line = readline(CYAN"Minishell $> "RESET_COLOR);
@@ -88,19 +89,21 @@ t_cmdl	*parser(void)
 			free(red_line);
 		else
 		{
-			red_line = expander(shell.env, red_line);
-			// printf("Expanding [%s]\n", red_line);
-			tokens = lexer(red_line);
-			// print_tokens(tokens->next);
-			// exit(EXIT_SUCCESS);
-			if (sym_only(tokens->next) == -1)
-				return (NULL);
-			cmd_line = parse_list(tokens->next, shell.env);
+			out = red_line;
+			red_line = expander(shell.env, out);
+			printf("[%s]\n", red_line);
+			//tokens = lexer(red_line);
+			free(out);
 			free(red_line);
-			return (cmd_line);
+			//exit(EXIT_SUCCESS);
+			//if (sym_only(tokens->next) == -1)
+			//  return (NULL);
+			//cmd_line = parse_list(tokens->next, shell.env);
+			//return (cmd_line);
 		}
 	}
 	else if (!red_line)
 		exit(0);
 	return (NULL);
-}	
+}
+

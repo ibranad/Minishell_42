@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 16:07:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:22:40 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		stderr_cmd_not_found(char *command);
 void	free_db_c(char **strings);
 void	free_env(t_envl *envl);
 void	free_envl_n(t_envl *node);
+void	free_cmdl_lst(t_cmdl **lst);
 //* G_UTILS
 void	print_table(char **table);
 void	print_list(t_cmdl *list);

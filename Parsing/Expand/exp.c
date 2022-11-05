@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/03 18:00:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:37:46 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    dollar_white_space(t_exp *s, char *in)
     char *ptr;
 
     ptr = NULL;
-        ptr = s->out;
+    ptr = s->out;
     s->out = ft_strjoin(s->out, "$");
     s->not_out = get_until_dollar(&in[s->g_i]);
     s->out = ft_strjoin(ptr, s->not_out);
@@ -30,12 +30,16 @@ void    dollar_ques_mark(t_exp *s, char *in)
 {
     (void)in;
     char *ptr;
+    char *ptr2;
+    
     ptr = NULL;
+    ptr2 = s->out;
     ptr = ft_itoa(shell.status);
     s->g_i++;
-    s->out = ft_strjoin(s->out, ptr);
+    s->out = ft_strjoin(ptr2, ptr);
     s->g_i++;
     free(ptr);
+    free(ptr2);
 }
 
 char *expander(t_envl *envl, char *in)
