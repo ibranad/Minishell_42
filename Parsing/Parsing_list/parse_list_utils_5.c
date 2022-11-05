@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/01 16:19:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 18:00:29 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int here_doc_word(t_prs_lst *p)
 {
     p->tmp_2->in_fd = ft_heredoc(p->tmp->lexeme);
     p->here_doc_flag = 0;
+    p->in_flag = 1;
     if (p->tmp->next)
     {
         p->tmp = p->tmp->next;
@@ -84,6 +85,7 @@ int input_flag_case(t_prs_lst *p)
 int input_word_case(t_prs_lst *p)
 {
     p->tmp_2->in_fd = open(p->tmp->lexeme, O_RDONLY);
+    p->in_flag = 1;
     if(p->tmp_2->in_fd < 0)
     {
         putstr_fd(strerror(errno), 2);

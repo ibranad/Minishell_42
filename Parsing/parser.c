@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 17:21:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:33:57 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ t_cmdl	*parser(void)
 		{
 			out = red_line;
 			red_line = expander(shell.env, out);
+			//printf("[%s]\n", red_line);
 			tokens = lexer(red_line);
 			free(out);
 			free(red_line);
-			// exit(EXIT_SUCCESS);
 			if (sym_only(tokens->next) == -1)
-				return (NULL);
+			 return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
 			return (cmd_line);
 		}
