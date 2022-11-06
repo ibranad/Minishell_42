@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 16:50:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/05 18:42:02 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int check_unrequired_by_subject(char *in)
 {
     if (unclosed_quote(in) == 1)
         return(-1);
-    if (unreq_meta_char(in) == -2)
-        return(-2);
+    // if (unreq_meta_char(in) == -2)
+    //     return(-2);
     // if (check_meta_char(in) == -3)
     //     return(-3);
     return (0);

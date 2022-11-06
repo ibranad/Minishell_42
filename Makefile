@@ -67,11 +67,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-<<<<<<< HEAD
-		$(CC) $(CFLAGS) -g $(FS) $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
-=======
 		$(CC) $(CFLAGS) $(FS) -g  $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
->>>>>>> bdeb3a03a5498e3b86216a74f0f91114c121e567
 		@echo "minishell CREATED"
 
 clean :
