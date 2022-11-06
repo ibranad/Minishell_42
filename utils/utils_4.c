@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:02:49 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 19:55:07 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:15:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ int	not_integer(char *s)
 		if (!ft_isdigit(s[i]))
 			return (1);
 	return (0);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*mem;
+	size_t	i;
+
+	mem = malloc(count * size);
+	if (!mem)
+		malloc_fail();
+	i = 0;
+	while (i < count * size)
+	{
+		*(mem + i) = 0;
+		i++;
+	}
+	return (mem);
 }
