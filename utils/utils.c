@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 14:02:21 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 11:32:25 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_strdup(const char *s1)
 	char	*copy;
 	char	*s;
 
+	if (!s1)
+		return (NULL);
 	a = 0;
 	s = (char *)s1;
 	copy = malloc(sizeof(char) * (ft_strlen(s) + 1));
