@@ -6,27 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 11:53:10 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:20:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
-
-
-void	lex_skip_blanks(t_lex *lex)
-{
-	while (ft_isblank(lex->c))
-		lex_forward(lex);
-}
- 
-int	is_symbol(char c)
-{
-	if (!c)
-		return (0);
-	if (c == '|' || c == '<' || c == '>')
-		return (1);
-	return (0);
-}
 
 int	is_quote(char c)
 {
@@ -35,65 +19,42 @@ int	is_quote(char c)
 	return (0);
 }
 
-char	*lex_gather_lexeme(t_lex *lex)
+
+t_lex	*init_lex(char *cmd_line)
 {
-	char	*lexeme;
+	t_lex	*lex;
 
-	lexeme = NULL;
-	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
-	{
-		if (!is_quote(lex->c))
-			lexeme = charjoin(lexeme, lex->c);
-		else
-			lexeme = ft_strjoin(lexeme, lex_gather_str(lex, lex->c));
-		lex_forward(lex);
-	}
-	lex_backward(lex);
-	return (lexeme);
-}
-
-// char	*lex_gather_option(t_lex *lex)
-// {
-// 	char	*option;
-// 	option = NULL;
-// 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
-// 	{
-// 		option = charjoin(option, lex->c);
-// 		lex_forward(lex);
-// 	}
-// 	lex_backward(lex);
-// 	return (option);
-// }
-
-char	*lex_strdup(t_lex *lex, int n)
-{
-	char	*copy;
-	int		i;
-
-	copy = malloc(sizeof(char) * n + 1);
-	if (!copy)
+	lex = malloc(sizeof(t_lex));
+	if (!lex)
 		malloc_fail();
-	i = 0;
-	while (i < n)
-	{
-		copy[i] = lex->c;
-		lex_forward(lex);
-		i++;
-	}
-	lex_backward(lex);
-	copy[i] = 0;
-	return (copy);
+	lex->string = cmd_line;
+	lex->str_len = ft_strlen(lex->string);
+	lex->i = 0;
+	lex->c = lex->string[lex->i];
+	return (lex);
 }
 
-t_toklist	*new_io_token(t_lex *lex)
+void	lex_forward(t_lex *lex)
 {
-	if (lex->c == '<' && lex->string[lex->i + 1] == '<')
-		return (new_token(_dchev, lex_strdup(lex, 2)));
-	else if (lex->c == '<' && lex->string[lex->i + 1] != '<')
-		return (new_token(_chev, lex_strdup(lex, 1)));
-	else if (lex->c == '>' && lex->string[lex->i + 1] == '>')
-		return (new_token(_dichev, lex_strdup(lex, 2)));
-	else if (lex->c == '>' && lex->string[lex->i + 1] != '>')
-		return (new_token(_ichev, lex_strdup(lex, 1)));
-	return (NULL);
+	if (lex->c)
+	{
+		lex->i++;
+		lex->c = *(lex->string + lex->i);
+	}
 }
+
+void	lex_backward(t_lex *lex)
+{
+	if (lex->i)
+	{
+		lex->i--;
+ 		lex->c = *(lex->string + lex->i);
+	}
+}
+
+void	lex_skip_blanks(t_lex *lex)
+{
+	while (ft_isblank(lex->c))
+		lex_forward(lex);
+}
+ 

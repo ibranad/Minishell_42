@@ -6,90 +6,101 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 15:12:11 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 10:46:59 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
-t_lex	*init_lex(char *cmd_line)
-{
-	t_lex	*lex;
 
-	lex = malloc(sizeof(t_lex));
-	if (!lex)
-		malloc_fail();
-	lex->string = cmd_line;
-	lex->str_len = ft_strlen(lex->string);
-	lex->i = 0;
-	lex->c = lex->string[lex->i];
-	return (lex);
-}
 
-void	lex_forward(t_lex *lex)
+char	*lex_gather_lexeme(t_lex *lex)
 {
-	if (lex->c)
-	{
-		lex->i++;
-		lex->c = *(lex->string + lex->i);
-	}
-}
+	char	*lexeme;
 
-void	lex_backward(t_lex *lex)
-{
-	if (lex->i)
+	lexeme = NULL;
+	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
 	{
-		lex->i--;
- 		lex->c = *(lex->string + lex->i);
-	}
-}
-	
-int	end_reached(t_lex *lex, char quote, int *flag)
-{
-	if (*flag == 1 && ft_isblank(lex->c))
-		return (1);
-	if (lex->c == quote)
-	{
-		if (lex->i < lex->str_len - 1 && !ft_isblank(lex->string[lex->i + 1]))
-		{
-			*flag = 1;
-			lex_forward(lex);
-		}
+		if (!is_quote(lex->c))
+			lexeme = charjoin(lexeme, lex->c);
 		else
-			return (1);
+			lexeme = ft_strjoin(lexeme, lex_gather_str(lex));
+		lex_forward(lex);
 	}
-	return (0);
+	lex_backward(lex);
+	return (lexeme);
 }
 
-char	*lex_gather_substring(t_lex *lex, char qte)
+t_toklist	*new_io_token(t_lex *lex)
 {
-	char *substring;
+	if (lex->c == '<' && lex->string[lex->i + 1] == '<')
+		return (new_token(_dchev, lex_strdup(lex, 2)));
+	else if (lex->c == '<' && lex->string[lex->i + 1] != '<')
+		return (new_token(_chev, lex_strdup(lex, 1)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] == '>')
+		return (new_token(_dichev, lex_strdup(lex, 2)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] != '>')
+		return (new_token(_ichev, lex_strdup(lex, 1)));
+	return (NULL);
+}
+
+char	*gather_single_quoted(t_lex *lex)
+{
+	char	*substring;
 
 	substring = NULL;
-	while (lex->c && lex->c != qte && !ft_isblank(lex->c))
+	lex_forward(lex);
+	while (lex->c && lex->c != '\'')
 	{
 		substring = charjoin(substring, lex->c);
 		lex_forward(lex);
 	}
-	if (ft_isblank(lex->c))
-		lex_backward(lex);
+	lex_forward(lex);
 	return (substring);
 }
 
-char	*lex_gather_str(t_lex *lex, char quote)
+char	*gather_double_quoted(t_lex *lex)
 {
-	char	*string;
-	char	qte;
+	char	*substring;
 
-	string = NULL;
-	qte = quote;
-	if (empty_string(lex, quote))
-		return (ft_strdup(""));
-	while (!ft_isblank(lex->c) && lex->c)
+	substring = NULL;
+	lex_forward(lex);
+	while (lex->c && lex->c != '\"')
 	{
-		string = ft_strjoin(string, lex_gather_substring(lex, qte));
-		if (lex->c == get_opposite_quote(qte))
-			qte = lex->c;
+		substring = charjoin(substring, lex->c);
 		lex_forward(lex);
 	}
+	lex_forward(lex);
+	return (substring);
+}
+
+char	*gather_till_blank(t_lex *lex)
+{
+	char *substring;
+
+	substring = NULL;
+	while (lex->c && !ft_isblank(lex->c) && !is_quote(lex->c))
+	{
+		substring = charjoin(substring, lex->c);
+		lex_forward(lex);
+	}
+	return (substring);
+}
+
+char	*lex_gather_str(t_lex *lex)
+{
+	char	*string;
+
+	string = NULL;
+	while (lex->c && !ft_isblank(lex->c))
+	{
+		if (lex->c == '\'')
+			string = ft_strjoin(string, gather_single_quoted(lex));
+		else if (lex->c == '\"')
+			string = ft_strjoin(string, gather_double_quoted(lex));
+		else if (!ft_isblank(lex->c) && lex->c)
+			string = ft_strjoin(string, gather_till_blank(lex));
+	}
+	if (ft_isblank(lex->c))
+		lex_backward(lex);
 	return (string);
 }
