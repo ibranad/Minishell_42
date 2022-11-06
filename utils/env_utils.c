@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 11:06:52 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/05 17:57:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	envl_len(t_envl *envl)
 
 void	set_exit_status(void)
 {
-	if (!WIFEXITED(shell.status))
+	if (!WIFEXITED(shell.status) )
 		shell.status += 128;
 	else
 		shell.status = WEXITSTATUS(shell.status);
