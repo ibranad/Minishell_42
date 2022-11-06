@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 18:42:02 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 16:50:53 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,62 @@ int ft_ispecial_char(char c)
         return(0);
 }
 
+int multi_out(char *in)
+{
+    int i;
+    int out_flag;
+    
+    i = 0;
+    out_flag = 0;
+    while (in[i])
+    {
+        if (out_flag == 3)
+        {
+            putstr_fd(strerror(errno), 2);
+            putstr_fd("\n", 2);
+            return(-1);
+        }
+        if (in[i] == '>')
+            out_flag++;
+        else if (in[i] != ' ' && in[i] != '\t' && in[i] != '>')
+            out_flag = 0;
+        i++;
+    }
+    return (out_flag);
+}
+
+int multi_in(char *in)
+{
+    int i;
+    int in_flag;
+    
+    i = 0;
+    in_flag = 0;
+    while (in[i])
+    {
+        if (in_flag == 3)
+        {
+            putstr_fd("Syntax error near unexpected token `newline\'", 2);
+            putstr_fd("\n", 2);
+            return(-1);
+        }
+        if (in[i] == '<')
+            in_flag++;
+        else if (in[i] != ' ' && in[i] != '\t' && in[i] != '<')
+            in_flag = 0;
+        i++;
+    }
+    return (in_flag);
+}
+
 int check_unrequired_by_subject(char *in)
 {
     if (unclosed_quote(in) == 1)
         return(-1);
-    // if (unreq_meta_char(in) == -2)
-    //     return(-2);
-    // if (check_meta_char(in) == -3)
-    //     return(-3);
+    if (multi_in(in) < 0)
+        return(-2);
+    if (multi_out(in) < 0)
+        return(-3);
     return (0);
 }
 

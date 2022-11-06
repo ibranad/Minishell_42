@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 18:00:29 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 17:57:31 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int here_doc_flag(t_prs_lst *p)
     if (p->tmp->next)
     {
         if (is_symbol(p->tmp->next->lexeme[0]))
-            putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
+            error_printing();
         p->tmp = p->tmp->next;
     }
     else
     {
-        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
+        error_printing();
         return (-1);
     } 
     return (0);
@@ -71,14 +71,14 @@ int input_flag_case(t_prs_lst *p)
     if (p->tmp->next)
     {
         if (is_symbol(p->tmp->next->lexeme[0]))
-            putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
+            error_printing();
         p->tmp = p->tmp->next;
         return(0);
     }
     else
     {
-        putstr_fd("minishell: syntax error near unexpected token `newline'\n", 2);
-        return (0);
+        error_printing();
+        return (-1);
     } 
 }
 
@@ -89,6 +89,7 @@ int input_word_case(t_prs_lst *p)
     if(p->tmp_2->in_fd < 0)
     {
         putstr_fd(strerror(errno), 2);
+        putstr_fd("\n", 2);
         return (-1);
     }
     p->red_in_flag = 0;

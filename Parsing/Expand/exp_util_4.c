@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:02:43 by ibnada            #+#    #+#             */
-/*   Updated: 2022/10/30 21:49:00 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 11:46:50 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void in_here_doc_handle(t_exp *s, char *in)
     char *ptr;
 
     ptr = NULL;
-    s->g_i++;
-    ptr = s->out;
-    s->out = ft_strjoin(s->out, "<");
-    free(ptr);
+    // ptr = s->out;
+    // s->out = ft_strjoin(s->out, "<");
+    // free(ptr);
     if (in[s->g_i]  == '<')
     {
         s->g_i++;
+        s->g_i++;
         ptr = s->out;
-        s->out = ft_strjoin(s->out, "<");
+        s->out = ft_strjoin(s->out, "<<");
         free(ptr);
     }
     while ((in[s->g_i] == ' ' || in[s->g_i] == '\t') && in[s->g_i])

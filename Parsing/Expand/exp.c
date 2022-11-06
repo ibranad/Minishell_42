@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 13:28:52 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 11:45:02 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char *expander(t_envl *envl, char *in)
             //printf("8\n");
             dollar_expanding(envl, &s, in);
         }
-        else if(in[s.g_i] == '<')
+        else if(in[s.g_i] == '<' && in[s.g_i + 1] == '<')
         {
             //printf("1\n");
             in_here_doc_handle(&s, in);

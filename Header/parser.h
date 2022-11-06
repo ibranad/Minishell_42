@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 17:35:01 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 17:56:28 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct prs_lst_st
     
 }       t_prs_lst;
 
+void    error_printing(void);
 int     get_builtin(char *str);
 int     cmd_count(t_toklist *tmp);
 int     toklist_size_2alloc(t_toklist *tok_list);
