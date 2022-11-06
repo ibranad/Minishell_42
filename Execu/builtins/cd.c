@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 17:06:58 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 14:44:04 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 //* The stream has type DIR *.
 //* The READDIR returns a pointer to the next directory entry. It returns
 //* NULL upon reaching the end of the directory or on error.
-//chdir
-//closedir
-// *l9walb: cd .. segfaults when you delete 
-char *pwd_util(void)
+//chdir 
+char *pwd_util(t_envl **envl)
 {
 	char	*current_directory;
 	char	*tmp;
@@ -27,6 +25,11 @@ char *pwd_util(void)
 	tmp = malloc(sizeof(char) * 250);
 	current_directory = ft_strdup(getcwd(tmp, 250));
 	free(tmp);
+	if (!current_directory)
+	{
+		printf("%s\n", strerror(errno));
+		return (ft_strjoin(get_env_var(*envl, "PWD"), "/."));
+	}
 	return (current_directory);
 }
 
@@ -34,7 +37,7 @@ void	directory_changing(t_envl **envl, char *path)
 {
 	set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl);
 	chdir(path);
-	set_variable("PWD", pwd_util(), envl);
+	set_variable("PWD", pwd_util(envl), envl);
 }
 
 void	change_dir(char *path, t_envl **envl)
@@ -47,7 +50,7 @@ void	change_dir(char *path, t_envl **envl)
 	else if (!path || *path == '~')
 		directory_changing(envl, get_env_var(*envl, "HOME"));
 	else if (!dir)
-		printf("---%s\n", strerror(errno));
+		printf("%s\n", strerror(errno));
 	else
 		directory_changing(envl, path);
 }
