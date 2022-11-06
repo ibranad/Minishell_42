@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 20:03:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:36:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**get_entry(char *assign)
 int	reset_variable(char *key, char *value, t_envl *envl)
 {
 	t_envl	*curr;
-	printf("ya resetting\n");
 	curr = envl;
 	while (curr)
 	{
