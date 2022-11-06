@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/06 16:50:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:59:54 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,54 @@ int multi_in(char *in)
     return (in_flag);
 }
 
+int space_between_in(char *in)
+{
+    int i;
+    
+    i = 0;
+    while (in[i])
+    {
+        if (in[i] == '<')
+        {
+            while(in[i + 1] == ' ' || in[i + 1] == '\t')
+            {
+                i++;
+                if (in[i + 1] == '<')
+                {
+                    error_printing();
+                    return (-1);
+                }
+            }
+        }
+        i++;
+    }
+    return (0);
+}
+
+int space_between_out(char *in)
+{
+    int i;
+    
+    i = 0;
+    while (in[i])
+    {
+        if (in[i] == '>')
+        {
+            while(in[i + 1] == ' ' || in[i + 1] == '\t')
+            {
+                i++;
+                if (in[i + 1] == '>')
+                {
+                    error_printing();
+                    return (-1);
+                }
+            }
+        }
+        i++;
+    }
+    return (0);
+}
+
 int check_unrequired_by_subject(char *in)
 {
     if (unclosed_quote(in) == 1)
@@ -78,6 +126,10 @@ int check_unrequired_by_subject(char *in)
     if (multi_in(in) < 0)
         return(-2);
     if (multi_out(in) < 0)
+        return(-3);
+    if (space_between_in(in) < 0)
+        return(-3);
+    if (space_between_out(in) < 0)
         return(-3);
     return (0);
 }

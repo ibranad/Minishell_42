@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 11:51:23 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 20:20:23 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,27 @@ int sym_only(t_toklist *tk)
 	return(0);
 }
 
+int chev_only(t_toklist *tk)
+{
+	int i;
+	t_toklist *tmp;
+
+	i = 0;
+	tmp = tk;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (i == 1 && ((tk->nature == _chev) 
+	|| (tk->nature == _chev) || (tk->nature == _ichev)))
+	{
+		error_printing();
+		return (-1);
+	}
+	return(0);
+}
+
 t_cmdl	*parser(void)
 {
 	char		*red_line;
@@ -97,7 +118,7 @@ t_cmdl	*parser(void)
 			// return (NULL);
 			free(out);
 			free(red_line);
-			if (sym_only(tokens->next) == -1)
+			if (sym_only(tokens->next) == -1 || chev_only(tokens->next) == -1)
 			 return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
 			return (cmd_line);
