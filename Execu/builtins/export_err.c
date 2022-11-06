@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 14:17:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 14:18:35 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:13:15 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	export_invalid_key(char *s)
 
 	i = -1;
 	while (s[++i])
-		if (!ft_isalnum(s[i]) && s[i] != '_')
+		if (!ft_isalpha(s[i]) && s[i] != '_')
 			return (1);
 	return (0);
 }
@@ -30,8 +30,8 @@ int	not_valid_id(char *entry)
 		return (1); 
 	else if (*entry == '=')
 		return (export_notvalid_stderr(entry));
-	else if (!is_ther_char(entry + 1, '='))
-		return (1);
+	// else if (!is_ther_char(entry + 1, '='))
+	// 	return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 14:32:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:09:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,32 @@ void	disp_export(t_envl **envl)
 	curr = *envl;
 	while (curr)
 	{
-		printf("declare -x %s=%s\n", curr->key, curr->value);
+		printf("declare -x %s", curr->key);
+		if (curr->value)
+			printf("=\"%s\"", curr->value);
+		printf("\n");
 		curr = curr->next;
 	}
+}
+
+char	**get_entry(char *assignment)
+{
+	char	**entry;
+	int 	i;
+
+	i = 0;
+	entry = ft_calloc(3, sizeof(char *));
+	if (!entry)
+		malloc_fail();
+	while (assignment[i] && assignment[i] != '=')
+		entry[0] = charjoin(entry[0], assignment[i++]);
+	if (assignment[i] == '=')
+	{
+		while (assignment[++i])
+			entry[1] = charjoin(entry[1], assignment[i]);
+		entry[1] = charjoin(entry[1], assignment[i]);
+	}
+	return (entry);
 }
 
 int	reset_variable(char *key, char *value, t_envl *envl)

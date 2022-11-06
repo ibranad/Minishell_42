@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 18:15:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:10:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ int     nbrlen(int nbr);
 char	*ft_itoa(int n);
 int		is_ther_char(char *s, char c);
 int		not_integer(char *s);
+void	*ft_calloc(size_t count, size_t size);
 #endif

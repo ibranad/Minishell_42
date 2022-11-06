@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 15:03:56 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 14:44:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:09:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	_export(char **entries, t_envl **envl)
 		{
 			if (check_entry(entries[i], &i))
 				continue ;
-			entry = split(entries[i], '=');
+			entry = get_entry(entries[i]);
 			set_variable(entry[0], entry[1], envl);
 			i++;
 		}
