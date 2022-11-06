@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 16:09:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:03:31 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,41 @@ void	disp_export(t_envl **envl)
 	}
 }
 
-char	**get_entry(char *assignment)
+char	**get_entry(char *assign)
 {
 	char	**entry;
 	int 	i;
+	int 	len;
 
+	len = ft_strlen(assign);
 	i = 0;
 	entry = ft_calloc(3, sizeof(char *));
-	if (!entry)
-		malloc_fail();
-	while (assignment[i] && assignment[i] != '=')
-		entry[0] = charjoin(entry[0], assignment[i++]);
-	if (assignment[i] == '=')
+	while (assign[i] && assign[i] != '=' && assign[i] != '+')
+		entry[0] = charjoin(entry[0], assign[i++]);
+	if (assign[i] == '=')
+		while (assign[++i])
+			entry[1] = charjoin(entry[1], assign[i]);
+	else if (i && assign[i] == '+' && i + 2 < len && assign[i + 1] == '=')
 	{
-		while (assignment[++i])
-			entry[1] = charjoin(entry[1], assignment[i]);
-		entry[1] = charjoin(entry[1], assignment[i]);
+		i += 2;
+		entry[1] = get_env_var(shell.env, entry[0]);
+		while (assign[i])
+			entry[1] = charjoin(entry[1], assign[i++]);
 	}
+	entry[1] = charjoin(entry[1], assign[i]);
 	return (entry);
 }
 
 int	reset_variable(char *key, char *value, t_envl *envl)
 {
 	t_envl	*curr;
-
+	printf("ya resetting\n");
 	curr = envl;
 	while (curr)
 	{
 		if (!ft_strcmp(curr->key, key))
 		{
-			if (value)
+			if (value && *value)
 				curr->value = value;
 			return (1);
 		}

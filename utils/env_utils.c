@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 17:57:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:43:18 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char	*get_env_var(t_envl *envl, char *key)
 	t_envl	*curr;
 
 	curr = envl;
+	if (!key)
+		return (NULL);
 	while (curr)
 	{
 		if (!ft_strcmp(curr->key, key))

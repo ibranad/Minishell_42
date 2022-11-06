@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:02:49 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/06 15:10:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:15:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	mem = malloc(count * size);
 	if (!mem)
-		return (NULL);
+		malloc_fail();
 	i = 0;
 	while (i < count * size)
 	{
