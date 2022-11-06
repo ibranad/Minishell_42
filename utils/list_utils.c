@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:09:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 15:20:17 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:47:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ t_envl	*lstnew(char *key, char *value)
 	if (!lst)
 		malloc_fail();
 	lst->key = key;
-	if (!value)
-		lst->value = ft_strdup("");
-	else
-		lst->value = value;
+	lst->value = value;
 	// free(entry);
 	lst->next = NULL;
 	return (lst);

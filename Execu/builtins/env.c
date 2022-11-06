@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:48:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 12:39:38 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:01:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	print_env(t_envl *envl)
 	curr = envl;
 	while (curr)
 	{
-		printf("%s=%s\n", curr->key, curr->value);
+		if (curr->value)
+			printf("%s=%s\n", curr->key, curr->value);
 		curr = curr->next;
 	}
 }
