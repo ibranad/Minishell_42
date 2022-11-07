@@ -3,23 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:52:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 14:26:44 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:53:57 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-void	free_db_c(char **strings)
+int	free_db_c_start(char **strings, int start)
 {
-	char	**k;
+	int	i;
 
-	k = strings;
-	while (*strings)
-		free(*(strings++));
-	free(k);
+	i = start + 1;
+	while (strings[i])
+		free(strings[i++]);
+	free(strings);
+	return (1);
+}
+
+int	free_db_c(char **strings)
+{
+	int	i;
+
+	i = 0;
+	while (strings[i])
+		free(strings[i++]);
+	free(strings);
+	return (1);
 }
 
 void	free_envl_n(t_envl *node)
@@ -27,4 +39,20 @@ void	free_envl_n(t_envl *node)
 	free(node->key);
 	free(node->value);
 	free(node);
+}
+
+void	free_token_list(t_toklist *tokens)
+{
+	t_toklist	*curr;
+	t_toklist	*keep;
+	
+	curr = tokens;
+	while (curr)
+	{
+		keep = curr;
+		if (curr->nature != _head)
+		 	free(curr->lexeme);
+		free(curr);
+		curr = keep->next;
+	}
 }

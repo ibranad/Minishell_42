@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:28:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 18:10:58 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:22:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	*charjoin(char *s1, char c)
 	j = ft_strlen(s1);
 	nw_str[j++] = c;
 	nw_str[j] = '\0';
+	free(s1);
 	return (nw_str);
 }
 

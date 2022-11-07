@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/04 20:33:04 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 13:58:59 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,31 @@
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
 #define RESET_COLOR "\e[m"
+typedef struct s_lex
+{
+	char	c;
+	size_t	i;
+	char	*string;
+	size_t	str_len;
+}				t_lex;
 
+typedef enum
+{
+	_head,
+	_chev,
+	_ichev,
+	_dchev,
+	_dichev,
+	_pipe,
+	_word,
+}	e_nat;
+
+typedef struct s_toklist
+{
+	e_nat				nature;
+	char				*lexeme;
+	struct s_toklist	*next;
+}					t_toklist;
 typedef struct s_cmdl
 {
 	int				idx;

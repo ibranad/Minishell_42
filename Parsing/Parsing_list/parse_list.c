@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/07 16:57:30 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:51:38 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int    cmd_case(t_prs_lst *p)
         p->tmp_2->path = fetch_path(p->tmp->lexeme, p->paths);
     p->cmd_c = cmd_count(p->tmp);
     p->tmp_2->args = malloc(sizeof(char *) * (p->cmd_c + 2));
-    p->tmp_2->args[p->i] = p->tmp->lexeme;
+    p->tmp_2->args[p->i] = ft_strdup(p->tmp->lexeme);
     p->first_word = 1;
     p->i++;
     if (p->tmp->next)
@@ -152,5 +152,6 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
             if (pipe_case(&p) == -1)
                 return(NULL);
     }
+	free_db_c(p.paths);
     return (p.lst);
 }

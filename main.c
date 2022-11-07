@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 16:34:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 18:22:26 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int main(int ac, char **av, char **env)
 		print_parsing_lst(cmd_line);
 		execute(cmd_line, env);
 		set_exit_status();
+		free_cmdl_lst(&cmd_line);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);
-	}  
+	}
 	return (0);
 }
