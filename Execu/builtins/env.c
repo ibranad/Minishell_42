@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:48:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 21:08:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/07 07:50:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void	print_env(t_envl *envl)
 
 void	_env(char **args, t_envl *envl)
 {
-	(void)args;
-	print_env(envl);
-	// if (vector_len(args) > 1)
-	// 	too_many_args(*(args + 1));
-	// else
-	// 	print_env(envl);
+	if (vector_len(args) > 1)
+		too_many_args(*(args + 1));
+	else
+		print_env(envl);
 }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 10:03:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:58:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,6 @@
 # include <string.h>
 # include "minishell.h"
 # include "exp.h"
-
-typedef struct s_lex
-{
-	char	c;
-	size_t	i;
-	char	*string;
-	size_t	str_len;
-}				t_lex;
-
-typedef enum
-{
-	_head,
-	_chev,
-	_ichev,
-	_dchev,
-	_dichev,
-	_pipe,
-	_word,
-}	e_nat;
-
-typedef struct s_toklist
-{
-	e_nat				nature;
-	char				*lexeme;
-	struct s_toklist	*next;
-}					t_toklist;
 
 char		get_opposite_quote(char quote);
 t_lex		*init_lex(char *cmd_line);
