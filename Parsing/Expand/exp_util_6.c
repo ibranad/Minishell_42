@@ -6,54 +6,62 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/05 14:53:32 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:46:00 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-int unclosed_quote(char *in) 
+typedef struct uq
 {
-    //This fonction checks for unclosed quotes (sucess(l9at unclosed quote) return 1, failure(mal9athach) return 0)
-    //in case of empty string this fonction returns -1
     int i;
-    int s;//single quote
-    int d;//double quote
+    int s;
+    int d;
     int d_flag;
     int s_flag;
+}   t_uq;
 
+void uq_init(t_uq *p)
+{
+    p->i = 0;
+    p->s = 0;
+    p->d = 0;
+    p->d_flag = 0;
+    p->s_flag = 0;
+}
+
+int unclosed_quote(char *in) 
+{
+    t_uq s;
+
+    uq_init(&s);
     if (!in)
         return (-1);
-    i = 0;
-    s = 0;
-    d = 0;
-    d_flag = 0;
-    s_flag = 0;
-    while (in[i])
+    while (in[s.i])
     {
-        if (in[i] == '\"' && s_flag == 0)
+        if (in[s.i] == '\"' && s.s_flag == 0)
         {
-            d++;
-            if(d_flag == 0)
-              d_flag = 1;
+            s.d++;
+            if(s.d_flag == 0)
+              s.d_flag = 1;
             else
-              d_flag = 0;
+              s.d_flag = 0;
         }
-        if (in[i] == '\'' && d_flag == 0)
+        if (in[s.i] == '\'' && s.d_flag == 0)
         {
-            s++; 
-            if (s_flag == 0)
-                s_flag = 1;
+            s.s++; 
+            if (s.s_flag == 0)
+                s.s_flag = 1;
             else
-                s_flag = 0;
+                s.s_flag = 0;
         }
-        i++;
+        s.i++;
     }
-    if ((d % 2) == 0 && (s % 2) == 0)
+    if ((s.d % 2) == 0 && (s.s % 2) == 0)
         return (0);
     else
     {
-        printf("Syntax error : Unclosed quote\n");
+        putstr_fd("Minishell: Syntax error unclosed quote\n", 2);
         return (1);
     }
 }
@@ -73,10 +81,10 @@ void dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in)
     else
     {
         ptr = p->out;
-        p->expa = get_until_dollar(&in[p->i_g + 1]);//+1
+        p->expa = get_until_dollar(&in[p->i_g + 1]);
         p->out = ft_strjoin(p->out, get_env_var(envl, p->expa));
         free(ptr);
-        p->i_g += ft_strlen(p->expa) + 1;//+1
+        p->i_g += ft_strlen(p->expa) + 1;
         free(p->expa);
     }
 }

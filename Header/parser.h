@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/06 17:56:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/06 21:00:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,8 @@ t_cmdl  *ft_lstadd_new(int content);
 t_cmdl  *create_parse_lst(int size);
 t_cmdl  *ft_lstadd_new(int content);
 t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl);
+int space_between_in(char *in);
+int space_between_out(char *in);
+
 
 #endif

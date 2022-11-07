@@ -66,12 +66,32 @@ int sym_only(t_toklist *tk)
 	if (i == 1 && ((tk->nature == _pipe) 
 	|| (tk->nature == _chev) || (tk->nature == _ichev)))
 	{
-		putstr_fd("Syntax Error near unexpected token ",2);
-		putstr_fd("`newline'\n",2);
+		error_printing();
 		return (-1);
 	}
 	return(0);
 }
+
+// int chev_only(t_toklist *tk)
+// {
+// 	int i;
+// 	t_toklist *tmp;
+
+// 	i = 0;
+// 	tmp = tk;
+// 	while (tmp)
+// 	{
+// 		i++;
+// 		tmp = tmp->next;
+// 	}
+// 	if (i == 1 && ((tk->nature == _chev) 
+// 	|| (tk->nature == _chev) || (tk->nature == _ichev)))
+// 	{
+// 		error_printing();
+// 		return (-1);
+// 	}
+// 	return(0);
+// }
 
 t_cmdl	*parser(void)
 {
@@ -92,7 +112,6 @@ t_cmdl	*parser(void)
 			out = red_line;
 			red_line = expander(shell.env, out);
 			tokens = lexer(red_line);
-			// print_tokens(tokens->next);
 			free(out);
 			free(red_line);
 			if (sym_only(tokens->next) == -1)

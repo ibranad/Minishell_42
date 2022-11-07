@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/06 11:45:02 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:56:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int check_meta_char(char *in)
     {
         if ((in[i] == '>') || (in[i] == '<') || (in[i] == '|'))
         {
-            putstr_fd("Syntax Error near unexpected token\n", 2);
+            error_printing();
             return (-3);
         }
         else if (in[i] == ' ' || in[i] == '\t')
