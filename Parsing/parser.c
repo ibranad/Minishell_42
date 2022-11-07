@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 16:55:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 18:08:26 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,9 @@ t_cmdl	*parser(void)
 			free(out);
 			free(red_line);
 			if (sym_only(tokens->next) == -1)
-			 return (NULL);
+				return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
+			free_token_list(tokens);
 			return (cmd_line);
 		}
 	}
@@ -124,4 +125,3 @@ t_cmdl	*parser(void)
 		exit(0);
 	return (NULL);
 }
-

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_5.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
 /*   Updated: 2022/11/07 17:02:20 by ibnada           ###   ########.fr       */
@@ -14,7 +14,7 @@
 
 int    args_case(t_prs_lst *p)
 {
-    p->tmp_2->args[p->i] = p->tmp->lexeme;
+    p->tmp_2->args[p->i] = ft_strdup(p->tmp->lexeme);
     p->i++;
     if (p->tmp->next)
     {
