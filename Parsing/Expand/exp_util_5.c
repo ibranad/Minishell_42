@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/06 20:59:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:57:48 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ int multi_in(char *in)
     {
         if (in_flag == 3)
         {
-            putstr_fd("Syntax error near unexpected token `newline\'", 2);
-            putstr_fd("\n", 2);
+            error_printing();
             return(-1);
         }
         if (in[i] == '<')

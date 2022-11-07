@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/01 16:18:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:57:30 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,87 +154,3 @@ t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
     }
     return (p.lst);
 }
-
-
-//-------------------------------------------------------------------------------------
-        // if ((p.tmp->nature == _word) && (p.here_doc_flag == 0) 
-        // && (p.red_in_flag == 0) && (p.red_out_flag == 0) && (p.apnd_flag == 0))
-        //     if(command_arg_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _dchev || p.tmp->nature == _word)
-        //     if (heredoc_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _chev || p.tmp->nature == _word)
-        //     if (red_in_case(&p) == -1)
-        //         break;
-        // if ((p.tmp->nature == _ichev) || (p.tmp->nature == _word))
-        //     if (red_out_case(&p) == -1)    
-        //         break;
-        // if (p.tmp->nature == _dichev || p.tmp->nature == _word)
-        //     if (apnd_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _pipe)
-        // {
-        //     if (pipe_case(&p) == -2)
-        //         return(NULL);
-        //     else if(pipe_case(&p) == -1)
-        //         break;
-        // }
-//-------------------------------------------------------------------------------------
-        // if (parse_list_short(&p) == -1)
-        //     break;
-        // else if (parse_list_short(&p) == -2)
-        // {
-        //     putstr_fd("Syntax error near unexpected token `newline'\n", 2);
-        //     return (NULL);
-        // }
-//-------------------------------------------------------------------------------------
-        // status = parse_list_short(&p);
-        // if (status == -1)
-        //     break;
-        // else if (status == -2)
-        // {
-        //     putstr_fd("Syntax error near unexpected token `newline'\n", 2);
-        //     return (NULL);
-        // }
-//-------------------------------------prs_lst_working------------------------------------------------
-
-        // if ((p.tmp->nature == _word) && (p.here_doc_flag == 0) 
-        // && (p.red_in_flag == 0) && (p.red_out_flag == 0) && (p.apnd_flag == 0))
-        //     if(command_arg_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _dchev || p.tmp->nature == _word)
-        //     if (heredoc_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _chev || p.tmp->nature == _word)
-        //     if (red_in_case(&p) == -1)
-        //         break;
-        // if ((p.tmp->nature == _ichev) || (p.tmp->nature == _word))
-        //     if (red_out_case(&p) == -1)    
-        //         break;
-        // if (p.tmp->nature == _dichev || p.tmp->nature == _word)
-        //     if (apnd_case(&p) == -1)
-        //         break;
-        // if (p.tmp->nature == _pipe)
-        //     if (pipe_case(&p) == -1)
-        //         break;
-//-----------------------------------pars_lst_short--------------------------------------------------
-    // if ((p->tmp->nature == _word) && (p->here_doc_flag == 0) 
-    // && (p->red_in_flag == 0) && (p->red_out_flag == 0) && (p->apnd_flag == 0))
-    //     return (command_arg_case(p));
-    // if (p->tmp->nature == _dchev || p->tmp->nature == _word)
-    //     return (heredoc_case(p));
-    // if (p->tmp->nature == _chev || p->tmp->nature == _word)
-    //     return (red_in_case(p) == -1);
-    // if ((p->tmp->nature == _ichev) || (p->tmp->nature == _word))
-    //     return (red_out_case(p));
-    // if (p->tmp->nature == _dichev || p->tmp->nature == _word)
-    //     return (apnd_case(p));
-    // if (p->tmp->nature == _pipe)
-    // {
-    //     if (pipe_case(p) == -2)
-    //         return (-2);
-    //     else if (pipe_case(p) == -1)
-    //         return (-1);
-    // }
-    // return (0);

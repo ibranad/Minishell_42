@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 11:51:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:34:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	free_cmdl_lst(t_cmdl **lst)
 	{
 		while(ptr)
 		{
+			free(ptr2->path);
 			free_db_c(ptr2->args);
 			free(ptr2);
 			ptr = ptr->next;
@@ -48,7 +49,6 @@ int main(int ac, char **av, char **env)
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
 		print_parsing_lst(cmd_line);
-		//free_cmdl_lst(&cmd_line);
 		execute(cmd_line, env);
 		set_exit_status();
 		dup2(fd, STDIN_FILENO);

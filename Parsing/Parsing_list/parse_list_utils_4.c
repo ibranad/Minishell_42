@@ -86,7 +86,6 @@ int pipe_case(t_prs_lst *p)
         p->tmp_2->out_fd = -42;
     if (p->in_flag == 0 && (p->size -1 != p->tmp_2->idx))
         p->tmp_2->in_fd = -42;
-    //p->tmp_2->args[p->i] = 0;
     if (p->tmp->next)
     {
         if (p->tmp->next->nature == _pipe)
@@ -113,5 +112,5 @@ int pipe_case(t_prs_lst *p)
 void error_printing(void)
 {
     putstr_fd("Minishell: Syntax error near", 2);
-    putstr_fd(" unexpected token `newline'\n", 2);
+    putstr_fd(" unexpected token\n", 2);
 }
