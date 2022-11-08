@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:11:57 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/15 18:41:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 09:18:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_toklist	*lexer(char *cmd_line)
 
 	lex = init_lex(cmd_line);
 	tokens = get_tokens_list(lex);
+	free(lex);
 	return (tokens);
 }
 

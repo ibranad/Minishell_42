@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 20:36:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:29:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ char	**get_entry(char *assign)
 
 	len = ft_strlen(assign);
 	i = 0;
-	entry = ft_calloc(3, sizeof(char *));
+	entry = ft_calloc(2, sizeof(char *));
 	while (assign[i] && assign[i] != '=' && assign[i] != '+')
 		entry[0] = charjoin(entry[0], assign[i++]);
+	if (!assign[i])
+		return (entry);
 	if (assign[i] == '=')
 		while (assign[++i])
 			entry[1] = charjoin(entry[1], assign[i]);
@@ -60,8 +62,12 @@ int	reset_variable(char *key, char *value, t_envl *envl)
 	{
 		if (!ft_strcmp(curr->key, key))
 		{
-			if (value && *value)
+			free(key);
+			if (value)
+			{
+				free(curr->value);
 				curr->value = value;
+			}
 			return (1);
 		}
 		curr = curr->next;
