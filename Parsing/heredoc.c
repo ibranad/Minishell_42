@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 08:58:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:06:30 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	stop_here()
 
 int	ft_hd_short(char *line, char *lim, int pip)
 {
-	if (shell.h_doc == -1 || !line || ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	if (shell.h_doc == -1 || !line
+		|| ft_strncmp(line, lim, ft_strlen(lim)) == 0)
 	{
 		write(pip, "\n", 1);
 		return (-1);
@@ -36,37 +37,42 @@ int	ft_hd_short(char *line, char *lim, int pip)
 	return (0);
 }
 
-int	ft_heredoc(char *lim)
+void	hdoc_init(char *lim, t_hdoc *s)
 {
-	char	*line;
-	int		pip[2];
-	int		e;
-	int		lim_l;
-
-	lim_l = ft_strlen(lim);
-	if (!lim)
-		return (-1);
-	pipe(pip);
-	signal(SIGINT, stop_here);
-	line = readline("> ");
-	if (!line || ft_strncmp(line, lim, lim_l) == 0)
-	{
-		free (line);
-		close(pip[1]);
-		return (pip[0]);
-	}
-	write(pip[1], line, ft_strlen(line));
-	free(line);
-	while (1)
-	{
-		line = readline("> ");
-		e = ft_hd_short(line, lim, pip[1]);
-		if (e == -1)
-			break ;
-		free(line);
-	}
-	free (line);
-	close(pip[1]);
-	return (pip[0]);
+	pipe(s->pip);
+	s->lim_l = ft_strlen(lim);
 }
 
+void	hd_free_close(t_hdoc *s)
+{
+	free (s->line);
+	close(s->pip[1]);
+}
+
+int	ft_heredoc(char *lim)
+{
+	t_hdoc	s;
+
+	if (!lim)
+		return (-1);
+	hdoc_init(lim, &s);
+	signal(SIGINT, stop_here);
+	s.line = readline("> ");
+	if (!s.line || ft_strncmp(s.line, lim, s.lim_l) == 0)
+	{
+		hd_free_close(&s);
+		return (s.pip[0]);
+	}
+	write(s.pip[1], s.line, ft_strlen(s.line));
+	free(s.line);
+	while (1)
+	{
+		s.line = readline("> ");
+		s.e = ft_hd_short(s.line, lim, s.pip[1]);
+		if (s.e == -1)
+			break ;
+		free(s.line);
+	}
+	hd_free_close(&s);
+	return (s.pip[0]);
+}

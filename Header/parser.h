@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/07 18:58:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/08 10:14:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct prs_lst_st
 	t_cmdl		*tmp_2;
 	t_toklist	*tmp;
 }	t_prs_lst;
+
+typedef struct hdoc_st
+{
+	char	*line;
+	int		pip[2];
+	int		e;
+	int		lim_l;
+}	t_hdoc;
 
 int		cmd_case(t_prs_lst *p);
 int		get_builtin(char *str);
