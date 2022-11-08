@@ -6,31 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 18:22:26 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 08:38:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Header/minishell.h"
-
-void	free_cmdl_lst(t_cmdl **lst)
-{
-	t_cmdl *ptr;
-	t_cmdl *ptr2;
-
-	ptr = *lst;
-	ptr2 = ptr;
-	if (ptr)
-	{
-		while(ptr)
-		{
-			free(ptr2->path);
-			free_db_c(ptr2->args);
-			free(ptr2);
-			ptr = ptr->next;
-			ptr2 = ptr;
-		}
-	}
-}
 
 int main(int ac, char **av, char **env)
 {
@@ -48,7 +28,7 @@ int main(int ac, char **av, char **env)
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
-		print_parsing_lst(cmd_line);
+		// print_parsing_lst(cmd_line);
 		execute(cmd_line, env);
 		set_exit_status();
 		free_cmdl_lst(&cmd_line);

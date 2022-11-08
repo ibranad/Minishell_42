@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 10:52:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 17:53:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 08:41:15 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	free_db_c(char **strings)
 {
 	int	i;
 
+	if (!strings)
+		return (0);
 	i = 0;
 	while (strings[i])
 		free(strings[i++]);
@@ -54,5 +56,27 @@ void	free_token_list(t_toklist *tokens)
 		 	free(curr->lexeme);
 		free(curr);
 		curr = keep->next;
+	}
+}
+
+void	free_cmdl_lst(t_cmdl **lst)
+{
+	t_cmdl *ptr;
+	t_cmdl *ptr2;
+
+	if (!*lst)
+		return ;
+	ptr = *lst;
+	ptr2 = ptr;
+	if (ptr)
+	{
+		while(ptr)
+		{
+			free(ptr2->path);
+			free_db_c(ptr2->args);
+			free(ptr2);
+			ptr = ptr->next;
+			ptr2 = ptr;
+		}
 	}
 }

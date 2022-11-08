@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 13:58:59 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 08:47:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_shell
 	t_envl	*env;
 	int		status;
 	int		paths_existence;
+	int		h_doc;
 }				g_shell;
 
 g_shell	shell;

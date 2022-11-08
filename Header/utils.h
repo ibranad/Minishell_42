@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 14:41:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 07:35:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_env(t_envl *envl);
 void	free_envl_n(t_envl *node);
 void	free_cmdl_lst(t_cmdl **lst);
 void	free_token_list(t_toklist *tokens);
+void	free_cmdl_lst(t_cmdl **lst);
 //* G_UTILS
 void	print_table(char **table);
 void	print_list(t_cmdl *list);
