@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 15:24:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 13:20:52 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	_pwd(void);
 void	_echo(int ac, char **av);
 // *EXPORT
 void	_export(char **key_val, t_envl **envl);
+void	remove_node(t_envl *curr, t_envl **envl, t_envl *prev);
 char	**get_entry(char *assignment);
 void	_unset(char **to_unset,t_envl **envl);
 void	__exit(char **args);
