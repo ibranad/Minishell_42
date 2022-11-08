@@ -5,10 +5,10 @@ RM = rm -rf
 FS = -fsanitize=address 
 CC = gcc
 RDL = -lreadline
-#LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
-#CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
-LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
-CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
+LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
+CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
+# LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
+# CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/lex_methods.c \
 			Parsing/lex_methods_2.c \
@@ -57,6 +57,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Execu/builtins/export_err.c \
 			Execu/builtins/pwd.c \
 			Execu/builtins/unset.c \
+			Execu/builtins/unset_utils.c \
 			Execu/builtins/utils.c \
 			Utils/free_utils.c \
 			Utils/puts.c \
@@ -67,7 +68,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) -g $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) -g  $(RDL) $(FS) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

@@ -84,7 +84,7 @@ int pipe_case(t_prs_lst *p)
 {
     if (p->out_flag == 0 && (p->size -1 != p->tmp_2->idx))
         p->tmp_2->out_fd = -42;
-    if (p->in_flag == 0 && (p->size -1 != p->tmp_2->idx))
+    if (p->in_flag == 0 && (p->size - 1 != p->tmp_2->idx))
         p->tmp_2->in_fd = -42;
     if (p->tmp->next)
     {

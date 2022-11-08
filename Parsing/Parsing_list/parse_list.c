@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/07 20:23:10 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/08 12:22:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ void    t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
     lst_init(&p->lst);
     p->tmp_2 = p->lst;
     p->tmp = tok_lst;
+	p->in_flag = -1;
 }
 
 int    cmd_case(t_prs_lst *p)
 {
+
     if (p->tmp_2->idx != 0 && p->size > 1)
         p->tmp_2->in_fd = -42; 
     p->tmp_2->builtin = get_builtin(p->tmp->lexeme);
@@ -127,7 +129,7 @@ int parse_list_short(t_prs_lst *p)
 
 t_cmdl  *parse_list(t_toklist *tok_lst, t_envl *envl)
 {
-    t_prs_lst p;
+    t_prs_lst	p;
     
     t_prs_lst_init(&p, tok_lst, envl);
     while(p.tmp)
