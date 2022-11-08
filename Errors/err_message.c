@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/08 17:11:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:40:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	export_notvalid_stderr(char *argument)
 		putstr_fd(argument, 2);
 		putstr_fd("': not a valid identifier\n", 2);
 	}
+	free(argument);
 	return (1);
 }
 
