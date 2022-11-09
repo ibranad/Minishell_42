@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 11:38:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:10 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:06:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,17 @@ int start_from(int ac, char **av)
 
 void	_echo(int ac, char **av)
 {
-	char	c;
 	int 	start;
 	int		i;
 	
 	start = start_from(ac , av);
 	i = start;
-	c = ' ';
 	while (i < ac)
 	{
 		if (i == ac - 1)
-			c = 0;
-		printf("%s%c", av[i++], c);
+			printf("%s", av[i++]);
+		else
+			printf("%s ", av[i++]);
 	}
 	if (!start)
 		printf("\n");
