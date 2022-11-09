@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/08 08:47:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:03:53 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_toklist
 	char				*lexeme;
 	struct s_toklist	*next;
 }					t_toklist;
+
 typedef struct s_cmdl
 {
 	int				idx;
@@ -68,7 +69,9 @@ typedef struct s_shell
 	t_envl	*env;
 	int		status;
 	int		paths_existence;
-	int		h_doc;
+	int		in_heredoc;
+	int		here_sigint;
+	int		here_stdin_keep;
 }				g_shell;
 
 g_shell	shell;

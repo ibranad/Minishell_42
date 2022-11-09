@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:57:24 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 11:23:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:10:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_hd_short(char *line, char *lim, int pip)
 {
-	if (!line
-		|| ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	if (!line || ft_strncmp(line, lim, ft_strlen(lim)) == 0)
 	{
 		write(pip, "\n", 1);
 		return (-1);
@@ -38,4 +37,10 @@ void	hd_free_close(t_hdoc *s)
 {
 	free (s->line);
 	close(s->pip[1]);
+}
+
+int	stdin_keeper_hd()
+{
+	dup2(shell.here_stdin_keep, STDIN_FILENO);
+	return (-1);
 }
