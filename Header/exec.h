@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 11:47:03 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:06:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	write_to_pipe(int *fildes);
 int		ft_hd_short(char *line, char *lim, int pip);
 void	hdoc_init(char *lim, t_hdoc *s);
 void	hd_free_close(t_hdoc *s);
+int		stdin_keeper_hd();
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
 void	first_cmd(int *fds, t_cmdl *cmdl, int validity, char **env);

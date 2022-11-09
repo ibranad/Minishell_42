@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/09 11:47:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:54:55 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	ft_heredoc(char *lim)
 	if (!lim)
 		return (-1);
 	hdoc_init(lim, &s);
+	shell.in_heredoc = 1;
 	s.line = readline("> ");
-	if (!s.line || ft_strncmp(s.line, lim, s.lim_l) == 0)
+	if (!s.line || !ft_strncmp(s.line, lim, s.lim_l) || shell.here_sigint)
 	{
 		hd_free_close(&s);
 		return (s.pip[0]);
@@ -31,7 +32,7 @@ int	ft_heredoc(char *lim)
 	{
 		s.line = readline("> ");
 		s.e = ft_hd_short(s.line, lim, s.pip[1]);
-		if (s.e == -1)
+		if (s.e == -1 || shell.here_sigint)
 			break ;
 		free(s.line);
 	}
