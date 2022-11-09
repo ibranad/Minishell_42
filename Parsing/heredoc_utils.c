@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 18:10:40 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/09 11:47:41 by obouizga         ###   ########.fr       */
+/*   Created: 2022/11/09 10:57:24 by obouizga          #+#    #+#             */
+/*   Updated: 2022/11/09 11:23:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-int	ft_heredoc(char *lim)
+int	ft_hd_short(char *line, char *lim, int pip)
 {
-	t_hdoc	s;
-
-	if (!lim)
+	if (!line
+		|| ft_strncmp(line, lim, ft_strlen(lim)) == 0)
+	{
+		write(pip, "\n", 1);
 		return (-1);
-	hdoc_init(lim, &s);
-	s.line = readline("> ");
-	if (!s.line || ft_strncmp(s.line, lim, s.lim_l) == 0)
-	{
-		hd_free_close(&s);
-		return (s.pip[0]);
 	}
-	write(s.pip[1], s.line, ft_strlen(s.line));
-	free(s.line);
-	while (1)
+	else
 	{
-		s.line = readline("> ");
-		s.e = ft_hd_short(s.line, lim, s.pip[1]);
-		if (s.e == -1)
-			break ;
-		free(s.line);
+		write(pip, "\n", 1);
+		write(pip, line, ft_strlen(line));
 	}
-	hd_free_close(&s);
-	return (s.pip[0]);
+	return (0);
+}
+
+void	hdoc_init(char *lim, t_hdoc *s)
+{
+	pipe(s->pip);
+	s->lim_l = ft_strlen(lim);
+}
+
+void	hd_free_close(t_hdoc *s)
+{
+	free (s->line);
+	close(s->pip[1]);
 }
