@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_5.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:14:46 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/09 16:57:41 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	here_doc_flag(t_prs_lst *p)
 int	here_doc_word(t_prs_lst *p)
 {
 	p->tmp_2->in_fd = ft_heredoc(p->tmp->lexeme);
+	// if (shell.here_sigint)
+    //     return (-1);
 	p->here_doc_flag = 0;
 	p->in_flag = 1;
 	if (p->tmp->next)
