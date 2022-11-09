@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/01 15:55:27 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:37:17 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ int	stderr_cmd_not_found(char *command)
 
 int	command_not_found(t_cmdl *command)
 {
-	if (command->path)
-		return (0);
-	else
+	
+	if (command->path && (!ft_strcmp(command->path, ".") || !ft_strcmp(command->path, "..")))
 		return (1);
+	else if (command->path)
+		return (0);
+	return (1);
 }
 
 int	command_validity(t_cmdl *command)
