@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 19:55:47 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 20:57:27 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_args(char **args)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (!args)
@@ -68,34 +68,25 @@ int sym_only(t_toklist *tk)
 
 t_cmdl	*parser(void)
 {
-	char		*red_line;
-	char		*out;
-	t_toklist	*tokens;
-	t_cmdl		*cmd_line;
+	t_parser	p;
 	
-	red_line = NULL;
-	red_line = readline(CYAN"Minishell $> "RESET_COLOR);
-	if (red_line && red_line[0])
+	t_parser_init(&p);
+	p.red_line = readline(CYAN"Minishell $> "RESET_COLOR);
+	if (p.red_line && p.red_line[0])
 	{
-		add_history(red_line);
-		if (check_unrequired_by_subject(red_line) != 0)
-			free(red_line);
+		add_history(p.red_line);
+		if (check_unrequired_by_subject(p.red_line) != 0)
+			free(p.red_line);
 		else
 		{
-			out = red_line;
-			red_line = expander(shell.env, out);
-			tokens = lexer(red_line);
-			free(out);
-			free(red_line);
-			if (sym_only(tokens->next) == -1)
-				return (NULL);
-			cmd_line = parse_list(tokens->next, shell.env);
-			free_token_list(tokens);
-			return (cmd_line);
+			p.error_code = parser_short(&p);
+			if (p.error_code < 0)
+				return(NULL);
+			return (p.cmd_line);
 		}
 	}
-	else if (!red_line)
+	else if (!p.red_line)
 		exit(shell.status);
-	free(red_line);
+	free(p.red_line);
 	return (NULL);
 }

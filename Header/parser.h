@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 10:14:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/10 20:58:13 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,25 @@ typedef struct hdoc_st
 	int		lim_l;
 }	t_hdoc;
 
+typedef struct parser
+{
+	char		*red_line;
+	char		*out;
+	t_toklist	*tokens;
+	t_cmdl		*cmd_line;
+	int			error_code;
+}	t_parser;
+
 int		cmd_case(t_prs_lst *p);
 int		get_builtin(char *str);
 int		args_case(t_prs_lst *p);
 int		apnd_case(t_prs_lst *p);
+int		sym_only(t_toklist *tk);
 int		pipe_case(t_prs_lst *p);
 int		ft_ispecial_char(char c);
 int		cmd_count(t_toklist *tmp);
 int		red_in_case(t_prs_lst *p);
+int		parser_short(t_parser *p);
 int		space_between_in(char *in);
 int		heredoc_case(t_prs_lst *p);
 int		red_out_case(t_prs_lst *p);
@@ -64,6 +75,7 @@ int		toklist_size_2alloc(t_toklist *tok_list);
 char	*char_at_start_end(char *in, char c);
 void	error_printing(void);
 void	lst_init(t_cmdl **lst);
+void	t_parser_init(t_parser *p);
 void	print_parsing_lst(t_cmdl *in);
 void	dollar_white_space(t_exp *s, char *in);
 void	ft_lstadd_back(t_cmdl **alst, t_cmdl *new);

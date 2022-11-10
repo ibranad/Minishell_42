@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:57:24 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 17:10:42 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 20:33:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	hd_free_close(t_hdoc *s)
 	close(s->pip[1]);
 }
 
-int	stdin_keeper_hd()
+int	stdin_keeper_hd(void)
 {
 	dup2(shell.here_stdin_keep, STDIN_FILENO);
 	return (-1);
