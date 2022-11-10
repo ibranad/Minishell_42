@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:55:40 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:38:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void 	too_many_arguments(char *str)
 	set_builtins_exit_status(1);
 }
 
-
 void	__exit(char **args)
 {
 	putstr_fd("exit\n", STDOUT_FILENO);
@@ -47,5 +46,6 @@ void	__exit(char **args)
 	else if (vector_len(args) == 2)
 		exit(check_numeric(*(args + 1)));
 	else
-		exit(0);
+		exit(shell.status);
 }
+p
