@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 17:05:50 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:40:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,25 @@ int	export_notvalid_stderr(char *argument)
 		putstr_fd(argument, 2);
 		putstr_fd("': not a valid identifier\n", 2);
 	}
+	free(argument);
 	return (1);
+}
+
+
+void	unset_notvalid_stderr(char *argument)
+{
+	putstr_fd("Minishell: unset: ", 2);
+	putstr_fd(argument, 2);
+	putstr_fd(": not a valid identifier\n", 2);	
+}
+
+int	unset_invalid_key(char *argument, int *i)
+{
+	if (export_invalid_key(argument))
+	{
+		(*i)++;
+		unset_notvalid_stderr(argument);
+		return (1);
+	}
+	return (0);
 }
