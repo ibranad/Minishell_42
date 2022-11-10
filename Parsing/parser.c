@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 18:25:19 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:55:47 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,6 @@ int sym_only(t_toklist *tk)
 
 	i = 0;
 	tmp = tk;
-	// if (tmp->nature == _pipe && tmp->index == 1)
-	// {
-	// 	putstr_fd("Syntax Error near unexpected token ",2);
-	// 	putstr_fd("`newline'\n",2);
-	// 	return (-1);
-	// }
 	while (tmp)
 	{
 		i++;
@@ -102,5 +96,6 @@ t_cmdl	*parser(void)
 	}
 	else if (!red_line)
 		exit(shell.status);
+	free(red_line);
 	return (NULL);
 }
