@@ -6,18 +6,17 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:28:34 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:39:00 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-
-int _min(int a, int b)
+int	_min(int a, int b)
 {
 	if (a <= b)
 		return (a);
-	return (b); 
+	return (b);
 }
 
 pid_t	ft_fork(void)
@@ -30,12 +29,6 @@ pid_t	ft_fork(void)
 	return (id);
 }
 
-void	display_arr(pid_t *pids, int n)
-{
-	for (int i = 0; i < n; i++)
-		printf("[%d]\n", pids[i]);
-}
-
 void	wait_all(void)
 {
 	while (wait(&shell.status) != -1)
@@ -43,18 +36,19 @@ void	wait_all(void)
 	set_commands_exit_status();
 }
 
-int	look_for(char *s, char c)
+void	wait_all_pipeline(pid_t *pids)
 {
 	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != c)
+	while (waitpid(pids[i], &shell.status, 0) != -1)
 		i++;
-	return (i);
+	set_commands_exit_status();
+	free(pids);
 }
 
 void	ft_execve(t_cmdl *cmd, char **env)
 {
 	if (execve(cmd->path, cmd->args, env) == -1)
-			execve_fail();
+		execve_fail();
 }
