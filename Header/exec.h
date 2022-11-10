@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:24:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:57:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef enum e_valid
 }	t_validity;
 //* I/O
 void	read_from(int fd);
-void	write_to(int fd);
+int		write_to(int fd);
 void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
 int		ft_hd_short(char *line, char *lim, int pip);
@@ -91,6 +91,7 @@ void	run_builtin(t_cmdl *cmd, int cmdline_type);
 int		cmdline_size(t_cmdl *lst);
 void	pipex(t_cmdl *cmdl, char **env);
 void	wait_all(void);
+void	wait_all_pipeline(pid_t *pids);
 void	set_commands_exit_status(void);
 void	set_builtins_exit_status(int status);
 t_cmdl	*sole_cmd(char *path, char *opt, int in, int out);
