@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 11:38:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 13:06:17 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:45:27 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ void	_echo(int ac, char **av)
 	}
 	if (!start)
 		printf("\n");
+	shell.status = 0;
 }
