@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/08 17:40:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:01:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,21 @@ int	unset_invalid_key(char *argument, int *i)
 		return (1);
 	}
 	return (0);
+}
+
+
+int	stderr_path_unset(char *command)
+{
+	putstr_fd("Minishell: ", 2);
+	putstr_fd(command, 2);
+	putstr_fd(": No such file or directory\n", 2);
+	return (_unset_path_);
+}
+
+int	stderr_cmd_not_found(char *command)
+{
+	putstr_fd("Minishell: ", 2);
+	putstr_fd(command, 2);
+	putstr_fd(": command not found\n", 2);
+	return (_command_not_found_);
 }
