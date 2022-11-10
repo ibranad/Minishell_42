@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 11:34:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/08 19:58:46 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	run(t_cmdl *cmd, int cmdline_type, char **env)
 void	first_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 {
 	read_from(cmd->in_fd);
-	write_to_pipe(fildes);
+	if (cmd->out_fd == -42)
+		write_to_pipe(fildes);
+	else
+		write_to(cmd->out_fd);
 	if (validity == _builtin_)
 		run_builtin(cmd, PIPELINE);
 	else if (validity == _unset_path_ ||\
@@ -34,7 +37,12 @@ void	first_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 
 void	mid_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 {
-	write_to_pipe(fildes);
+	if (cmd->in_fd != -42)
+		read_from(cmd->in_fd);
+	if (cmd->out_fd == -42)
+		write_to_pipe(fildes);
+	else
+		write_to(cmd->out_fd);
 	if (validity == _builtin_)
 		run_builtin(cmd, PIPELINE);
 	else if (validity == _unset_path_ ||\
@@ -45,6 +53,8 @@ void	mid_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 
 void	last_cmd(t_cmdl *cmd,  int validity, char **env)
 {
+	if (cmd->in_fd != -42)
+		read_from(cmd->in_fd);
 	write_to(cmd->out_fd);
 	if (validity == _builtin_)
 		run_builtin(cmd, PIPELINE);

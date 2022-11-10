@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:50:49 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 18:39:11 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/08 16:00:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ typedef struct exp_s
 	char	*not_out;
 	char	*expa;
 }	t_exp;
+
+typedef struct uq
+{
+	int	i;
+	int	s;
+	int	d;
+	int	d_flag;
+	int	s_flag;
+}	t_uq;
 
 typedef struct exp_sp
 {
@@ -63,6 +72,7 @@ void	dol_exp_sp_ispecial(t_exp_sp *p, char *in);
 void	dol_exp_sp_ispecalnum(t_exp_sp *p, char *in);
 void	dollar_expanding_if_short(t_exp *s, char *in);
 void	dq_expanding(t_envl *envl, t_exp *s, char *in);
+void	expand_dq_sp_else_short(t_exp_sp *p, char *in);
 void	dollar_expanding(t_envl *envl, t_exp *s, char *in);
 void	dollar_expanding_sp(t_envl *envl, t_exp_sp *p, char *in);
 void	dollar_expanding_else_short(t_envl *envl, t_exp *s, char *in);

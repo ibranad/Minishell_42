@@ -43,6 +43,10 @@ void	read_from(int fd);
 void	write_to(int fd);
 void	read_from_pipe(int *fildes);
 void	write_to_pipe(int *fildes);
+int		ft_hd_short(char *line, char *lim, int pip);
+void	hdoc_init(char *lim, t_hdoc *s);
+void	hd_free_close(t_hdoc *s);
+int		stdin_keeper_hd();
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
 void	first_cmd(int *fds, t_cmdl *cmdl, int validity, char **env);

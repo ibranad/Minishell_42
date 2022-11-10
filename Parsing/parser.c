@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 18:08:26 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:21:21 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,6 @@ int sym_only(t_toklist *tk)
 	return(0);
 }
 
-// int chev_only(t_toklist *tk)
-// {
-// 	int i;
-// 	t_toklist *tmp;
-
-// 	i = 0;
-// 	tmp = tk;
-// 	while (tmp)
-// 	{
-// 		i++;
-// 		tmp = tmp->next;
-// 	}
-// 	if (i == 1 && ((tk->nature == _chev) 
-// 	|| (tk->nature == _chev) || (tk->nature == _ichev)))
-// 	{
-// 		error_printing();
-// 		return (-1);
-// 	}
-// 	return(0);
-// }
-
 t_cmdl	*parser(void)
 {
 	char		*red_line;
@@ -111,12 +90,14 @@ t_cmdl	*parser(void)
 		{
 			out = red_line;
 			red_line = expander(shell.env, out);
+			printf("Expanding [%s]\n", red_line);
 			tokens = lexer(red_line);
 			free(out);
 			free(red_line);
 			if (sym_only(tokens->next) == -1)
 				return (NULL);
 			cmd_line = parse_list(tokens->next, shell.env);
+			print_parsing_lst(cmd_line);
 			free_token_list(tokens);
 			return (cmd_line);
 		}
