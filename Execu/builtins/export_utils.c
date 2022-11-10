@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 10:15:55 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:37:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	**get_entry(char *assign)
 	int 	i;
 	int 	len;
 
+	if (!assign)
+		return (NULL);
 	len = ft_strlen(assign);
 	i = 0;
 	entry = ft_calloc(2, sizeof(char *));

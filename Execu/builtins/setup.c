@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 12:51:05 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:37:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_envl	*set_env(char **env)
 	
 	i = 0;
 	entry = get_entry(env[i]);
+	if (!entry)
+		return (NULL);
 	envl = lstnew(entry[0], entry[1]);
 	free(entry);
 	while (env[++i])
