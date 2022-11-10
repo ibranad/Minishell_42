@@ -6,13 +6,13 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 15:28:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/10 14:19:33 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Header/minishell.h"
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
 	(void)ac; 
 	(void)av;
@@ -36,3 +36,5 @@ int main(int ac, char **av, char **env)
 	}
 	return (0);
 }
+
+//echo[	]a
