@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 20:50:52 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:55:40 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void 	too_many_arguments(char *str)
 	if (not_integer(str))
 		exit(check_numeric(str));
 	putstr_fd("Minishell: exit: too many arguments\n", STDERR_FILENO);
-	shell.status = -127;
+	set_builtins_exit_status(1);
 }
 
 
@@ -47,5 +47,5 @@ void	__exit(char **args)
 	else if (vector_len(args) == 2)
 		exit(check_numeric(*(args + 1)));
 	else
-		exit(1);
+		exit(0);
 }

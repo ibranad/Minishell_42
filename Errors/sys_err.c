@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:30:35 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 12:33:51 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:14:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ void    pipe_fail(void)
 {
 		putstr_fd("Error: Pipe fail\n", 2);
         exit(EXIT_FAILURE);
-}
-
-void	_errno(void)
-{
-	printf("errno : %i\n", errno);
-	exit(0);
 }
 
 void	identifier_err(char *s)

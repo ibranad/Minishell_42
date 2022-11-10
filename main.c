@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 15:28:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/10 15:29:01 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ int main(int ac, char **av, char **env)
 
 	fd = dup(0);
 	fd1 = dup(1);
-	shell.env = set_env(env);
+	setup(env);
 	while (1) 
 	{
+		shell.in_heredoc = 0;
+		shell.here_sigint = 0;
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
 		execute(cmd_line, env);
-		set_exit_status();
 		free_cmdl_lst(&cmd_line);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);

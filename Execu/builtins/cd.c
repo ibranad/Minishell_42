@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 14:44:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:01:31 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ void	change_dir(char *path, t_envl **envl)
 	dir = opendir(path);
 	if (path && !*path)
 		return ;
-	else if (!path || *path == '~')
-		directory_changing(envl, get_env_var(*envl, "HOME"));
 	else if (!dir)
-		printf("%s\n", strerror(errno));
+	{
+		printf("No such file or directory\n");;
+		set_builtins_exit_status(1);
+	}
 	else
+	{
 		directory_changing(envl, path);
+		set_builtins_exit_status(0);
+	}
 }

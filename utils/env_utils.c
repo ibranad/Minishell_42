@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 17:04:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:10:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,4 @@ int	envl_len(t_envl *envl)
 	while (curr->next)
 		curr = curr->next;
 	return (curr->idx);
-}
-
-void	set_exit_status(void)
-{
-	if (!WIFEXITED(shell.status) )
-		shell.status += 128;
-	else
-		shell.status = WEXITSTATUS(shell.status);
 }

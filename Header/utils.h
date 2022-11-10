@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:36:48 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/08 07:35:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:14:14 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	execve_fail(void);
 void	fork_fail(void);
 void	malloc_fail(void);
 void	pipe_fail(void);
-void	_errno(void);
 pid_t	ft_fork();
 void	identifier_err(char *s);
 int		stderr_path_unset(char *cmd);
