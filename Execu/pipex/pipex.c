@@ -6,11 +6,17 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:06:23 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 17:47:50 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:13:11 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
+void	ft_close(int fd)
+{
+	if (close(fd) == -1)
+		close_fail();
+}
 
 void	pipex(t_cmdl *cmdl, char **env)
 {
@@ -31,11 +37,9 @@ void	pipex(t_cmdl *cmdl, char **env)
 				mid_cmd(fildes, curr, command_validity(curr), env);
 		}
 		read_from_pipe(fildes);
-		if (close(fildes[READ_END]) == -1)
-			close_fail();
+		ft_close(fildes[READ_END]);
 		curr = curr->next;
 	}
-	if (close(0) == -1)
-			close_fail();
+	ft_close(0);
 	wait_all();	
 }

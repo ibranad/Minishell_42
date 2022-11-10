@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/02 14:43:55 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:28:34 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	wait_all(void)
 {
 	while (wait(&shell.status) != -1)
 		continue ;
+	set_commands_exit_status();
 }
 
 int	look_for(char *s, char c)

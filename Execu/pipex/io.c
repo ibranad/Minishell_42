@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:03:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/05 09:02:42 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:00:54 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ void	read_from_pipe(int *fildes)
 		close_fail();
 }
 
-void	write_to(int fd)
+int	write_to(int fd)
 {
+	if (fd < 0)
+		return (0);
 	if (dup2(fd, STDOUT_FILENO) == -1)
 		dup2_fail();
+	return (1);
 }

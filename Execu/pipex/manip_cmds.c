@@ -6,14 +6,20 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/08 19:58:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:44:49 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+void sigquit_child_handle()
+{
+	write(1, "\n", 1);
+	exit(SIGQUIT);
+}
 
 void	run(t_cmdl *cmd, int cmdline_type, char **env)
 {
+	signal(SIGQUIT, sigquit_child_handle);
 	if (isbuiltin(cmd))
 		run_builtin(cmd, cmdline_type);
 	else
@@ -77,5 +83,6 @@ void	run_sole_cmd(t_cmdl *cmd, char **env, int validity)
 		write_to(cmd->out_fd);
 		run(cmd, SOLE, env);
 	}
-	wait_all();
+	if (validity != _builtin_)
+		wait_all();
 }

@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/09 17:03:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:17:41 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_shell
 	int		in_heredoc;
 	int		here_sigint;
 	int		here_stdin_keep;
+	int		status_state;
 }				g_shell;
 
 g_shell	shell;

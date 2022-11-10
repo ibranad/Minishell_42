@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 08:05:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/03 12:48:37 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:57:09 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	notbuiltin(t_cmdl *cmd)
 void	run_builtin(t_cmdl *cmd, int cmdline_type)
 {
 	if (cmdline_type == SOLE)
-		write_to(cmd->out_fd);
+		if (!write_to(cmd->out_fd))
+			return ;
 	if (cmd->builtin == _echo_)
 		_echo(vector_len(cmd->args + 1), cmd->args + 1);
 	else if (cmd->builtin == _cd_)
