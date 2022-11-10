@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 10:46:59 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 20:52:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@
 char	*lex_gather_lexeme(t_lex *lex)
 {
 	char	*lexeme;
+	char	*str;
 
 	lexeme = NULL;
 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
 	{
 		if (!is_quote(lex->c))
+		{
 			lexeme = charjoin(lexeme, lex->c);
+			printf("lexeme: %p\n", lexeme);
+		}
 		else
-			lexeme = ft_strjoin(lexeme, lex_gather_str(lex));
+		{
+			str = lex_gather_str(lex);
+			lexeme = ft_strjoin(lexeme, str);
+			free(str);
+		}
 		lex_forward(lex);
 	}
 	lex_backward(lex);
@@ -55,6 +63,7 @@ char	*gather_single_quoted(t_lex *lex)
 		lex_forward(lex);
 	}
 	lex_forward(lex);
+	printf("substring: %p\n", substring);
 	return (substring);
 }
 
@@ -70,12 +79,13 @@ char	*gather_double_quoted(t_lex *lex)
 		lex_forward(lex);
 	}
 	lex_forward(lex);
+	printf("substring: %p\n", substring);
 	return (substring);
 }
 
 char	*gather_till_blank(t_lex *lex)
 {
-	char *substring;
+	char	*substring;
 
 	substring = NULL;
 	while (lex->c && !ft_isblank(lex->c) && !is_quote(lex->c))
@@ -89,16 +99,20 @@ char	*gather_till_blank(t_lex *lex)
 char	*lex_gather_str(t_lex *lex)
 {
 	char	*string;
+	char	*substring;
 
 	string = NULL;
+	substring = NULL;
 	while (lex->c && !ft_isblank(lex->c))
 	{
 		if (lex->c == '\'')
-			string = ft_strjoin(string, gather_single_quoted(lex));
+			substring = gather_single_quoted(lex);
 		else if (lex->c == '\"')
-			string = ft_strjoin(string, gather_double_quoted(lex));
+			substring = gather_double_quoted(lex);
 		else if (!ft_isblank(lex->c) && lex->c)
-			string = ft_strjoin(string, gather_till_blank(lex));
+			substring = gather_till_blank(lex);
+		string = ft_strjoin(string, substring);
+		free(substring);
 	}
 	if (ft_isblank(lex->c))
 		lex_backward(lex);
