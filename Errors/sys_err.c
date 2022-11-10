@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:30:35 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/25 20:04:53 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:33:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    pipe_fail(void)
 
 void	_errno(void)
 {
-	dprintf(2, "errno : %i\n", errno);
+	printf("errno : %i\n", errno);
 	exit(0);
 }
 
