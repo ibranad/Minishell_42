@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:06:16 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/10 18:03:53 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ int	apnd_word_case(t_prs_lst *p)
 			O_CREAT | O_WRONLY | O_APPEND, 0777);
 	if (p->tmp_2->out_fd < 0)
 	{
+		putstr_fd("Minishell: ", 2);
+		putstr_fd(p->tmp->lexeme, 2);
+		putstr_fd(": ", 2);
 		putstr_fd(strerror(errno), 2);
 		putstr_fd("\n", 2);
 	}
