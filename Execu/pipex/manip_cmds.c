@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:44:49 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:57:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ void	run_sole_cmd(t_cmdl *cmd, char **env, int validity)
 	}
 	if (validity != _builtin_)
 		wait_all();
+	if (cmd->in_fd)
+		close(cmd->in_fd);
 }
