@@ -6,11 +6,24 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 10:57:13 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 11:38:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
+
+char	*concat_value(char *key, int *index, char *assign)
+{
+	char	*concat;
+
+	concat = NULL;
+	shell.concat = 1;
+	*index += 2;
+	concat = get_env_var(shell.env, key);
+	while (assign[*index])
+		concat = charjoin(concat, assign[(*index)++]);
+	return (concat);
+}
 
 void	disp_export(t_envl **envl)
 {
@@ -30,8 +43,8 @@ void	disp_export(t_envl **envl)
 char	**get_entry(char *assign)
 {
 	char	**entry;
-	int 	i;
-	int 	len;
+	int		i;
+	int		len;
 
 	if (!assign)
 		return (NULL);
@@ -46,13 +59,7 @@ char	**get_entry(char *assign)
 		while (assign[++i])
 			entry[1] = charjoin(entry[1], assign[i]);
 	else if (i && assign[i] == '+' && i + 2 < len && assign[i + 1] == '=')
-	{
-		shell.concat = 1;
-		i += 2;
-		entry[1] = get_env_var(shell.env, entry[0]);
-		while (assign[i])
-			entry[1] = charjoin(entry[1], assign[i++]);
-	}	
+		entry[1] = concat_value(entry[0], &i, assign);
 	while (assign[i])
 			entry[0] = charjoin(entry[0], assign[i++]);
 	entry[1] = charjoin(entry[1], assign[i]);
