@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 20:52:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 09:17:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,27 @@
 char	*lex_gather_lexeme(t_lex *lex)
 {
 	char	*lexeme;
-	char	*str;
+	char	*string;
+	char	*sublexeme;
 
 	lexeme = NULL;
+	string = NULL;
+	sublexeme = NULL;
 	while (!ft_isblank(lex->c) && lex->c && !is_symbol(lex->c))
 	{
 		if (!is_quote(lex->c))
-		{
 			lexeme = charjoin(lexeme, lex->c);
-			printf("lexeme: %p\n", lexeme);
-		}
 		else
 		{
-			str = lex_gather_str(lex);
-			lexeme = ft_strjoin(lexeme, str);
-			free(str);
+			sublexeme = lexeme;
+			string = lex_gather_str(lex);
+			lexeme = ft_strjoin(sublexeme, string);
+			free(string);
 		}
 		lex_forward(lex);
 	}
 	lex_backward(lex);
+	free(sublexeme);
 	return (lexeme);
 }
 
@@ -63,7 +65,6 @@ char	*gather_single_quoted(t_lex *lex)
 		lex_forward(lex);
 	}
 	lex_forward(lex);
-	printf("substring: %p\n", substring);
 	return (substring);
 }
 
@@ -79,7 +80,6 @@ char	*gather_double_quoted(t_lex *lex)
 		lex_forward(lex);
 	}
 	lex_forward(lex);
-	printf("substring: %p\n", substring);
 	return (substring);
 }
 
