@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:34:28 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:01:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:08:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char *pwd_util(t_envl **envl)
 
 void	directory_changing(t_envl **envl, char *path)
 {
-	set_variable("OLDPWD", get_env_var(*envl, "PWD"), envl);
+	set_variable(ft_strdup("OLDPWD"), get_env_var(*envl, "PWD"), envl);
 	chdir(path);
-	set_variable("PWD", pwd_util(envl), envl);
+	set_variable(ft_strdup("PWD"), pwd_util(envl), envl);
 }
 
 void	change_dir(char *path, t_envl **envl)
@@ -45,11 +45,16 @@ void	change_dir(char *path, t_envl **envl)
 	DIR	*dir;
 
 	dir = opendir(path);
+	
 	if (path && !*path)
+	{
+		free(dir->__dd_buf);
+		free(dir);
 		return ;
+	}
 	else if (!dir)
 	{
-		printf("No such file or directory\n");;
+		printf("No such file or directory\n");
 		set_builtins_exit_status(1);
 	}
 	else
@@ -57,4 +62,6 @@ void	change_dir(char *path, t_envl **envl)
 		directory_changing(envl, path);
 		set_builtins_exit_status(0);
 	}
+	free(dir->__dd_buf);
+	free(dir);
 }
