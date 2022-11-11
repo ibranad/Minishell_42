@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/10 20:58:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 11:48:00 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		toklist_size_2alloc(t_toklist *tok_list);
 char	*char_at_start_end(char *in, char c);
 void	error_printing(void);
 void	lst_init(t_cmdl **lst);
+void	pipe_init(t_prs_lst *p);
 void	t_parser_init(t_parser *p);
 void	print_parsing_lst(t_cmdl *in);
 void	dollar_white_space(t_exp *s, char *in);

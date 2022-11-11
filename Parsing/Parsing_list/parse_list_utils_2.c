@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:51:03 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:47:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 11:43:55 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ char	*char_at_start_end(char *in, char c)
 
 void	error_printing(void)
 {
-	putstr_fd("Minishell: Syntax error near", 2);
-	putstr_fd(" unexpected token\n", 2);
+	if (shell.prs_error == 0)
+	{
+		shell.prs_error = 1;
+		putstr_fd("Minishell: Syntax error near", 2);
+		putstr_fd(" unexpected token\n", 2);
+	}
 }
 
 void	t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)

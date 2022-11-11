@@ -34,6 +34,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Parsing_list/parse_list_utils_4.c \
 			Parsing/Parsing_list/parse_list_utils_5.c \
 			Parsing/Parsing_list/parse_list_utils_6.c \
+			Parsing/Parsing_list/parse_list_utils_7.c \
 			Parsing/parser.c \
 			Parsing/parser_utils.c \
 			Utils/ascii2.c \

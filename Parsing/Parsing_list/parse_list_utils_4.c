@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/10 18:03:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 11:56:59 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,7 @@ int	pipe_case(t_prs_lst *p)
 			error_printing();
 			return (-1);
 		}
-		p->i = 0;
-		p->out_flag = 0;
-		p->in_flag = 0;
-		p->apnd_flag = 0;
-		p->first_word = 0;
-		p->red_in_flag = 0;
-		p->red_out_flag = 0;
-		p->here_doc_flag = 0;
+		pipe_init(p);
 		p->tmp = p->tmp->next;
 		p->tmp_2 = p->tmp_2->next;
 	}
