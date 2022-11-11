@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/10 20:35:08 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:10:35 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	input_flag_case(t_prs_lst *p)
 	if (p->tmp->next)
 	{
 		if (is_symbol(p->tmp->next->lexeme[0]))
-			error_printing();
+				error_printing();
 		p->tmp = p->tmp->next;
 		return (0);
 	}
 	else
 	{
-		error_printing();
+			error_printing();
 		return (-1);
 	}
 }

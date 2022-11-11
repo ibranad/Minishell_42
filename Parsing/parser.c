@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 20:57:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:18:42 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,19 @@ t_cmdl	*parser(void)
 	if (p.red_line && p.red_line[0])
 	{
 		add_history(p.red_line);
-		if (check_unrequired_by_subject(p.red_line) != 0)
-			free(p.red_line);
-		else
-		{
+		// if (check_unrequired_by_subject(p.red_line) != 0)
+		// 	free(p.red_line);
+		// else
+		// {
 			p.error_code = parser_short(&p);
 			if (p.error_code < 0)
-				return(NULL);
+			{	
+				return (NULL);
+			}
 			return (p.cmd_line);
-		}
+		// }
 	}
 	else if (!p.red_line)
 		exit(shell.status);
-	free(p.red_line);
 	return (NULL);
 }

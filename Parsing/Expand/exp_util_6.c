@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 16:11:05 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 15:15:52 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	unclosed_quote(char *in)
 		return (0);
 	else
 	{
+		if (shell.prs_error == 0)
+			shell.prs_error = 1;
 		putstr_fd("Minishell: Syntax error unclosed quote\n", 2);
 		return (1);
 	}

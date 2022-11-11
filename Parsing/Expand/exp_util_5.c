@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:47:05 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 15:19:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:12:58 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	multi_out(char *in)
 	{
 		if (out_flag == 3)
 		{
+			if (shell.prs_error == 0)
+				shell.prs_error = 1;
 			putstr_fd(strerror(errno), 2);
 			putstr_fd("\n", 2);
 			return (-1);
@@ -84,6 +86,8 @@ int	space_between_in(char *in)
 				i++;
 				if (in[i + 1] == '<')
 				{
+					if (shell.prs_error == 0)
+						shell.prs_error = 1;
 					error_printing();
 					return (-1);
 				}

@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:09:04 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/11 11:30:07 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:38:49 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	pipe_init(t_prs_lst *p)
 {
-    shell.prs_error = 0;
 	p->i = 0;
 	p->out_flag = 0;
 	p->in_flag = 0;
