@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 12:37:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 10:57:13 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	**get_entry(char *assign)
 			entry[1] = charjoin(entry[1], assign[i]);
 	else if (i && assign[i] == '+' && i + 2 < len && assign[i + 1] == '=')
 	{
+		shell.concat = 1;
 		i += 2;
 		entry[1] = get_env_var(shell.env, entry[0]);
 		while (assign[i])
@@ -67,9 +68,11 @@ int	reset_variable(char *key, char *value, t_envl *envl)
 	{
 		if (!ft_strcmp(curr->key, key))
 		{
+			free(key);
 			if (value)
 			{
-				// free(curr->value);
+				if (!shell.concat)
+					free(curr->value);
 				curr->value = value;
 			}
 			return (1);

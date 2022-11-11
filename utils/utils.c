@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 15:24:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/11 10:58:58 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*join;
 	int		i;
@@ -105,7 +105,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	    while (s2[i] != '\0')
 	    	join[j++] = s2[i++];
 	join[j] = 0;
-	// free((char *)s1);
 	return (join);
 }
 
