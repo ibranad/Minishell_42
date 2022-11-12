@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 17:18:42 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 21:37:07 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,27 @@ int sym_only(t_toklist *tk)
 	return(0);
 }
 
-t_cmdl	*parser(void)
+t_cmdl	* parser(void)
 {
 	t_parser	p;
 	
 	t_parser_init(&p);
-	p.red_line = readline(CYAN"Minishell $> "RESET_COLOR);
+	p.red_line = readline("Minishell $> ");
 	if (p.red_line && p.red_line[0])
 	{
 		add_history(p.red_line);
-		// if (check_unrequired_by_subject(p.red_line) != 0)
-		// 	free(p.red_line);
-		// else
-		// {
+		if (check_unrequired_by_subject(p.red_line) != 0)
+			free(p.red_line);
+		else
+		{
 			p.error_code = parser_short(&p);
 			if (p.error_code < 0)
-			{	
+			{
+				free_cmdl_lst(&p.cmd_line);
 				return (NULL);
 			}
 			return (p.cmd_line);
-		// }
+		}
 	}
 	else if (!p.red_line)
 		exit(shell.status);
