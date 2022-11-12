@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 13:48:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/11 20:53:10 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,32 +97,3 @@ int	check_meta_char(char *in)
 	}
 	return (0);
 }
-// int	unreq_meta_char(char *in)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (in[i])
-// 	{
-// 		if (in[i] == '\"' || in[i] == '\'')
-// 		{
-// 			i++;
-// 			while (in[i])
-// 			{
-// 				if (in[i] == '\"' || in[i] == '\'')
-// 					break ;
-// 			i++;
-// 			}
-// 		}
-// 		if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*'
-// 			|| in[i] == '(' || in[i] == ')' || in[i] == '\\' || in[i] == '['
-// 			|| in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] == ';'
-// 			|| in[i] == '!')
-// 		{
-// 			printf("Syntax error : Illegal character `%c`\n", in[i]);
-// 			return (-2);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }

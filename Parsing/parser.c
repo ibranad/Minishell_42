@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 13:07:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:33:14 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int	sym_only(t_toklist *tk)
 	return (0);
 }
 
-t_cmdl	*parser(void)
+t_cmdl	* parser(void)
 {
 	t_parser	p;
 
 	t_parser_init(&p);
-	p.red_line = readline(CYAN"Minishell $> "RESET_COLOR);
+	p.red_line = readline("Minishell $> ");
 	if (p.red_line && p.red_line[0])
 	{
 		add_history(p.red_line);
@@ -87,6 +87,5 @@ t_cmdl	*parser(void)
 	}
 	else if (!p.red_line)
 		exit(shell.status);
-	free(p.red_line);
 	return (NULL);
 }

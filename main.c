@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 14:24:45 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:30:45 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,8 @@ int	main(int ac, char **av, char **env)
 		dup2(fd1, STDOUT_FILENO);
 	}
 	return (0);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dc66e13155dbce34128773fa628032d09c019540
