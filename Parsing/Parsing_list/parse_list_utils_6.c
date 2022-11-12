@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_6.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/11 20:48:05 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:54:57 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
 	if (shell.prs_error == 1)
 	{
 		free_db_c(p.paths);
+		free_cmdl_lst(&p.lst);
 		return (NULL);
 	}
 	free_db_c(p.paths);
