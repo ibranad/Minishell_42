@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:07:31 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 10:02:15 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:46:44 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ t_toklist	*new_token(int nature, char *lexeme)
 	token->lexeme = lexeme;
 	token->next = NULL;
 	return (token);
+}
+
+t_toklist	*new_io_token(t_lex *lex)
+{
+	if (lex->c == '<' && lex->string[lex->i + 1] == '<')
+		return (new_token(_dchev, lex_strdup(lex, 2)));
+	else if (lex->c == '<' && lex->string[lex->i + 1] != '<')
+		return (new_token(_chev, lex_strdup(lex, 1)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] == '>')
+		return (new_token(_dichev, lex_strdup(lex, 2)));
+	else if (lex->c == '>' && lex->string[lex->i + 1] != '>')
+		return (new_token(_ichev, lex_strdup(lex, 1)));
+	return (NULL);
 }
 
 t_toklist	*get_tokens_list(t_lex *lex)
@@ -46,5 +59,3 @@ t_toklist	*get_tokens_list(t_lex *lex)
 	}
 	return (head);
 }
-
-

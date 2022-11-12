@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:18:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 09:17:20 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:03:21 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
-
 
 char	*lex_gather_lexeme(t_lex *lex)
 {
@@ -38,19 +37,6 @@ char	*lex_gather_lexeme(t_lex *lex)
 	lex_backward(lex);
 	free(sublexeme);
 	return (lexeme);
-}
-
-t_toklist	*new_io_token(t_lex *lex)
-{
-	if (lex->c == '<' && lex->string[lex->i + 1] == '<')
-		return (new_token(_dchev, lex_strdup(lex, 2)));
-	else if (lex->c == '<' && lex->string[lex->i + 1] != '<')
-		return (new_token(_chev, lex_strdup(lex, 1)));
-	else if (lex->c == '>' && lex->string[lex->i + 1] == '>')
-		return (new_token(_dichev, lex_strdup(lex, 2)));
-	else if (lex->c == '>' && lex->string[lex->i + 1] != '>')
-		return (new_token(_ichev, lex_strdup(lex, 1)));
-	return (NULL);
 }
 
 char	*gather_single_quoted(t_lex *lex)
@@ -100,6 +86,7 @@ char	*lex_gather_str(t_lex *lex)
 {
 	char	*string;
 	char	*substring;
+	char	*tmp;
 
 	string = NULL;
 	substring = NULL;
@@ -111,7 +98,9 @@ char	*lex_gather_str(t_lex *lex)
 			substring = gather_double_quoted(lex);
 		else if (!ft_isblank(lex->c) && lex->c)
 			substring = gather_till_blank(lex);
-		string = ft_strjoin(string, substring);
+		tmp = string;
+		string = ft_strjoin(tmp, substring);
+		free(tmp);
 		free(substring);
 	}
 	if (ft_isblank(lex->c))

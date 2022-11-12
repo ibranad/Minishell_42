@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 11:06:07 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:59:07 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,4 @@ char	*ft_strjoin(char *s1, char *s2)
 			join[j++] = s2[i++];
 	join[j] = 0;
 	return (join);
-}
-//too many functions
-int	is_ther_char(char *s, char c)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		if (s[i++] == c)
-			return (1);
-	return (0);
 }

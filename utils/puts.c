@@ -6,12 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:35:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/24 10:37:04 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:10:22 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
-
 
 void	ft_putchar_fd(char c, int fd)
 {

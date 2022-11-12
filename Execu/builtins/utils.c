@@ -6,13 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 08:05:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 17:57:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:14:50 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
-
-
 
 int	ft_atoi(const char *str)
 {

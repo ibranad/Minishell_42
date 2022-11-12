@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 21:36:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:30:45 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	main(int ac, char **av, char **env)
 {
-	(void)ac; 
-	(void)av;
 	t_cmdl	*cmd_line;
-	int 	fd;
+	int		fd;
 	int		fd1;
 
+	(void)ac;
+	(void)av;
 	fd = dup(0);
 	fd1 = dup(1);
 	setup(env);
-	while (1) 
+	while (1)
 	{
 		shell.in_heredoc = 0;
 		shell.here_sigint = 0;
@@ -37,4 +37,8 @@ int	main(int ac, char **av, char **env)
 		dup2(fd1, STDOUT_FILENO);
 	}
 	return (0);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dc66e13155dbce34128773fa628032d09c019540

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 20:58:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 12:56:39 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
-
-//when exit is given too many args (> 1) it 'll exit with a number = 1.
-// and it'll print a message saying "exit: too many arguments"
 
 static int	err_message(char *str)
 {
@@ -30,7 +27,7 @@ static int	check_numeric(char *str)
 	return (ft_atoi(str));
 }
 
-static void 	too_many_arguments(char *str)
+static void	too_many_arguments(char *str)
 {
 	if (not_integer(str))
 		exit(check_numeric(str));
