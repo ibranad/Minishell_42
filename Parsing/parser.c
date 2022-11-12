@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 18:53:57 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:09:35 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ t_cmdl	*parser(void)
 			p.error_code = parser_short(&p);
 			if (p.error_code < 0)
 				return (NULL);
-			print_parsing_lst(p.cmd_line);
 			return (p.cmd_line);
 		}
 	}

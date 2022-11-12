@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:46:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/12 20:58:21 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:49:11 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ t_cmdl	*create_parse_lst(int size)
 }
 int gettingCounter(int current_token)
 {
-	if (current_token == _pipe)
-		return (-1);
 	if (current_token == _word)
 		return (0);
 	if (current_token == _chev || current_token == _ichev)
