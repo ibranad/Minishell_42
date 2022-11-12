@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 15:38:12 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:16:31 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	export_notvalid_stderr(char *argument)
 		putstr_fd("Minishell: export: ", 2);
 		write(2, "-", 1);
 		write(2, argument + 1, 1);
-		putstr_fd(": invalid option\n", 2);	
+		putstr_fd(": invalid option\n", 2);
 	}
 	else
 	{
@@ -32,12 +32,11 @@ int	export_notvalid_stderr(char *argument)
 	return (1);
 }
 
-
 void	unset_notvalid_stderr(char *argument)
 {
 	putstr_fd("Minishell: unset: ", 2);
 	putstr_fd(argument, 2);
-	putstr_fd(": not a valid identifier\n", 2);	
+	putstr_fd(": not a valid identifier\n", 2);
 }
 
 int	unset_invalid_key(char *argument, int *i)
@@ -50,7 +49,6 @@ int	unset_invalid_key(char *argument, int *i)
 	}
 	return (0);
 }
-
 
 int	stderr_path_unset(char *command)
 {

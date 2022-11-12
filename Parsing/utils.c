@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:14:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/10/17 16:02:32 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:08:03 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	lstadd_tok(t_toklist **lst, t_toklist *new_token)
 
 void	print_tokens(t_toklist *tokens)
 {
-	 t_toklist	*curr;
+	t_toklist	*curr;
 
-	 curr = tokens;
-	 while (curr)
-	 {
+	curr = tokens;
+	while (curr)
+	{
 		printf("(nature: %d, lexeme: %s)\n", curr->nature, curr->lexeme);
 		curr = curr->next;
-	 }
+	}
 }
 
 int	toklist_size(t_toklist *tokens)

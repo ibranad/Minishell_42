@@ -6,13 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:48:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 14:15:50 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:56:10 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
- void	 too_many_args(char *argument)
+void	too_many_args(char *argument)
 {
 	putstr_fd("env: ", STDERR_FILENO);
 	putstr_fd(argument, STDERR_FILENO);
@@ -22,7 +22,7 @@
 
 void	print_env(t_envl *envl)
 {
-	t_envl *curr;
+	t_envl	*curr;
 
 	curr = envl;
 	while (curr)

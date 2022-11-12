@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 14:17:13 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 18:38:29 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:57:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	export_invalid_key(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -28,15 +28,15 @@ int	export_invalid_key(char *s)
 int	not_valid_id(char *entry)
 {
 	if (!*entry)
-		return (1); 
+		return (1);
 	else if (*entry == '=' || *entry == '+')
 		return (export_notvalid_stderr(entry));
 	return (0);
 }
 
-int check_entry(char *entry, int *i)
+int	check_entry(char *entry, int *i)
 {
-	if (not_valid_id(entry)	&& ++(*i))
+	if (not_valid_id(entry) && ++(*i))
 		return (1);
 	return (0);
 }

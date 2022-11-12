@@ -6,16 +6,18 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 08:25:47 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 20:03:43 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:40:56 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
-//For Control-D signal
-// if the rl_line_buffer is empty this signal causes the terminal to exit
-// if the rl_line_buffer contains something this signal get ignored
-// if we're in here_doc or the command is reading input from stdin the reading
-// stops
+
+void	sigquit_child_handle(int sigint)
+{
+	(void)sigint;
+	write(1, "\n", 1);
+	exit(SIGQUIT);
+}
 
 void	before_readline_handle(void)
 {

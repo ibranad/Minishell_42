@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:48:25 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 08:20:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:09:51 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	is_quote(char c)
 		return (1);
 	return (0);
 }
-
 
 t_lex	*init_lex(char *cmd_line)
 {
@@ -48,7 +47,7 @@ void	lex_backward(t_lex *lex)
 	if (lex->i)
 	{
 		lex->i--;
- 		lex->c = *(lex->string + lex->i);
+		lex->c = *(lex->string + lex->i);
 	}
 }
 
@@ -57,4 +56,3 @@ void	lex_skip_blanks(t_lex *lex)
 	while (ft_isblank(lex->c))
 		lex_forward(lex);
 }
- 
