@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/11 11:38:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 18:00:28 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ char	*concat_value(char *key, int *index, char *assign)
 	char	*concat;
 
 	concat = NULL;
-	shell.concat = 1;
 	*index += 2;
-	concat = get_env_var(shell.env, key);
+	concat = ft_strdup(get_env_var(shell.env, key));
 	while (assign[*index])
 		concat = charjoin(concat, assign[(*index)++]);
 	return (concat);
@@ -56,13 +55,15 @@ char	**get_entry(char *assign)
 	if (!assign[i])
 		return (entry);
 	if (assign[i] == '=')
+	{
 		while (assign[++i])
 			entry[1] = charjoin(entry[1], assign[i]);
+		entry[1] = charjoin(entry[1], assign[i]);
+	}
 	else if (i && assign[i] == '+' && i + 2 < len && assign[i + 1] == '=')
 		entry[1] = concat_value(entry[0], &i, assign);
 	while (assign[i])
 			entry[0] = charjoin(entry[0], assign[i++]);
-	entry[1] = charjoin(entry[1], assign[i]);
 	return (entry);
 }
 
@@ -78,8 +79,7 @@ int	reset_variable(char *key, char *value, t_envl *envl)
 			free(key);
 			if (value)
 			{
-				if (!shell.concat)
-					free(curr->value);
+				free(curr->value);
 				curr->value = value;
 			}
 			return (1);
@@ -92,7 +92,7 @@ int	reset_variable(char *key, char *value, t_envl *envl)
 void	set_variable(char *key, char *value, t_envl **envl)
 {
 	if (export_invalid_key(key))
-		export_notvalid_stderr(key);
+		export_notvalid_stderr(key, 1);
 	else if (reset_variable(key, value, *envl))
 		return ;
 	else

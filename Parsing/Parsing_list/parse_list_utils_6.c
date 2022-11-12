@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/12 20:06:16 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:00:34 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
 	{
 		free_cmdl_lst(&p.lst);
 		free_db_c(p.paths);
+		free_cmdl_lst(&p.lst);
 		return (NULL);
 	}
 	free_db_c(p.paths);

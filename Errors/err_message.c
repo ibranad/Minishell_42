@@ -6,13 +6,13 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:59:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 13:16:31 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:58:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/minishell.h"
 
-int	export_notvalid_stderr(char *argument)
+int	export_notvalid_stderr(char *argument, int modif)
 {
 	if (argument && *argument == '-')
 	{
@@ -27,7 +27,8 @@ int	export_notvalid_stderr(char *argument)
 		putstr_fd(argument, 2);
 		putstr_fd("': not a valid identifier\n", 2);
 	}
-	free(argument);
+	if (modif)
+		free(argument);
 	set_builtins_exit_status(1);
 	return (1);
 }

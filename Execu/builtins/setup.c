@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 14:45:06 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:26:06 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	setup(char **env)
 		lstadd_back(&envl, lstnew(entry[0], entry[1]));
 		free(entry);
 	}
-	shell.concat = 0;
 	shell.env = envl;
 }
 
