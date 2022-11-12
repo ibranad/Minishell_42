@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:46:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:47:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:58:21 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,31 @@ t_cmdl	*create_parse_lst(int size)
 	}
 	return (lst);
 }
-
+int gettingCounter(int current_token)
+{
+	if (current_token == _pipe)
+		return (-1);
+	if (current_token == _word)
+		return (0);
+	if (current_token == _chev || current_token == _ichev)
+		return (2);
+	if (current_token == _dchev || current_token == _dichev)
+		return (2);
+	return (-1);
+}
 int	cmd_count(t_toklist *tmp)
 {
 	int			i;
+	int		counter = 0;
 	t_toklist	*p;
 
 	i = 0;
 	p = tmp;
-	while (p != 0)
+	while (p != 0 && p->nature != _pipe)
 	{
-		if (p->lexeme)
-		{
-			if (is_symbol(p->lexeme[0]))
-				break ;
-			i++;
-		}
+		counter += gettingCounter(p->nature);
+		i++;
 		p = p->next;
 	}
-	return (i);
+	return (i - counter);
 }

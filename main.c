@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 15:30:45 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:45:19 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ int	main(int ac, char **av, char **env)
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
 		execute(cmd_line, env);
+		print_parsing_lst(cmd_line);
 		free_cmdl_lst(&cmd_line);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);
 	}
 	return (0);
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> dc66e13155dbce34128773fa628032d09c019540
+}//echo test1 > out test2 test3

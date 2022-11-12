@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:34:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/09 15:39:46 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:07:52 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	cmd_case(t_prs_lst *p)
 	if (notbuiltin(p->tmp_2))
 		p->tmp_2->path = fetch_path(p->tmp->lexeme, p->paths);
 	p->cmd_c = cmd_count(p->tmp);
+	// printf("%d\n", p->cmd_c);
 	p->tmp_2->args = malloc(sizeof(char *) * (p->cmd_c + 2));
 	p->tmp_2->args[p->i] = ft_strdup(p->tmp->lexeme);
 	p->first_word = 1;

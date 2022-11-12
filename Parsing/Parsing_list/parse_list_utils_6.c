@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/11 20:48:05 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:06:16 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	parse_list_short(t_prs_lst *p)
 			if (pipe_case(p) == -1)
 				break ;
 	}
+	// printf("hello\n");
+	// print_parsing_lst(p->lst);
+	// echo test1 > out test2 test3
 }
 
 t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
@@ -52,6 +55,7 @@ t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
 	parse_list_short(&p);
 	if (shell.prs_error == 1)
 	{
+		free_cmdl_lst(&p.lst);
 		free_db_c(p.paths);
 		return (NULL);
 	}

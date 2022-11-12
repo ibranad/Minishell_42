@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:51:03 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/11 11:43:55 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/12 18:14:07 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	error_printing(void)
 		shell.prs_error = 1;
 		putstr_fd("Minishell: Syntax error near", 2);
 		putstr_fd(" unexpected token\n", 2);
+		set_builtins_exit_status(258);
 	}
 }
 
