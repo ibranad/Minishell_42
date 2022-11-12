@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 14:37:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:26:16 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct g_shell
 	int		here_stdin_keep;
 	int		status_state;
 	int		prs_error;
-	int		concat;
 }			t_shell;
 
 t_shell	shell;
