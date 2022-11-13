@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 13:01:28 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:27:17 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	input_flag_case(t_prs_lst *p)
 	if (p->tmp->next)
 	{
 		if (is_symbol(p->tmp->next->lexeme[0]))
-				error_printing();
+			error_printing();
 		p->tmp = p->tmp->next;
 		return (0);
 	}
 	else
 	{
-			error_printing();
+		error_printing();
 		return (-1);
 	}
 }
@@ -90,7 +90,9 @@ int	input_word_case(t_prs_lst *p)
 	p->in_flag = 1;
 	if (p->tmp_2->in_fd < 0)
 	{
-		shell.prs_error = 1;
+		if (shell.prs_error == 0)
+			shell.prs_error = 1;
+		printf("inside %d\n", shell.prs_error);
 		putstr_fd(strerror(errno), 2);
 		putstr_fd("\n", 2);
 		move_to_pipe(p);

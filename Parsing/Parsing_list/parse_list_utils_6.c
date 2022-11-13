@@ -6,13 +6,13 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 12:48:17 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:33:26 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
-void move_to_pipe(t_prs_lst *p)
+void	move_to_pipe(t_prs_lst *p)
 {
 	while (p->tmp && p->tmp->nature != _pipe)
 		p->tmp = p->tmp->next;

@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 11:49:24 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 13:32:39 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ int	main(int ac, char **av, char **env)
 		shell.prs_error = 0;
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
+		//printf("shell.error in main is %d\n", shell.prs_error);
 		handle_signals(after_readline_handle);
+		//printf("cmd_line : %p\n", cmd_line);
+		//print_parsing_lst(cmd_line);
 		execute(cmd_line, env);
-		// print_parsing_lst(cmd_line);
 		free_cmdl_lst(&cmd_line);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);
