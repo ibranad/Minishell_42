@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 12:53:43 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:24:12 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	command_not_found(t_cmdl *command)
 	else if (command->path && only_slash(command->path))
 		return (2);
 	else if (command->path)
+		return (0);
+	else if (command->in_fd < 0 || command->out_fd < 0)
 		return (0);
 	return (1);
 }

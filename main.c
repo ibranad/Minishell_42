@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 11:49:24 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:49:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ int	main(int ac, char **av, char **env)
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
+		// printf("cmd_line: %p\n", cmd_line);
+		print_parsing_lst(cmd_line);
 		execute(cmd_line, env);
-		// print_parsing_lst(cmd_line);
 		free_cmdl_lst(&cmd_line);
 		dup2(fd, STDIN_FILENO);
 		dup2(fd1, STDOUT_FILENO);
 	}
 	return (0);
-}//echo test1 > out test2 test3
+}
+//echo test1 > out test2 test3
