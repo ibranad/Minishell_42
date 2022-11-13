@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_5.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:11:02 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ int	input_flag_case(t_prs_lst *p)
 	if (p->tmp->next)
 	{
 		if (is_symbol(p->tmp->next->lexeme[0]))
+		{
 			error_printing();
+			return (-1);
+		}
 		p->tmp = p->tmp->next;
 		return (0);
 	}

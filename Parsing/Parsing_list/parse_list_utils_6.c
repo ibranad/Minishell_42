@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_6.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:09:26 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	parse_list_short(t_prs_lst *p)
 			if (pipe_case(p) == -1)
 				break ;
 	}
+	return ;
 }
 
 t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
@@ -51,6 +52,12 @@ t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
 
 	t_prs_lst_init(&p, tok_lst, envl);
 	parse_list_short(&p);
+	if (g_shell.prs_error == 1)
+	{
+		free_db_c(p.paths);
+		free_cmdl_lst(&p.lst);
+		return (NULL);
+	}
 	free_db_c(p.paths);
 	return (p.lst);
 }

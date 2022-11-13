@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 20:05:37 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ void	run(t_cmdl *cmd, int cmdline_type, char **env)
 
 void	first_cmd(int *fildes, t_cmdl *cmd, int validity, char **env)
 {
-	if (validity == _builtin_)
-		run_builtin(cmd, PIPELINE);
-	else if (validity == _unset_path_ || validity == _command_not_found_)
-		exit(127);
 	if (cmd->in_fd < 0)
 		exit(1);
 	read_from(cmd->in_fd);
-	if (cmd->out_fd < 0 && cmd->out_fd != -42)
+	if (cmd->out_fd < 0 && cmd->out_fd != 42)
 		exit(1);
 	if (cmd->out_fd == -42)
 		write_to_pipe(fildes);
 	else
 		write_to(cmd->out_fd);
+	if (validity == _builtin_)
+		run_builtin(cmd, PIPELINE);
+	else if (validity == _unset_path_ || \
+			validity == _command_not_found_)
+		exit(127);
 	run(cmd, PIPELINE, env);
 }
 
