@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 17:26:06 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	setup(char **env)
 	entry = get_entry(env[i]);
 	if (!entry)
 	{
-		shell.env = NULL;
+		g_shell.env = NULL;
 		return ;
 	}
 	envl = lstnew(entry[0], entry[1]);
@@ -43,18 +43,18 @@ void	setup(char **env)
 		lstadd_back(&envl, lstnew(entry[0], entry[1]));
 		free(entry);
 	}
-	shell.env = envl;
+	g_shell.env = envl;
 }
 
 void	set_commands_exit_status(void)
 {
-	if (!WIFEXITED(shell.status))
-		shell.status += 128;
+	if (!WIFEXITED(g_shell.status))
+		g_shell.status += 128;
 	else
-		shell.status = WEXITSTATUS(shell.status);
+		g_shell.status = WEXITSTATUS(g_shell.status);
 }
 
 void	set_builtins_exit_status(int status)
 {
-	shell.status = status;
+	g_shell.status = status;
 }

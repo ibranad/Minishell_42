@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 12:57:15 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 12:57:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	_pwd(void)
 	s = malloc(250);
 	if (!getcwd(s, 250))
 	{
-		printf("%s\n", get_env_var(shell.env, "PWD"));
+		printf("%s\n", get_env_var(g_shell.env, "PWD"));
 		free(s);
 		return ;
 	}

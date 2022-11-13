@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:16:54 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 17:26:16 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:30:54 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct g_shell
 	int		prs_error;
 }			t_shell;
 
-t_shell	shell;
+t_shell	g_shell;
 
 t_cmdl	*parser(void);
 void	execute(t_cmdl *cmd, char **env);

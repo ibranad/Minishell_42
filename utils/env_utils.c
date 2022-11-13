@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:22:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 16:05:57 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	**get_paths(t_envl *envl)
 	{
 		if (!ft_strcmp(curr->key, "PATH"))
 		{
-			shell.paths_existence = EXISTING;	
+			g_shell.paths_existence = EXISTING;
 			return ((split(curr->value, ':')));
 		}
 		curr = curr->next;
 	}
-	shell.paths_existence = UNEXISTING;
+	g_shell.paths_existence = UNEXISTING;
 	return (NULL);
 }
 

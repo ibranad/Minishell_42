@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_4.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 13:47:04 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	output_flag_case(t_prs_lst *p)
 	if (p->tmp->next)
 	{
 		if (is_symbol(p->tmp->next->lexeme[0]))
-			if (shell.prs_error == 0)
+			if (g_shell.prs_error == 0)
 				error_printing();
 		p->tmp = p->tmp->next;
 		return (0);
 	}
 	else
 	{
-		if (shell.prs_error == 0)
+		if (g_shell.prs_error == 0)
 			error_printing();
 		return (-1);
 	}
@@ -37,8 +37,8 @@ int	output_word_case(t_prs_lst *p)
 	p->tmp_2->out_fd = open(p->tmp->lexeme, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (p->tmp_2->out_fd < 0)
 	{
-		if (shell.prs_error == 0)
-			shell.prs_error = 1;
+		if (g_shell.prs_error == 0)
+			g_shell.prs_error = 1;
 		putstr_fd(strerror(errno), 2);
 		write(1, "\n", STDERR_FILENO);
 		move_to_pipe(p);
@@ -79,8 +79,8 @@ int	apnd_word_case(t_prs_lst *p)
 			O_CREAT | O_WRONLY | O_APPEND, 0777);
 	if (p->tmp_2->out_fd < 0)
 	{
-		if (shell.prs_error == 0)
-			shell.prs_error = 1;
+		if (g_shell.prs_error == 0)
+			g_shell.prs_error = 1;
 		putstr_fd("Minishell: ", 2);
 		putstr_fd(p->tmp->lexeme, 2);
 		putstr_fd(": ", 2);

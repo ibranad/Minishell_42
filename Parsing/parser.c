@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 15:00:54 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_args(char **args)
 
 void	print_parsing_lst(t_cmdl *cmd)
 {
-    while (cmd)
+	while (cmd)
 	{
 		printf("-------------------------------\n");
 		printf("idx : %d\n", cmd->idx);
@@ -63,6 +63,6 @@ t_cmdl	*parser(void)
 		}
 	}
 	else if (!p.red_line)
-		exit(shell.status);
+		exit(g_shell.status);
 	return (NULL);
 }

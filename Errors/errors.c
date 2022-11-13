@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:51:42 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 14:24:12 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	command_validity(t_cmdl *command)
 {
 	if (isbuiltin(command))
 		return (_builtin_);
-	else if (shell.paths_existence == UNEXISTING)
+	else if (g_shell.paths_existence == UNEXISTING)
 		return (stderr_path_unset(command->args[0]));
 	else if (command_not_found(command) == 1)
 		return (stderr_cmd_not_found(command->args[0]));

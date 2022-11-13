@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:53:53 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 12:56:39 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	__exit(char **args)
 	else if (vector_len(args) == 2)
 		exit(check_numeric(*(args + 1)));
 	else
-		exit(shell.status);
+		exit(g_shell.status);
 }

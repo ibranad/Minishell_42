@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:52:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/12 18:00:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*concat_value(char *key, int *index, char *assign)
 
 	concat = NULL;
 	*index += 2;
-	concat = ft_strdup(get_env_var(shell.env, key));
+	concat = ft_strdup(get_env_var(g_shell.env, key));
 	while (assign[*index])
 		concat = charjoin(concat, assign[(*index)++]);
 	return (concat);

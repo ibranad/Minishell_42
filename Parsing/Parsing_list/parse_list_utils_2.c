@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:51:03 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 12:41:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ char	*char_at_start_end(char *in, char c)
 
 void	error_printing(void)
 {
-	if (shell.prs_error == 0)
+	if (g_shell.prs_error == 0)
 	{
-		shell.prs_error = 1;
+		g_shell.prs_error = 1;
 		putstr_fd("Minishell: Syntax error near", 2);
 		putstr_fd(" unexpected token\n", 2);
 		set_builtins_exit_status(258);

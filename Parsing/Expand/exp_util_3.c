@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_util_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:02:48 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 14:33:14 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	dollar_ques_mark_sp(t_exp_sp *s, char *in)
 	(void)in;
 	ptr = NULL;
 	ptr2 = s->out;
-	ptr = ft_itoa(shell.status);
+	ptr = ft_itoa(g_shell.status);
 	s->i_g++;
 	s->out = ft_strjoin(s->out, ptr);
 	s->i_g++;
