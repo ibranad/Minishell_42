@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:31:18 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/11 22:17:42 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:21:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	exp_else(t_exp *s, char *in)
 
 	ptr = s->out;
 	s->not_out = get_until_dollar(&in[s->g_i]);
-	// printf("(%s)->%p\n",s->out ,s->out);
 	s->out = ft_strjoin(ptr, s->not_out);
 	free(ptr);
 	s->g_i += ft_strlen(s->not_out);

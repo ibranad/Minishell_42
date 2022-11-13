@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:09:04 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 10:34:51 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:47:54 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,15 @@ void	pipe_init(t_prs_lst *p)
 	p->here_doc_flag = 0;
 	shell.prs_error = 0;
 }
+
+int	gettingcounter(int current_token)
+{
+	if (current_token == _word)
+		return (0);
+	if (current_token == _chev || current_token == _ichev)
+		return (2);
+	if (current_token == _dchev || current_token == _dichev)
+		return (2);
+	return (-1);
+}
+ 
