@@ -6,21 +6,22 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:17:09 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/12 21:00:34 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 12:48:17 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
 
+void move_to_pipe(t_prs_lst *p)
+{
+	while (p->tmp && p->tmp->nature != _pipe)
+		p->tmp = p->tmp->next;
+}
+
 void	parse_list_short(t_prs_lst *p)
 {
 	while (p->tmp)
-	{
-		if (shell.prs_error == 1)
-		{
-			break;
-			return;
-		}
+	{			
 		if ((p->tmp->nature == _word) && (p->here_doc_flag == 0)
 			&& (p->red_in_flag == 0) && (p->red_out_flag == 0)
 			&& (p->apnd_flag == 0))
@@ -42,9 +43,6 @@ void	parse_list_short(t_prs_lst *p)
 			if (pipe_case(p) == -1)
 				break ;
 	}
-	// printf("hello\n");
-	// print_parsing_lst(p->lst);
-	// echo test1 > out test2 test3
 }
 
 t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
@@ -55,7 +53,6 @@ t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl)
 	parse_list_short(&p);
 	if (shell.prs_error == 1)
 	{
-		free_cmdl_lst(&p.lst);
 		free_db_c(p.paths);
 		free_cmdl_lst(&p.lst);
 		return (NULL);

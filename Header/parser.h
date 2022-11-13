@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/12 14:13:54 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 11:36:52 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ t_cmdl	*ft_lstadd_new(int content);
 t_cmdl	*create_parse_lst(int size);
 t_cmdl	*ft_lstadd_new(int content);
 t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl);
+void move_to_pipe(t_prs_lst *p);
 
 #endif
