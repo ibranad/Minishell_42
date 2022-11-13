@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:40:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 17:00:03 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:26:13 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ void	set_commands_exit_status(void)
 		g_shell.status += 128;
 	else
 		g_shell.status = WEXITSTATUS(g_shell.status);
-	printf("g_shell.status: %d\n", g_shell.status);
 }
 
 void	set_builtins_exit_status(int status)
 {
 	g_shell.status = status;
-	printf("g_shell.status: %d\n", g_shell.status);
 }

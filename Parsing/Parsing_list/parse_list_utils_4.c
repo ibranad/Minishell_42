@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 16:49:09 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 18:46:41 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int	pipe_case(t_prs_lst *p)
 		pipe_init(p);
 		p->tmp = p->tmp->next;
 		p->tmp_2 = p->tmp_2->next;
+		if (p->size - 1 == p->tmp_2->idx)
+			p->tmp_2->in_fd = -42;
 	}
 	else
 	{
