@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils_4.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:02:37 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:49:09 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,10 @@ int	pipe_case(t_prs_lst *p)
 		p->tmp_2 = p->tmp_2->next;
 	}
 	else
+	{
+		error_printing();
+		set_builtins_exit_status(258);
 		return (-1);
+	}
 	return (0);
 }
