@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:31:18 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:10:30 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*add_char_first(char *in, char c)
 
 	i = 0;
 	j = 0;
-	out = malloc(sizeof(char) * strlen(in) + 2);
+	out = malloc(sizeof(char) * ft_strlen(in) + 2);
 	out[j++] = c;
 	while (in[i])
 	{

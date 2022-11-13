@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 21:50:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:11:20 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	unclosed_quote(char *in)
 		if (g_shell.prs_error == 0)
 			g_shell.prs_error = 1;
 		putstr_fd("Minishell: Syntax error unclosed quote\n", 2);
+		set_builtins_exit_status(258);
 		return (1);
 	}
 }

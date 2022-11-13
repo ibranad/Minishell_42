@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:58:39 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av, char **env)
 		g_shell.prs_error = 0;
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
+		print_parsing_lst(cmd_line);
 		handle_signals(after_readline_handle);
 		execute(cmd_line, env);
 		free_cmdl_lst(&cmd_line);
