@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 11:39:39 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 13:01:28 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	input_word_case(t_prs_lst *p)
 	p->in_flag = 1;
 	if (p->tmp_2->in_fd < 0)
 	{
-		// shell.prs_error = 1;
+		shell.prs_error = 1;
 		putstr_fd(strerror(errno), 2);
 		putstr_fd("\n", 2);
 		move_to_pipe(p);
