@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:47:43 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 10:54:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:59:38 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ int	parser_short(t_parser *p)
 	free(p->out);
 	free(p->red_line);
 	p->cmd_line = parse_list(p->tokens->next, shell.env);
-	if (p->cmd_line == NULL)
-	{
-		free_token_list(p->tokens);
-		return(-1);
-	}
 	free_token_list(p->tokens);
     return (0);
 }

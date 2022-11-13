@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:46:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/13 14:40:15 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:01:12 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	cmd_count(t_toklist *tmp)
 	p = tmp;
 	while (p != 0 && p->nature != _pipe)
 	{
-		counter += gettingCounter(p->nature);
+		counter += gettingcounter(p->nature);
 		i++;
 		p = p->next;
 	}
