@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:25:04 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 17:57:28 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:58:42 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_valid
 	_unset_path_,
 	_command_not_found_,
 }	t_validity;
+
 //* I/O
 void	read_from(int fd);
 int		write_to(int fd);
@@ -48,7 +49,7 @@ void	write_to_pipe(int *fildes);
 int		ft_hd_short(char *line, char *lim, int pip);
 void	hdoc_init(char *lim, t_hdoc *s);
 void	hd_free_close(t_hdoc *s);
-int		stdin_keeper_hd();
+int		stdin_keeper_hd(void);
 int		ft_heredoc(char *delim);
 //* COMMAND RUNNING
 void	first_cmd(int *fds, t_cmdl *cmdl, int validity, char **env);
@@ -77,12 +78,12 @@ void	_echo(int ac, char **av);
 void	_export(char **key_val, t_envl **envl);
 void	remove_node(t_envl *curr, t_envl **envl, t_envl *prev);
 char	**get_entry(char *assignment);
-void	_unset(char **to_unset,t_envl **envl);
+void	_unset(char **to_unset, t_envl **envl);
 int		unset_invalid_key(char *argument, int *i);
 void	__exit(char **args);
 void	change_dir(char *s, t_envl **envl);
 void	disp_export(t_envl **envl);
-int 	check_entry(char *entry, int *i);
+int		check_entry(char *entry, int *i);
 int		isbuiltin(t_cmdl *cmd);
 int		notbuiltin(t_cmdl *cmd);
 void	run_builtin(t_cmdl *cmd, int cmdline_type);
@@ -100,7 +101,7 @@ void	ft_execve(t_cmdl *cmd, char **env);
 int		command_validity(t_cmdl *command);
 void	check_path(t_envl *envl);
 //*	ERROR MESSAGES
-int		export_notvalid_stderr(char *argument);
+int		export_notvalid_stderr(char *argument, int modif);
 int		export_invalid_key(char *s);
 
 #endif

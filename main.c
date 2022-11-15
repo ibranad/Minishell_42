@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:26:32 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 18:05:56 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/14 09:48:56 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int	main(int ac, char **av, char **env)
 {
-	(void)ac; 
-	(void)av;
 	t_cmdl	*cmd_line;
-	int 	fd;
+	int		fd;
 	int		fd1;
 
+	(void)ac;
+	(void)av;
 	fd = dup(0);
 	fd1 = dup(1);
 	setup(env);
-	while (1) 
+	while (1)
 	{
-		shell.in_heredoc = 0;
-		shell.here_sigint = 0;
+		g_shell.in_heredoc = 0;
+		g_shell.here_sigint = 0;
+		g_shell.prs_error = 0;
 		handle_signals(before_readline_handle);
 		cmd_line = parser();
 		handle_signals(after_readline_handle);
@@ -37,5 +38,3 @@ int	main(int ac, char **av, char **env)
 	}
 	return (0);
 }
-
-//echo[	]a

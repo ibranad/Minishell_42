@@ -6,13 +6,11 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 08:05:08 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 17:57:09 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/minishell.h"
-
-
 
 int	ft_atoi(const char *str)
 {
@@ -65,15 +63,15 @@ void	run_builtin(t_cmdl *cmd, int cmdline_type)
 	if (cmd->builtin == _echo_)
 		_echo(vector_len(cmd->args + 1), cmd->args + 1);
 	else if (cmd->builtin == _cd_)
-		change_dir(*(cmd->args + 1), &shell.env);
+		change_dir(*(cmd->args + 1), &g_shell.env);
 	else if (cmd->builtin == _pwd_)
 		_pwd();
 	else if (cmd->builtin == _export_)
-		_export(cmd->args + 1, &shell.env);
+		_export(cmd->args + 1, &g_shell.env);
 	else if (cmd->builtin == _unset_)
-		_unset(cmd->args + 1, &shell.env);
+		_unset(cmd->args + 1, &g_shell.env);
 	else if (cmd->builtin == _env_)
-		_env(cmd->args, shell.env);
+		_env(cmd->args, g_shell.env);
 	else if (cmd->builtin == _exit_)
 		__exit(cmd->args);
 	if (cmdline_type == PIPELINE)

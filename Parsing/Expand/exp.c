@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:57:25 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 13:48:53 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	dollar_ques_mark(t_exp *s, char *in)
 	(void)in;
 	ptr = NULL;
 	ptr2 = s->out;
-	ptr = ft_itoa(shell.status);
+	ptr = ft_itoa(g_shell.status);
 	s->g_i++;
 	s->out = ft_strjoin(ptr2, ptr);
 	s->g_i++;
@@ -97,32 +97,3 @@ int	check_meta_char(char *in)
 	}
 	return (0);
 }
-// int	unreq_meta_char(char *in)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (in[i])
-// 	{
-// 		if (in[i] == '\"' || in[i] == '\'')
-// 		{
-// 			i++;
-// 			while (in[i])
-// 			{
-// 				if (in[i] == '\"' || in[i] == '\'')
-// 					break ;
-// 			i++;
-// 			}
-// 		}
-// 		if (in[i] == '#' || in[i] == '`' || in[i] == '&' || in[i] == '*'
-// 			|| in[i] == '(' || in[i] == ')' || in[i] == '\\' || in[i] == '['
-// 			|| in[i] == ']' || in[i] == '{' || in[i] == '}' || in[i] == ';'
-// 			|| in[i] == '!')
-// 		{
-// 			printf("Syntax error : Illegal character `%c`\n", in[i]);
-// 			return (-2);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }

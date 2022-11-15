@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:05:23 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/10 20:35:08 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 21:11:02 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	here_doc_flag(t_prs_lst *p)
 int	here_doc_word(t_prs_lst *p)
 {
 	p->tmp_2->in_fd = ft_heredoc(p->tmp->lexeme);
-	if (shell.here_sigint)
+	if (g_shell.here_sigint)
 		return (stdin_keeper_hd());
 	p->here_doc_flag = 0;
 	p->in_flag = 1;
@@ -73,7 +73,10 @@ int	input_flag_case(t_prs_lst *p)
 	if (p->tmp->next)
 	{
 		if (is_symbol(p->tmp->next->lexeme[0]))
+		{
 			error_printing();
+			return (-1);
+		}
 		p->tmp = p->tmp->next;
 		return (0);
 	}
@@ -90,9 +93,15 @@ int	input_word_case(t_prs_lst *p)
 	p->in_flag = 1;
 	if (p->tmp_2->in_fd < 0)
 	{
+		if (g_shell.prs_error == 0)
+			g_shell.prs_error = 1;
 		putstr_fd(strerror(errno), 2);
 		putstr_fd("\n", 2);
-		return (-1);
+		move_to_pipe(p);
+		if (!p->tmp)
+			return (-1);
+		else
+			return (0);
 	}
 	p->red_in_flag = 0;
 	if (p->tmp->next)

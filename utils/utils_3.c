@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:28:46 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 17:22:34 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	vector_len(char **vec)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (vec[i])
@@ -66,7 +66,6 @@ char	*strjoin_s(char *s1, char *s2)
 	return (nw_str);
 }
 
-
 char	*charjoin(char *s1, char c)
 {
 	char	*nw_str;
@@ -89,22 +88,22 @@ char	*charjoin(char *s1, char c)
 	return (nw_str);
 }
 
-int get_builtin(char *str)
+int	get_builtin(char *str)
 {
 	str_tolower(str);
-    if (ft_strcmp(str, "echo") == 0)
-        return(_echo_);
-    else if (ft_strcmp(str, "cd") == 0)
-        return(_cd_);
-    else if (ft_strcmp(str, "pwd") == 0)
-        return(_pwd_);
-    else if (ft_strcmp(str, "export") == 0)
-        return(_export_);
-    else if (ft_strcmp(str, "unset") == 0)
-        return(_unset_);
-    else if (ft_strcmp(str, "env") == 0)
-        return(_env_);
-    else if (ft_strcmp(str, "exit") == 0)
-        return(_exit_);
-    return(0);
+	if (ft_strcmp(str, "echo") == 0)
+		return (_echo_);
+	else if (ft_strcmp(str, "cd") == 0)
+		return (_cd_);
+	else if (ft_strcmp(str, "pwd") == 0)
+		return (_pwd_);
+	else if (ft_strcmp(str, "export") == 0)
+		return (_export_);
+	else if (ft_strcmp(str, "unset") == 0)
+		return (_unset_);
+	else if (ft_strcmp(str, "env") == 0)
+		return (_env_);
+	else if (ft_strcmp(str, "exit") == 0)
+		return (_exit_);
+	return (0);
 }

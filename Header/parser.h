@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:08:38 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/10 20:58:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 20:53:40 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct prs_lst_st
 	int			here_doc_flag;
 	int			first_word;
 	int			cmd_c;
+	int			prs_error;
 	char		**paths;
 	t_cmdl		*lst;
 	t_cmdl		*tmp_2;
@@ -75,6 +76,7 @@ int		toklist_size_2alloc(t_toklist *tok_list);
 char	*char_at_start_end(char *in, char c);
 void	error_printing(void);
 void	lst_init(t_cmdl **lst);
+void	pipe_init(t_prs_lst *p);
 void	t_parser_init(t_parser *p);
 void	print_parsing_lst(t_cmdl *in);
 void	dollar_white_space(t_exp *s, char *in);
@@ -85,5 +87,7 @@ t_cmdl	*ft_lstadd_new(int content);
 t_cmdl	*create_parse_lst(int size);
 t_cmdl	*ft_lstadd_new(int content);
 t_cmdl	*parse_list(t_toklist *tok_lst, t_envl *envl);
+void	move_to_pipe(t_prs_lst *p);
+int		gettingcounter(int current_token);
 
 #endif

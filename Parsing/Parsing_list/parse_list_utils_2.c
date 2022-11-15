@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:51:03 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:47:40 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 20:55:47 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ char	*char_at_start_end(char *in, char c)
 
 void	error_printing(void)
 {
-	putstr_fd("Minishell: Syntax error near", 2);
-	putstr_fd(" unexpected token\n", 2);
+	if (g_shell.prs_error == 0)
+	{
+		g_shell.prs_error = 1;
+		putstr_fd("Minishell: Syntax error near", 2);
+		putstr_fd(" unexpected token\n", 2);
+		set_builtins_exit_status(258);
+	}
 }
 
 void	t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
@@ -58,6 +63,7 @@ void	t_prs_lst_init(t_prs_lst *p, t_toklist *tok_lst, t_envl *envl)
 	p->tmp_2 = p->lst;
 	p->tmp = tok_lst;
 	p->in_flag = -1;
+	p->prs_error = 0;
 }
 
 int	toklist_size_2alloc(t_toklist *tok_list)
@@ -86,7 +92,7 @@ void	lst_init(t_cmdl **lst)
 	while (tmp)
 	{
 		tmp->args = 0;
-		tmp->builtin = -1;
+		tmp->builtin = 0;
 		tmp->idx = i;
 		tmp->in_fd = 0;
 		tmp->out_fd = 1;

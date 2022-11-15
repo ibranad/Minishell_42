@@ -1,12 +1,11 @@
 NAME = minishell
 MAIN = main.c
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
-FS = -fsanitize=address 
-CC = gcc
+CC = cc
 RDL = -lreadline
-#LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
-#CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
+# LDFLAGS="-L/Users/obouizga/.brew/opt/readline/lib"
+# CPPFLAGS="-I/Users/obouizga/.brew/opt/readline/include"
 LDFLAGS="-L/goinfre/ibnada/homebrew/opt/readline/lib"
 CPPFLAGS="-I/goinfre/ibnada/homebrew/opt/readline/include"
 FUNCTIONS =	Execu/builtins/setup.c \
@@ -34,6 +33,7 @@ FUNCTIONS =	Execu/builtins/setup.c \
 			Parsing/Parsing_list/parse_list_utils_4.c \
 			Parsing/Parsing_list/parse_list_utils_5.c \
 			Parsing/Parsing_list/parse_list_utils_6.c \
+			Parsing/Parsing_list/parse_list_utils_7.c \
 			Parsing/parser.c \
 			Parsing/parser_utils.c \
 			Utils/ascii2.c \
@@ -73,7 +73,7 @@ OBJECTS =  $(FUNCTIONS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-		$(CC) $(CFLAGS) -g  $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(RDL) $(LDFLAGS) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 		@echo "minishell CREATED"
 
 clean :

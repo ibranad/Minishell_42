@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:42:06 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 15:24:46 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*join;
 	int		i;
@@ -97,25 +97,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-    if (s1)
-	    while (s1[i] != '\0')
-	    	join[j++] = s1[i++];
+	if (s1)
+		while (s1[i] != '\0')
+			join[j++] = s1[i++];
 	i = 0;
-    if (s2)
-	    while (s2[i] != '\0')
-	    	join[j++] = s2[i++];
+	if (s2)
+		while (s2[i] != '\0')
+			join[j++] = s2[i++];
 	join[j] = 0;
-	// free((char *)s1);
 	return (join);
-}
-
-int	is_ther_char(char *s, char c)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		if (s[i++] == c)
-			return (1);
-	return (0);
 }

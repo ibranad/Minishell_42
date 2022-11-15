@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:31:18 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 16:12:10 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/15 20:59:32 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*add_char_first(char *in, char c)
 
 	i = 0;
 	j = 0;
-	out = malloc(sizeof(char) * strlen(in) + 2);
+	out = malloc(sizeof(char) * ft_strlen(in) + 2);
 	out[j++] = c;
 	while (in[i])
 	{
@@ -49,7 +49,6 @@ void	exp_else(t_exp *s, char *in)
 {
 	char	*ptr;
 
-	ptr = NULL;
 	ptr = s->out;
 	s->not_out = get_until_dollar(&in[s->g_i]);
 	s->out = ft_strjoin(ptr, s->not_out);
@@ -62,14 +61,14 @@ int	check_unrequired_by_subject(char *in)
 {
 	if (unclosed_quote(in) == 1)
 		return (-1);
-	if (multi_in(in) < 0)
-		return (-2);
-	if (multi_out(in) < 0)
-		return (-3);
-	if (space_between_in(in) < 0)
-		return (-3);
-	if (space_between_out(in) < 0)
-		return (-3);
+	// if (multi_in(in) < 0)
+	// 	return (-2);
+	// if (multi_out(in) < 0)
+	// 	return (-3);
+	// if (space_between_in(in) < 0)
+	// 	return (-3);
+	// if (space_between_out(in) < 0)
+	// 	return (-3);
 	return (0);
 }
 

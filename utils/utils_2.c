@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:01:07 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 17:39:00 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:02:33 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ pid_t	ft_fork(void)
 
 void	wait_all(void)
 {
-	while (wait(&shell.status) != -1)
+	while (wait(&g_shell.status) != -1)
 		continue ;
 	set_commands_exit_status();
 }
@@ -41,7 +41,7 @@ void	wait_all_pipeline(pid_t *pids)
 	int	i;
 
 	i = 0;
-	while (waitpid(pids[i], &shell.status, 0) != -1)
+	while (waitpid(pids[i], &g_shell.status, 0) != -1)
 		i++;
 	set_commands_exit_status();
 	free(pids);

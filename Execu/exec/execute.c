@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:02:05 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 17:41:48 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	execute(t_cmdl *cmd, char **env)
 {
 	int	size;
 
-	if (!cmd || shell.here_sigint)
+	if (!cmd || g_shell.here_sigint)
 		return ;
 	size = cmdline_size(cmd);
 	if (size == 1)

@@ -6,16 +6,23 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:35:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/07 13:58:41 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:06:05 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef LEXER_H
 # define LEXER_H
 # include <string.h>
 # include "minishell.h"
 # include "exp.h"
+
+typedef struct s_lex
+{
+	char	c;
+	size_t	i;
+	char	*string;
+	size_t	str_len;
+}				t_lex;
 
 char		get_opposite_quote(char quote);
 t_lex		*init_lex(char *cmd_line);
@@ -25,7 +32,7 @@ void		lex_skip_blanks(t_lex *lex);
 char		*lex_gather_str(t_lex *lex);
 char		*lex_gather_lexeme(t_lex *lex);
 char		*lex_gather_option(t_lex *lex);
-t_toklist	*new_token(int	nature, char *lexeme);
+t_toklist	*new_token(int nature, char *lexeme);
 t_toklist	*new_io_token(t_lex *lex);
 t_toklist	*get_tokens_list(t_lex *lex);
 size_t		get_lexeme_size(t_lex *lex);

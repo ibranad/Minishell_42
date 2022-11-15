@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 19:46:41 by ibnada            #+#    #+#             */
-/*   Updated: 2022/11/08 18:47:13 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:23 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,17 @@ t_cmdl	*create_parse_lst(int size)
 int	cmd_count(t_toklist *tmp)
 {
 	int			i;
+	int			counter;
 	t_toklist	*p;
 
 	i = 0;
+	counter = 0;
 	p = tmp;
-	while (p != 0)
+	while (p != 0 && p->nature != _pipe)
 	{
-		if (p->lexeme)
-		{
-			if (is_symbol(p->lexeme[0]))
-				break ;
-			i++;
-		}
+		counter += gettingcounter(p->nature);
+		i++;
 		p = p->next;
 	}
-	return (i);
+	return (i - counter);
 }

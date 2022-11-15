@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/10 20:57:27 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:04:59 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,49 +29,28 @@ void	print_args(char **args)
 	}
 }
 
-void print_parsing_lst(t_cmdl *cmd)
+void	print_parsing_lst(t_cmdl *cmd)
 {
-    while(cmd)
-    {
-        printf("-------------------------------\n");
-        printf("idx : %d\n", cmd->idx);
-        printf("path : %s\n", cmd->path);
+	while (cmd)
+	{
+		printf("-------------------------------\n");
+		printf("idx : %d\n", cmd->idx);
+		printf("path : %s\n", cmd->path);
 		print_args(cmd->args);
-        printf("in fd : %d\n", cmd->in_fd);
-        printf("out fd : %d\n", cmd->out_fd);
-        printf("isbuiltin : %d\n", cmd->builtin);
-        printf("-------------------------------\n");
-        cmd = cmd->next;
-    }
-}
-
-int sym_only(t_toklist *tk)
-{
-	int i;
-	t_toklist *tmp;
-
-	i = 0;
-	tmp = tk;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
+		printf("in fd : %d\n", cmd->in_fd);
+		printf("out fd : %d\n", cmd->out_fd);
+		printf("isbuiltin : %d\n", cmd->builtin);
+		printf("-------------------------------\n");
+		cmd = cmd->next;
 	}
-	if (i == 1 && ((tk->nature == _pipe) 
-	|| (tk->nature == _chev) || (tk->nature == _ichev)))
-	{
-		error_printing();
-		return (-1);
-	}
-	return(0);
 }
 
 t_cmdl	*parser(void)
 {
 	t_parser	p;
-	
+
 	t_parser_init(&p);
-	p.red_line = readline(CYAN"Minishell $> "RESET_COLOR);
+	p.red_line = readline("Minishell $> ");
 	if (p.red_line && p.red_line[0])
 	{
 		add_history(p.red_line);
@@ -79,14 +58,13 @@ t_cmdl	*parser(void)
 			free(p.red_line);
 		else
 		{
-			p.error_code = parser_short(&p);
-			if (p.error_code < 0)
-				return(NULL);
+			parser_short(&p);
 			return (p.cmd_line);
 		}
 	}
 	else if (!p.red_line)
-		exit(shell.status);
-	free(p.red_line);
+		exit(g_shell.status);
+	else
+		free(p.red_line);
 	return (NULL);
 }

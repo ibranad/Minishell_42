@@ -1,2 +1,0 @@
-# Minishell The Whole project
-

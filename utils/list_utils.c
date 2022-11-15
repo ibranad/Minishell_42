@@ -6,7 +6,7 @@
 /*   By: obouizga <obouizga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:09:50 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/06 15:47:24 by obouizga         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:31:24 by obouizga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_envl	*lstnew(char *key, char *value)
 		malloc_fail();
 	lst->key = key;
 	lst->value = value;
-	// free(entry);
 	lst->next = NULL;
 	return (lst);
 }
@@ -55,8 +54,6 @@ void	free_env(t_envl *envl)
 		keep = curr->next;
 		free(curr->key);
 		free(curr->value);
-		
-		// free(curr);
 		curr = keep;
 	}
 }
