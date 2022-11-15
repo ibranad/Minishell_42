@@ -6,7 +6,11 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 11:43:21 by obouizga          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/14 11:04:59 by ibnada           ###   ########.fr       */
+=======
+/*   Updated: 2022/11/13 21:01:36 by ibnada           ###   ########.fr       */
+>>>>>>> c3ce27e5a2aec428b8e7a5ec5c2ec6a35287c575
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +68,10 @@ t_cmdl	*parser(void)
 	}
 	else if (!p.red_line)
 		exit(g_shell.status);
+<<<<<<< HEAD
 	else
 		free(p.red_line);
+=======
+>>>>>>> c3ce27e5a2aec428b8e7a5ec5c2ec6a35287c575
 	return (NULL);
 }

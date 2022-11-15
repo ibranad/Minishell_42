@@ -6,7 +6,7 @@
 /*   By: ibnada <ibnada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:37:41 by obouizga          #+#    #+#             */
-/*   Updated: 2022/11/14 09:44:49 by ibnada           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:02:27 by ibnada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ void	run_sole_cmd(t_cmdl *cmd, char **env, int validity)
 		if (validity == _unset_path_ || \
 			validity == _command_not_found_)
 			exit(127);
+<<<<<<< HEAD
 		if (cmd->in_fd < 0 || cmd->out_fd < 0)
 			exit(1);
+=======
+>>>>>>> c3ce27e5a2aec428b8e7a5ec5c2ec6a35287c575
 		read_from(cmd->in_fd);
 		write_to(cmd->out_fd);
 		run(cmd, SOLE, env);
